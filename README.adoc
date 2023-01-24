@@ -1,0 +1,78 @@
+# judo-ui-typescript-rest
+
+UI based JUDO Typescript Rest Java generator
+
+It can be used as:
+
+[code, xml]
+----
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>hu.blackbelt.judo.archetype</groupId>
+    <artifactId>judo-ui-typescript-rest-example</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+
+    <name>JUDO UI Generator Typescript Rest test</name>
+    <description>JUDO UI Typescript Rest Generator Example.</description>
+
+    <properties>
+        <revision>1.0.0-SNAPSHOT</revision>
+        <maven>3.8.3</maven>
+
+        <judo-ui-archetype-version>1.0.0</judo-ui-archetype-version>
+        <judo-ui-typescript-rest>1.0.0</judo-ui-typescript-rest>
+        <judo-meta-ui-version>1.1.0</judo-meta-ui-version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>hu.blackbelt.judo.archetype</groupId>
+                <artifactId>judo-ui-archetype-maven-plugin</artifactId>
+                <version>${judo-ui-archetype-version}</version>
+                <executions>
+                    <execution>
+                        <id>execute-ui-test-model-from-artifact</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <uris>
+                                <uri>${basedir}/src/main/resources</uri>
+                            </uris>
+                            <helpers>
+                                <helper>hu.blackbelt.judo.ui.generator.sdk.core.PsmModelHelper</helper>
+                            </helpers>
+                            <type>ui-sdk-core</type>
+                            <ui>
+                                mvn:your.ui.model.group.id:your.ui.model.artifact.id:your.ui.model.version!model-name-in-jar.model
+                            </ui>
+                            <destination>${basedir}/target/generated-test-classes/ui/sdk-core</destination>
+                        </configuration>
+                    </execution>
+                </executions>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>hu.blackbelt.judo.meta</groupId>
+                        <artifactId>hu.blackbelt.judo.meta.ui.model.northwind</artifactId>
+                        <version>${judo-meta-ui-version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+----
+
+This example generates a complete project setup into `target/classes` directory.
+In a project this generation can be placed in the model project as a
+profile.
+
+The `judo-ui-archetype-maven-plugin` documentation is placed inside
+the plugin documentation itself. https://github.com/BlackBeltTechnology/judo-ui-archetype
+
+
