@@ -2,7 +2,7 @@ templates:
   - name: enum.ts.hbs
     factoryExpression: "#getEnumerationTypes(#application)"
     pathExpression: >
-      'src/model/' +
+      'data-api/' +
       #restParamName(#self) + '.ts'
     templateName: model/enum.ts.hbs
     templateContext:
@@ -12,9 +12,13 @@ templates:
   - name: class.ts.hbs
     factoryExpression: "#getClassTypes(#application)"
     pathExpression: >
-      'src/model/' +
-      #restParamName(#self, null) + '.ts'
+      'data-api/' +
+      #classDataName(#self, null) + '.ts'
     templateName: model/class.ts.hbs
     templateContext:
       - name: classType
         expression: "#self"
+      - name: application
+        expression: "#application"
+      - name: actor
+        expression: "#actor"

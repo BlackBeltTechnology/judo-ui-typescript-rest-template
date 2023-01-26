@@ -199,11 +199,18 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
                 .collect(Collectors.toList());
     }
 
-    public static String restParamName(ClassType classType, String filler) {
-        String safeFiller = filler == null ? "" : filler;
-        String packName = packageName(classType.getName());
-        return (packName == null ? "" : packName) + className(classType.getName()) + safeFiller;
+    public static String classDataName(ClassType classType, String suffix) {
+        String className = classType.getName();
+        String base = nameWithoutModel(className);
+
+        return base += suffix != null ? suffix : "";
     }
+
+//    public static String restParamName(ClassType classType, String filler) {
+//        String safeFiller = filler == null ? "" : filler;
+//        String packName = packageName(classType.getName());
+//        return (packName == null ? "" : packName) + className(classType.getName()) + safeFiller;
+//    }
 
     public static HashMap<String, String> getImportTokens(ClassType actor, ClassType classType) {
         HashMap<String, String> tokens = new HashMap<String, String>();
@@ -217,7 +224,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         }
 
         for (RelationType rel: classType.getRelations()) {
-            String token = restParamName(rel.getTarget(), null) ;
+            String token = classDataName(rel.getTarget(), null) ;
 
             if (!rel.getTarget().equals(classType)) {
                 tokens.put(token + "Stored", token);
@@ -225,6 +232,26 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         }
 
         return tokens;
+    }
+
+    public static String typescriptType(DataType dataType) {
+        if (dataType instanceof EnumerationType) {
+            return restParamName((EnumerationType) dataType);
+        } else if (dataType instanceof NumericType) {
+            return "number";
+        } else if (dataType instanceof BooleanType) {
+            return "boolean";
+        } else if (dataType instanceof TimeType) {
+            return "string";
+        } else if (dataType instanceof DateType) {
+            return "string";
+        } else if (dataType instanceof TimestampType) {
+            return "Date";
+        } else if (dataType instanceof StringType) {
+            return "string";
+        } else {
+            return "any";
+        }
     }
 
 }
