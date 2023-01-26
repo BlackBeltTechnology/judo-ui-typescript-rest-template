@@ -1,1 +1,20 @@
 templates:
+  - name: enum.ts.hbs
+    factoryExpression: "#getEnumerationTypes(#application)"
+    pathExpression: >
+      'src/model/' +
+      #restParamName(#self) + '.ts'
+    templateName: model/enum.ts.hbs
+    templateContext:
+      - name: enumerationType
+        expression: "#self"
+
+  - name: class.ts.hbs
+    factoryExpression: "#getClassTypes(#application)"
+    pathExpression: >
+      'src/model/' +
+      #restParamName(#self, null) + '.ts'
+    templateName: model/class.ts.hbs
+    templateContext:
+      - name: classType
+        expression: "#self"

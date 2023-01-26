@@ -3,10 +3,13 @@ package hu.blackbelt.judo.ui.generator.typescript.rest.api;
 import com.github.jknack.handlebars.internal.lang3.StringUtils;
 import hu.blackbelt.judo.generator.commons.StaticMethodValueResolver;
 import hu.blackbelt.judo.generator.commons.annotations.TemplateHelper;
+import hu.blackbelt.judo.meta.ui.Application;
 import hu.blackbelt.judo.meta.ui.data.ClassType;
+import hu.blackbelt.judo.meta.ui.data.EnumerationType;
 import hu.blackbelt.judo.meta.ui.data.RelationType;
 import lombok.extern.java.Log;
 
+import java.util.Collection;
 import java.util.stream.Collectors;
 
 import static java.util.Arrays.stream;
@@ -88,4 +91,6 @@ public class Helper extends StaticMethodValueResolver {
                 .map(StringUtils::capitalize)
                 .collect(Collectors.joining()));
     }
+
+
 }

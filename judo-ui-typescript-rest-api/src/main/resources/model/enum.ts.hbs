@@ -1,0 +1,5 @@
+export enum {{ enumerationType.restParamName }} {
+{{# each enumerationType.members as | member | }}
+    {{ member.name }} = '{{ member.name }}',
+{{/ each}}
+}

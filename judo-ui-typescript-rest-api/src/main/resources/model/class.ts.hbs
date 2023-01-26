@@ -1,0 +1,23 @@
+import { JudoStored } from '@judo/data-api-common';
+{{# each tokenMap.keySet as | token | }}
+    import { {{ token }} } from './{{ token.get token }}';
+{{/ each}}
+
+export interface {{ classType.restParamName null }} {
+{{# each attribute: classType.attributes}}
+    {{ unsafeVariable attribute.name }} {{attribute.isRequired ? ":" : "?: null |"}} {{ attribute.dataType.typescriptType }};
+{{/ each}}
+«FOR relation: classType.relations»
+«unsafeVariable(relation.name)»«relation.isOptional ? "?: null |" : ":"» «getRelationType(relation)»;
+«ENDFOR»
+}
+
+«IF !classType.attributes.isEmpty»
+export type «classType.restParamName(null)»Attributes = '«classType.attributes.map[a|unsafeVariable(a.name)].join("' | '")»';
+«ENDIF»
+
+«IF !classType.relations.isEmpty»
+export type «classType.restParamName(null)»Relations = '«classType.relations.map[r|unsafeVariable(r.name)].join("' | '")»';
+«ENDIF»
+
+export interface «classType.restParamName("Stored")» extends JudoStored<«classType.restParamName(null)»>, «classType.restParamName(null)» {};

@@ -12,10 +12,7 @@ import lombok.extern.java.Log;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.util.Arrays.stream;
@@ -187,4 +184,47 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         }
         return false;
     }
+
+    public static Collection<EnumerationType> getEnumerationTypes(Application application) {
+        return application.getDataTypes().stream()
+                .filter(i -> i instanceof EnumerationType)
+                .map(i -> (EnumerationType) i).collect(Collectors.toList());
+    }
+
+    public static Collection<ClassType> getClassTypes(Application application) {
+        return application.getDataElements().stream()
+                .filter(i -> i instanceof ClassType)
+                .map(i -> (ClassType) i)
+                .filter(i -> !i.isIsActor())
+                .collect(Collectors.toList());
+    }
+
+    public static String restParamName(ClassType classType, String filler) {
+        String safeFiller = filler == null ? "" : filler;
+        String packName = packageName(classType.getName());
+        return (packName == null ? "" : packName) + className(classType.getName()) + safeFiller;
+    }
+
+    public static HashMap<String, String> getImportTokens(ClassType actor, ClassType classType) {
+        HashMap<String, String> tokens = new HashMap<String, String>();
+
+        for (AttributeType attr: classType.getAttributes()) {
+            if (attr.getDataType() instanceof EnumerationType) {
+                String token = restParamName((EnumerationType) attr.getDataType());
+
+                tokens.put(token, token);
+            }
+        }
+
+        for (RelationType rel: classType.getRelations()) {
+            String token = restParamName(rel.getTarget(), null) ;
+
+            if (!rel.getTarget().equals(classType)) {
+                tokens.put(token + "Stored", token);
+            }
+        }
+
+        return tokens;
+    }
+
 }
