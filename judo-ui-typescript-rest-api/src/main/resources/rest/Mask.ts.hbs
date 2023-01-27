@@ -1,0 +1,19 @@
+import { MaskBuilder{{# if (isGreaterThan relations.size 0) }}, RelationMaskBuilder{{/ if}} } from './MaskBuilder';
+import { {{ joinModelImportTokens ModelImportTokens ', ' }} } from '../model';
+{{# each relation: uniqueRelations.filter[a|!a.target.equals(classType)] }}
+import { {{ relation.targetAggregateds.map[r2|r2.relationBuilderName(relation.target, "MaskBuilder")].join(', ') }} } from './{{relation.target.restParamName("MaskBuilder")}}';
+{{/ each}}
+
+{{# each relation: relations }}
+export class {{relation.relationBuilderName(classType, "MaskBuilder")}} extends RelationMaskBuilder {
+constructor(protected props: Array<{{relation.target.restParamName("Attributes")}}{{relation.targetAggregateds.map[r2| " | " + r2.relationBuilderName(relation.target, "MaskBuilder")].join}}>) {
+super('{{relation.name.unsafeVariable}}', props);
+}
+}
+{{/ each}}
+
+export class {{ classType.restParamName("MaskBuilder") }} extends MaskBuilder {
+constructor(protected props: Array<«classType.generateBuilderProps()»>) {
+super(props);
+}
+}

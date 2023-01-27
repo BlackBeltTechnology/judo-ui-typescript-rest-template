@@ -1,5 +1,6 @@
 package hu.blackbelt.judo.ui.generator.typescript.rest.api;
 
+import com.github.jknack.handlebars.Handlebars;
 import com.github.jknack.handlebars.ValueResolver;
 import com.github.jknack.handlebars.internal.lang3.StringUtils;
 import hu.blackbelt.judo.generator.commons.StaticMethodValueResolver;
@@ -9,6 +10,7 @@ import hu.blackbelt.judo.meta.ui.NavigationItem;
 import hu.blackbelt.judo.meta.ui.Sort;
 import hu.blackbelt.judo.meta.ui.data.*;
 import lombok.extern.java.Log;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 
@@ -199,6 +201,21 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
                 .collect(Collectors.toList());
     }
 
+    public static Collection<OperationType> getOperationType(Application application) {
+        return application.getDataElements().stream().filter(i -> i instanceof ClassType)
+                .map(i -> (ClassType) i)
+                .flatMap(i -> i.getOperations().stream())
+                .filter(i -> i instanceof OperationType)
+                .map(i -> (OperationType) i).collect(Collectors.toList());
+    }
+
+    public static Collection<ClassType> getQueryCustomizers(Application application) {
+        return application.getDataElements().stream().filter(i -> i instanceof ClassType)
+                .map(i -> (ClassType) i)
+                .filter(i -> !i.isIsActor()).collect(Collectors.toList());
+    }
+
+    //restParamName(ClassType classType, String filler)
     public static String classDataName(ClassType classType, String suffix) {
         String className = classType.getName();
         String base = nameWithoutModel(className);
@@ -206,11 +223,16 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return base += suffix != null ? suffix : "";
     }
 
-//    public static String restParamName(ClassType classType, String filler) {
-//        String safeFiller = filler == null ? "" : filler;
-//        String packName = packageName(classType.getName());
-//        return (packName == null ? "" : packName) + className(classType.getName()) + safeFiller;
-//    }
+    public static String FaultContainerName(OperationType operationType) {
+        String packName = packageName(operationType.getName());
+        return (packName == null ? "" : firstToUpper(packName)) + firstToUpper(className(operationType.getName())) + "FaultContainer";
+    }
+
+    /*public static String classDataName(ClassType classType, String filler) {
+        String safeFiller = filler == null ? "" : filler;
+        String packName = packageName(classType.getName());
+        return (packName == null ? "" : packName) + className(classType.getName()) + safeFiller;
+    }*/
 
     public static HashMap<String, String> getImportTokens(ClassType actor, ClassType classType) {
         HashMap<String, String> tokens = new HashMap<String, String>();
@@ -224,7 +246,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         }
 
         for (RelationType rel: classType.getRelations()) {
-            String token = classDataName(rel.getTarget(), null) ;
+            String token = classDataName(rel.getTarget(), null);
 
             if (!rel.getTarget().equals(classType)) {
                 tokens.put(token + "Stored", token);
@@ -232,6 +254,95 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         }
 
         return tokens;
+    }
+
+    public static HashSet<String> getImportTokensForQueries(ClassType actor, ClassType classType) {
+        HashSet<String> tokens = new HashSet<String>();
+
+        for(AttributeType attr: classType.getAttributes()) {
+            String token = restFilterName(actor, attr.getDataType());
+
+            if (attr.isIsFilterable() && !tokens.contains(token)) {
+                tokens.add(token);
+            }
+        }
+
+        return tokens;
+    }
+
+    public static String className(String fqName) {
+        if(fqName == null) {
+            return null;
+        }
+
+        if(!fqName.contains("::")) {
+            return fqName;
+        }
+
+        String[] splittedfqName = fqName.split("::");
+        return splittedfqName[splittedfqName.length - 1];
+    }
+    public static String unsafeVariable(String fqName) {
+        return className(fqName);
+    }
+
+    public static String getRelationType(RelationType relation) {
+        String typeName = classDataName(relation.getTarget(), "Stored");
+        return relation.isIsCollection() ? ("Array<" + typeName + ">") : typeName;
+    }
+
+    public static String getClassTypeAttributes(ClassType classType) {
+        return classType.getAttributes().stream().map(r -> unsafeVariable(r.getName())).collect(Collectors.joining("' | '"));
+    }
+
+    public static String getClassTypeRelations(ClassType classType) {
+        return classType.getRelations().stream().map(r -> unsafeVariable(r.getName())).collect(Collectors.joining("' | '"));
+    }
+
+    public static String getFaultTargets(OperationParameterType operationParameterType) {
+        return classDataName(operationParameterType.getTarget(), null).toString();
+    }
+
+    public static EList<OperationParameterType> getOperationTypeFaults(OperationType operationType){
+        return operationType.getFaults();
+    }
+
+    public static String openApiDataType(String fqDataTypeName){
+        if (fqDataTypeName == null) {
+            return null;
+        }
+
+        String fqDataTypeNames[] = fqDataTypeName.split("\\.");
+        return fqDataTypeNames[fqDataTypeNames.length - 1];
+    }
+    public static String restFilterName(ClassType actor, DataType dataType) {
+        return "FilterBy" + openApiDataType(dataType.getName());
+    }
+
+    public static String restFilterNameTwo(ClassType actor, DataType dataType) {
+        return "FilterBy" + openApiDataType(dataType.getName());
+    }
+
+    public static String getClassName(ClassType classType) {
+        return classType.getPackageNameTokens().stream()
+                .map(t -> getCamelCaseVersion(t))
+                .collect(Collectors.joining())
+                .concat(getCamelCaseVersion(classType.getSimpleName()));
+    }
+
+    public static Boolean AttributeIsIsFilterable(AttributeType attribute){
+        return attribute.isIsFilterable();
+    }
+
+    public static Boolean isGreaterThan(int a, int b){
+        if (a > b)
+            return true;
+        else
+            return false;
+    }
+
+    public static String joinModelImportTokens(HashSet<String> modelImportTokens, String joinBy) {
+        return modelImportTokens.stream().collect(Collectors.joining(joinBy));
     }
 
     public static String typescriptType(DataType dataType) {
