@@ -14,7 +14,7 @@ export interface {{ classDataName classType '' }} {
 {{# unless classType.attributes.isEmpty }}
 export type {{ classDataName classType '' }}Attributes = '{{{ getClassTypeAttributes classType }}}';
 {{/ unless}}
-{{# unless classType.relations.isEmpty }}
+{{# unless (classTypeRelationsIsEmpty classType) }}
 export type {{ classDataName classType '' }}Relations = '{{{ getClassTypeRelations classType }}}';
 {{/ unless}}
 export interface {{ classDataName classType 'Stored' }} extends JudoStored<{{ classDataName classType '' }}>, {{ classDataName classType '' }} {};

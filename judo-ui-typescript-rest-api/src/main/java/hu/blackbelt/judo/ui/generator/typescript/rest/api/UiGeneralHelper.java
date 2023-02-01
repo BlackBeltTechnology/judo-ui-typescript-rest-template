@@ -486,6 +486,10 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return tokens.stream().collect(Collectors.joining(", "));
     }
 
+    public static boolean classTypeRelationsIsEmpty(ClassType classType) {
+        return classType.getRelations().isEmpty();
+    }
+
 
     public static String typescriptType(DataType dataType) {
         if (dataType instanceof EnumerationType) {
