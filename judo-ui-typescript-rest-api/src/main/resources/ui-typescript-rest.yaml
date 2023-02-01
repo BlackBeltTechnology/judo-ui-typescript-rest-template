@@ -60,3 +60,15 @@ templates:
         expression: "#application"
       - name: actor
         expression: "#actor"
+
+  - name: maskBuilder.ts.hbs
+    pathExpression: >
+      'data-api/rest/' +
+      'MaskBuilder.ts'
+    templateName: rest/maskBuilder.ts.hbs
+
+  - name: index.ts.hbs
+    pathExpression: >
+      'data-api/rest/' +
+      'index.ts'
+    templateName: rest/index.ts.hbs
