@@ -1,0 +1,6 @@
+{{# each (getEnumerationTypes application) as | fileName | }}
+    export * from './{{ restParamName fileName }}';
+{{/ each}}
+{{# each (getClassTypes application) as | fileName | }}
+    export * from './{{ classDataName fileName ''}}';
+{{/ each}}

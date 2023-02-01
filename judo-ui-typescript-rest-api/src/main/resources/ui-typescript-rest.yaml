@@ -22,6 +22,12 @@ templates:
         expression: "#application"
       - name: actor
         expression: "#actor"
+
+  - name: index.ts.hbs
+    pathExpression: >
+      'data-api/model/' +
+      'index.ts'
+    templateName: model/index.ts.hbs
 #TODO: Generate Faults
   - name: queryCustomizer.ts.hbs
     factoryExpression: "#getQueryCustomizers(#application)"
