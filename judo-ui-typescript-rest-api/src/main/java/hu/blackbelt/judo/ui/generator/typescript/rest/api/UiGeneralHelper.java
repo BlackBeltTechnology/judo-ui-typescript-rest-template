@@ -15,6 +15,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static java.util.Arrays.stream;
@@ -145,6 +148,13 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return stream(last.split("\\.")).map(e -> StringUtils.capitalize(e)).collect(Collectors.joining(""));
     }
 
+    public static String dataTyperestParamName(DataType dataType) {
+        EnumerationType enumerationType = (EnumerationType) dataType;
+        String[] tokens = enumerationType.getName().split("::");
+        String last = tokens[tokens.length - 1];
+        return stream(last.split("\\.")).map(e -> StringUtils.capitalize(e)).collect(Collectors.joining(""));
+    }
+
     public static String firstToUpper(String input) {
         return StringUtils.capitalize(input);
     }
@@ -215,6 +225,23 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
                 .filter(i -> !i.isIsActor()).collect(Collectors.toList());
     }
 
+    public static Collection<DataType> getFilterableDataTypes(Application app) {
+        List<ClassType> classes = app.getClassTypes();
+        ArrayList<AttributeType> attributeTypeList = new ArrayList();
+
+        for (ClassType classType : classes) {
+            attributeTypeList.addAll(
+                    classType.getAttributes().stream()
+                            .filter(a -> a.isIsFilterable())
+                            .collect(Collectors.toList())
+            );
+        }
+
+        return attributeTypeList.stream()
+                .map(a -> a.getDataType())
+                .filter(distinctByKey(dataType -> getXMIID(dataType))).collect(Collectors.toList());
+    }
+
     //restParamName(ClassType classType, String filler)
     public static String classDataName(ClassType classType, String suffix) {
         String className = classType.getName();
@@ -222,6 +249,18 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
 
         return base += suffix != null ? suffix : "";
     }
+
+    private static <T extends Object> Predicate<T> distinctByKey(final Function<? super T, ?> keyExtractor) {
+        final ConcurrentHashMap<Object, Boolean> seen = new ConcurrentHashMap<Object, Boolean>();
+        final Predicate<T> _function = (T t) -> {
+            Boolean _putIfAbsent = seen.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE);
+            return (_putIfAbsent == null);
+        };
+        return _function;
+    }
+
+
+
 
 
     /*public static String classDataName(ClassType classType, String filler) {
@@ -430,6 +469,23 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
 
         return res.length() > 0 ? res : "any";
     }
+
+    public static boolean isEnumType(DataType type) {
+        return type instanceof EnumerationType;
+    }
+
+    public static String joinModelImports(DataType dataType) {
+        ArrayList<String> tokens = new ArrayList<String>();
+
+        tokens.add(typescriptType(dataType.getOperator()));
+
+        if (isEnumType(dataType)) {
+            tokens.add(restParamName((EnumerationType) dataType));
+        }
+
+        return tokens.stream().collect(Collectors.joining(", "));
+    }
+
 
     public static String typescriptType(DataType dataType) {
         if (dataType instanceof EnumerationType) {

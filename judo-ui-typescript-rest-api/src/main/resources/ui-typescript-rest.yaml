@@ -46,6 +46,16 @@ templates:
     templateContext:
       - name: classType
         expression: "#self"
+
+  - name: filterable.ts.hbs
+    factoryExpression: "#getFilterableDataTypes(#application)"
+    pathExpression: >
+      'data-api/rest/' +
+      #restFilterName(#actor, #self) + '.ts'
+    templateName: rest/filterable.ts.hbs
+    templateContext:
+      - name: dataType
+        expression: "#self"
       - name: application
         expression: "#application"
       - name: actor
