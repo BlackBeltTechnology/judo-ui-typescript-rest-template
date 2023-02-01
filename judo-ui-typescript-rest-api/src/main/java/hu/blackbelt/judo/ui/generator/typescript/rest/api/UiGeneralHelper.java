@@ -223,16 +223,18 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return base += suffix != null ? suffix : "";
     }
 
-    public static String FaultContainerName(OperationType operationType) {
-        String packName = packageName(operationType.getName());
-        return (packName == null ? "" : firstToUpper(packName)) + firstToUpper(className(operationType.getName())) + "FaultContainer";
-    }
 
     /*public static String classDataName(ClassType classType, String filler) {
         String safeFiller = filler == null ? "" : filler;
         String packName = packageName(classType.getName());
         return (packName == null ? "" : packName) + className(classType.getName()) + safeFiller;
     }*/
+
+    public static String FaultContainerName(OperationType operationType) {
+        String packName = packageName(operationType.getName());
+        return (packName == null ? "" : firstToUpper(packName)) + firstToUpper(className(operationType.getName())) + "FaultContainer";
+    }
+
 
     public static HashMap<String, String> getImportTokens(ClassType actor, ClassType classType) {
         HashMap<String, String> tokens = new HashMap<String, String>();
@@ -265,6 +267,22 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
             if (attr.isIsFilterable() && !tokens.contains(token)) {
                 tokens.add(token);
             }
+        }
+
+        return tokens;
+    }
+
+
+    private static boolean hasClassAttributes(ClassType classType) {
+        return classType.getAttributes() != null && classType.getAttributes().size() > 0;
+    }
+    public static HashSet<String> modelImportTokens(ClassType classType) {
+        var tokens = new HashSet<String>();
+
+        tokens.addAll(classType.getRelations().stream().map(r -> classDataName(r.getTarget(), "Attributes")).collect(Collectors.toList()));
+
+        if (hasClassAttributes(classType)) {
+            tokens.add(classDataName(classType, "Attributes"));
         }
 
         return tokens;
@@ -330,19 +348,87 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
                 .concat(getCamelCaseVersion(classType.getSimpleName()));
     }
 
-    public static Boolean AttributeIsIsFilterable(AttributeType attribute){
+    public static Boolean AttributeIsIsFilterable(AttributeType attribute) {
         return attribute.isIsFilterable();
     }
 
-    public static Boolean isGreaterThan(int a, int b){
+    public static Boolean isGreaterThan(int a, int b) {
         if (a > b)
             return true;
         else
             return false;
     }
 
-    public static String joinModelImportTokens(HashSet<String> modelImportTokens, String joinBy) {
-        return modelImportTokens.stream().collect(Collectors.joining(joinBy));
+    public static String joinModelImportTokens(HashSet<String> modelImportTokens) {
+        return modelImportTokens.stream().collect(Collectors.joining(", "));
+    }
+
+    public static List<RelationType> getAggregatedRelations(ClassType classType) {
+        return classType.getRelations().stream()
+                .filter(r -> r.getRelationKind() != RelationKind.ASSOCIATION).collect(Collectors.toList());
+    }
+
+    public static int getAggregatedRelationsSize(ClassType classType) {
+        return classType.getRelations().stream()
+                .filter(r -> r.getRelationKind() != RelationKind.ASSOCIATION).collect(Collectors.toList()).size();
+    }
+
+    public static List<RelationType> getAggregatedTarget(RelationType relationType) {
+        return relationType.getTarget().getRelations().stream()
+                .filter(r -> r.getRelationKind() != RelationKind.ASSOCIATION).collect(Collectors.toList());
+    }
+
+
+
+    public static HashSet<RelationType> getUniqueRelations(ClassType classType) {
+        HashSet<RelationType> uniqueRelations = new HashSet<RelationType>();
+
+        for (RelationType relation: getAggregatedRelations(classType)) {
+            if (!uniqueRelations.stream().map(r -> r.getTarget().getName()).collect(Collectors.toList()).contains(relation.getTarget().getName())) {
+                uniqueRelations.add(relation);
+            }
+        }
+
+        return uniqueRelations;
+    }
+
+    public static HashSet<RelationType> getNotClassTypeRelations(HashSet<RelationType> uniqueRelations, ClassType classType) {
+        return uniqueRelations.stream().filter(a -> !a.getTarget().equals(classType)).collect(Collectors.toCollection(HashSet::new));
+    }
+
+    public static String relationBuilderName (RelationType relationType, ClassType classType, String postfix) {
+        return classDataName(classType, postfix);
+    }
+    public static String getRelationBuilderNames(RelationType relation) {
+        String relationBuilderName =  getAggregatedTarget(relation).stream()
+                .map(r -> relationBuilderName(r, relation.getTarget(), "MaskBuilder"))
+                .collect(Collectors.joining(", "));
+
+        return relationBuilderName;
+    }
+
+    public static String getRelationBuilderNamesWithPipe(RelationType relation) {
+        String relationBuilderName =  getAggregatedTarget(relation).stream()
+                .map(r -> " | " + relationBuilderName(r, relation.getTarget(), "MaskBuilder"))
+                .collect(Collectors.joining());
+
+        return relationBuilderName;
+    }
+
+    public static ClassType getRelationTarget(RelationType relation) {
+        return relation.getTarget();
+    }
+
+    public static String generateBuilderProps(ClassType classType) {
+        String attrs = hasClassAttributes(classType) ? classDataName(classType, "Attributes") : "";
+        String rels = getAggregatedRelationsSize(classType) > 0
+                ? getAggregatedRelations(classType).stream()
+                .map(r -> relationBuilderName(r, classType, "MaskBuilder"))
+                .collect(Collectors.joining(" | ")) : "";
+
+        String res = attrs + (attrs.length() > 0 && rels.length() > 0 ? " | " : "") + rels;
+
+        return res.length() > 0 ? res : "any";
     }
 
     public static String typescriptType(DataType dataType) {
