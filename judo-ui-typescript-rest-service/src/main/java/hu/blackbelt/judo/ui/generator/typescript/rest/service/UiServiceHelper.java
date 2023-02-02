@@ -37,6 +37,11 @@ public class UiServiceHelper extends StaticMethodValueResolver {
                 .filter(r -> !hasRelationTypeOwner(r)).collect(Collectors.toList());
     }
 
+    public static Collection<RelationType> getRelationsTypesWithAccess(Application application) {
+        return (List<RelationType>) application.getRelationTypes().stream()
+                .filter(r -> hasRelationTypeOwner(r)).collect(Collectors.toList());
+    }
+
     public static boolean hasRelationTypeOwner(Object relationType) {
         if(relationType instanceof RelationType) {
             if (( (RelationType) relationType).isIsAccess())

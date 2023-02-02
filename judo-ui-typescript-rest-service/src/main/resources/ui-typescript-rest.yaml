@@ -23,3 +23,17 @@ templates:
         expression: "#application"
       - name: apiDep
         expression: "#apiDep"
+
+  - name: accessRelationService.ts.hbs
+    factoryExpression: "#getRelationsTypesWithAccess(#application)"
+    pathExpression: >
+      'service/dataService/' +
+      #serviceRelationName(#self) + '.ts'
+    templateName: dataService/accessRelationService.ts.hbs
+    templateContext:
+      - name: relation
+        expression: "#self"
+      - name: application
+        expression: "#application"
+      - name: apiDep
+        expression: "#apiDep"
