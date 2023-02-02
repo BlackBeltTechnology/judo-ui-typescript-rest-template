@@ -376,10 +376,6 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return "FilterBy" + openApiDataType(dataType.getName());
     }
 
-    public static String restFilterNameTwo(ClassType actor, DataType dataType) {
-        return "FilterBy" + openApiDataType(dataType.getName());
-    }
-
     public static String getClassName(ClassType classType) {
         return classType.getPackageNameTokens().stream()
                 .map(t -> getCamelCaseVersion(t))

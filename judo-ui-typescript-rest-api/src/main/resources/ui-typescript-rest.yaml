@@ -38,8 +38,6 @@ templates:
     templateContext:
       - name: classType
         expression: "#self"
-      - name: application
-        expression: "#application"
       - name: actor
         expression: "#actor"
 
