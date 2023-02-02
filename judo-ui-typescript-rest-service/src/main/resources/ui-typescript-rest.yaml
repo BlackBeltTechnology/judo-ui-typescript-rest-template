@@ -1,0 +1,25 @@
+templates:
+  - name: accessService.ts.hbs
+    pathExpression: >
+      'service/dataService/' +
+      'AccessService.ts'
+    templateName: dataService/accessService.ts.hbs
+    templateContext:
+      - name: application
+        expression: "#application"
+      - name: apiDep
+        expression: "#apiDep"
+
+  - name: relationService.ts.hbs
+    factoryExpression: "#getRelationsTypesWithoutAccess(#application)"
+    pathExpression: >
+      'service/dataService/' +
+      #serviceRelationName(#self) + '.ts'
+    templateName: dataService/relationService.ts.hbs
+    templateContext:
+      - name: relation
+        expression: "#self"
+      - name: application
+        expression: "#application"
+      - name: apiDep
+        expression: "#apiDep"

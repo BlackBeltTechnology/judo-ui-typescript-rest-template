@@ -376,12 +376,12 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return "FilterBy" + openApiDataType(dataType.getName());
     }
 
-    public static String getClassName(ClassType classType) {
+    /*public static String getClassName(ClassType classType) {
         return classType.getPackageNameTokens().stream()
                 .map(t -> getCamelCaseVersion(t))
                 .collect(Collectors.joining())
                 .concat(getCamelCaseVersion(classType.getSimpleName()));
-    }
+    }*/
 
     public static Boolean AttributeIsIsFilterable(AttributeType attribute) {
         return attribute.isIsFilterable();

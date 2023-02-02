@@ -1,0 +1,14 @@
+import { JudoDownloadFile, JudoMetaData } from '@judo/data-api-common';
+{{# if (appPrincipalisNotNull application) }} import { {{ classDataName app.principal "Stored" }} } from '{{ apiDep }}';{{/ if }}
+
+export interface AccessService {
+{{# if (appPrincipalisNotNull application) }}
+getPrincipal(): Promise<{{ classDataName app.principal "Stored" }}>;
+{{/if}}
+
+    getMetaData(): Promise<JudoMetaData>;
+
+    uploadFile(attributePath: string, file: File): Promise<string>;
+
+    downloadFile(downloadToken: string): Promise<any>;
+}
