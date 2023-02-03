@@ -130,6 +130,11 @@
                 <artifactId>judo-ui-typescript-rest-service</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>hu.blackbelt.judo.generator</groupId>
+                <artifactId>judo-ui-typescript-rest-axios</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>
@@ -265,6 +270,7 @@
                 <module>judo-ui-typescript-rest-api</module>
                 <module>judo-ui-typescript-rest-api-itest</module>
                 <module>judo-ui-typescript-rest-service</module>
+                <module>judo-ui-typescript-rest-axios</module>
             </modules>
         </profile>
 

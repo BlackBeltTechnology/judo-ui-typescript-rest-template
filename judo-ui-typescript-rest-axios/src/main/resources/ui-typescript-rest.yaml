@@ -1,0 +1,71 @@
+templates:
+  - name: axiosProvider.ts.hbs
+    pathExpression: >
+      'axios/dataAxios/' +
+      'AxiosProvider.ts'
+    templateName: dataAxios/axiosProvider.ts.hbs
+
+  - name: judoAxiosProvider.ts.hbs
+    pathExpression: >
+      'axios/dataAxios/' +
+      'JudoAxiosProvider.ts'
+    templateName: dataAxios/judoAxiosProvider.ts.hbs
+    templateContext:
+      - name: application
+        expression: "#application"
+
+  - name: judoAxiosService.ts.hbs
+    pathExpression: >
+      'axios/dataAxios/' +
+      'JudoAxiosService.ts'
+    templateName: dataAxios/judoAxiosService.ts.hbs
+    templateContext:
+      - name: application
+        expression: "#application"
+
+  - name: accessServiceImpl.ts.hbs
+    pathExpression: >
+      'axios/dataAxios/' +
+      'AccessServiceImpl.ts'
+    templateName: dataAxios/accessServiceImpl.ts.hbs
+    templateContext:
+      - name: application
+        expression: "#application"
+      - name: serviceDep
+        expression: "#serviceDep"
+
+  - name: relationServiceImpl.ts.hbs
+    factoryExpression: "#getRelationsTypesWithoutAccess(#application)"
+    pathExpression: >
+      'axios/dataAxios/' + 
+      #serviceRelationName(#self) + 'Impl.ts'
+    templateName: dataAxios/relationServiceImpl.ts.hbs
+    templateContext:
+      - name: relation
+        expression: "#self"
+      - name: serviceDep
+        expression: "#serviceDep"
+
+  - name: AccessRelationServiceImpl.ts.hbs
+    factoryExpression: "#getRelationsTypesWithAccess(#application)"
+    pathExpression: >
+      'axios/dataAxios/' + 
+      #serviceRelationName(#self) + 'Impl.ts'
+    templateName: dataAxios/AccessRelationServiceImpl.ts.hbs
+    templateContext:
+      - name: relation
+        expression: "#self"
+      - name: serviceDep
+        expression: "#serviceDep"
+
+  - name: classServiceImpl.ts.hbs
+    factoryExpression: "#getClassTypes(#application)"
+    pathExpression: >
+      'axios/dataAxios/' + 
+      #serviceClassName(#self) + 'Impl.ts'
+    templateName: dataAxios/classServiceImpl.ts.hbs
+    templateContext:
+      - name: classType
+        expression: "#self"
+      - name: serviceDep
+        expression: "#serviceDep"

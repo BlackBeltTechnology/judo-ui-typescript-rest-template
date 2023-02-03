@@ -86,6 +86,63 @@ public class UiServiceHelper extends StaticMethodValueResolver {
         return tokens.stream().collect(Collectors.joining(", "));
     }
 
+    public static String joinedTokensForApiImportForAccessRelationServiceImpl(RelationType relation){
+        HashSet<String> tokens = new HashSet<>();
+        tokens.add(getClassName((ClassType) relation.getOwner()));
+        tokens.add(classDataName(relation.getTarget(), "QueryCustomizer"));
+        tokens.add(classDataName(relation.getTarget(), "Stored"));
+        tokens.add(getClassName(relation.getTarget()));
+
+//        for (RelationType targetRelation : relation.getTarget().getRelations()) {
+//            tokens.add(classDataName(targetRelation.getTarget(), "QueryCustomizer"));
+//            tokens.add(classDataName(targetRelation.getTarget(), "Stored"));
+//            tokens.add(getClassName(targetRelation.getTarget()));
+//        }
+//
+//        for (OperationType operation: relation.getTarget().getOperations()) {
+//            if (operation.getIsInputRangeable()) {
+//                tokens.add(classDataName(operation.getInput().getTarget(), "QueryCustomizer"));
+//                tokens.add(classDataName(operation.getInput().getTarget(), "Stored"));
+//                tokens.add(getClassName(operation.getInput().getTarget()));
+//            }
+//        }
+
+        return tokens.stream().collect(Collectors.joining(", "));
+    }
+
+    public static String joinedTokensForApiImportClassService(ClassType classType){
+        HashSet<String> tokens = new HashSet<>();
+
+        tokens.add(getClassName(classType));
+        tokens.add(classDataName(classType, "Stored"));
+
+        if (classType.isIsMapped()) {
+            tokens.add(classDataName(classType, "QueryCustomizer"));
+        }
+
+        for (RelationType relation: classType.getRelations()) {
+            tokens.add(getClassName(relation.getTarget()));
+            tokens.add(classDataName(relation.getTarget(),"Stored"));
+            tokens.add(classDataName(relation.getTarget(),"QueryCustomizer"));
+        }
+
+        for (OperationType operation: classType.getOperations()) {
+            if (operation.getInput() != null) {
+                tokens.add(getClassName(operation.getInput().getTarget()));
+            }
+
+            if (operation.getOutput() != null) {
+                tokens.add(classDataName(operation.getOutput().getTarget(), "Stored"));
+            }
+
+            if (operation.getIsInputRangeable()) {
+                tokens.add(classDataName(operation.getInput().getTarget(), "QueryCustomizer"));
+                tokens.add(classDataName(operation.getInput().getTarget(), "Stored"));
+            }
+        }
+
+        return tokens.stream().collect(Collectors.joining(", "));
+    }
     /*public static String getDepPath(String importSource) {
 
         String scope_ = (params.npmScope !== null ? params.npmScope + "/" : "");
@@ -104,6 +161,18 @@ public class UiServiceHelper extends StaticMethodValueResolver {
 
     public static ClassType getRealitionOwnerAsClassType(RelationType relationType){
         return (ClassType) relationType.getOwner();
+    }
+
+    public static String serviceClassName(ClassType type) {
+        return getClassName(type).concat("Service");
+    }
+
+    public static boolean operationParameterTypeIsNotNull(OperationParameterType operationParameterType) {
+        return operationParameterType != null;
+    }
+
+    public static boolean classTypeIsMapped(ClassType classType) {
+        return classType.isIsMapped();
     }
 
     public static boolean relationIsCollection(RelationType relationType) {

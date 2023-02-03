@@ -1,1 +1,18 @@
-alma
+import { {{ joinedTokensForApiImport relation }} } from '{{ apiDep }}';
+
+/**
+* Access Relation Service for {{ getClassName (getRealitionOwnerAsClassType relation) }}.{{ relation.name }}
+*/
+export interface {{ relation.serviceRelationName }} {
+{{# if relation.isListable }}
+    {{# if relation.isIsCollection }}
+        list{{ relation.name.toFirstUpper }}(queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>>;
+    {{ else }}
+        get{{ relation.name.toFirstUpper }}(mask?: string): Promise<{{ classDataName relation.target "Stored" }}>;
+    {{/ if }}
+{{/ if }}
+
+{{# if relation.isCreatable }}
+    create{{ relation.name.toFirstUpper }}(target: {{ target.className }}): Promise<{{ classDataName relation.target "Stored" }}>;
+{{/ if }}
+}

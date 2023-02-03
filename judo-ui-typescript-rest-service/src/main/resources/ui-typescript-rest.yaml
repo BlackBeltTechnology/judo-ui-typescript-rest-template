@@ -37,3 +37,17 @@ templates:
         expression: "#application"
       - name: apiDep
         expression: "#apiDep"
+
+  - name: classService.ts.hbs
+    factoryExpression: "#getClassTypes(#application)"
+    pathExpression: >
+      'service/dataService/' +
+      #serviceClassName(#self) + '.ts'
+    templateName: dataService/classService.ts.hbs
+    templateContext:
+      - name: classType
+        expression: "#self"
+      - name: application
+        expression: "#application"
+      - name: apiDep
+        expression: "#apiDep"

@@ -57,6 +57,7 @@
                             <uris>
                                 <uri>mvn:hu.blackbelt.judo.generator:judo-ui-typescript-rest-api:${revision}</uri>
                                 <uri>mvn:hu.blackbelt.judo.generator:judo-ui-typescript-rest-service:${revision}</uri>
+                                <uri>mvn:hu.blackbelt.judo.generator:judo-ui-typescript-rest-axios:${revision}</uri>
                             </uris>
                             <!--
                             <helpers>
@@ -155,6 +156,11 @@
         <dependency>
             <groupId>hu.blackbelt.judo.generator</groupId>
             <artifactId>judo-ui-typescript-rest-service</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>hu.blackbelt.judo.generator</groupId>
+            <artifactId>judo-ui-typescript-rest-axios</artifactId>
         </dependency>
 
     </dependencies>
