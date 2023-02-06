@@ -23,11 +23,11 @@ templates:
       - name: actor
         expression: "#actor"
 
-  - name: index.ts.hbs
+  - name: modelIndex.ts.hbs
     pathExpression: >
       'data-api/model/' +
       'index.ts'
-    templateName: model/index.ts.hbs
+    templateName: model/modelIndex.ts.hbs
 #TODO: Generate Faults
   - name: queryCustomizer.ts.hbs
     factoryExpression: "#getQueryCustomizers(#application)"
@@ -71,8 +71,14 @@ templates:
       'MaskBuilder.ts'
     templateName: rest/maskBuilder.ts.hbs
 
-  - name: index.ts.hbs
+  - name: restIndex.ts.hbs
     pathExpression: >
       'data-api/rest/' +
       'index.ts'
-    templateName: rest/index.ts.hbs
+    templateName: rest/restIndex.ts.hbs
+
+  - name: apiIndex.ts.hbs
+    pathExpression: >
+      'data-api/' +
+      'index.ts'
+    templateName: apiIndex.ts.hbs

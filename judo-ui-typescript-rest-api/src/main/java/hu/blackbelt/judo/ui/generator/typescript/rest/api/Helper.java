@@ -78,11 +78,13 @@ public class Helper extends StaticMethodValueResolver {
     }
 
     public static String getClassName(ClassType type) {
-        return type.getPackageNameTokens().stream().map(Helper::getCamelCaseVersion).collect(Collectors.joining())
+        return type.getPackageNameTokens().stream()
+                .map(Helper::getCamelCaseVersion)
+                .collect(Collectors.joining())
                 .concat(getCamelCaseVersion(type.getSimpleName()));
     }
 
-    public static String className(String fqName) {
+    /*public static String className(String fqName) {
         if (fqName == null) {
             return null;
         }
@@ -90,7 +92,7 @@ public class Helper extends StaticMethodValueResolver {
         return nameWithoutModel(stream(splitted)
                 .map(StringUtils::capitalize)
                 .collect(Collectors.joining()));
-    }
+    }*/
 
 
 }

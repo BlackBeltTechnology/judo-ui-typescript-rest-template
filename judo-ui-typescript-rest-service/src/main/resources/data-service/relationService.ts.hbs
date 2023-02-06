@@ -1,0 +1,49 @@
+import { JudoIdentifiable } from '@judo/data-api-common';
+import { {{ joinedTokensForApiImport relation }} } from '../data-api';
+
+/**
+* Relation Service for {{ getClassName (getRelationOwnerAsClassType relation) }}.{{ relation.name }}
+*/
+export interface {{serviceRelationName relation}} {
+{{# if relation.isListable }}
+    {{# if (relationIsCollection relation) }}
+    list{{firstToUpper relation.name}}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>>;
+    {{ else }}
+    get{{firstToUpper relation.name}}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, mask?: string): Promise<{{ classDataName  relation.target "Stored" }}>;
+    {{/ if }}
+{{/ if }}
+
+{{# if relation.isCreatable}}
+    create{{firstToUpper relation.name}}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: {{ getClassName relation.target }}): Promise<{{classDataName relation.target "Stored"}}>;
+{{/ if }}
+
+{{# if relation.isDeletable}}
+    delete{{firstToUpper relation.name}}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: JudoIdentifiable<{{ getClassName relation.target }}>): Promise<void>;
+{{/ if }}
+
+{{# if relation.isUpdatable}}
+    update{{firstToUpper relation.name}}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: Partial<{{classDataName relation.target "Stored"}}>): Promise<{{classDataName relation.target "Stored"}}>;
+{{/ if }}
+
+{{# each relation.target.relations as | targetRelation | }}
+    {{# if targetRelation.isRangeable}}
+    getRangeFor{{firstToUpper targetRelation.name}}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation)  }}>, queryCustomizer: {{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>>;
+    {{/ if }}
+
+    {{# if targetRelation.isSetable}}
+    set{{firstToUpper targetRelation.name}}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: JudoIdentifiable<{{ getClassName relation.target}}>, selected: {{# if (relationIsCollection targetRelation) }}Array<{{/ if }}JudoIdentifiable<{{ getClassName targetRelation.target }}>{{# if (relationIsCollection targetRelation) }}>{{/ if }}): Promise<void>;
+    {{/ if }}
+
+    {{# if targetRelation.isUnsetable}}
+    unset{{firstToUpper targetRelation.name}}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: JudoIdentifiable<{{ getClassName relation.target}}>): Promise<void>;
+    {{/ if }}
+
+    {{# if targetRelation.isAddable}}
+    add{{firstToUpper relation.name}}{{firstToUpper targetRelation.name}}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: JudoIdentifiable<{{ getClassName relation.target}}>, selected: Array<JudoIdentifiable<{{ getClassName targetRelation.target }}>>): Promise<void>;
+    {{/ if }}
+
+    {{# if targetRelation.isRemovable}}
+    remove{{firstToUpper relation.name}}{{firstToUpper targetRelation.name}}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: JudoIdentifiable<{{ getClassName relation.target}}>, selected: Array<JudoIdentifiable<{{ getClassName targetRelation.target}}>>): Promise<void>;
+    {{/ if }}
+{{/ each}}
+}

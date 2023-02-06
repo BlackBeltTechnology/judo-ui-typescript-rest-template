@@ -1,0 +1,22 @@
+import { judoAxiosProvider } from './JudoAxiosProvider';
+import { AccessServiceImpl } from './AccessServiceImpl';
+{{# each (getAccessRelationsTypes application) as | impl |  }}
+import { {{ serviceRelationName impl }} } from './{{ serviceRelationName impl }}Impl';
+{{/ each }}
+{{# each (getNotAccessRelationsTypes application) as | impl |  }}
+import { {{ serviceRelationName impl }} } from './{{ serviceRelationName impl }}Impl';
+{{/ each }}
+{{# each (getClassTypes application) as | impl |  }}
+import { {{ serviceClassName impl }} } from './{{ serviceClassName impl }}Impl';
+{{/ each }}
+
+export const AccessServiceImpl = new AccessServiceImpl(judoAxiosProvider);
+{{# each (getAccessRelationsTypes application) as | impl | }}
+export const {{ firstToLower (serviceRelationName impl) }} = new {{ serviceRelationName impl }}Impl(judoAxiosProvider);
+{{/ each }}
+{{# each (getNotAccessRelationsTypes application) as | impl | }}
+export const {{ firstToLower (serviceRelationName impl) }} = new {{ serviceRelationName impl }}Impl(judoAxiosProvider);
+{{/ each }}
+{{# each (getClassTypes application) as | impl | }}
+export const {{ firstToLower (serviceClassName impl) }} = new {{ serviceClassName impl }}Impl(judoAxiosProvider);
+{{/ each }}

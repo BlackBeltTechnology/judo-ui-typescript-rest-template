@@ -20,24 +20,26 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static hu.blackbelt.judo.ui.generator.typescript.rest.api.Helper.*;
+import static hu.blackbelt.judo.ui.generator.typescript.rest.api.UiGeneralHelper.classDataName;
 import static java.util.Arrays.stream;
 
 @Log
 @TemplateHelper
 public class UiServiceHelper extends StaticMethodValueResolver {
 
-    public static String classDataName(ClassType classType, String suffix) {
+    /*public static String classDataName(ClassType classType, String suffix) {
         String className = classType.getName();
         String base = nameWithoutModel(className);
 
         return base += suffix != null ? suffix : "";
-    }
-    public static Collection<RelationType> getRelationsTypesWithoutAccess(Application application) {
+    }*/
+
+    public static Collection<RelationType> getNotAccessRelationsTypes(Application application) {
         return (List<RelationType>) application.getRelationTypes().stream()
                 .filter(r -> !hasRelationTypeOwner(r)).collect(Collectors.toList());
     }
 
-    public static Collection<RelationType> getRelationsTypesWithAccess(Application application) {
+    public static Collection<RelationType> getAccessRelationsTypes(Application application) {
         return (List<RelationType>) application.getRelationTypes().stream()
                 .filter(r -> hasRelationTypeOwner(r)).collect(Collectors.toList());
     }
@@ -159,8 +161,8 @@ public class UiServiceHelper extends StaticMethodValueResolver {
                 .concat(getCamelCaseVersion(relation.getName()));
     }
 
-    public static ClassType getRealitionOwnerAsClassType(RelationType relationType){
-        return (ClassType) relationType.getOwner();
+    public static ClassType getRelationOwnerAsClassType(RelationType relationType){
+        return ((ClassType) relationType.getOwner());
     }
 
     public static String serviceClassName(ClassType type) {
@@ -179,7 +181,4 @@ public class UiServiceHelper extends StaticMethodValueResolver {
         return relationType.isIsCollection();
     }
 
-    public static void debugHelper() {
-        int a = 5;
-    }
 }

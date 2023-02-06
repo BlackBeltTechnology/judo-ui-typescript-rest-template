@@ -148,7 +148,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return stream(last.split("\\.")).map(e -> StringUtils.capitalize(e)).collect(Collectors.joining(""));
     }
 
-    public static String dataTyperestParamName(DataType dataType) {
+    public static String dataTypeRestParamName(DataType dataType) {
         EnumerationType enumerationType = (EnumerationType) dataType;
         String[] tokens = enumerationType.getName().split("::");
         String last = tokens[tokens.length - 1];
@@ -157,6 +157,10 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
 
     public static String firstToUpper(String input) {
         return StringUtils.capitalize(input);
+    }
+
+    public static String firstToLower(String input) {
+        return StringUtils.uncapitalize(input);
     }
 
     public static boolean boolValue(Boolean original) {
@@ -388,10 +392,11 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
     }
 
     public static Boolean isGreaterThan(int a, int b) {
-        if (a > b)
+        if (a > b) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
 
     public static String joinModelImportTokens(HashSet<String> modelImportTokens) {
@@ -432,7 +437,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
     }
 
     public static String relationBuilderName (RelationType relationType, ClassType classType, String postfix) {
-        return classDataName(classType, postfix);
+        return classDataName(classType, firstToUpper(unsafeVariable(relationType.getName())) + postfix);
     }
     public static String getRelationBuilderNames(RelationType relation) {
         String relationBuilderName =  getAggregatedTarget(relation).stream()

@@ -1,33 +1,33 @@
 templates:
   - name: axiosProvider.ts.hbs
     pathExpression: >
-      'axios/dataAxios/' +
+      'data-axios/' +
       'AxiosProvider.ts'
-    templateName: dataAxios/axiosProvider.ts.hbs
+    templateName: data-axios/axiosProvider.ts.hbs
 
   - name: judoAxiosProvider.ts.hbs
     pathExpression: >
-      'axios/dataAxios/' +
+      'data-axios/' +
       'JudoAxiosProvider.ts'
-    templateName: dataAxios/judoAxiosProvider.ts.hbs
+    templateName: data-axios/judoAxiosProvider.ts.hbs
     templateContext:
       - name: application
         expression: "#application"
 
   - name: judoAxiosService.ts.hbs
     pathExpression: >
-      'axios/dataAxios/' +
+      'data-axios/' +
       'JudoAxiosService.ts'
-    templateName: dataAxios/judoAxiosService.ts.hbs
+    templateName: data-axios/judoAxiosService.ts.hbs
     templateContext:
       - name: application
         expression: "#application"
 
   - name: accessServiceImpl.ts.hbs
     pathExpression: >
-      'axios/dataAxios/' +
+      'data-axios/' +
       'AccessServiceImpl.ts'
-    templateName: dataAxios/accessServiceImpl.ts.hbs
+    templateName: data-axios/accessServiceImpl.ts.hbs
     templateContext:
       - name: application
         expression: "#application"
@@ -35,11 +35,11 @@ templates:
         expression: "#serviceDep"
 
   - name: relationServiceImpl.ts.hbs
-    factoryExpression: "#getRelationsTypesWithoutAccess(#application)"
+    factoryExpression: "#getNotAccessRelationsTypes(#application)"
     pathExpression: >
-      'axios/dataAxios/' + 
+      'data-axios/' + 
       #serviceRelationName(#self) + 'Impl.ts'
-    templateName: dataAxios/relationServiceImpl.ts.hbs
+    templateName: data-axios/relationServiceImpl.ts.hbs
     templateContext:
       - name: relation
         expression: "#self"
@@ -47,11 +47,11 @@ templates:
         expression: "#serviceDep"
 
   - name: AccessRelationServiceImpl.ts.hbs
-    factoryExpression: "#getRelationsTypesWithAccess(#application)"
+    factoryExpression: "#getAccessRelationsTypes(#application)"
     pathExpression: >
-      'axios/dataAxios/' + 
+      'data-axios/' + 
       #serviceRelationName(#self) + 'Impl.ts'
-    templateName: dataAxios/AccessRelationServiceImpl.ts.hbs
+    templateName: data-axios/AccessRelationServiceImpl.ts.hbs
     templateContext:
       - name: relation
         expression: "#self"
@@ -61,11 +61,23 @@ templates:
   - name: classServiceImpl.ts.hbs
     factoryExpression: "#getClassTypes(#application)"
     pathExpression: >
-      'axios/dataAxios/' + 
+      'data-axios/' + 
       #serviceClassName(#self) + 'Impl.ts'
-    templateName: dataAxios/classServiceImpl.ts.hbs
+    templateName: data-axios/classServiceImpl.ts.hbs
     templateContext:
       - name: classType
         expression: "#self"
       - name: serviceDep
         expression: "#serviceDep"
+
+  - name: implementationInstancesExporter.ts.hbs
+    pathExpression: >
+      'data-axios/' + 
+      'ImplementationInstancesExporter.ts'
+    templateName: data-axios/implementationInstancesExporter.ts.hbs
+
+  - name: index.ts.hbs
+    pathExpression: >
+      'data-axios/' + 
+      'index.ts'
+    templateName: data-axios/index.ts.hbs

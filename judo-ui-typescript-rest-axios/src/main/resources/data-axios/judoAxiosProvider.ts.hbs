@@ -7,12 +7,12 @@ export class JudoAxiosProvider implements AxiosProvider {
     private filePathFactory?: () => string;
 
     init(data: JudoAxiosProviderInitData): void {
-    this.axios = data.axios;
-    this.basePathFactory = data.basePathFactory;
-    this.filePathFactory = data.filePathFactory;
-}
+        this.axios = data.axios;
+        this.basePathFactory = data.basePathFactory;
+        this.filePathFactory = data.filePathFactory;
+    }
 
-getAxios(): AxiosInstance {
+    getAxios(): AxiosInstance {
     if (!this.axios) {
         throw new Error('[JudoAxiosProvider] Axios instance has not been set yet. Please init() the provider first!');
     }

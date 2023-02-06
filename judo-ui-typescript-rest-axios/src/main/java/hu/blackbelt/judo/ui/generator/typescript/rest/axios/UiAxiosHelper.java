@@ -35,7 +35,7 @@ public class UiAxiosHelper extends StaticMethodValueResolver {
                 .concat(app.getActor().getSimpleName());
     }
 
-    public static String getAppNameSplittedByColon(Application application) {
+    public static String getAppNameSplittedByColonFirstTag(Application application) {
         return application.getName().split("::")[0];
     }
 
@@ -67,6 +67,15 @@ public class UiAxiosHelper extends StaticMethodValueResolver {
                 .collect(Collectors.joining("/")) + effectiveSuffix;
     }
 
+    public static String classTypeRestPathThreeParams(ClassType classType, String first, String second) {
+        String suffix = first + second;
+        String effectiveSuffix = suffix == null ? "" : suffix;
+        return "/" + stream(classType.getName().split("::"))
+                .skip(1)
+                .filter(i -> i != "_default_transferobjecttypes")
+                .collect(Collectors.joining("/")) + effectiveSuffix;
+    }
+
     public static String stringConcat(String... strings) {
         String concatedString = "";
         for (String str : strings) {
@@ -74,6 +83,25 @@ public class UiAxiosHelper extends StaticMethodValueResolver {
         }
 
         return concatedString;
+    }
+
+    public static boolean faultsLengthMoreThanZero(OperationType operation) {
+        return operation.getFaults().size() > 0;
+    }
+
+    public static Collection<String> getWrittenImplementations(List<String> writtenFiles) {
+        return writtenFiles.stream().filter(f -> f.endsWith("Impl.ts")).map(f -> f.substring(0, f.length() - 3)).collect(Collectors.toList());
+    }
+
+
+    public static String getDepPath(String importSource) {
+        String scope_ = "";
+
+        return "../" + importSource;
+    }
+
+    public static boolean classTypeIsIsMapped(ClassType classType) {
+        return classType.isIsMapped();
     }
 
 }

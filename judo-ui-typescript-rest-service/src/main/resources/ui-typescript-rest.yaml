@@ -1,9 +1,9 @@
 templates:
   - name: accessService.ts.hbs
     pathExpression: >
-      'service/dataService/' +
+      'data-service/' +
       'AccessService.ts'
-    templateName: dataService/accessService.ts.hbs
+    templateName: data-service/accessService.ts.hbs
     templateContext:
       - name: application
         expression: "#application"
@@ -11,11 +11,11 @@ templates:
         expression: "#apiDep"
 
   - name: relationService.ts.hbs
-    factoryExpression: "#getRelationsTypesWithoutAccess(#application)"
+    factoryExpression: "#getNotAccessRelationsTypes(#application)"
     pathExpression: >
-      'service/dataService/' +
+      'data-service/' +
       #serviceRelationName(#self) + '.ts'
-    templateName: dataService/relationService.ts.hbs
+    templateName: data-service/relationService.ts.hbs
     templateContext:
       - name: relation
         expression: "#self"
@@ -25,11 +25,11 @@ templates:
         expression: "#apiDep"
 
   - name: accessRelationService.ts.hbs
-    factoryExpression: "#getRelationsTypesWithAccess(#application)"
+    factoryExpression: "#getAccessRelationsTypes(#application)"
     pathExpression: >
-      'service/dataService/' +
+      'data-service/' +
       #serviceRelationName(#self) + '.ts'
-    templateName: dataService/accessRelationService.ts.hbs
+    templateName: data-service/accessRelationService.ts.hbs
     templateContext:
       - name: relation
         expression: "#self"
@@ -41,9 +41,9 @@ templates:
   - name: classService.ts.hbs
     factoryExpression: "#getClassTypes(#application)"
     pathExpression: >
-      'service/dataService/' +
+      'data-service/' +
       #serviceClassName(#self) + '.ts'
-    templateName: dataService/classService.ts.hbs
+    templateName: data-service/classService.ts.hbs
     templateContext:
       - name: classType
         expression: "#self"
@@ -51,3 +51,9 @@ templates:
         expression: "#application"
       - name: apiDep
         expression: "#apiDep"
+
+  - name: serviceIndex.ts.hbs
+    pathExpression: >
+      'data-service/' +
+      'index.ts'
+    templateName: data-service/serviceIndex.ts.hbs

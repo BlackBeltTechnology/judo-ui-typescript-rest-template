@@ -1,5 +1,5 @@
 import { JudoDownloadFile, JudoMetaData } from '@judo/data-api-common';
-{{# if (appPrincipalisNotNull application) }} import { {{ classDataName app.principal "Stored" }} } from '{{ apiDep }}';{{/ if }}
+{{# if (appPrincipalisNotNull application) }} import { {{ classDataName app.principal "Stored" }} } from '../data-api';{{/ if }}
 
 export interface AccessService {
 {{# if (appPrincipalisNotNull application) }}
