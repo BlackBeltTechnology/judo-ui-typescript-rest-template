@@ -13,6 +13,6 @@ export interface {{ serviceRelationName relation }} {
 {{/ if }}
 
 {{# if relation.isCreatable }}
-    create{{ firstToUpper relation.name }}(target: {{ target.className }}): Promise<{{ classDataName relation.target "Stored" }}>;
+    create{{ firstToUpper relation.name }}(target: {{ getClassName relation.target }}): Promise<{{ classDataName relation.target "Stored" }}>;
 {{/ if }}
 }

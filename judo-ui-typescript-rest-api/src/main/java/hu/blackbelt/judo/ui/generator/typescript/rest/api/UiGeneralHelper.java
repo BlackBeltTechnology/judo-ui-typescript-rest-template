@@ -273,7 +273,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return (packName == null ? "" : packName) + className(classType.getName()) + safeFiller;
     }*/
 
-    public static String FaultContainerName(OperationType operationType) {
+    public static String faultContainerName(OperationType operationType) {
         String packName = packageName(operationType.getName());
         return (packName == null ? "" : firstToUpper(packName)) + firstToUpper(className(operationType.getName())) + "FaultContainer";
     }

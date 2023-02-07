@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 import { JudoDownloadFile, JudoMetaData, JudoToken } from '@judo/data-api-common';
 import { JudoAxiosService } from './JudoAxiosService';
 {{# if (appPrincipalisNotNull application) }}import { {{ classDataName application.principal "Stored" }} } from '../data-api';{{/ if }}
-import { AccessService } from '{{ serviceDep }}';
+import { AccessService } from '../data-service';
 
 export class AccessServiceImpl extends JudoAxiosService implements AccessService {
 {{# if (appPrincipalisNotNull application) }}
