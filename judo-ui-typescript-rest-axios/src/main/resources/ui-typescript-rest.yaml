@@ -1,0 +1,83 @@
+templates:
+  - name: axiosProvider.ts.hbs
+    pathExpression: >
+      'data-axios/' +
+      'AxiosProvider.ts'
+    templateName: data-axios/axiosProvider.ts.hbs
+
+  - name: judoAxiosProvider.ts.hbs
+    pathExpression: >
+      'data-axios/' +
+      'JudoAxiosProvider.ts'
+    templateName: data-axios/judoAxiosProvider.ts.hbs
+    templateContext:
+      - name: application
+        expression: "#application"
+
+  - name: judoAxiosService.ts.hbs
+    pathExpression: >
+      'data-axios/' +
+      'JudoAxiosService.ts'
+    templateName: data-axios/judoAxiosService.ts.hbs
+    templateContext:
+      - name: application
+        expression: "#application"
+
+  - name: accessServiceImpl.ts.hbs
+    pathExpression: >
+      'data-axios/' +
+      'AccessServiceImpl.ts'
+    templateName: data-axios/accessServiceImpl.ts.hbs
+    templateContext:
+      - name: application
+        expression: "#application"
+      - name: serviceDep
+        expression: "#serviceDep"
+
+  - name: relationServiceImpl.ts.hbs
+    factoryExpression: "#getNotAccessRelationsTypes(#application)"
+    pathExpression: >
+      'data-axios/' + 
+      #serviceRelationName(#self) + 'Impl.ts'
+    templateName: data-axios/relationServiceImpl.ts.hbs
+    templateContext:
+      - name: relation
+        expression: "#self"
+      - name: serviceDep
+        expression: "#serviceDep"
+
+  - name: AccessRelationServiceImpl.ts.hbs
+    factoryExpression: "#getAccessRelationsTypes(#application)"
+    pathExpression: >
+      'data-axios/' + 
+      #serviceRelationName(#self) + 'Impl.ts'
+    templateName: data-axios/AccessRelationServiceImpl.ts.hbs
+    templateContext:
+      - name: relation
+        expression: "#self"
+      - name: serviceDep
+        expression: "#serviceDep"
+
+  - name: classServiceImpl.ts.hbs
+    factoryExpression: "#getClassTypes(#application)"
+    pathExpression: >
+      'data-axios/' + 
+      #serviceClassName(#self) + 'Impl.ts'
+    templateName: data-axios/classServiceImpl.ts.hbs
+    templateContext:
+      - name: classType
+        expression: "#self"
+      - name: serviceDep
+        expression: "#serviceDep"
+
+  - name: implementationInstancesExporter.ts.hbs
+    pathExpression: >
+      'data-axios/' + 
+      'ImplementationInstancesExporter.ts'
+    templateName: data-axios/implementationInstancesExporter.ts.hbs
+
+  - name: index.ts.hbs
+    pathExpression: >
+      'data-axios/' + 
+      'index.ts'
+    templateName: data-axios/index.ts.hbs

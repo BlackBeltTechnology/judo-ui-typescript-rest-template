@@ -1,0 +1,59 @@
+templates:
+  - name: accessService.ts.hbs
+    pathExpression: >
+      'data-service/' +
+      'AccessService.ts'
+    templateName: data-service/accessService.ts.hbs
+    templateContext:
+      - name: application
+        expression: "#application"
+      - name: apiDep
+        expression: "#apiDep"
+
+  - name: relationService.ts.hbs
+    factoryExpression: "#getNotAccessRelationsTypes(#application)"
+    pathExpression: >
+      'data-service/' +
+      #serviceRelationName(#self) + '.ts'
+    templateName: data-service/relationService.ts.hbs
+    templateContext:
+      - name: relation
+        expression: "#self"
+      - name: application
+        expression: "#application"
+      - name: apiDep
+        expression: "#apiDep"
+
+  - name: accessRelationService.ts.hbs
+    factoryExpression: "#getAccessRelationsTypes(#application)"
+    pathExpression: >
+      'data-service/' +
+      #serviceRelationName(#self) + '.ts'
+    templateName: data-service/accessRelationService.ts.hbs
+    templateContext:
+      - name: relation
+        expression: "#self"
+      - name: application
+        expression: "#application"
+      - name: apiDep
+        expression: "#apiDep"
+
+  - name: classService.ts.hbs
+    factoryExpression: "#getClassTypes(#application)"
+    pathExpression: >
+      'data-service/' +
+      #serviceClassName(#self) + '.ts'
+    templateName: data-service/classService.ts.hbs
+    templateContext:
+      - name: classType
+        expression: "#self"
+      - name: application
+        expression: "#application"
+      - name: apiDep
+        expression: "#apiDep"
+
+  - name: serviceIndex.ts.hbs
+    pathExpression: >
+      'data-service/' +
+      'index.ts'
+    templateName: data-service/serviceIndex.ts.hbs
