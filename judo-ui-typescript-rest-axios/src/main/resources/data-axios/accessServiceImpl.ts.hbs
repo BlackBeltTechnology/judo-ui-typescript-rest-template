@@ -1,11 +1,11 @@
 import { AxiosResponse } from 'axios';
 import { JudoDownloadFile, JudoMetaData, JudoToken } from '@judo/data-api-common';
 import { JudoAxiosService } from './JudoAxiosService';
-{{# if (appPrincipalisNotNull application) }}import { {{ classDataName application.principal "Stored" }} } from '../data-api';{{/ if }}
+{{# if application.principal }}import { {{ classDataName application.principal "Stored" }} } from '../data-api';{{/ if }}
 import { AccessService } from '../data-service';
 
 export class AccessServiceImpl extends JudoAxiosService implements AccessService {
-{{# if (appPrincipalisNotNull application) }}
+{{# if application.principal }}
     /**
     * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
     * @return {Promise<{{ getClassName app.principal }}>}

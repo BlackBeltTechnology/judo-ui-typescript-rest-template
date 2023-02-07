@@ -11,7 +11,7 @@ export class{{ classType.serviceClassName }}Impl extends JudoAxiosService implem
     /**
     * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
     */
-    async getTemplate(): Promise<{{ classDataName classType ''}}> {
+    async getTemplate(): Promise<{{ classDataName classType '' }}> {
         const path = '{{ classTypeRestPath classType '/~template' }}';
         const response = await this.axios.get(this.getPathForActor(path));
 
@@ -19,7 +19,7 @@ export class{{ classType.serviceClassName }}Impl extends JudoAxiosService implem
     }
 {{/ if }}
 
-{{# if (classTypeIsIsMapped classType) }}
+{{# if classType.isMapped }}
     /**
     * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
     */
@@ -53,7 +53,7 @@ export class{{ classType.serviceClassName }}Impl extends JudoAxiosService implem
     /**
     * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
     */
-    async update(target: Partial<{{  classDataName classType "Stored"  }}>): Promise<{{  classDataName classType "Stored"  }}> {
+    async update(target: Partial<{{  classDataName classType "Stored" }}>): Promise<{{  classDataName classType "Stored" }}> {
         const path = '{{ classTypeRestPath classType '/~update' }}';
         const response = await this.axios.post(this.getPathForActor(path), target, {
             headers: {
@@ -154,15 +154,15 @@ export class{{ classType.serviceClassName }}Impl extends JudoAxiosService implem
     * @throws {AxiosError}{{# if (faultsLengthMoreThanZero operation) }}With data containing {@link{{ faultContainerName operation }} } for business related errors (status code is 422).{{/ if }}
     * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
     */
-    async {{ operation.name }}({{# if operation.isMapped }}owner: JudoIdentifiable<{{ getClassName classType }}>{{/ if }}{{# if (operationParameterTypeIsNotNull operation.input)}}{{# if operation.isMapped }},{{/ if }}target:{{ getClassName operation.input.target }}{{/ if }}): Promise<{{# if (operationParameterTypeIsNotNull operation.output)}}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}> {
+    async {{ operation.name }}({{# if operation.isMapped }}owner: JudoIdentifiable<{{ getClassName classType }}>{{/ if }}{{# if operation.input }}{{# if operation.isMapped }},{{/ if }}target:{{ getClassName operation.input.target }}{{/ if }}): Promise<{{# if operation.output }}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}> {
         const path = '{{ classTypeRestPathThreeParams classType "/" operation.name }}';
-            const response = await this.axios.post(this.getPathForActor(path){{# if (operationParameterTypeIsNotNull operation.input) }}, target{{ else }}, undefined{{/ if }}{{# if operation.isMapped }}, {
+            const response = await this.axios.post(this.getPathForActor(path){{# if operation.input }}, target{{ else }}, undefined{{/ if }}{{# if operation.isMapped }}, {
                 headers: {
             'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
         }
     }{{/ if }});
 
-    {{# if (operationParameterTypeIsNotNull operation.output)}}
+    {{# if operation.output }}
         return response.data;
     {{/ if }}
     }

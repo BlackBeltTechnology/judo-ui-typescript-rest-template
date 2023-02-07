@@ -1,12 +1,12 @@
 {{# each (getQueryCustomizers application) as | fileName | }}
     export * from './{{ classDataName fileName "QueryCustomizer" }}';
-{{/ each}}
+{{/ each }}
 
 {{# each (getQueryCustomizers application) as | fileName | }}
     export * from './{{ classDataName fileName "MaskBuilder" }}';
-{{/ each}}
+{{/ each }}
 
 {{# each (getFilterableDataTypes application) as | fileName | }}
     export * from './{{ restFilterName actor fileName }}';
-{{/ each}}
+{{/ each }}
 export * from './MaskBuilder';

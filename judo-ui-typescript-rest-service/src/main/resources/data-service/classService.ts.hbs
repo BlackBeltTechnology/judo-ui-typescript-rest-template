@@ -47,7 +47,7 @@ export interface {{ serviceClassName classType }} {
 
     {{/ each }}
     {{# each classType.operations as | operation | }}
-        {{ operation.name }}({{# if operation.isMapped }}owner: JudoIdentifiable<{{ getClassName classType }}>{{/ if }}{{# if (operationParameterTypeIsNotNull operation.input) }}{{# if operation.isMapped }}, {{/ if }}target: {{ operation.input.target.className }}{{/ if }}): Promise<{{# if (operationParameterTypeIsNotNull operation.output) }}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}>;
+        {{ operation.name }}({{# if operation.isMapped }}owner: JudoIdentifiable<{{ getClassName classType }}>{{/ if }}{{# if operation.input }}{{# if operation.isMapped }}, {{/ if }}target: {{ getClassName operation.input.target }}{{/ if }}): Promise<{{# if operation.output }}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}>;
 
         {{# if operation.isInputRangeable }}
             getRangeFor{{ firstToUpper operation.name }}(owner?: {{ classDataName classType "Stored" }}, queryCustomizer?: {{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>>;

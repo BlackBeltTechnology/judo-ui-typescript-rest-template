@@ -36,10 +36,6 @@ public class UiServiceHelper extends StaticMethodValueResolver {
         return false;
     }
 
-    public static boolean appPrincipalisNotNull(Application application) {
-        return application.getPrincipal() != null;
-    }
-
     public static String joinedTokensForApiImport(RelationType relation){
         HashSet<String> tokens = new HashSet<>();
         tokens.add(getClassName((ClassType) relation.getOwner()));
@@ -125,9 +121,9 @@ public class UiServiceHelper extends StaticMethodValueResolver {
         return getClassName(type).concat("Service");
     }
 
-    public static boolean operationParameterTypeIsNotNull(OperationParameterType operationParameterType) {
-        return operationParameterType != null;
-    }
+//    public static boolean operationParameterTypeIsNotNull(OperationParameterType operationParameterType) {
+//        return operationParameterType != null;
+//    }
 
     public static boolean classTypeIsMapped(ClassType classType) {
         return classType.isIsMapped();

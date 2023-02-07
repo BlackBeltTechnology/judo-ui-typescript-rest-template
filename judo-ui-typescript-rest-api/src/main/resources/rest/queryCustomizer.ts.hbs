@@ -7,7 +7,7 @@ import { {{ getClassName classType }} } from '../model/{{ getClassName classType
 
 export interface {{ classDataName classType "QueryCustomizer" }} extends QueryCustomizer<{{ getClassName classType }}>{
 {{# each classType.attributes as |attribute| }}
-    {{# if AttributeIsIsFilterable attribute }}
+    {{# if (attributeIsFilterable attribute) }}
         {{ unsafeVariable attribute.name }}?: Array<{{ restFilterName actor attribute.dataType }}>;
     {{/ if}}
 {{/ each}}

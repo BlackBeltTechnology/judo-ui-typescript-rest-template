@@ -48,16 +48,8 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
     public static String getXMIID(EObject element) {
         return ((XMIResource) element.eResource()).getID(element);
     }
-
-    public static String restParamName(EnumerationType enumerationType) {
-        String[] tokens = enumerationType.getName().split("::");
-        String last = tokens[tokens.length - 1];
-        return stream(last.split("\\.")).map(e -> StringUtils.capitalize(e)).collect(Collectors.joining(""));
-    }
-
-    public static String dataTypeRestParamName(DataType dataType) {
-        EnumerationType enumerationType = (EnumerationType) dataType;
-        String[] tokens = enumerationType.getName().split("::");
+    public static String restParamName(DataType dataType) {
+        String[] tokens = dataType.getName().split("::");
         String last = tokens[tokens.length - 1];
         return stream(last.split("\\.")).map(e -> StringUtils.capitalize(e)).collect(Collectors.joining(""));
     }
@@ -142,7 +134,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
 
         for (AttributeType attr: classType.getAttributes()) {
             if (attr.getDataType() instanceof EnumerationType) {
-                String token = restParamName((EnumerationType) attr.getDataType());
+                String token = restParamName(attr.getDataType());
 
                 tokens.put(token, token);
             }
@@ -238,7 +230,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return "FilterBy" + openApiDataType(dataType.getName());
     }
 
-    public static Boolean AttributeIsIsFilterable(AttributeType attribute) {
+    public static Boolean attributeIsFilterable(AttributeType attribute) {
         return attribute.isIsFilterable();
     }
 
@@ -260,8 +252,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
     }
 
     public static int getAggregatedRelationsSize(ClassType classType) {
-        return classType.getRelations().stream()
-                .filter(r -> r.getRelationKind() != RelationKind.ASSOCIATION).collect(Collectors.toList()).size();
+        return getAggregatedRelations(classType).size();
     }
 
     public static List<RelationType> getAggregatedTarget(RelationType relationType) {
@@ -306,10 +297,6 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return relationBuilderName;
     }
 
-    public static ClassType getRelationTarget(RelationType relation) {
-        return relation.getTarget();
-    }
-
     public static String generateBuilderProps(ClassType classType) {
         String attrs = hasClassAttributes(classType) ? classDataName(classType, "Attributes") : "";
         String rels = getAggregatedRelationsSize(classType) > 0
@@ -332,7 +319,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         tokens.add(typescriptType(dataType.getOperator()));
 
         if (isEnumType(dataType)) {
-            tokens.add(restParamName((EnumerationType) dataType));
+            tokens.add(restParamName(dataType));
         }
 
         return tokens.stream().collect(Collectors.joining(", "));

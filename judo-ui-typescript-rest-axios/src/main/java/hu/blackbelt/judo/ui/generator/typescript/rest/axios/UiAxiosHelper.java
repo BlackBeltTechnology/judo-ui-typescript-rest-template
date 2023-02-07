@@ -84,8 +84,6 @@ public class UiAxiosHelper extends StaticMethodValueResolver {
 
 
     public static String getDepPath(String importSource) {
-        String scope_ = "";
-
         return "../" + importSource;
     }
 
