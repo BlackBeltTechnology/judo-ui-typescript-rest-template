@@ -2,13 +2,16 @@ export * from './AxiosProvider';
 export * from './JudoAxiosProvider';
 export * from './JudoAxiosService';
 export * from './AccessServiceImpl';
+
 {{# each (getAccessRelationsTypes application) as | fileName | }}
-export * from './{{ serviceRelationName fileName }}Impl';
+    export * from './{{ serviceRelationName fileName }}Impl';
 {{/ each }}
+
 {{# each (getNotAccessRelationsTypes application) as | fileName | }}
-export * from './{{ serviceRelationName fileName }}Impl';
+    export * from './{{ serviceRelationName fileName }}Impl';
 {{/ each }}
+
 {{# each (getClassTypes application) as | fileName | }}
-export * from './{{ serviceClassName fileName }}Impl';
+    export * from './{{ serviceClassName fileName }}Impl';
 {{/ each }}
 export * from './ImplementationInstancesExporter';

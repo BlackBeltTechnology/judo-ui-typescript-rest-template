@@ -6,14 +6,14 @@ import { AccessService } from '../data-service';
 
 export class AccessServiceImpl extends JudoAxiosService implements AccessService {
 {{# if (appPrincipalisNotNull application) }}
-/**
-* @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
+    /**
+    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
     * @return {Promise<{{ getClassName app.principal }}>}
     */
     async getPrincipal(): Promise<{{ classDataName application.principal "Stored" }}> {
-    const response = await this.axios.get(this.getPathForActor('{{ rootPathForApp application }}/~principal'));
+        const response = await this.axios.get(this.getPathForActor('{{ rootPathForApp application }}/~principal'));
 
-    return response.data;
+        return response.data;
     }
 {{/ if }}
 

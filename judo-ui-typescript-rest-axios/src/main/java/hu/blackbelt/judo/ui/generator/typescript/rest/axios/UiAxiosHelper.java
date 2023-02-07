@@ -1,23 +1,12 @@
 package hu.blackbelt.judo.ui.generator.typescript.rest.axios;
 
-import com.github.jknack.handlebars.Handlebars;
-import com.github.jknack.handlebars.ValueResolver;
-import com.github.jknack.handlebars.internal.lang3.StringUtils;
 import hu.blackbelt.judo.generator.commons.StaticMethodValueResolver;
 import hu.blackbelt.judo.generator.commons.annotations.TemplateHelper;
 import hu.blackbelt.judo.meta.ui.Application;
-import hu.blackbelt.judo.meta.ui.NavigationItem;
-import hu.blackbelt.judo.meta.ui.Sort;
 import hu.blackbelt.judo.meta.ui.data.*;
 import lombok.extern.java.Log;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.xmi.XMIResource;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static java.util.Arrays.stream;

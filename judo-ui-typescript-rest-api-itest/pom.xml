@@ -22,23 +22,6 @@
 
     <build>
         <plugins>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-verifier-plugin</artifactId>-->
-<!--                <version>1.1</version>-->
-<!--                <configuration>-->
-<!--                    <verificationFile>src/test/verifier/verification.xml</verificationFile>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>verify-files</id>-->
-<!--                        <phase>test</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>verify</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
 
             <plugin>
                 <groupId>hu.blackbelt.judo.meta</groupId>
@@ -59,11 +42,6 @@
                                 <uri>mvn:hu.blackbelt.judo.generator:judo-ui-typescript-rest-service:${revision}</uri>
                                 <uri>mvn:hu.blackbelt.judo.generator:judo-ui-typescript-rest-axios:${revision}</uri>
                             </uris>
-                            <!--
-                            <helpers>
-                                <helper>hu.blackbelt.ui.generator.maven.plugin.test.TestHelper</helper>
-                            </helpers>
-                            -->
                             <type>ui-typescript-rest</type>
                             <ui>${basedir}/src/test/resources/ActionGroupTest-ui.model</ui>
                             <destination>${basedir}/target/test-classes/ui/file</destination>

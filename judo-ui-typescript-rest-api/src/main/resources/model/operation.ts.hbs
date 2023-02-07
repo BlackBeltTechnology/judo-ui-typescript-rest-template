@@ -1,9 +1,11 @@
 {{# each (getOperationTypeFaults operationType) as | fault |}}
-import { {{ getFaultTargets fault '' }} } from './{{ getFaultTargets fault '' }}';
+    import { {{ getFaultTargets fault '' }} } from './{{ getFaultTargets fault '' }}';
 {{/ each}}
 
 export interface {{ operationType.FaultContainerName }} {
+
 {{# each operationType.faults as | fault | }}
-'{{ fault.target.name.faultKey }}'?: null | {{ getFaultTargets fault '' }};
+    '{{ fault.target.name.faultKey }}'?: null | {{ getFaultTargets fault '' }};
 {{/each}}
+
 }

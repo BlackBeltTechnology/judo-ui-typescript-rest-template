@@ -7,33 +7,33 @@ import { {{ relation.serviceRelationName }} } from '../data-service';
 */
 export class {{ relation.serviceRelationName }}Impl extends JudoAxiosService implements {{ relation.serviceRelationName }} {
 {{# if relation.isListable }}
-{{# if (relationIsCollection relation) }}
-    /**
-    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
-    */
-    async list{{ firstToUpper relation.name }}(queryCustomizer?: {{ classDataName relation.target "QueryCustomizer"  }}): Promise<Array<{{ classDataName relation.target "Stored"}}>> {
-        const path = '{{ relationRestPath relation "/~list" }}';
-        const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {});
+    {{# if (relationIsCollection relation) }}
+        /**
+        * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
+        */
+        async list{{ firstToUpper relation.name }}(queryCustomizer?: {{ classDataName relation.target "QueryCustomizer"  }}): Promise<Array<{{ classDataName relation.target "Stored"}}>> {
+            const path = '{{ relationRestPath relation "/~list" }}';
+            const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {});
 
-        return response.data;
-    }
+            return response.data;
+        }
     {{ else }}
-    /**
-    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
-    */
-    async get{{ firstToUpper relation.name }}(mask?: string): Promise<{{ classDataName relation.target "Stored"}}> {
-        const path = '{{ relationRestPath relation "/~get" }}';
-        const queryCustomizer: {{  classDataName relation.target "QueryCustomizer" }} | undefined = mask ? {
-            _mask: mask,
-        } : undefined;
-        const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {});
+        /**
+        * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
+        */
+        async get{{ firstToUpper relation.name }}(mask?: string): Promise<{{ classDataName relation.target "Stored"}}> {
+            const path = '{{ relationRestPath relation "/~get" }}';
+            const queryCustomizer: {{  classDataName relation.target "QueryCustomizer" }} | undefined = mask ? {
+                _mask: mask,
+            } : undefined;
+            const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {});
 
-        return response.data;
-    }
+            return response.data;
+        }
     {{/ if }}
-    {{/ if }}
+{{/ if }}
 
-    {{# if relation.isCreatable }}
+{{# if relation.isCreatable }}
     /**
     * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
     */
@@ -42,5 +42,5 @@ export class {{ relation.serviceRelationName }}Impl extends JudoAxiosService imp
         const response = await this.axios.post(this.getPathForActor(path), target);
         return response.data;
     }
-    {{/ if }}
+{{/ if }}
 }

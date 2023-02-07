@@ -31,8 +31,6 @@ templates:
     templateContext:
       - name: application
         expression: "#application"
-      - name: serviceDep
-        expression: "#serviceDep"
 
   - name: relationServiceImpl.ts.hbs
     factoryExpression: "#getNotAccessRelationsTypes(#application)"
@@ -43,8 +41,6 @@ templates:
     templateContext:
       - name: relation
         expression: "#self"
-      - name: serviceDep
-        expression: "#serviceDep"
 
   - name: AccessRelationServiceImpl.ts.hbs
     factoryExpression: "#getAccessRelationsTypes(#application)"
@@ -55,8 +51,6 @@ templates:
     templateContext:
       - name: relation
         expression: "#self"
-      - name: serviceDep
-        expression: "#serviceDep"
 
   - name: classServiceImpl.ts.hbs
     factoryExpression: "#getClassTypes(#application)"
@@ -67,8 +61,6 @@ templates:
     templateContext:
       - name: classType
         expression: "#self"
-      - name: serviceDep
-        expression: "#serviceDep"
 
   - name: implementationInstancesExporter.ts.hbs
     pathExpression: >
