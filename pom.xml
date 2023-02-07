@@ -40,7 +40,7 @@
         <log4j.configuration>log4j.properties</log4j.configuration>
         <surefire-version>3.0.0-M5</surefire-version>
 
-        <judo-meta-ui-version>1.0.1.20230123_002214_b3fef3e8_develop</judo-meta-ui-version>
+        <judo-meta-ui-version>1.0.1.20230124_190155_610cd4cb_develop</judo-meta-ui-version>
         <judo-generator-commons-version>1.0.0.20230120_203628_b0fbaa8e_develop</judo-generator-commons-version>
 
     </properties>
@@ -123,6 +123,16 @@
             <dependency>
                 <groupId>hu.blackbelt.judo.generator</groupId>
                 <artifactId>judo-ui-typescript-rest-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.blackbelt.judo.generator</groupId>
+                <artifactId>judo-ui-typescript-rest-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.blackbelt.judo.generator</groupId>
+                <artifactId>judo-ui-typescript-rest-axios</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
@@ -258,6 +268,9 @@
             </activation>
             <modules>
                 <module>judo-ui-typescript-rest-api</module>
+                <module>judo-ui-typescript-rest-api-itest</module>
+                <module>judo-ui-typescript-rest-service</module>
+                <module>judo-ui-typescript-rest-axios</module>
             </modules>
         </profile>
 

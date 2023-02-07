@@ -1,0 +1,56 @@
+import { JudoIdentifiable } from '@judo/data-api-common';
+import { {{ joinedTokensForApiImportClassService classType }} } from '../data-api';
+
+/**
+* Class Service for {{ getClassName classType }}
+*/
+export interface {{ serviceClassName classType }} {
+    {{# if classType.isTemplateable }}
+        getTemplate(): Promise<{{ classDataName classType '' }}>;
+    {{/ if }}
+
+    {{# if (classTypeIsMapped classType) }}
+        refresh(target: JudoIdentifiable<{{ getClassName classType }}>, queryCustomizer?: {{ classDataName classType "QueryCustomizer" }}): Promise<{{ classDataName classType "Stored" }}>;
+    {{/ if }}
+
+    {{# if classType.isDeletable }}
+        delete(target: JudoIdentifiable<{{ getClassName classType }}>): Promise<void>;
+    {{/ if }}
+
+    {{# if classType.isUpdatable }}
+        update(target: Partial<{{ classDataName classType "Stored" }}>): Promise<{{ classDataName classType "Stored" }}>;
+    {{/ if }}
+
+    {{# each classType.relations as | relation | }}
+
+        {{# if relation.isRefreshable }}
+            get{{ firstToUpper relation.name }}(target: JudoIdentifiable<{{ getClassName classType }}>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<{{# if relationIsCollection relation }}Array<{{/ if }}{{ classDataName relation.target "Stored" }}{{# if relationIsCollection relation }}>{{/ if }}>
+        {{/ if }}
+
+        getRangeFor{{ firstToUpper relation.name }}(owner?: JudoIdentifiable<{{ getClassName classType }}>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>>;
+
+        {{# if relation.isSetable }}
+            set{{ firstToUpper relation.name }}(target: JudoIdentifiable<{{ getClassName classType }}>, selected: {{# if relationIsCollection relation }}Array<{{/ if }}JudoIdentifiable<{{ getClassName relation.target }}>{{# if relationIsCollection relation }}>{{/ if }}): Promise<void>;
+        {{/ if }}
+
+        {{# if relation.isUnsetable }}
+            unset{{ firstToUpper relation.name }}(target: JudoIdentifiable<{{ getClassName classType }}>): Promise<void>;
+        {{/ if }}
+
+        {{# if relation.isAddable }}
+            add{{ firstToUpper relation.name }}(target: JudoIdentifiable<{{ getClassName classType }}>, selected: Array<JudoIdentifiable<{{ getClassName relation.target }}>>): Promise<void>;
+        {{/ if }}
+
+        {{# if relation.isRemovable }}
+            remove{{ firstToUpper relation.name }}(target: JudoIdentifiable<{{ getClassName classType }}>, selected: Array<JudoIdentifiable<{{ getClassName relation.target }}>>): Promise<void>;
+        {{/ if }}
+
+    {{/ each }}
+    {{# each classType.operations as | operation | }}
+        {{ operation.name }}({{# if operation.isMapped }}owner: JudoIdentifiable<{{ getClassName classType }}>{{/ if }}{{# if operation.input }}{{# if operation.isMapped }}, {{/ if }}target: {{ getClassName operation.input.target }}{{/ if }}): Promise<{{# if operation.output }}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}>;
+
+        {{# if operation.isInputRangeable }}
+            getRangeFor{{ firstToUpper operation.name }}(owner?: {{ classDataName classType "Stored" }}, queryCustomizer?: {{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>>;
+        {{/ if }}
+    {{/ each }}
+}
