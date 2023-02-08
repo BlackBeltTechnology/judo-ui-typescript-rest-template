@@ -1,0 +1,156 @@
+import { JudoIdentifiable } from '@judo/data-api-common';
+import { JudoAxiosService } from './JudoAxiosService';
+import { {{ joinedTokensForApiImport relation }} } from '../data-api';
+import { {{ serviceRelationName relation }} } from '../data-service';
+
+/**
+* Relation Service Implementation for {{ getClassName (getRelationOwnerAsClassType relation) }}.{{ relation.name }}
+*/
+export class {{ serviceRelationName relation }}Impl extends JudoAxiosService implements {{ serviceRelationName relation }} {
+{{# if relation.isListable }}
+    {{# if (relationIsCollection relation) }}
+        /**
+        * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
+        */
+        async list{{ firstToUpper relation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>> {
+            const path = '{{ restPath (getRelationOwnerAsClassType relation) "/"  relation.name "/~list" }}';
+            const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, {
+                headers: {
+                    'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+                },
+
+            return response.data;
+        }
+    {{ else }}
+        /**
+        * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
+        */
+        async get{{ firstToUpper relation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, mask?: string): Promise<{{ classDataName relation.target "Stored" }}> {
+            const path = '{{ restPath (getRelationOwnerAsClassType relation) "/" relation.name "/~get" }}';
+            const queryCustomizer: {{ classDataName relation.target "QueryCustomizer" }} | undefined = mask ? { _mask: mask } : undefined;
+            const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, {
+                headers: {
+                    'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+                },
+
+            return response.data;
+        }
+    {{/ if }}
+{{/ if }}
+
+{{# if relation.isCreatable }}
+    /**
+    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
+    */
+    async create{{ firstToUpper relation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: {{ getClassName relation.target }}): Promise<{{ classDataName relation.target "Stored" }}> {
+        const path = '{{ restPath (getRelationOwnerAsClassType relation) "/~update/"  relation.name "/~create" }}';
+        const response = await this.axios.post(this.getPathForActor(path), target, {
+            headers: {
+                'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+            },
+        });
+
+        return response.data;
+    }
+{{/ if }}
+
+{{# if relation.isDeletable }}
+    /**
+    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
+    */
+    async delete{{ firstToUpper relation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: JudoIdentifiable<{{ getClassName relation.target }}>): Promise<void> {
+        const path = '{{ restPath (getRelationOwnerAsClassType relation) "/~update/"  relation.name "/~delete" }}';
+        await this.axios.post(this.getPathForActor(path), target, {
+            headers: {
+                'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+            },
+        });
+    }
+{{/ if }}
+
+{{# if relation.isUpdatable }}
+    /**
+    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
+    */
+    async update{{ firstToUpper relation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: Partial<{{ classDataName relation.target "Stored" }}>): Promise<{{ classDataName relation.target "Stored" }}> {
+        const path = '{{ restPath (getRelationOwnerAsClassType relation) "/~update/"  relation.name "/~update" }}';
+        const response = await this.axios.post(this.getPathForActor(path), target, {
+            headers: {
+                'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+            },
+        });
+
+        return response.data;
+    }
+{{/ if }}
+
+{{# each relation.target.relations as | targetRelation | }}
+    {{# if targetRelation.isRangeable }}
+        /**
+        * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
+        */
+        async getRangeFor{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName targetRelation.target "Stored" }}>> {
+            const path = '{{ restPath target "/" targetRelation.name "/~range" }}';
+            const response = await this.axios.post(this.getPathForActor(path), { owner: owner, queryCustomizer: queryCustomizer ?? {} });
+
+            return response.data;
+        }
+    {{/ if }}
+
+    {{# if targetRelation.isSetable }}
+        /**
+        * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
+        */
+        async set{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: JudoIdentifiable<{{ getClassName relation.target }}>, selected: {{# if (relationIsCollection targetRelation) }}Array<{{/ if }}JudoIdentifiable<{{ getClassName targetRelation.target }}>{{# if (relationIsCollection targetRelation) }}>{{/ if }}): Promise<void> {
+            const path = '{{ restPath target "/~update/"  targetRelation.name "/~set" }}';
+            await this.axios.post(this.getPathForActor(path), selected, {
+                headers: {
+                    'X-Judo-SignedIdentifier': target.__signedIdentifier,
+                },
+            });
+        }
+    {{/ if }}
+
+    {{# if targetRelation.isUnsetable }}
+        /**
+        * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
+        */
+        async unset{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: JudoIdentifiable<{{ getClassName relation.target }}>): Promise<void> {
+            const path = '{{ restPath target "/~update/"  targetRelation.name "/~unset" }}';
+            await this.axios.post(this.getPathForActor(path), undefined, {
+                headers: {
+                    'X-Judo-SignedIdentifier': target.__signedIdentifier,
+                },
+            });
+        }
+    {{/ if }}
+
+    {{# if targetRelation.isAddable }}
+        /**
+        * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
+        */
+        async add{{ firstToUpper relation.name }}{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: JudoIdentifiable<{{ getClassName relation.target }}>, selected: Array<JudoIdentifiable<{{ getClassName targetRelation.target }}>>): Promise<void> {
+            const path = '{{ restPath target "/~update/"  targetRelation.name "/~add" }}';
+            await this.axios.post(this.getPathForActor(path), selected, {
+                headers: {
+                    'X-Judo-SignedIdentifier': target.__signedIdentifier,
+                },
+            });
+        }
+    {{/ if }}
+
+    {{# if targetRelation.isRemovable }}
+        /**
+        * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
+        */
+        async remove{{ firstToUpper relation.name }}{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: JudoIdentifiable<{{ getClassName relation.target }}>, selected: Array<JudoIdentifiable<{{ getClassName targetRelation.target }}>>): Promise<void> {
+            const path = '{{ restPath target "/~update/"  targetRelation.name "/~remove" }}';
+            await this.axios.post(this.getPathForActor(path), selected, {
+                headers: {
+                    'X-Judo-SignedIdentifier': target.__signedIdentifier,
+                },
+            });
+        }
+    {{/ if }}
+{{/ each }}
+}
