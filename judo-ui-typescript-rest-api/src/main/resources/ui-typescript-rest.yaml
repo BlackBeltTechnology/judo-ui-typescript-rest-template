@@ -1,5 +1,6 @@
 templates:
   - name: enum.ts.hbs
+    applicationBased: true
     factoryExpression: "#getEnumerationTypes(#application)"
     pathExpression: >
       'data-api/model/' +
@@ -10,6 +11,7 @@ templates:
         expression: "#self"
 
   - name: class.ts.hbs
+    applicationBased: true
     factoryExpression: "#getClassTypes(#application)"
     pathExpression: >
       'data-api/model/' +
@@ -24,6 +26,7 @@ templates:
         expression: "#actor"
 
   - name: modelIndex.ts.hbs
+    applicationBased: true
     pathExpression: >
       'data-api/model/' +
       'index.ts'
@@ -39,9 +42,10 @@ templates:
       - name: classType
         expression: "#self"
       - name: actor
-        expression: "#actor"
+        expression: "#application.actor"
 
   - name: mask.ts.hbs
+    applicationBased: true
     factoryExpression: "#getQueryCustomizers(#application)"
     pathExpression: >
       'data-api/rest/' +
@@ -52,10 +56,11 @@ templates:
         expression: "#self"
 
   - name: filterable.ts.hbs
+    applicationBased: true
     factoryExpression: "#getFilterableDataTypes(#application)"
     pathExpression: >
       'data-api/rest/' +
-      #restFilterName(#actor, #self) + '.ts'
+      #restFilterName(#self) + '.ts'
     templateName: rest/filterable.ts.hbs
     templateContext:
       - name: dataType
@@ -66,18 +71,21 @@ templates:
         expression: "#actor"
 
   - name: maskBuilder.ts.hbs
+    applicationBased: true
     pathExpression: >
       'data-api/rest/' +
       'MaskBuilder.ts'
     templateName: rest/maskBuilder.ts.hbs
 
   - name: restIndex.ts.hbs
+    applicationBased: true
     pathExpression: >
       'data-api/rest/' +
       'index.ts'
     templateName: rest/restIndex.ts.hbs
 
   - name: apiIndex.ts.hbs
+    applicationBased: true
     pathExpression: >
       'data-api/' +
       'index.ts'

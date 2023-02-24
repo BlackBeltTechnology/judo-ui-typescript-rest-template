@@ -18,6 +18,9 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <judo-tatami-version>${project.version}</judo-tatami-version>
+
+        <actor>actiongrouptest__god</actor>
+        <actor-fq-name>ActionGroupTest::God</actor-fq-name>
     </properties>
 
     <build>
@@ -42,8 +45,11 @@
                                 <uri>mvn:hu.blackbelt.judo.generator:judo-ui-typescript-rest-axios:${revision}</uri>
                             </uris>
                             <type>ui-typescript-rest</type>
+                            <applications>
+                                ${actor-fq-name}
+                            </applications>
                             <ui>${basedir}/src/test/resources/ActionGroupTest-ui.model</ui>
-                            <destination>${basedir}/target/test-classes/ui/file</destination>
+                            <destination>${basedir}/target/test-classes/ui/${actor}</destination>
                         </configuration>
                     </execution>
                 </executions>

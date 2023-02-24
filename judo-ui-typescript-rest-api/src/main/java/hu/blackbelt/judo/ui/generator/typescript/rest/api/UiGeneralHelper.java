@@ -132,11 +132,11 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return tokens;
     }
 
-    public static HashSet<String> getImportTokensForQueries(ClassType actor, ClassType classType) {
+    public static HashSet<String> getImportTokensForQueries(ClassType classType) {
         HashSet<String> tokens = new HashSet<String>();
 
         for(AttributeType attr: classType.getAttributes()) {
-            String token = restFilterName(actor, attr.getDataType());
+            String token = restFilterName(attr.getDataType());
 
             if (attr.isIsFilterable() && !tokens.contains(token)) {
                 tokens.add(token);
@@ -207,7 +207,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         String fqDataTypeNames[] = fqDataTypeName.split("\\.");
         return fqDataTypeNames[fqDataTypeNames.length - 1];
     }
-    public static String restFilterName(ClassType actor, DataType dataType) {
+    public static String restFilterName(DataType dataType) {
         return "FilterBy" + openApiDataType(dataType.getName());
     }
 

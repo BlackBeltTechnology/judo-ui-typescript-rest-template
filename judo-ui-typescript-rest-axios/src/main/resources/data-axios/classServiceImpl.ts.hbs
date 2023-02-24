@@ -6,7 +6,7 @@ import { {{ classType.serviceClassName }} } from '../data-service';
 /**
 * Class Service Implementation for {{ getClassName classType }}
 */
-export class{{ classType.serviceClassName }}Impl extends JudoAxiosService implements{{ classType.serviceClassName }} {
+export class {{ classType.serviceClassName }}Impl extends JudoAxiosService implements {{ classType.serviceClassName }} {
 {{# if classType.isTemplateable }}
     /**
     * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
@@ -156,15 +156,15 @@ export class{{ classType.serviceClassName }}Impl extends JudoAxiosService implem
     */
     async {{ operation.name }}({{# if operation.isMapped }}owner: JudoIdentifiable<{{ getClassName classType }}>{{/ if }}{{# if operation.input }}{{# if operation.isMapped }},{{/ if }}target:{{ getClassName operation.input.target }}{{/ if }}): Promise<{{# if operation.output }}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}> {
         const path = '{{ classTypeRestPathThreeParams classType "/" operation.name }}';
-            const response = await this.axios.post(this.getPathForActor(path){{# if operation.input }}, target{{ else }}, undefined{{/ if }}{{# if operation.isMapped }}, {
-                headers: {
-            'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
-        }
-    }{{/ if }});
+        const response = await this.axios.post(this.getPathForActor(path){{# if operation.input }}, target{{ else }}, undefined{{/ if }}{{# if operation.isMapped }}, {
+            headers: {
+                'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
+            },
+        } {{/ if }});
 
-    {{# if operation.output }}
-        return response.data;
-    {{/ if }}
+        {{# if operation.output }}
+            return response.data;
+        {{/ if }}
     }
 
     {{# if operation.isInputRangeable }}
