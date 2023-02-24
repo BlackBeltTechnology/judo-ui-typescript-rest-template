@@ -94,49 +94,12 @@
         </dependency>
 
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jul-to-slf4j</artifactId>
-            <version>${slf4j-version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.11</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>27.1-jre</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.eclipse.emf</groupId>
             <artifactId>ecore-xmi</artifactId>
             <version>2.2.3</version>
         </dependency>
     </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>hu.blackbelt.judo.generator</groupId>
-                <artifactId>judo-ui-typescript-rest-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>hu.blackbelt.judo.generator</groupId>
-                <artifactId>judo-ui-typescript-rest-service</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>hu.blackbelt.judo.generator</groupId>
-                <artifactId>judo-ui-typescript-rest-axios</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
     <build>
         <pluginManagement>
             <plugins>
@@ -175,12 +138,6 @@
                     <version>3.0.0</version>
                 </plugin>
 
-                <plugin>
-                    <groupId>hu.blackbelt.judo.meta</groupId>
-                    <artifactId>judo-ui-generator-maven-plugin</artifactId>
-                    <version>${judo-meta-ui-version}</version>
-                </plugin>
-
                 <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
@@ -213,22 +170,6 @@
             </plugins>
         </pluginManagement>
         <plugins>
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <extensions>true</extensions>
-                <version>5.1.2</version>
-                <configuration>
-                    <obrRepository>NONE</obrRepository>
-                    <instructions>
-                        <Include-Resource>
-                            target/classes
-                        </Include-Resource>
-                        <Export-Package>hu.blackbelt.judo.ui.typescript.rest</Export-Package>
-                    </instructions>
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
@@ -267,10 +208,11 @@
                 </property>
             </activation>
             <modules>
+                <module>judo-ui-typescript-rest-commons</module>
                 <module>judo-ui-typescript-rest-api</module>
-                <module>judo-ui-typescript-rest-api-itest</module>
                 <module>judo-ui-typescript-rest-service</module>
                 <module>judo-ui-typescript-rest-axios</module>
+                <module>judo-ui-typescript-rest-itest</module>
             </modules>
         </profile>
 

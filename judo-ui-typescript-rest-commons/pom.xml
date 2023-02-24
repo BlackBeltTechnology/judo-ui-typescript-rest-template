@@ -8,19 +8,11 @@
         <version>${revision}</version>
     </parent>
 
-    <artifactId>judo-ui-typescript-rest-api</artifactId>
+    <artifactId>judo-ui-typescript-rest-commons</artifactId>
     <packaging>bundle</packaging>
 
-    <name>JUDO UI Typescript Rest Generator API</name>
-    <description>JUDO UI Typescript Rest Generator API, helpers and templates</description>
-
-    <dependencies>
-        <dependency>
-            <groupId>hu.blackbelt.judo.generator</groupId>
-            <artifactId>judo-ui-typescript-rest-commons</artifactId>
-            <version>${revision}</version>
-        </dependency>
-    </dependencies>
+    <name>JUDO UI Typescript Rest Generator Commons</name>
+    <description>JUDO UI Typescript Rest helpers</description>
 
     <build>
         <plugins>
@@ -32,11 +24,7 @@
                 <configuration>
                     <obrRepository>NONE</obrRepository>
                     <instructions>
-                        <Include-Resource>
-                            target/classes,
-                            {maven-resources}
-                        </Include-Resource>
-                        <Export-Package>hu.blackbelt.judo.ui.generator.typescript.rest.api</Export-Package>
+                        <Export-Package>hu.blackbelt.judo.ui.generator.typescript.rest.commons</Export-Package>
                     </instructions>
                 </configuration>
             </plugin>

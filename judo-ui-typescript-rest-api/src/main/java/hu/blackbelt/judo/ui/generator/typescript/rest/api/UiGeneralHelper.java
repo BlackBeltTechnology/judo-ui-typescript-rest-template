@@ -7,8 +7,6 @@ import hu.blackbelt.judo.meta.ui.Application;
 import hu.blackbelt.judo.meta.ui.data.*;
 import lombok.extern.java.Log;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.xmi.XMIResource;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -17,7 +15,10 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static java.util.Arrays.stream;
-import static hu.blackbelt.judo.ui.generator.typescript.rest.api.Helper.*;
+import static hu.blackbelt.judo.ui.generator.typescript.rest.commons.UiCommonsHelper.classDataName;
+import static hu.blackbelt.judo.ui.generator.typescript.rest.commons.UiCommonsHelper.firstToUpper;
+import static hu.blackbelt.judo.ui.generator.typescript.rest.commons.UiCommonsHelper.getXMIID;
+import static hu.blackbelt.judo.ui.generator.typescript.rest.commons.UiCommonsHelper.restParamName;
 
 @Log
 @TemplateHelper
@@ -43,19 +44,6 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
                     .collect(Collectors.joining());
         }
         return null;
-    }
-
-    public static String getXMIID(EObject element) {
-        return ((XMIResource) element.eResource()).getID(element);
-    }
-    public static String restParamName(DataType dataType) {
-        String[] tokens = dataType.getName().split("::");
-        String last = tokens[tokens.length - 1];
-        return stream(last.split("\\.")).map(e -> StringUtils.capitalize(e)).collect(Collectors.joining(""));
-    }
-
-    public static String firstToUpper(String input) {
-        return StringUtils.capitalize(input);
     }
 
     public static String firstToLower(String input) {
@@ -105,13 +93,6 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return attributeTypeList.stream()
                 .map(a -> a.getDataType())
                 .filter(distinctByKey(dataType -> getXMIID(dataType))).collect(Collectors.toList());
-    }
-
-    public static String classDataName(ClassType classType, String suffix) {
-        String className = classType.getName();
-        String base = nameWithoutModel(className);
-
-        return base += suffix != null ? suffix : "";
     }
 
     private static <T extends Object> Predicate<T> distinctByKey(final Function<? super T, ?> keyExtractor) {

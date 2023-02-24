@@ -13,7 +13,7 @@ templates:
     factoryExpression: "#getClassTypes(#application)"
     pathExpression: >
       'data-api/model/' +
-      #classDataName(#self, null) + '.ts'
+      #classDataName(#self, "") + '.ts'
     templateName: model/class.ts.hbs
     templateContext:
       - name: classType
