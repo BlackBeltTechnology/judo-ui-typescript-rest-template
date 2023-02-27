@@ -27,23 +27,23 @@ export interface {{ serviceRelationName relation }} {
 
 {{# each relation.target.relations as | targetRelation | }}
     {{# if targetRelation.isRangeable }}
-        getRangeFor{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation)  }}>, queryCustomizer: {{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>>;
+        getRangeFor{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, queryCustomizer: {{ classDataName targetRelation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName targetRelation.target "Stored" }}>>;
     {{/ if }}
 
     {{# if targetRelation.isSetable }}
-        set{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: JudoIdentifiable<{{ getClassName relation.target }}>, selected: {{# if (relationIsCollection targetRelation) }}Array<{{/ if }}JudoIdentifiable<{{ getClassName targetRelation.target }}>{{# if (relationIsCollection targetRelation) }}>{{/ if }}): Promise<void>;
+        set{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: JudoIdentifiable<{{ getClassName targetRelation.target }}>, selected: {{# if (relationIsCollection targetRelation) }}Array<{{/ if }}JudoIdentifiable<{{ getClassName targetRelation.target }}>{{# if (relationIsCollection targetRelation) }}>{{/ if }}): Promise<void>;
     {{/ if }}
 
     {{# if targetRelation.isUnsetable }}
-        unset{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: JudoIdentifiable<{{ getClassName relation.target }}>): Promise<void>;
+        unset{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: JudoIdentifiable<{{ getClassName targetRelation.target }}>): Promise<void>;
     {{/ if }}
 
     {{# if targetRelation.isAddable }}
-        add{{ firstToUpper relation.name }}{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: JudoIdentifiable<{{ getClassName relation.target }}>, selected: Array<JudoIdentifiable<{{ getClassName targetRelation.target }}>>): Promise<void>;
+        add{{ firstToUpper relation.name }}{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: JudoIdentifiable<{{ getClassName targetRelation.target }}>, selected: Array<JudoIdentifiable<{{ getClassName targetRelation.target }}>>): Promise<void>;
     {{/ if }}
 
     {{# if targetRelation.isRemovable }}
-        remove{{ firstToUpper relation.name }}{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: JudoIdentifiable<{{ getClassName relation.target }}>, selected: Array<JudoIdentifiable<{{ getClassName targetRelation.target }}>>): Promise<void>;
+        remove{{ firstToUpper relation.name }}{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, target: JudoIdentifiable<{{ getClassName targetRelation.target }}>, selected: Array<JudoIdentifiable<{{ getClassName targetRelation.target }}>>): Promise<void>;
     {{/ if }}
 {{/ each}}
 }
