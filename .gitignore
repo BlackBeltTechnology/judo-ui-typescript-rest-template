@@ -5,3 +5,4 @@ target/
 **/*.iml
 transaction-logs/
 .flattened-pom.xml
+.nodejs

@@ -1,6 +1,6 @@
 import { {{ joinModelImports dataType }} } from '../model';
 
-export interface {{ restFilterName actor dataType }} {
+export interface {{ restFilterName dataType }} {
     value: {{# if (isEnumType dataType) }}{{ restParamName dataType }}{{ else }}{{ typescriptType dataType }}{{/ if }};
     operator: {{ typescriptType dataType.operator }};
 }

@@ -7,6 +7,6 @@
 {{/ each }}
 
 {{# each (getFilterableDataTypes application) as | fileName | }}
-    export * from './{{ restFilterName actor fileName }}';
+    export * from './{{ restFilterName fileName }}';
 {{/ each }}
 export * from './MaskBuilder';
