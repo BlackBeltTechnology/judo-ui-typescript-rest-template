@@ -14,4 +14,24 @@
     <name>JUDO UI Typescript Rest Generator Axios</name>
     <description>JUDO UI Typescript Rest Generator Axios, helpers and templates</description>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <version>5.1.2</version>
+                <configuration>
+                    <obrRepository>NONE</obrRepository>
+                    <instructions>
+                        <Include-Resource>
+                            target/classes,
+                            {maven-resources}
+                        </Include-Resource>
+                        <Export-Package>hu.blackbelt.judo.ui.generator.typescript.rest.axios</Export-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

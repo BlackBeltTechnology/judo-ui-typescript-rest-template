@@ -1,11 +1,13 @@
 templates:
   - name: axiosProvider.ts.hbs
+    applicationBased: true
     pathExpression: >
       'data-axios/' +
       'AxiosProvider.ts'
     templateName: data-axios/axiosProvider.ts.hbs
 
   - name: judoAxiosProvider.ts.hbs
+    applicationBased: true
     pathExpression: >
       'data-axios/' +
       'JudoAxiosProvider.ts'
@@ -15,6 +17,7 @@ templates:
         expression: "#application"
 
   - name: judoAxiosService.ts.hbs
+    applicationBased: true
     pathExpression: >
       'data-axios/' +
       'JudoAxiosService.ts'
@@ -24,6 +27,7 @@ templates:
         expression: "#application"
 
   - name: accessServiceImpl.ts.hbs
+    applicationBased: true
     pathExpression: >
       'data-axios/' +
       'AccessServiceImpl.ts'
@@ -33,6 +37,7 @@ templates:
         expression: "#application"
 
   - name: relationServiceImpl.ts.hbs
+    applicationBased: true
     factoryExpression: "#getNotAccessRelationsTypes(#application)"
     pathExpression: >
       'data-axios/' + 
@@ -43,6 +48,7 @@ templates:
         expression: "#self"
 
   - name: AccessRelationServiceImpl.ts.hbs
+    applicationBased: true
     factoryExpression: "#getAccessRelationsTypes(#application)"
     pathExpression: >
       'data-axios/' + 
@@ -53,6 +59,7 @@ templates:
         expression: "#self"
 
   - name: classServiceImpl.ts.hbs
+    applicationBased: true
     factoryExpression: "#getClassTypes(#application)"
     pathExpression: >
       'data-axios/' + 
@@ -63,12 +70,14 @@ templates:
         expression: "#self"
 
   - name: implementationInstancesExporter.ts.hbs
+    applicationBased: true
     pathExpression: >
       'data-axios/' + 
       'ImplementationInstancesExporter.ts'
     templateName: data-axios/implementationInstancesExporter.ts.hbs
 
   - name: index.ts.hbs
+    applicationBased: true
     pathExpression: >
       'data-axios/' + 
       'index.ts'
