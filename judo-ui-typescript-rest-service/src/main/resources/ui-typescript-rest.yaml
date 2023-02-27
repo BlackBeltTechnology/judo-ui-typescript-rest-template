@@ -1,5 +1,6 @@
 templates:
   - name: accessService.ts.hbs
+    applicationBased: true
     pathExpression: >
       'data-service/' +
       'AccessService.ts'
@@ -9,6 +10,7 @@ templates:
         expression: "#application"
 
   - name: relationService.ts.hbs
+    applicationBased: true
     factoryExpression: "#getNotAccessRelationsTypes(#application)"
     pathExpression: >
       'data-service/' +
@@ -21,6 +23,7 @@ templates:
         expression: "#application"
 
   - name: accessRelationService.ts.hbs
+    applicationBased: true
     factoryExpression: "#getAccessRelationsTypes(#application)"
     pathExpression: >
       'data-service/' +
@@ -33,6 +36,7 @@ templates:
         expression: "#application"
 
   - name: classService.ts.hbs
+    applicationBased: true
     factoryExpression: "#getClassTypes(#application)"
     pathExpression: >
       'data-service/' +
@@ -45,6 +49,7 @@ templates:
         expression: "#application"
 
   - name: serviceIndex.ts.hbs
+    applicationBased: true
     pathExpression: >
       'data-service/' +
       'index.ts'

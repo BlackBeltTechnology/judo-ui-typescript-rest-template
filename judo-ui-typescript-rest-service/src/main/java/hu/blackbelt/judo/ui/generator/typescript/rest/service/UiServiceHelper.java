@@ -9,8 +9,7 @@ import lombok.extern.java.Log;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static hu.blackbelt.judo.ui.generator.typescript.rest.api.Helper.*;
-import static hu.blackbelt.judo.ui.generator.typescript.rest.api.UiGeneralHelper.classDataName;
+import static hu.blackbelt.judo.ui.generator.typescript.rest.commons.UiCommonsHelper.classDataName;
 
 @Log
 @TemplateHelper
@@ -38,42 +37,50 @@ public class UiServiceHelper extends StaticMethodValueResolver {
 
     public static String joinedTokensForApiImport(RelationType relation){
         HashSet<String> tokens = new HashSet<>();
-        tokens.add(getClassName((ClassType) relation.getOwner()));
+
+        if (!relation.isIsAccess()) {
+            tokens.add(classDataName((ClassType) relation.getOwner(), ""));
+        }
+
         tokens.add(classDataName(relation.getTarget(), "QueryCustomizer"));
         tokens.add(classDataName(relation.getTarget(), "Stored"));
-        tokens.add(getClassName(relation.getTarget()));
+        tokens.add(classDataName(relation.getTarget(), ""));
 
         for (RelationType targetRelation : relation.getTarget().getRelations()) {
             tokens.add(classDataName(targetRelation.getTarget(), "QueryCustomizer"));
             tokens.add(classDataName(targetRelation.getTarget(), "Stored"));
-            tokens.add(getClassName(targetRelation.getTarget()));
+            tokens.add(classDataName(targetRelation.getTarget(), ""));
         }
 
         for (OperationType operation: relation.getTarget().getOperations()) {
             if (operation.getIsInputRangeable()) {
                 tokens.add(classDataName(operation.getInput().getTarget(), "QueryCustomizer"));
                 tokens.add(classDataName(operation.getInput().getTarget(), "Stored"));
-                tokens.add(getClassName(operation.getInput().getTarget()));
+                tokens.add(classDataName(operation.getInput().getTarget(), ""));
             }
         }
 
-        return tokens.stream().collect(Collectors.joining(", "));
+        return String.join(", ", tokens);
     }
 
     public static String joinedTokensForApiImportForAccessRelationServiceImpl(RelationType relation){
         HashSet<String> tokens = new HashSet<>();
-        tokens.add(getClassName((ClassType) relation.getOwner()));
+
+        if (!relation.isIsAccess()) {
+            tokens.add(classDataName((ClassType) relation.getOwner(), ""));
+        }
+
         tokens.add(classDataName(relation.getTarget(), "QueryCustomizer"));
         tokens.add(classDataName(relation.getTarget(), "Stored"));
-        tokens.add(getClassName(relation.getTarget()));
+        tokens.add(classDataName(relation.getTarget(), ""));
 
-        return tokens.stream().collect(Collectors.joining(", "));
+        return String.join(", ", tokens);
     }
 
     public static String joinedTokensForApiImportClassService(ClassType classType){
         HashSet<String> tokens = new HashSet<>();
 
-        tokens.add(getClassName(classType));
+        tokens.add(classDataName(classType, ""));
         tokens.add(classDataName(classType, "Stored"));
 
         if (classType.isIsMapped()) {
@@ -81,14 +88,14 @@ public class UiServiceHelper extends StaticMethodValueResolver {
         }
 
         for (RelationType relation: classType.getRelations()) {
-            tokens.add(getClassName(relation.getTarget()));
+            tokens.add(classDataName(relation.getTarget(), ""));
             tokens.add(classDataName(relation.getTarget(),"Stored"));
             tokens.add(classDataName(relation.getTarget(),"QueryCustomizer"));
         }
 
         for (OperationType operation: classType.getOperations()) {
             if (operation.getInput() != null) {
-                tokens.add(getClassName(operation.getInput().getTarget()));
+                tokens.add(classDataName(operation.getInput().getTarget(), ""));
             }
 
             if (operation.getOutput() != null) {
@@ -101,16 +108,7 @@ public class UiServiceHelper extends StaticMethodValueResolver {
             }
         }
 
-        return tokens.stream().collect(Collectors.joining(", "));
-    }
-
-    public static String serviceRelationName(RelationType relation) {
-        return relation.getOwnerPackageNameTokens().stream()
-                .map(t -> getCamelCaseVersion(t))
-                .collect(Collectors.joining())
-                .concat(getCamelCaseVersion(relation.getOwnerSimpleName()))
-                .concat("ServiceFor")
-                .concat(getCamelCaseVersion(relation.getName()));
+        return String.join(", ", tokens);
     }
 
     public static ClassType getRelationOwnerAsClassType(RelationType relationType){
@@ -118,12 +116,8 @@ public class UiServiceHelper extends StaticMethodValueResolver {
     }
 
     public static String serviceClassName(ClassType type) {
-        return getClassName(type).concat("Service");
+        return classDataName(type, "").concat("Service");
     }
-
-//    public static boolean operationParameterTypeIsNotNull(OperationParameterType operationParameterType) {
-//        return operationParameterType != null;
-//    }
 
     public static boolean classTypeIsMapped(ClassType classType) {
         return classType.isIsMapped();
