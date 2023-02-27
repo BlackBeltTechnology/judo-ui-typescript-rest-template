@@ -100,7 +100,7 @@ It can be used as:
 
 ----
 
-This example generates al interfaces and an `axios` implementation into the `target/test-classes` directory.
+This example generates all interfaces (models and servies) and an `axios` implementation into the `target/test-classes` directory.
 
 The `judo-ui-generator-maven-plugin` documentation is placed inside
 the plugin documentation itself. https://github.com/BlackBeltTechnology/judo-meta-ui/tree/develop/generator-maven-plugin
