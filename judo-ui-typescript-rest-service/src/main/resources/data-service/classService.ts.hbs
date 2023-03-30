@@ -27,7 +27,7 @@ export interface {{ serviceClassName classType }} {
             get{{ firstToUpper relation.name }}(target: JudoIdentifiable<{{ getClassName classType }}>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<{{# if relationIsCollection relation }}Array<{{/ if }}{{ classDataName relation.target "Stored" }}{{# if relationIsCollection relation }}>{{/ if }}>
         {{/ if }}
 
-        getRangeFor{{ firstToUpper relation.name }}(owner?: JudoIdentifiable<{{ getClassName classType }}>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>>;
+        getRangeFor{{ firstToUpper relation.name }}(owner?: JudoIdentifiable<{{ getClassName classType }}> | {{ getClassName classType }}, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>>;
 
         {{# if relation.isSetable }}
             set{{ firstToUpper relation.name }}(target: JudoIdentifiable<{{ getClassName classType }}>, selected: {{# if relationIsCollection relation }}Array<{{/ if }}JudoIdentifiable<{{ getClassName relation.target }}>{{# if relationIsCollection relation }}>{{/ if }}): Promise<void>;
