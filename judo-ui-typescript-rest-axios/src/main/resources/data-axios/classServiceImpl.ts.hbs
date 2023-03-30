@@ -85,7 +85,7 @@ export class {{ classType.serviceClassName }}Impl extends JudoAxiosService imple
     /**
     * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
     */
-    async getRangeFor{{ firstToUpper relation.name }}(owner?: JudoIdentifiable<{{ getClassName classType }}>, queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>> {
+    async getRangeFor{{ firstToUpper relation.name }}(owner?: JudoIdentifiable<{{ getClassName classType }}> | {{ getClassName classType }}, queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>> {
         const path = '{{ restPath classType "/" relation.name "/~range" }}';
         const response = await this.axios.post(this.getPathForActor(path), { owner: owner ?? {}, queryCustomizer: queryCustomizer ?? {} });
 
@@ -171,7 +171,7 @@ export class {{ classType.serviceClassName }}Impl extends JudoAxiosService imple
         /**
         * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
         */
-        async getRangeFor{{ firstToUpper operation.name }}(owner?:{{  classDataName classType "Stored" }}, queryCustomizer?:{{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>> {
+        async getRangeFor{{ firstToUpper operation.name }}(owner?: {{ classDataName classType "Stored" }}, queryCustomizer?:{{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>> {
             const path = '{{ classTypeRestPath classType "/" operation.name "/~range" }}';
             const response = await this.axios.post(this.getPathForActor(path), { owner: owner ?? {}, queryCustomizer: queryCustomizer ?? {} });
 
