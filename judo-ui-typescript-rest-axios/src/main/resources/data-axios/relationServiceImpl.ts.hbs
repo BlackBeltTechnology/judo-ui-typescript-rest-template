@@ -91,7 +91,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
         /**
         * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
         */
-        async getRangeFor{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}>, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName targetRelation.target "Stored" }}>> {
+        async getRangeFor{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ getClassName (getRelationOwnerAsClassType relation) }}> | {{ getClassName (getRelationOwnerAsClassType relation) }}, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName targetRelation.target "Stored" }}>> {
             const path = '{{ restPath target "/" targetRelation.name "/~range" }}';
             const response = await this.axios.post(this.getPathForActor(path), { owner: owner, queryCustomizer: queryCustomizer ?? {} });
 
