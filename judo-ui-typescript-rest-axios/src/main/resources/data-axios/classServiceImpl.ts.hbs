@@ -155,7 +155,7 @@ export class {{ classType.serviceClassName }}Impl extends JudoAxiosService imple
     * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
     */
     async {{ operation.name }}({{# if operation.isMapped }}owner: JudoIdentifiable<{{ getClassName classType }}>{{/ if }}{{# if operation.input }}{{# if operation.isMapped }},{{/ if }}target:{{ getClassName operation.input.target }}{{/ if }}): Promise<{{# if operation.output }}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}> {
-        const path = '{{ classTypeRestPathThreeParams classType "/" operation.name }}';
+        const path = '{{ operationRestPath classType operation '' }}';
         const response = await this.axios.post(this.getPathForActor(path){{# if operation.input }}, target{{ else }}, undefined{{/ if }}{{# if operation.isMapped }}, {
             headers: {
                 'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
@@ -172,7 +172,7 @@ export class {{ classType.serviceClassName }}Impl extends JudoAxiosService imple
         * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
         */
         async getRangeFor{{ firstToUpper operation.name }}(owner?: {{ classDataName classType "Stored" }}, queryCustomizer?:{{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>> {
-            const path = '{{ classTypeRestPath classType "/" operation.name "/~range" }}';
+            const path = '{{ operationRestPath classType operation '/~range' }}';
             const response = await this.axios.post(this.getPathForActor(path), { owner: owner ?? {}, queryCustomizer: queryCustomizer ?? {} });
 
             return response.data;
