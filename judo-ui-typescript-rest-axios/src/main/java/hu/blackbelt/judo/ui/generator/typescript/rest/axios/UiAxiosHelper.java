@@ -76,13 +76,9 @@ public class UiAxiosHelper extends StaticMethodValueResolver {
                 .collect(Collectors.joining("/")) + effectiveSuffix;
     }
 
-    public static String classTypeRestPathThreeParams(ClassType classType, String first, String second) {
-        String suffix = first + second;
+    public static String operationRestPath(ClassType classType, OperationType operation, String suffix) {
         String effectiveSuffix = suffix == null ? "" : suffix;
-        return "/" + stream(classType.getName().split("::"))
-                .skip(1)
-                .filter(i -> i != "_default_transferobjecttypes")
-                .collect(Collectors.joining("/")) + effectiveSuffix;
+        return classTypeRestPath(classType, "") + "/" + operation.getName() + effectiveSuffix;
     }
 
     public static String stringConcat(String... strings) {
