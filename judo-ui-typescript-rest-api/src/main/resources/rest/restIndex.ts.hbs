@@ -1,3 +1,5 @@
+{{> fragment.header.hbs }}
+
 {{# each (getQueryCustomizers application) as | fileName | }}
     export * from './{{ classDataName fileName "QueryCustomizer" }}';
 {{/ each }}
