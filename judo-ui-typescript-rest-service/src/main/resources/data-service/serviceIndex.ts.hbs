@@ -1,3 +1,5 @@
+{{> fragment.header.hbs }}
+
 export * from './AccessService';
 {{# each (getAccessRelationsTypes application) as | fileName | }}
     export * from './{{ serviceRelationName fileName }}';

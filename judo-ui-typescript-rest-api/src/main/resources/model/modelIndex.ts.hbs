@@ -1,3 +1,5 @@
+{{> fragment.header.hbs }}
+
 {{# each (getEnumerationTypes application) as | fileName | }}
     export * from './{{ restParamName fileName }}';
 {{/ each }}

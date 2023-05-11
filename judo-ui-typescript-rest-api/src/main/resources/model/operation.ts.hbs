@@ -1,3 +1,5 @@
+{{> fragment.header.hbs }}
+
 {{# each (getOperationTypeFaults operationType) as | fault |}}
     import { {{ getFaultTargets fault '' }} } from './{{ getFaultTargets fault '' }}';
 {{/ each }}
