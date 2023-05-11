@@ -1,3 +1,5 @@
+{{> fragment.header.hbs }}
+
 import { JudoStored } from '@judo/data-api-common';
 {{# each (getImportTokens application.actor classType) as | token | }}
     import { {{ @key }} } from './{{ token }}';

@@ -1,8 +1,14 @@
 //////////////////////////////////////////////////////////////////////////////
-// G E N E R A T E D    C L A S S
-// ------------------------------
+// G E N E R A T E D    S O U R C E
+// --------------------------------
+{{# if template.factoryExpression }}
 // Factory expression: {{{ cleanup template.factoryExpression }}}
+{{ else }}
+// Factory expression: <actor>
+{{/ if}}
 // Path expression: {{{ cleanup template.pathExpression }}}
 // Template name: {{ template.name }}
+{{# if isDebugPrint }}
 // Base URL: {{ template.templateBaseUri }}
+{{/ if }}
 // Template file: {{ template.templateName }}

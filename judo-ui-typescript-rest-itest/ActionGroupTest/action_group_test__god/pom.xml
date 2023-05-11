@@ -69,6 +69,9 @@
                             </applications>
                             <ui>${project.parent.basedir}/model/${model-name}-ui.model</ui>
                             <destination>${generation-target}/src/generated</destination>
+                            <templateParameters>
+                                <debugPrint>true</debugPrint>
+                            </templateParameters>
                         </configuration>
                     </execution>
                 </executions>
