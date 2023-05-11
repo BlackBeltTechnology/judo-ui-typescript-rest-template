@@ -1,3 +1,5 @@
+{{> fragment.header.hbs }}
+
 import { MaskBuilder{{# if (isGreaterThan (getAggregatedRelationsSize classType) 0) }}, RelationMaskBuilder{{/ if }} } from './MaskBuilder';
 import { {{ joinModelImportTokens ( modelImportTokens classType ) }} } from '../model';
 
