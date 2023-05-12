@@ -40,7 +40,7 @@ public class StoredVariableHelper extends StaticMethodValueResolver {
         ThreadLocalContextHolder.bindContext(context);
     }
 
-    public static synchronized Boolean isDebugPrint(Object object) {
+    public static synchronized Boolean isDebugPrint() {
         return Boolean.parseBoolean((String) ThreadLocalContextHolder.getVariable("debugPrint"));
     }
 
