@@ -24,6 +24,7 @@ import com.github.jknack.handlebars.internal.lang3.StringUtils;
 import hu.blackbelt.judo.generator.commons.StaticMethodValueResolver;
 import hu.blackbelt.judo.generator.commons.annotations.TemplateHelper;
 import hu.blackbelt.judo.meta.ui.Application;
+import hu.blackbelt.judo.meta.ui.NamedElement;
 import hu.blackbelt.judo.meta.ui.data.*;
 import lombok.extern.java.Log;
 import org.eclipse.emf.common.util.EList;
@@ -81,6 +82,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
                 .filter(i -> i instanceof ClassType)
                 .map(i -> (ClassType) i)
                 .filter(i -> !i.isIsActor())
+                .sorted(Comparator.comparing(NamedElement::getFQName))
                 .collect(Collectors.toList());
     }
 
@@ -130,20 +132,18 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
     }
 
 
-    public static HashMap<String, String> getImportTokens(ClassType actor, ClassType classType) {
-        HashMap<String, String> tokens = new HashMap<String, String>();
+    public static TreeMap<String, String> getImportTokens(ClassType actor, ClassType classType) {
+        TreeMap<String, String> tokens = new TreeMap<String, String>();
 
         for (AttributeType attr: classType.getAttributes()) {
             if (attr.getDataType() instanceof EnumerationType) {
                 String token = restParamName(attr.getDataType());
-
                 tokens.put(token, token);
             }
         }
 
         for (RelationType rel: classType.getRelations()) {
             String token = classDataName(rel.getTarget(), null);
-
             if (!rel.getTarget().equals(classType)) {
                 tokens.put(token + "Stored", token);
             }
@@ -152,12 +152,11 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return tokens;
     }
 
-    public static HashSet<String> getImportTokensForQueries(ClassType classType) {
-        HashSet<String> tokens = new HashSet<String>();
+    public static TreeSet<String> getImportTokensForQueries(ClassType classType) {
+        TreeSet<String> tokens = new TreeSet<String>();
 
         for(AttributeType attr: classType.getAttributes()) {
             String token = restFilterName(attr.getDataType());
-
             if (attr.isIsFilterable() && !tokens.contains(token)) {
                 tokens.add(token);
             }
@@ -215,8 +214,11 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return classDataName(operationParameterType.getTarget(), null).toString();
     }
 
-    public static EList<OperationParameterType> getOperationTypeFaults(OperationType operationType){
-        return operationType.getFaults();
+    public static List<OperationParameterType> getOperationTypeFaults(OperationType operationType){
+        return operationType.getFaults()
+                .stream()
+                .sorted(Comparator.comparing(NamedElement::getFQName))
+                .collect(Collectors.toList());
     }
 
     public static String openApiDataType(String fqDataTypeName){
@@ -275,8 +277,12 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return uniqueRelations;
     }
 
-    public static HashSet<RelationType> getNotClassTypeRelations(HashSet<RelationType> uniqueRelations, ClassType classType) {
-        return uniqueRelations.stream().filter(a -> !a.getTarget().equals(classType)).collect(Collectors.toCollection(HashSet::new));
+    public static List<RelationType> getNotClassTypeRelations(HashSet<RelationType> uniqueRelations, ClassType classType) {
+        return uniqueRelations
+                .stream()
+                .filter(a -> !a.getTarget().equals(classType))
+                .sorted(Comparator.comparing(NamedElement::getFQName))
+                .collect(Collectors.toList());
     }
 
     public static String relationBuilderName (RelationType relationType, ClassType classType, String postfix) {
