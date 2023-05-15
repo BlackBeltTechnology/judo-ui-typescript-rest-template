@@ -15,8 +15,8 @@
     <name>JUDO UI Typescript Rest Generator ITest</name>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
 
         <frontend-maven-plugin-version>1.12.1</frontend-maven-plugin-version>
         <node-version>18.14.2</node-version>
