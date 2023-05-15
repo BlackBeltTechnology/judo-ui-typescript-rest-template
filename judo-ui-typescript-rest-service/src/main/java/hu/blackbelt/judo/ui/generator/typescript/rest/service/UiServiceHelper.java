@@ -23,6 +23,7 @@ package hu.blackbelt.judo.ui.generator.typescript.rest.service;
 import hu.blackbelt.judo.generator.commons.StaticMethodValueResolver;
 import hu.blackbelt.judo.generator.commons.annotations.TemplateHelper;
 import hu.blackbelt.judo.meta.ui.Application;
+import hu.blackbelt.judo.meta.ui.NamedElement;
 import hu.blackbelt.judo.meta.ui.data.*;
 import lombok.extern.java.Log;
 
@@ -37,12 +38,16 @@ public class UiServiceHelper extends StaticMethodValueResolver {
 
     public static Collection<RelationType> getNotAccessRelationsTypes(Application application) {
         return (List<RelationType>) application.getRelationTypes().stream()
-                .filter(r -> !hasRelationTypeOwner(r)).collect(Collectors.toList());
+                .filter(r -> !hasRelationTypeOwner(r))
+                .sorted(Comparator.comparing(NamedElement::getFQName))
+                .collect(Collectors.toList());
     }
 
     public static Collection<RelationType> getAccessRelationsTypes(Application application) {
         return (List<RelationType>) application.getRelationTypes().stream()
-                .filter(r -> hasRelationTypeOwner(r)).collect(Collectors.toList());
+                .filter(r -> hasRelationTypeOwner(r))
+                .sorted(Comparator.comparing(NamedElement::getFQName))
+                .collect(Collectors.toList());
     }
 
     public static boolean hasRelationTypeOwner(Object relationType) {
