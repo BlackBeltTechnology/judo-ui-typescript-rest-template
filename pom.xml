@@ -42,7 +42,7 @@
 
         <surefire-version>3.0.0-M7</surefire-version>
 
-        <judo-meta-ui-version>1.1.0.20230519_135518_72e9fa96_develop</judo-meta-ui-version>
+        <judo-meta-ui-version>1.1.0.20230525_130344_82e1c7ed_bugfix_JNG_4874_add_transfer_page_types</judo-meta-ui-version>
         <judo-generator-commons-version>1.0.0.20230516_090341_cd4dbd1a_develop</judo-generator-commons-version>
 
         <!-- Code Quality-->
