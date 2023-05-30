@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ui:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="http://blackbelt.hu/judo/meta/ui/data" xmlns:ui="http://blackbelt.hu/judo/meta/ui" xsi:schemaLocation="http://blackbelt.hu/judo/meta/ui/data http://blackbelt.hu/judo/meta/ui#//data" xmi:id="Application@FormsTest/test/TestActor" name="FormsTest::test::TestActor" dashboard="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor/Dashboard" actor="ClassType@FormsTest/test/TestActor/FormsTest/test/TestActor" version="1.0.0.20230525_125949_SNAPSHOT">
+<ui:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:data="http://blackbelt.hu/judo/meta/ui/data" xmlns:ui="http://blackbelt.hu/judo/meta/ui" xsi:schemaLocation="http://blackbelt.hu/judo/meta/ui/data http://blackbelt.hu/judo/meta/ui#//data" xmi:id="Application@FormsTest/test/TestActor" name="FormsTest::test::TestActor" dashboard="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor/Dashboard" actor="ClassType@FormsTest/test/TestActor/FormsTest/test/TestActor" version="1.0.0.20230530_164856_SNAPSHOT">
   <navigationController xmi:id="NavigationController@FormsTest/test/TestActor/FormsTest/test/TestActor/NavigationController" name="FormsTest::test::TestActor#NavigationController">
     <items xmi:id="NavigationItem@FormsTest/test/TestActor/FormsTest/test/TestActor/NavigationController/FormsTest/test/TestActor.tests/NavigationItem" name="FormsTest::test::TestActor.tests#NavigationItem" label="Tests" target="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.tests/Table"/>
     <items xmi:id="NavigationItem@FormsTest/test/TestActor/FormsTest/test/TestActor/NavigationController/FormsTest/test/TestActor.otherTOs/NavigationItem" name="FormsTest::test::TestActor.otherTOs#NavigationItem" label="OtherTOs" target="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table"/>
@@ -8,87 +8,48 @@
   <pages xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor/Dashboard" name="FormsTest::test::TestActor#Dashboard" pageType="DASHBOARD">
     <containers xmi:id="PageContainer@FormsTest/test/TestActor/FormsTest/test/TestActor/Dashboard/default" name="default" col="12.0" direction="VERTICAL" mainAxisAlignment="START" layoutType="LayoutType@FormsTest/test/TestActor/default"/>
   </pages>
-  <pages xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View" name="FormsTest::test::TestActor.otherAssocTOs#View" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs" label="View">
-    <containers xmi:id="PageContainer@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/default" name="default" col="12.0" direction="VERTICAL" mainAxisAlignment="START" layoutType="LayoutType@FormsTest/test/TestActor/default" transferPageName="OtherAssocTOView">
-      <children xsi:type="ui:Flex" xmi:id="Flex@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/default/View" name="View" sourceId="_PgRMEChLEeyl8vcsJ5YNZA" label="View" col="12.0" stretch="BOTH" mainAxisAlignment="START" dataElement="ClassType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO">
-        <children xsi:type="ui:TextInput" xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/default/View/attributeeeeee" name="attributeeeeee" sourceId="_sNTtYChNEeyl8vcsJ5YNZA" label="Attributeeeeee" fit="LOOSE" isReadOnly="true" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/attributeeeeee">
-          <icon xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/default/View/attributeeeeee/Icon" name="text_fields"/>
+  <pages xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View" name="FormsTest::test::TestFormTO.oneOther#View" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther" label="View">
+    <containers xmi:id="PageContainer@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/default" name="default" col="12.0" direction="VERTICAL" mainAxisAlignment="START" layoutType="LayoutType@FormsTest/test/TestActor/default" transferPageName="OtherTOView">
+      <children xsi:type="ui:Flex" xmi:id="Flex@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/default/View" name="View" sourceId="_mPN_UChCEeyl8vcsJ5YNZA" label="View" col="12.0" stretch="BOTH" mainAxisAlignment="START" dataElement="ClassType@FormsTest/test/TestActor/FormsTest/test/OtherTO">
+        <children xsi:type="ui:TextInput" xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/default/View/attr1" name="attr1" sourceId="_ODv9AChGEeyl8vcsJ5YNZA" label="Attr1" fit="LOOSE" isReadOnly="true" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1">
+          <icon xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/default/View/attr1/Icon" name="text_fields"/>
         </children>
-        <children xsi:type="ui:NumericInput" xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/default/View/integeeeeer" name="integeeeeer" sourceId="_sNf6oChNEeyl8vcsJ5YNZA" label="Integeeeeer" fit="LOOSE" isReadOnly="true" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/integeeeeer">
-          <icon xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/default/View/integeeeeer/Icon" name="dialpad"/>
+        <children xsi:type="ui:NumericInput" xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/default/View/attr2" name="attr2" sourceId="_ODxyMChGEeyl8vcsJ5YNZA" label="Attr2" fit="LOOSE" isReadOnly="true" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2">
+          <icon xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/default/View/attr2/Icon" name="dialpad"/>
         </children>
       </children>
       <transferPackageNameTokens>test</transferPackageNameTokens>
     </containers>
-    <actions xsi:type="ui:BackAction" xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageBack" label="Back" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherAssocTOs#PageBack" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs">
-      <icon xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageBack/Icon" name="arrow_back"/>
+    <actions xsi:type="ui:BackAction" xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther/PageBack" label="Back" name="FormsTest::test::TestActor::FormsTest::test::TestFormTO::oneOther#PageBack" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther">
+      <icon xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther/PageBack/Icon" name="arrow_back"/>
     </actions>
-    <actions xsi:type="ui:RefreshAction" xmi:id="RefreshAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageRefresh" label="Refresh" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherAssocTOs#PageRefresh" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs">
-      <icon xmi:id="RefreshAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageRefresh/Icon" name="refresh"/>
+    <actions xsi:type="ui:RefreshAction" xmi:id="RefreshAction@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther/PageRefresh" label="Refresh" name="FormsTest::test::TestActor::FormsTest::test::TestFormTO::oneOther#PageRefresh" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther">
+      <icon xmi:id="RefreshAction@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther/PageRefresh/Icon" name="refresh"/>
     </actions>
-    <actions xsi:type="ui:DeleteAction" xmi:id="DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageDelete" label="Delete" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherAssocTOs#PageDelete" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs">
-      <icon xmi:id="DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageDelete/Icon" name="delete_forever"/>
+    <actions xsi:type="ui:DeleteAction" xmi:id="DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther/PageDelete" label="Delete" name="FormsTest::test::TestActor::FormsTest::test::TestFormTO::oneOther#PageDelete" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther">
+      <icon xmi:id="DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther/PageDelete/Icon" name="delete_forever"/>
     </actions>
-    <mask xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/Mask" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/attributeeeeee AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/integeeeeer"/>
+    <mask xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/Mask" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1 AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2"/>
   </pages>
-  <pages xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create" name="FormsTest::test::TestActor.otherAssocTOs#Create" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs" label="Form" pageType="CREATE">
-    <containers xmi:id="PageContainer@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/default" name="default" col="12.0" direction="VERTICAL" mainAxisAlignment="START" layoutType="LayoutType@FormsTest/test/TestActor/default" transferPageName="OtherAssocTOForm" transferPageType="CREATE">
-      <children xsi:type="ui:Flex" xmi:id="Flex@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/default/Form" name="Form" sourceId="_PgZu8ChLEeyl8vcsJ5YNZA" label="Form" col="12.0" stretch="BOTH" mainAxisAlignment="START" dataElement="ClassType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO">
-        <children xsi:type="ui:TextInput" xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/default/Form/attributeeeeee" name="attributeeeeee" sourceId="_tjmx8ChNEeyl8vcsJ5YNZA" label="Attributeeeeee" fit="LOOSE" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/attributeeeeee">
-          <icon xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/default/Form/attributeeeeee/Icon" name="text_fields"/>
+  <pages xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create" name="FormsTest::test::TestFormTO.oneOther#Create" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther" label="Form" pageType="CREATE">
+    <containers xmi:id="PageContainer@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/default" name="default" col="12.0" direction="VERTICAL" mainAxisAlignment="START" layoutType="LayoutType@FormsTest/test/TestActor/default" transferPageName="OtherTOForm" transferPageType="CREATE">
+      <children xsi:type="ui:Flex" xmi:id="Flex@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/default/Form" name="Form" sourceId="_mPXJQChCEeyl8vcsJ5YNZA" label="Form" col="12.0" stretch="BOTH" mainAxisAlignment="START" dataElement="ClassType@FormsTest/test/TestActor/FormsTest/test/OtherTO">
+        <children xsi:type="ui:TextInput" xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/default/Form/attr1" name="attr1" sourceId="_Pd_tcChGEeyl8vcsJ5YNZA" label="Attr1" fit="LOOSE" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1">
+          <icon xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/default/Form/attr1/Icon" name="text_fields"/>
         </children>
-        <children xsi:type="ui:NumericInput" xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/default/Form/integeeeeer" name="integeeeeer" sourceId="_tjnZAChNEeyl8vcsJ5YNZA" label="Integeeeeer" fit="LOOSE" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/integeeeeer">
-          <icon xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/default/Form/integeeeeer/Icon" name="dialpad"/>
-        </children>
-      </children>
-      <transferPackageNameTokens>test</transferPackageNameTokens>
-    </containers>
-    <actions xsi:type="ui:BackAction" xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageBack" label="Back" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherAssocTOs#PageBack" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs">
-      <icon xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageBack/Icon" name="arrow_back"/>
-    </actions>
-    <actions xsi:type="ui:SaveCreateAction" xmi:id="SaveCreateAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageSaveCreate" label="Save" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherAssocTOs#PageSaveCreate" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs">
-      <icon xmi:id="SaveCreateAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageSaveCreate/Icon" name="save"/>
-    </actions>
-    <mask xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/Mask" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/attributeeeeee AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/integeeeeer"/>
-  </pages>
-  <pages xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table" name="FormsTest::test::TestActor.otherAssocTOs#Table" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs" label="Table" pageType="TABLE">
-    <containers xmi:id="PageContainer@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default" name="default" col="12.0" direction="VERTICAL" mainAxisAlignment="START" layoutType="LayoutType@FormsTest/test/TestActor/default" transferPageName="OtherAssocTOTable" transferPageType="TABLE">
-      <children xsi:type="ui:Flex" xmi:id="Flex@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs" name="otherAssocTOs" col="12.0" direction="VERTICAL" mainAxisAlignment="START">
-        <children xsi:type="ui:Table" xmi:id="Table@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table" name="Table" sourceId="_PgeAYChLEeyl8vcsJ5YNZA" label="Table" col="12.0" row="12.0" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs" rowActions="ViewAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/RowView DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/RowDelete">
-          <columns xmi:id="Column@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table/attributeeeeee" name="attributeeeeee" label="attributeeeeee" col="2.0" format="%s" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/attributeeeeee" sort="NONE">
-            <icon xmi:id="Column@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table/attributeeeeee/Icon" name="text_fields"/>
-          </columns>
-          <columns xmi:id="Column@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table/integeeeeer" name="integeeeeer" label="integeeeeer" col="2.0" format="%s" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/integeeeeer" sort="NONE">
-            <icon xmi:id="Column@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table/integeeeeer/Icon" name="dialpad"/>
-          </columns>
-          <filters xmi:id="Filter@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table/attributeeeeee/Filter" name="attributeeeeee#Filter" label="attributeeeeee" col="2.0" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/attributeeeeee">
-            <icon xmi:id="Filter@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table/attributeeeeee/Filter/Icon" name="text_fields"/>
-          </filters>
-          <filters xmi:id="Filter@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table/integeeeeer/Filter" name="integeeeeer#Filter" label="integeeeeer" col="2.0" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/integeeeeer">
-            <icon xmi:id="Filter@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table/integeeeeer/Filter/Icon" name="dialpad"/>
-          </filters>
+        <children xsi:type="ui:NumericInput" xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/default/Form/attr2" name="attr2" sourceId="_PeAUgChGEeyl8vcsJ5YNZA" label="Attr2" fit="LOOSE" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2">
+          <icon xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/default/Form/attr2/Icon" name="dialpad"/>
         </children>
       </children>
       <transferPackageNameTokens>test</transferPackageNameTokens>
     </containers>
-    <actions xsi:type="ui:ViewAction" xmi:id="ViewAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/RowView" label="View" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherAssocTOs#RowView" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs" type="ROW" definedOn="Table@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table" target="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View">
-      <icon xmi:id="ViewAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/RowView/Icon" name="visibility"/>
+    <actions xsi:type="ui:BackAction" xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther/PageBack" label="Back" name="FormsTest::test::TestActor::FormsTest::test::TestFormTO::oneOther#PageBack" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther">
+      <icon xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther/PageBack/Icon" name="arrow_back"/>
     </actions>
-    <actions xsi:type="ui:DeleteAction" xmi:id="DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/RowDelete" label="Delete" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherAssocTOs#RowDelete" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs" type="ROW" definedOn="Table@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table">
-      <icon xmi:id="DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/RowDelete/Icon" name="delete_forever"/>
+    <actions xsi:type="ui:SaveCreateAction" xmi:id="SaveCreateAction@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther/PageSaveCreate" label="Save" name="FormsTest::test::TestActor::FormsTest::test::TestFormTO::oneOther#PageSaveCreate" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther">
+      <icon xmi:id="SaveCreateAction@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther/PageSaveCreate/Icon" name="save"/>
     </actions>
-    <actions xsi:type="ui:RefreshAction" xmi:id="RefreshAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageRefresh" label="Refresh" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherAssocTOs#PageRefresh" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs">
-      <icon xmi:id="RefreshAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageRefresh/Icon" name="refresh"/>
-    </actions>
-    <actions xsi:type="ui:FilterAction" xmi:id="FilterAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageFilter" label="Add Filter" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherAssocTOs#PageFilter" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs" definedOn="Table@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table">
-      <icon xmi:id="FilterAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageFilter/Icon" name="filter_alt"/>
-    </actions>
-    <actions xsi:type="ui:CreateAction" xmi:id="CreateAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageCreate" label="Create" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherAssocTOs#PageCreate" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs" target="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create">
-      <icon xmi:id="CreateAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageCreate/Icon" name="note_add"/>
-    </actions>
-    <mask xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/Mask" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/attributeeeeee">
-      <maskRelations xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/Mask/MaskRelation" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/attributeeeeee AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/integeeeeer" relationType="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs"/>
-    </mask>
+    <mask xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/Mask" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1 AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2"/>
   </pages>
   <pages xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOtherAssocTO/View" name="FormsTest::test::TestFormTO.oneOtherAssocTO#View" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOtherAssocTO" label="View">
     <containers xmi:id="PageContainer@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOtherAssocTO/View/default" name="default" col="12.0" direction="VERTICAL" mainAxisAlignment="START" layoutType="LayoutType@FormsTest/test/TestActor/default" transferPageName="OtherAssocTOView">
@@ -179,131 +140,6 @@
     </actions>
     <mask xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOtherAssocTO/Table/Mask" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/attributeeeeee">
       <maskRelations xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOtherAssocTO/Table/Mask/MaskRelation" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/attributeeeeee AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/integeeeeer" relationType="RelationType@FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOtherAssocTO"/>
-    </mask>
-  </pages>
-  <pages xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View" name="FormsTest::test::TestFormTO.oneOther#View" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther" label="View">
-    <containers xmi:id="PageContainer@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/default" name="default" col="12.0" direction="VERTICAL" mainAxisAlignment="START" layoutType="LayoutType@FormsTest/test/TestActor/default" transferPageName="OtherTOView">
-      <children xsi:type="ui:Flex" xmi:id="Flex@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/default/View" name="View" sourceId="_mPN_UChCEeyl8vcsJ5YNZA" label="View" col="12.0" stretch="BOTH" mainAxisAlignment="START" dataElement="ClassType@FormsTest/test/TestActor/FormsTest/test/OtherTO">
-        <children xsi:type="ui:TextInput" xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/default/View/attr1" name="attr1" sourceId="_ODv9AChGEeyl8vcsJ5YNZA" label="Attr1" fit="LOOSE" isReadOnly="true" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1">
-          <icon xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/default/View/attr1/Icon" name="text_fields"/>
-        </children>
-        <children xsi:type="ui:NumericInput" xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/default/View/attr2" name="attr2" sourceId="_ODxyMChGEeyl8vcsJ5YNZA" label="Attr2" fit="LOOSE" isReadOnly="true" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2">
-          <icon xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/default/View/attr2/Icon" name="dialpad"/>
-        </children>
-      </children>
-      <transferPackageNameTokens>test</transferPackageNameTokens>
-    </containers>
-    <actions xsi:type="ui:BackAction" xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther/PageBack" label="Back" name="FormsTest::test::TestActor::FormsTest::test::TestFormTO::oneOther#PageBack" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther">
-      <icon xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther/PageBack/Icon" name="arrow_back"/>
-    </actions>
-    <actions xsi:type="ui:RefreshAction" xmi:id="RefreshAction@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther/PageRefresh" label="Refresh" name="FormsTest::test::TestActor::FormsTest::test::TestFormTO::oneOther#PageRefresh" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther">
-      <icon xmi:id="RefreshAction@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther/PageRefresh/Icon" name="refresh"/>
-    </actions>
-    <actions xsi:type="ui:DeleteAction" xmi:id="DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther/PageDelete" label="Delete" name="FormsTest::test::TestActor::FormsTest::test::TestFormTO::oneOther#PageDelete" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther">
-      <icon xmi:id="DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther/PageDelete/Icon" name="delete_forever"/>
-    </actions>
-    <mask xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/View/Mask" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1 AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2"/>
-  </pages>
-  <pages xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create" name="FormsTest::test::TestFormTO.oneOther#Create" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther" label="Form" pageType="CREATE">
-    <containers xmi:id="PageContainer@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/default" name="default" col="12.0" direction="VERTICAL" mainAxisAlignment="START" layoutType="LayoutType@FormsTest/test/TestActor/default" transferPageName="OtherTOForm" transferPageType="CREATE">
-      <children xsi:type="ui:Flex" xmi:id="Flex@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/default/Form" name="Form" sourceId="_mPXJQChCEeyl8vcsJ5YNZA" label="Form" col="12.0" stretch="BOTH" mainAxisAlignment="START" dataElement="ClassType@FormsTest/test/TestActor/FormsTest/test/OtherTO">
-        <children xsi:type="ui:TextInput" xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/default/Form/attr1" name="attr1" sourceId="_Pd_tcChGEeyl8vcsJ5YNZA" label="Attr1" fit="LOOSE" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1">
-          <icon xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/default/Form/attr1/Icon" name="text_fields"/>
-        </children>
-        <children xsi:type="ui:NumericInput" xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/default/Form/attr2" name="attr2" sourceId="_PeAUgChGEeyl8vcsJ5YNZA" label="Attr2" fit="LOOSE" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2">
-          <icon xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/default/Form/attr2/Icon" name="dialpad"/>
-        </children>
-      </children>
-      <transferPackageNameTokens>test</transferPackageNameTokens>
-    </containers>
-    <actions xsi:type="ui:BackAction" xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther/PageBack" label="Back" name="FormsTest::test::TestActor::FormsTest::test::TestFormTO::oneOther#PageBack" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther">
-      <icon xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther/PageBack/Icon" name="arrow_back"/>
-    </actions>
-    <actions xsi:type="ui:SaveCreateAction" xmi:id="SaveCreateAction@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther/PageSaveCreate" label="Save" name="FormsTest::test::TestActor::FormsTest::test::TestFormTO::oneOther#PageSaveCreate" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther">
-      <icon xmi:id="SaveCreateAction@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/FormsTest/test/TestActor/FormsTest/test/TestFormTO/oneOther/PageSaveCreate/Icon" name="save"/>
-    </actions>
-    <mask xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestFormTO.oneOther/Create/Mask" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1 AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2"/>
-  </pages>
-  <pages xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View" name="FormsTest::test::TestActor.otherTOs#View" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs" label="View">
-    <containers xmi:id="PageContainer@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/default" name="default" col="12.0" direction="VERTICAL" mainAxisAlignment="START" layoutType="LayoutType@FormsTest/test/TestActor/default" transferPageName="OtherTOView">
-      <children xsi:type="ui:Flex" xmi:id="Flex@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/default/View" name="View" sourceId="_mPN_UChCEeyl8vcsJ5YNZA" label="View" col="12.0" stretch="BOTH" mainAxisAlignment="START" dataElement="ClassType@FormsTest/test/TestActor/FormsTest/test/OtherTO">
-        <children xsi:type="ui:TextInput" xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/default/View/attr1" name="attr1" sourceId="_ODv9AChGEeyl8vcsJ5YNZA" label="Attr1" fit="LOOSE" isReadOnly="true" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1">
-          <icon xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/default/View/attr1/Icon" name="text_fields"/>
-        </children>
-        <children xsi:type="ui:NumericInput" xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/default/View/attr2" name="attr2" sourceId="_ODxyMChGEeyl8vcsJ5YNZA" label="Attr2" fit="LOOSE" isReadOnly="true" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2">
-          <icon xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/default/View/attr2/Icon" name="dialpad"/>
-        </children>
-      </children>
-      <transferPackageNameTokens>test</transferPackageNameTokens>
-    </containers>
-    <actions xsi:type="ui:BackAction" xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageBack" label="Back" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherTOs#PageBack" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs">
-      <icon xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageBack/Icon" name="arrow_back"/>
-    </actions>
-    <actions xsi:type="ui:RefreshAction" xmi:id="RefreshAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageRefresh" label="Refresh" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherTOs#PageRefresh" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs">
-      <icon xmi:id="RefreshAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageRefresh/Icon" name="refresh"/>
-    </actions>
-    <actions xsi:type="ui:DeleteAction" xmi:id="DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageDelete" label="Delete" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherTOs#PageDelete" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs">
-      <icon xmi:id="DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageDelete/Icon" name="delete_forever"/>
-    </actions>
-    <mask xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/Mask" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1 AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2"/>
-  </pages>
-  <pages xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create" name="FormsTest::test::TestActor.otherTOs#Create" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs" label="Form" pageType="CREATE">
-    <containers xmi:id="PageContainer@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/default" name="default" col="12.0" direction="VERTICAL" mainAxisAlignment="START" layoutType="LayoutType@FormsTest/test/TestActor/default" transferPageName="OtherTOForm" transferPageType="CREATE">
-      <children xsi:type="ui:Flex" xmi:id="Flex@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/default/Form" name="Form" sourceId="_mPXJQChCEeyl8vcsJ5YNZA" label="Form" col="12.0" stretch="BOTH" mainAxisAlignment="START" dataElement="ClassType@FormsTest/test/TestActor/FormsTest/test/OtherTO">
-        <children xsi:type="ui:TextInput" xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/default/Form/attr1" name="attr1" sourceId="_Pd_tcChGEeyl8vcsJ5YNZA" label="Attr1" fit="LOOSE" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1">
-          <icon xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/default/Form/attr1/Icon" name="text_fields"/>
-        </children>
-        <children xsi:type="ui:NumericInput" xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/default/Form/attr2" name="attr2" sourceId="_PeAUgChGEeyl8vcsJ5YNZA" label="Attr2" fit="LOOSE" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2">
-          <icon xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/default/Form/attr2/Icon" name="dialpad"/>
-        </children>
-      </children>
-      <transferPackageNameTokens>test</transferPackageNameTokens>
-    </containers>
-    <actions xsi:type="ui:BackAction" xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageBack" label="Back" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherTOs#PageBack" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs">
-      <icon xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageBack/Icon" name="arrow_back"/>
-    </actions>
-    <actions xsi:type="ui:SaveCreateAction" xmi:id="SaveCreateAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageSaveCreate" label="Save" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherTOs#PageSaveCreate" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs">
-      <icon xmi:id="SaveCreateAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageSaveCreate/Icon" name="save"/>
-    </actions>
-    <mask xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/Mask" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1 AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2"/>
-  </pages>
-  <pages xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table" name="FormsTest::test::TestActor.otherTOs#Table" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs" label="Table" pageType="TABLE">
-    <containers xmi:id="PageContainer@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default" name="default" col="12.0" direction="VERTICAL" mainAxisAlignment="START" layoutType="LayoutType@FormsTest/test/TestActor/default" transferPageName="OtherTOTable" transferPageType="TABLE">
-      <children xsi:type="ui:Flex" xmi:id="Flex@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs" name="otherTOs" col="12.0" direction="VERTICAL" mainAxisAlignment="START">
-        <children xsi:type="ui:Table" xmi:id="Table@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table" name="Table" sourceId="_mPco0ChCEeyl8vcsJ5YNZA" label="Table" col="12.0" row="12.0" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs" rowActions="ViewAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/RowView DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/RowDelete">
-          <columns xmi:id="Column@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table/attr1" name="attr1" label="attr1" col="2.0" format="%s" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1" sort="NONE">
-            <icon xmi:id="Column@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table/attr1/Icon" name="text_fields"/>
-          </columns>
-          <columns xmi:id="Column@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table/attr2" name="attr2" label="attr2" col="2.0" format="%s" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2" sort="NONE">
-            <icon xmi:id="Column@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table/attr2/Icon" name="dialpad"/>
-          </columns>
-          <filters xmi:id="Filter@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table/attr1/Filter" name="attr1#Filter" label="attr1" col="2.0" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1">
-            <icon xmi:id="Filter@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table/attr1/Filter/Icon" name="text_fields"/>
-          </filters>
-          <filters xmi:id="Filter@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table/attr2/Filter" name="attr2#Filter" label="attr2" col="2.0" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2">
-            <icon xmi:id="Filter@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table/attr2/Filter/Icon" name="dialpad"/>
-          </filters>
-        </children>
-      </children>
-      <transferPackageNameTokens>test</transferPackageNameTokens>
-    </containers>
-    <actions xsi:type="ui:ViewAction" xmi:id="ViewAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/RowView" label="View" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherTOs#RowView" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs" type="ROW" definedOn="Table@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table" target="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View">
-      <icon xmi:id="ViewAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/RowView/Icon" name="visibility"/>
-    </actions>
-    <actions xsi:type="ui:DeleteAction" xmi:id="DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/RowDelete" label="Delete" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherTOs#RowDelete" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs" type="ROW" definedOn="Table@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table">
-      <icon xmi:id="DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/RowDelete/Icon" name="delete_forever"/>
-    </actions>
-    <actions xsi:type="ui:RefreshAction" xmi:id="RefreshAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageRefresh" label="Refresh" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherTOs#PageRefresh" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs">
-      <icon xmi:id="RefreshAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageRefresh/Icon" name="refresh"/>
-    </actions>
-    <actions xsi:type="ui:FilterAction" xmi:id="FilterAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageFilter" label="Add Filter" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherTOs#PageFilter" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs" definedOn="Table@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table">
-      <icon xmi:id="FilterAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageFilter/Icon" name="filter_alt"/>
-    </actions>
-    <actions xsi:type="ui:CreateAction" xmi:id="CreateAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageCreate" label="Create" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherTOs#PageCreate" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs" target="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create">
-      <icon xmi:id="CreateAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageCreate/Icon" name="note_add"/>
-    </actions>
-    <mask xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/Mask" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1">
-      <maskRelations xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/Mask/MaskRelation" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1 AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2" relationType="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs"/>
     </mask>
   </pages>
   <pages xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestFormTO.multipleOthers/View" name="FormsTest::test::TestFormTO.multipleOthers#View" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestFormTO/multipleOthers" label="View">
@@ -444,6 +280,170 @@
     </actions>
     <mask xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestFormTO.multipleOtherAssocTO/Table/Mask" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/attributeeeeee">
       <maskRelations xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestFormTO.multipleOtherAssocTO/Table/Mask/MaskRelation" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/attributeeeeee AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/integeeeeer" relationType="RelationType@FormsTest/test/TestActor/FormsTest/test/TestFormTO/multipleOtherAssocTO"/>
+    </mask>
+  </pages>
+  <pages xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View" name="FormsTest::test::TestActor.otherTOs#View" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs" label="View">
+    <containers xmi:id="PageContainer@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/default" name="default" col="12.0" direction="VERTICAL" mainAxisAlignment="START" layoutType="LayoutType@FormsTest/test/TestActor/default" transferPageName="OtherTOView">
+      <children xsi:type="ui:Flex" xmi:id="Flex@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/default/View" name="View" sourceId="_mPN_UChCEeyl8vcsJ5YNZA" label="View" col="12.0" stretch="BOTH" mainAxisAlignment="START" dataElement="ClassType@FormsTest/test/TestActor/FormsTest/test/OtherTO">
+        <children xsi:type="ui:TextInput" xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/default/View/attr1" name="attr1" sourceId="_ODv9AChGEeyl8vcsJ5YNZA" label="Attr1" fit="LOOSE" isReadOnly="true" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1">
+          <icon xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/default/View/attr1/Icon" name="text_fields"/>
+        </children>
+        <children xsi:type="ui:NumericInput" xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/default/View/attr2" name="attr2" sourceId="_ODxyMChGEeyl8vcsJ5YNZA" label="Attr2" fit="LOOSE" isReadOnly="true" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2">
+          <icon xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/default/View/attr2/Icon" name="dialpad"/>
+        </children>
+      </children>
+      <transferPackageNameTokens>test</transferPackageNameTokens>
+    </containers>
+    <actions xsi:type="ui:BackAction" xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageBack" label="Back" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherTOs#PageBack" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs">
+      <icon xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageBack/Icon" name="arrow_back"/>
+    </actions>
+    <actions xsi:type="ui:RefreshAction" xmi:id="RefreshAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageRefresh" label="Refresh" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherTOs#PageRefresh" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs">
+      <icon xmi:id="RefreshAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageRefresh/Icon" name="refresh"/>
+    </actions>
+    <actions xsi:type="ui:DeleteAction" xmi:id="DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageDelete" label="Delete" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherTOs#PageDelete" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs">
+      <icon xmi:id="DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageDelete/Icon" name="delete_forever"/>
+    </actions>
+    <mask xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View/Mask" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1 AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2"/>
+  </pages>
+  <pages xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create" name="FormsTest::test::TestActor.otherTOs#Create" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs" label="Form" pageType="CREATE">
+    <containers xmi:id="PageContainer@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/default" name="default" col="12.0" direction="VERTICAL" mainAxisAlignment="START" layoutType="LayoutType@FormsTest/test/TestActor/default" transferPageName="OtherTOForm" transferPageType="CREATE">
+      <children xsi:type="ui:Flex" xmi:id="Flex@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/default/Form" name="Form" sourceId="_mPXJQChCEeyl8vcsJ5YNZA" label="Form" col="12.0" stretch="BOTH" mainAxisAlignment="START" dataElement="ClassType@FormsTest/test/TestActor/FormsTest/test/OtherTO">
+        <children xsi:type="ui:TextInput" xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/default/Form/attr1" name="attr1" sourceId="_Pd_tcChGEeyl8vcsJ5YNZA" label="Attr1" fit="LOOSE" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1">
+          <icon xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/default/Form/attr1/Icon" name="text_fields"/>
+        </children>
+        <children xsi:type="ui:NumericInput" xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/default/Form/attr2" name="attr2" sourceId="_PeAUgChGEeyl8vcsJ5YNZA" label="Attr2" fit="LOOSE" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2">
+          <icon xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/default/Form/attr2/Icon" name="dialpad"/>
+        </children>
+      </children>
+      <transferPackageNameTokens>test</transferPackageNameTokens>
+    </containers>
+    <actions xsi:type="ui:BackAction" xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageBack" label="Back" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherTOs#PageBack" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs">
+      <icon xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageBack/Icon" name="arrow_back"/>
+    </actions>
+    <actions xsi:type="ui:SaveCreateAction" xmi:id="SaveCreateAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageSaveCreate" label="Save" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherTOs#PageSaveCreate" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs">
+      <icon xmi:id="SaveCreateAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageSaveCreate/Icon" name="save"/>
+    </actions>
+    <mask xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create/Mask" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1 AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2"/>
+  </pages>
+  <pages xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table" name="FormsTest::test::TestActor.otherTOs#Table" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs" label="Table" pageType="TABLE">
+    <containers xmi:id="PageContainer@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default" name="default" col="12.0" direction="VERTICAL" mainAxisAlignment="START" layoutType="LayoutType@FormsTest/test/TestActor/default" transferPageName="OtherTOTable" transferPageType="TABLE">
+      <children xsi:type="ui:Flex" xmi:id="Flex@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs" name="otherTOs" col="12.0" direction="VERTICAL" mainAxisAlignment="START">
+        <children xsi:type="ui:Table" xmi:id="Table@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table" name="Table" sourceId="_mPco0ChCEeyl8vcsJ5YNZA" label="Table" col="12.0" row="12.0" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs" rowActions="ViewAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/RowView DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/RowDelete">
+          <columns xmi:id="Column@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table/attr1" name="attr1" label="attr1" col="2.0" format="%s" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1" sort="NONE">
+            <icon xmi:id="Column@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table/attr1/Icon" name="text_fields"/>
+          </columns>
+          <columns xmi:id="Column@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table/attr2" name="attr2" label="attr2" col="2.0" format="%s" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2" sort="NONE">
+            <icon xmi:id="Column@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table/attr2/Icon" name="dialpad"/>
+          </columns>
+          <filters xmi:id="Filter@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table/attr1/Filter" name="attr1#Filter" label="attr1" col="2.0" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1">
+            <icon xmi:id="Filter@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table/attr1/Filter/Icon" name="text_fields"/>
+          </filters>
+          <filters xmi:id="Filter@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table/attr2/Filter" name="attr2#Filter" label="attr2" col="2.0" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2">
+            <icon xmi:id="Filter@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table/attr2/Filter/Icon" name="dialpad"/>
+          </filters>
+        </children>
+      </children>
+      <transferPackageNameTokens>test</transferPackageNameTokens>
+    </containers>
+    <actions xsi:type="ui:ViewAction" xmi:id="ViewAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/RowView" label="View" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherTOs#RowView" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs" type="ROW" definedOn="Table@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table" target="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/View">
+      <icon xmi:id="ViewAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/RowView/Icon" name="visibility"/>
+    </actions>
+    <actions xsi:type="ui:DeleteAction" xmi:id="DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/RowDelete" label="Delete" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherTOs#RowDelete" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs" type="ROW" definedOn="Table@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table">
+      <icon xmi:id="DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/RowDelete/Icon" name="delete_forever"/>
+    </actions>
+    <actions xsi:type="ui:RefreshAction" xmi:id="RefreshAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageRefresh" label="Refresh" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherTOs#PageRefresh" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs">
+      <icon xmi:id="RefreshAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageRefresh/Icon" name="refresh"/>
+    </actions>
+    <actions xsi:type="ui:FilterAction" xmi:id="FilterAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageFilter" label="Add Filter" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherTOs#PageFilter" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs" definedOn="Table@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/default/otherTOs/Table">
+      <icon xmi:id="FilterAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageFilter/Icon" name="filter_alt"/>
+    </actions>
+    <actions xsi:type="ui:CreateAction" xmi:id="CreateAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageCreate" label="Create" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherTOs#PageCreate" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs" target="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Create">
+      <icon xmi:id="CreateAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs/PageCreate/Icon" name="note_add"/>
+    </actions>
+    <mask xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/Mask" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1">
+      <maskRelations xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherTOs/Table/Mask/MaskRelation" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr1 AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherTO/attr2" relationType="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherTOs"/>
+    </mask>
+  </pages>
+  <pages xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View" name="FormsTest::test::TestActor.otherAssocTOs#View" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs" label="View">
+    <containers xmi:id="PageContainer@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/default" name="default" col="12.0" direction="VERTICAL" mainAxisAlignment="START" layoutType="LayoutType@FormsTest/test/TestActor/default" transferPageName="OtherAssocTOView">
+      <children xsi:type="ui:Flex" xmi:id="Flex@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/default/View" name="View" sourceId="_PgRMEChLEeyl8vcsJ5YNZA" label="View" col="12.0" stretch="BOTH" mainAxisAlignment="START" dataElement="ClassType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO">
+        <children xsi:type="ui:TextInput" xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/default/View/attributeeeeee" name="attributeeeeee" sourceId="_sNTtYChNEeyl8vcsJ5YNZA" label="Attributeeeeee" fit="LOOSE" isReadOnly="true" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/attributeeeeee">
+          <icon xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/default/View/attributeeeeee/Icon" name="text_fields"/>
+        </children>
+        <children xsi:type="ui:NumericInput" xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/default/View/integeeeeer" name="integeeeeer" sourceId="_sNf6oChNEeyl8vcsJ5YNZA" label="Integeeeeer" fit="LOOSE" isReadOnly="true" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/integeeeeer">
+          <icon xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/default/View/integeeeeer/Icon" name="dialpad"/>
+        </children>
+      </children>
+      <transferPackageNameTokens>test</transferPackageNameTokens>
+    </containers>
+    <actions xsi:type="ui:BackAction" xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageBack" label="Back" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherAssocTOs#PageBack" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs">
+      <icon xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageBack/Icon" name="arrow_back"/>
+    </actions>
+    <actions xsi:type="ui:RefreshAction" xmi:id="RefreshAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageRefresh" label="Refresh" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherAssocTOs#PageRefresh" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs">
+      <icon xmi:id="RefreshAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageRefresh/Icon" name="refresh"/>
+    </actions>
+    <actions xsi:type="ui:DeleteAction" xmi:id="DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageDelete" label="Delete" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherAssocTOs#PageDelete" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs">
+      <icon xmi:id="DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageDelete/Icon" name="delete_forever"/>
+    </actions>
+    <mask xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View/Mask" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/attributeeeeee AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/integeeeeer"/>
+  </pages>
+  <pages xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create" name="FormsTest::test::TestActor.otherAssocTOs#Create" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs" label="Form" pageType="CREATE">
+    <containers xmi:id="PageContainer@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/default" name="default" col="12.0" direction="VERTICAL" mainAxisAlignment="START" layoutType="LayoutType@FormsTest/test/TestActor/default" transferPageName="OtherAssocTOForm" transferPageType="CREATE">
+      <children xsi:type="ui:Flex" xmi:id="Flex@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/default/Form" name="Form" sourceId="_PgZu8ChLEeyl8vcsJ5YNZA" label="Form" col="12.0" stretch="BOTH" mainAxisAlignment="START" dataElement="ClassType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO">
+        <children xsi:type="ui:TextInput" xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/default/Form/attributeeeeee" name="attributeeeeee" sourceId="_tjmx8ChNEeyl8vcsJ5YNZA" label="Attributeeeeee" fit="LOOSE" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/attributeeeeee">
+          <icon xmi:id="TextInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/default/Form/attributeeeeee/Icon" name="text_fields"/>
+        </children>
+        <children xsi:type="ui:NumericInput" xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/default/Form/integeeeeer" name="integeeeeer" sourceId="_tjnZAChNEeyl8vcsJ5YNZA" label="Integeeeeer" fit="LOOSE" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/integeeeeer">
+          <icon xmi:id="NumericInput@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/default/Form/integeeeeer/Icon" name="dialpad"/>
+        </children>
+      </children>
+      <transferPackageNameTokens>test</transferPackageNameTokens>
+    </containers>
+    <actions xsi:type="ui:BackAction" xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageBack" label="Back" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherAssocTOs#PageBack" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs">
+      <icon xmi:id="BackAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageBack/Icon" name="arrow_back"/>
+    </actions>
+    <actions xsi:type="ui:SaveCreateAction" xmi:id="SaveCreateAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageSaveCreate" label="Save" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherAssocTOs#PageSaveCreate" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs">
+      <icon xmi:id="SaveCreateAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageSaveCreate/Icon" name="save"/>
+    </actions>
+    <mask xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create/Mask" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/attributeeeeee AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/integeeeeer"/>
+  </pages>
+  <pages xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table" name="FormsTest::test::TestActor.otherAssocTOs#Table" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs" label="Table" pageType="TABLE">
+    <containers xmi:id="PageContainer@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default" name="default" col="12.0" direction="VERTICAL" mainAxisAlignment="START" layoutType="LayoutType@FormsTest/test/TestActor/default" transferPageName="OtherAssocTOTable" transferPageType="TABLE">
+      <children xsi:type="ui:Flex" xmi:id="Flex@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs" name="otherAssocTOs" col="12.0" direction="VERTICAL" mainAxisAlignment="START">
+        <children xsi:type="ui:Table" xmi:id="Table@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table" name="Table" sourceId="_PgeAYChLEeyl8vcsJ5YNZA" label="Table" col="12.0" row="12.0" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs" rowActions="ViewAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/RowView DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/RowDelete">
+          <columns xmi:id="Column@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table/attributeeeeee" name="attributeeeeee" label="attributeeeeee" col="2.0" format="%s" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/attributeeeeee" sort="NONE">
+            <icon xmi:id="Column@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table/attributeeeeee/Icon" name="text_fields"/>
+          </columns>
+          <columns xmi:id="Column@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table/integeeeeer" name="integeeeeer" label="integeeeeer" col="2.0" format="%s" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/integeeeeer" sort="NONE">
+            <icon xmi:id="Column@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table/integeeeeer/Icon" name="dialpad"/>
+          </columns>
+          <filters xmi:id="Filter@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table/attributeeeeee/Filter" name="attributeeeeee#Filter" label="attributeeeeee" col="2.0" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/attributeeeeee">
+            <icon xmi:id="Filter@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table/attributeeeeee/Filter/Icon" name="text_fields"/>
+          </filters>
+          <filters xmi:id="Filter@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table/integeeeeer/Filter" name="integeeeeer#Filter" label="integeeeeer" col="2.0" attributeType="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/integeeeeer">
+            <icon xmi:id="Filter@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table/integeeeeer/Filter/Icon" name="dialpad"/>
+          </filters>
+        </children>
+      </children>
+      <transferPackageNameTokens>test</transferPackageNameTokens>
+    </containers>
+    <actions xsi:type="ui:ViewAction" xmi:id="ViewAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/RowView" label="View" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherAssocTOs#RowView" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs" type="ROW" definedOn="Table@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table" target="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/View">
+      <icon xmi:id="ViewAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/RowView/Icon" name="visibility"/>
+    </actions>
+    <actions xsi:type="ui:DeleteAction" xmi:id="DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/RowDelete" label="Delete" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherAssocTOs#RowDelete" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs" type="ROW" definedOn="Table@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table">
+      <icon xmi:id="DeleteAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/RowDelete/Icon" name="delete_forever"/>
+    </actions>
+    <actions xsi:type="ui:RefreshAction" xmi:id="RefreshAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageRefresh" label="Refresh" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherAssocTOs#PageRefresh" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs">
+      <icon xmi:id="RefreshAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageRefresh/Icon" name="refresh"/>
+    </actions>
+    <actions xsi:type="ui:FilterAction" xmi:id="FilterAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageFilter" label="Add Filter" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherAssocTOs#PageFilter" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs" definedOn="Table@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/default/otherAssocTOs/Table">
+      <icon xmi:id="FilterAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageFilter/Icon" name="filter_alt"/>
+    </actions>
+    <actions xsi:type="ui:CreateAction" xmi:id="CreateAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageCreate" label="Create" name="FormsTest::test::TestActor::FormsTest::test::TestActor::otherAssocTOs#PageCreate" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs" target="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Create">
+      <icon xmi:id="CreateAction@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs/PageCreate/Icon" name="note_add"/>
+    </actions>
+    <mask xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/Mask" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/attributeeeeee">
+      <maskRelations xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.otherAssocTOs/Table/Mask/MaskRelation" attributeTypes="AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/attributeeeeee AttributeType@FormsTest/test/TestActor/FormsTest/test/OtherAssocTO/integeeeeer" relationType="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/otherAssocTOs"/>
     </mask>
   </pages>
   <pages xmi:id="PageDefinition@FormsTest/test/TestActor/FormsTest/test/TestActor.tests/View" name="FormsTest::test::TestActor.tests#View" dataElement="RelationType@FormsTest/test/TestActor/FormsTest/test/TestActor/tests" label="View">
