@@ -1,6 +1,6 @@
 {{> fragment.header.hbs }}
 
-import { QueryCustomizer } from '@judo/data-api-common';
+import type { QueryCustomizer } from '@judo/data-api-common';
 import { {{ getClassName classType }} } from '../model/{{ getClassName classType }}';
 
 {{# each (getImportTokensForQueries classType) as | token | }}
