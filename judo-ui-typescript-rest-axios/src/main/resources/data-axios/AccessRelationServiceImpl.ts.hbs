@@ -1,8 +1,8 @@
 {{> fragment.header.hbs }}
 
 import { JudoAxiosService } from './JudoAxiosService';
-import { {{ joinedTokensForApiImportForAccessRelationServiceImpl relation }} } from '../data-api';
-import { {{ relation.serviceRelationName }} } from '../data-service';
+import type { {{ joinedTokensForApiImportForAccessRelationServiceImpl relation }} } from '../data-api';
+import type { {{ relation.serviceRelationName }} } from '../data-service';
 
 /**
 * Access Relation Service Implementation for {{ getClassName (getRelationOwnerAsClassType relation) }}.{{ relation.name }}
