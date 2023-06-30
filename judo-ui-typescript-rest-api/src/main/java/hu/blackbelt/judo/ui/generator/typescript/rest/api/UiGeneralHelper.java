@@ -74,14 +74,14 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
     public static Collection<EnumerationType> getEnumerationTypes(Application application) {
         return application.getDataTypes().stream()
                 .filter(i -> i instanceof EnumerationType)
-                .map(i -> (EnumerationType) i).collect(Collectors.toList());
+                .map(i -> (EnumerationType) i)
+                .collect(Collectors.toList());
     }
 
     public static Collection<ClassType> getClassTypes(Application application) {
         return application.getDataElements().stream()
                 .filter(i -> i instanceof ClassType)
                 .map(i -> (ClassType) i)
-                .filter(i -> !i.isIsActor())
                 .sorted(Comparator.comparing(NamedElement::getFQName))
                 .collect(Collectors.toList());
     }
@@ -91,13 +91,13 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
                 .map(i -> (ClassType) i)
                 .flatMap(i -> i.getOperations().stream())
                 .filter(i -> i instanceof OperationType)
-                .map(i -> (OperationType) i).collect(Collectors.toList());
+                .collect(Collectors.toList());
     }
 
     public static Collection<ClassType> getQueryCustomizers(Application application) {
         return application.getDataElements().stream().filter(i -> i instanceof ClassType)
                 .map(i -> (ClassType) i)
-                .filter(i -> !i.isIsActor()).collect(Collectors.toList());
+                .collect(Collectors.toList());
     }
 
     public static Collection<DataType> getFilterableDataTypes(Application app) {
@@ -114,7 +114,8 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
 
         return attributeTypeList.stream()
                 .map(a -> a.getDataType())
-                .filter(distinctByKey(dataType -> getXMIID(dataType))).collect(Collectors.toList());
+                .filter(distinctByKey(dataType -> getXMIID(dataType)))
+                .collect(Collectors.toList());
     }
 
     private static <T extends Object> Predicate<T> distinctByKey(final Function<? super T, ?> keyExtractor) {

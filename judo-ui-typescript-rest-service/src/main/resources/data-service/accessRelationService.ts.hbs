@@ -3,7 +3,7 @@
 import { {{ joinedTokensForApiImport relation }} } from '../data-api';
 
 /**
-* Access Relation Service for {{ getClassName (getRelationOwnerAsClassType relation) }}.{{ relation.name }}
+* Access Relation Service for {{ classDataName (getRelationOwnerAsClassType relation) "" }}.{{ relation.name }}
 */
 export interface {{ serviceRelationName relation }} {
 
@@ -16,6 +16,6 @@ export interface {{ serviceRelationName relation }} {
 {{/ if }}
 
 {{# if relation.isCreatable }}
-    create{{ firstToUpper relation.name }}(target: {{ getClassName relation.target }}): Promise<{{ classDataName relation.target "Stored" }}>;
+    create{{ firstToUpper relation.name }}(target: {{ classDataName relation.target "" }}): Promise<{{ classDataName relation.target "Stored" }}>;
 {{/ if }}
 }
