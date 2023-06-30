@@ -5,7 +5,7 @@ import type { {{ joinedTokensForApiImportForAccessRelationServiceImpl relation }
 import type { {{ relation.serviceRelationName }} } from '../data-service';
 
 /**
-* Access Relation Service Implementation for {{ getClassName (getRelationOwnerAsClassType relation) }}.{{ relation.name }}
+* Access Relation Service Implementation for {{ classDataName (getRelationOwnerAsClassType relation) "" }}.{{ relation.name }}
 */
 export class {{ relation.serviceRelationName }}Impl extends JudoAxiosService implements {{ relation.serviceRelationName }} {
 {{# if relation.isListable }}
@@ -39,7 +39,7 @@ export class {{ relation.serviceRelationName }}Impl extends JudoAxiosService imp
     /**
     * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
     */
-    async create{{ firstToUpper relation.name }}(target: {{ getClassName relation.target }}): Promise<{{ classDataName relation.target "Stored" }}> {
+    async create{{ firstToUpper relation.name }}(target: {{ classDataName relation.target "" }}): Promise<{{ classDataName relation.target "Stored" }}> {
         const path = '{{ restPath (getRelationOwnerAsClassType relation) "/"  relation.name "/~create" }}';
         const response = await this.axios.post(this.getPathForActor(path), target);
         return response.data;

@@ -18,8 +18,8 @@
         <node-install-dir>${project.basedir}/.nodejs</node-install-dir>
         <generation-target>${project.basedir}/target/test-classes</generation-target>
 
-        <actor>formstest__test__testactor</actor>
-        <actor-fq-name>FormsTest::test::TestActor</actor-fq-name>
+        <actor>testactor</actor>
+        <actor-fq-name>TestActor</actor-fq-name>
     </properties>
 
     <build>
