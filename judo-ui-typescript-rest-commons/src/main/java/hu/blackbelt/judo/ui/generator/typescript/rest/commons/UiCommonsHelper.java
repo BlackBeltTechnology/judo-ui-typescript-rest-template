@@ -41,17 +41,6 @@ public class UiCommonsHelper extends StaticMethodValueResolver {
         return StringUtils.capitalize(input);
     }
 
-    public static String nameWithoutModel(String fqName) {
-        return stream(fqName.replaceAll("#", "::")
-                .replaceAll("\\.", "::")
-                .replaceAll("/", "::")
-                .replaceAll("_", "::")
-                .split("::"))
-                .skip(1)
-                .map(StringUtils::capitalize)
-                .collect(Collectors.joining());
-    }
-
     public static String getCamelCaseVersion(String token) {
         return StringUtils.capitalize(stream(token.split("_")).map(StringUtils::capitalize).collect(Collectors.joining()));
     }
@@ -61,10 +50,9 @@ public class UiCommonsHelper extends StaticMethodValueResolver {
     }
 
     public static String classDataName(ClassType classType, String suffix) {
-        String className = classType.getName();
-        String base = nameWithoutModel(className);
+        String className = stream(classType.getName().split("::")).map(StringUtils::capitalize).collect(Collectors.joining());
 
-        return base += suffix != null ? suffix : "";
+        return className += suffix != null ? suffix : "";
     }
 
     public static String serviceRelationName(RelationType relation) {
