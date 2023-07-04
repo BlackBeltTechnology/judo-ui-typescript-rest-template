@@ -12,7 +12,7 @@ export interface {{ serviceClassName classType }} {
     {{/ if }}
 
     {{# if (classTypeIsMapped classType) }}
-        refresh(target: JudoIdentifiable<{{ getClassName classType }}>, queryCustomizer?: {{ classDataName classType "QueryCustomizer" }}): Promise<{{ classDataName classType "Stored" }}>;
+        refresh(target: JudoIdentifiable<{{ classDataName classType "" }}>, queryCustomizer?: {{ classDataName classType "QueryCustomizer" }}): Promise<{{ classDataName classType "Stored" }}>;
     {{/ if }}
 
     {{# if classType.isDeletable }}
