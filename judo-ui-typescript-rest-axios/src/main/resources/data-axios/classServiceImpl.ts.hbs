@@ -25,7 +25,7 @@ export class {{ classType.serviceClassName }}Impl extends JudoAxiosService imple
     /**
     * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
     */
-    async refresh(target: JudoIdentifiable<{{ getClassName classType }}>, queryCustomizer?:{{ classDataName classType "QueryCustomizer" }}): Promise<{{  classDataName classType "Stored"  }}> {
+    async refresh(target: JudoIdentifiable<{{ classDataName classType "" }}>, queryCustomizer?:{{ classDataName classType "QueryCustomizer" }}): Promise<{{  classDataName classType "Stored"  }}> {
         const path = '{{ classTypeRestPath classType '/~get' }}';
         const response = await this.axios.post(this.getPathForActor(path), queryCustomizer, {
             headers: {
