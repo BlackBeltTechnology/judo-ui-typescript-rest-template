@@ -1,13 +1,13 @@
 {{> fragment.header.hbs }}
 
 import type { QueryCustomizer } from '@judo/data-api-common';
-import { {{ getClassName classType }} } from '../model/{{ getClassName classType }}';
+import { {{ classDataName classType "" }} } from '../model/{{ classDataName classType "" }}';
 
 {{# each (getImportTokensForQueries classType) as | token | }}
     import { {{ token }} } from './{{ token }}';
 {{/ each}}
 
-export interface {{ classDataName classType "QueryCustomizer" }} extends QueryCustomizer<{{ getClassName classType }}>{
+export interface {{ classDataName classType "QueryCustomizer" }} extends QueryCustomizer<{{ classDataName classType "" }}>{
 {{# each classType.attributes as |attribute| }}
     {{# if (attributeIsFilterable attribute) }}
         {{ unsafeVariable attribute.name }}?: Array<{{ restFilterName attribute.dataType }}>;
