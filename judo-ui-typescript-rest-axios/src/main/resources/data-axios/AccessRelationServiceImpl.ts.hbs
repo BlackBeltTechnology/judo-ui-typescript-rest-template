@@ -2,12 +2,12 @@
 
 import { JudoAxiosService } from './JudoAxiosService';
 import type { {{ joinedTokensForApiImportForAccessRelationServiceImpl relation }} } from '../data-api';
-import type { {{ relation.serviceRelationName }} as _svc } from '../data-service';
+import type { {{ relation.serviceRelationName }} } from '../data-service';
 
 /**
 * Access Relation Service Implementation for {{ classDataName (getRelationOwnerAsClassType relation) "" }}.{{ relation.name }}
 */
-export class {{ relation.serviceRelationName }}Impl extends JudoAxiosService implements _svc {
+export class {{ relation.serviceRelationName }}Impl extends JudoAxiosService implements {{ relation.serviceRelationName }} {
 {{# if relation.isListable }}
     {{# if (relationIsCollection relation) }}
         /**

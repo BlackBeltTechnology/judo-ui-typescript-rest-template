@@ -141,7 +141,7 @@ public class UiServiceHelper extends StaticMethodValueResolver {
     }
 
     public static String serviceClassName(ClassType type) {
-        return classDataName(type, "").concat("Service");
+        return classDataName(type, "").concat("ServiceForClass");
     }
 
     public static boolean classTypeIsMapped(ClassType classType) {
