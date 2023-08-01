@@ -3,12 +3,12 @@
 import type { JudoIdentifiable } from '@judo/data-api-common';
 import { JudoAxiosService } from './JudoAxiosService';
 import type { {{ joinedTokensForApiImportClassService classType }} } from '../data-api';
-import type { {{ classType.serviceClassName }} as _svc } from '../data-service';
+import type { {{ classType.serviceClassName }} } from '../data-service';
 
 /**
 * Class Service Implementation for {{ classDataName classType "" }}
 */
-export class {{ classType.serviceClassName }}Impl extends JudoAxiosService implements _svc {
+export class {{ classType.serviceClassName }}Impl extends JudoAxiosService implements {{ classType.serviceClassName }} {
 {{# if classType.isTemplateable }}
     /**
     * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
