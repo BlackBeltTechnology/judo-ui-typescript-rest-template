@@ -2010,4 +2010,5 @@
   <dataTypes xsi:type="data:DateType" xmi:id="DateType@ActionGroupTest/God/ActionGroupTest/types.Date" name="ActionGroupTest::types.Date" operator="EnumerationType@ActionGroupTest/God/_NumericOperation"/>
   <dataTypes xsi:type="data:StringType" xmi:id="StringType@ActionGroupTest/God/ActionGroupTest/types.Phone" name="ActionGroupTest::types.Phone" operator="EnumerationType@ActionGroupTest/God/_StringOperation" maxLength="20"/>
   <layoutTypes xmi:id="LayoutType@ActionGroupTest/God/default" name="default"/>
+  <theme xmi:id="_yT9MYDYBEe6rzYlNwP8N5g" textPrimaryColor="#17191DFF" textSecondaryColor="#434448FF" primaryColor="#E7501DFF" subtitleColor="#8C8C8C" secondaryColor="#3C4166FF" backgroundColor="#FAFAFAFF"/>
 </ui:Application>
