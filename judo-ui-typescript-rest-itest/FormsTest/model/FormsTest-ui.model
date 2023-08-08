@@ -895,4 +895,5 @@
   <dataTypes xsi:type="data:StringType" xmi:id="StringType@FormsTest/test/TestActor/FormsTest/types.Text" name="FormsTest::types.Text" operator="EnumerationType@FormsTest/test/TestActor/_StringOperation" maxLength="250"/>
   <dataTypes xsi:type="data:TimestampType" xmi:id="TimestampType@FormsTest/test/TestActor/FormsTest/types.Timestamp" name="FormsTest::types.Timestamp" operator="EnumerationType@FormsTest/test/TestActor/_NumericOperation"/>
   <layoutTypes xmi:id="LayoutType@FormsTest/test/TestActor/default" name="default"/>
+  <theme xmi:id="_yT9MYDYBEe6rzYlNwP8N5g" textPrimaryColor="#17191DFF" textSecondaryColor="#434448FF" primaryColor="#E7501DFF" subtitleColor="#8C8C8C" secondaryColor="#3C4166FF" backgroundColor="#FAFAFAFF"/>
 </ui:Application>
