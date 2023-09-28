@@ -18,8 +18,8 @@
         <node-install-dir>${project.basedir}/.nodejs</node-install-dir>
         <generation-target>${project.basedir}/target/test-classes</generation-target>
 
-        <actor>actiongrouptest__god</actor>
-        <actor-fq-name>ActionGroupTest::God</actor-fq-name>
+        <actor>god</actor>
+        <actor-fq-name>God</actor-fq-name>
     </properties>
 
     <build>
