@@ -47,7 +47,7 @@ public class UiCommonsHelper extends StaticMethodValueResolver {
                 .replaceAll("/", "::")
                 .replaceAll("_", "::")
                 .split("::"))
-                .skip(1)
+//                .skip(1) // we no longer need to skip, because the model name is no longer part of the name
                 .map(StringUtils::capitalize)
                 .collect(Collectors.joining());
     }

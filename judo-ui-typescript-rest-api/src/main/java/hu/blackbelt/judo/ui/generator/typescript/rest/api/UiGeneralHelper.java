@@ -226,7 +226,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
             return null;
         }
 
-        String fqDataTypeNames[] = fqDataTypeName.split("\\.");
+        String fqDataTypeNames[] = fqDataTypeName.split("::");
         return fqDataTypeNames[fqDataTypeNames.length - 1];
     }
     public static String restFilterName(DataType dataType) {
