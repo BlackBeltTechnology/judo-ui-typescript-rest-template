@@ -26,6 +26,7 @@ import hu.blackbelt.judo.generator.commons.annotations.TemplateHelper;
 import hu.blackbelt.judo.meta.ui.Application;
 import hu.blackbelt.judo.meta.ui.NamedElement;
 import hu.blackbelt.judo.meta.ui.data.*;
+import hu.blackbelt.judo.ui.generator.typescript.rest.commons.UiCommonsHelper;
 import lombok.extern.java.Log;
 import org.eclipse.emf.common.util.EList;
 
@@ -35,86 +36,55 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import static hu.blackbelt.judo.ui.generator.typescript.rest.commons.UiCommonsHelper.*;
 import static java.util.Arrays.stream;
-import static hu.blackbelt.judo.ui.generator.typescript.rest.commons.UiCommonsHelper.classDataName;
-import static hu.blackbelt.judo.ui.generator.typescript.rest.commons.UiCommonsHelper.firstToUpper;
-import static hu.blackbelt.judo.ui.generator.typescript.rest.commons.UiCommonsHelper.getXMIID;
-import static hu.blackbelt.judo.ui.generator.typescript.rest.commons.UiCommonsHelper.restParamName;
 
 @Log
 @TemplateHelper
 public class UiGeneralHelper extends StaticMethodValueResolver {
+    public static final String TRANSFER_SKIP_SEGMENT = "_default_transferobjecttypes";
 
-    public static String packageName(String packageName) {
-        List<String> nameTokens = stream(packageName
-                .split("::"))
-                .collect(Collectors.toList());
-        if (nameTokens.size() > 2) {
-            nameTokens.remove(0);
-            nameTokens.remove(nameTokens.size() - 1);
-            return nameTokens.stream()
-                    .map(s -> StringUtils.capitalize(
-                            stream(s.replaceAll("#", "::")
-                                    .replaceAll("\\.", "::")
-                                    .replaceAll("/", "::")
-                                    .replaceAll("_", "::")
-                                    .split("::"))
-                                    .map(t -> StringUtils.capitalize(t))
-                                    .collect(Collectors.joining())
-                    ))
-                    .collect(Collectors.joining());
-        }
-        return null;
-    }
-
-    public static String firstToLower(String input) {
-        return StringUtils.uncapitalize(input);
-    }
-
-    public static Collection<EnumerationType> getEnumerationTypes(Application application) {
+    public static List<EnumerationType> getEnumerationTypes(Application application) {
         return application.getDataTypes().stream()
                 .filter(i -> i instanceof EnumerationType)
-                .map(i -> (EnumerationType) i).collect(Collectors.toList());
+                .map(i -> (EnumerationType) i)
+                .toList();
     }
 
-    public static Collection<ClassType> getClassTypes(Application application) {
+    public static List<ClassType> getClassTypes(Application application) {
         return application.getDataElements().stream()
                 .filter(i -> i instanceof ClassType)
                 .map(i -> (ClassType) i)
-                .filter(i -> !i.isIsActor())
+                .filter(i -> !i.isIsActor() && !i.getTransferObjectTypeName().contains(TRANSFER_SKIP_SEGMENT))
                 .sorted(Comparator.comparing(NamedElement::getFQName))
-                .collect(Collectors.toList());
+                .toList();
     }
 
-    public static Collection<OperationType> getOperationType(Application application) {
+    public static Collection<OperationType> getOperationTypes(Application application) {
         return application.getDataElements().stream().filter(i -> i instanceof ClassType)
                 .map(i -> (ClassType) i)
                 .flatMap(i -> i.getOperations().stream())
                 .filter(i -> i instanceof OperationType)
-                .map(i -> (OperationType) i).collect(Collectors.toList());
-    }
-
-    public static Collection<ClassType> getQueryCustomizers(Application application) {
-        return application.getDataElements().stream().filter(i -> i instanceof ClassType)
-                .map(i -> (ClassType) i)
-                .filter(i -> !i.isIsActor()).collect(Collectors.toList());
+                .toList();
     }
 
     public static Collection<DataType> getFilterableDataTypes(Application app) {
-        List<ClassType> classes = app.getClassTypes();
-        ArrayList<AttributeType> attributeTypeList = new ArrayList();
+        List<ClassType> classes = getClassTypes(app);
+        ArrayList<AttributeType> attributeTypeList = new ArrayList<>();
 
         for (ClassType classType : classes) {
             attributeTypeList.addAll(
                     classType.getAttributes().stream()
-                            .filter(a -> a.isIsFilterable())
-                            .collect(Collectors.toList())
+                            .filter(AttributeType::isIsFilterable)
+                            .toList()
             );
         }
 
         return attributeTypeList.stream()
-                .map(a -> a.getDataType())
-                .filter(distinctByKey(dataType -> getXMIID(dataType))).collect(Collectors.toList());
+                .map(AttributeType::getDataType)
+                .filter(distinctByKey(UiCommonsHelper::getXMIID))
+                .sorted(Comparator.comparing(NamedElement::getFQName))
+                .toList();
     }
 
     private static <T extends Object> Predicate<T> distinctByKey(final Function<? super T, ?> keyExtractor) {
@@ -127,8 +97,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
     }
 
     public static String faultContainerName(OperationType operationType) {
-        String packName = packageName(operationType.getName());
-        return (packName == null ? "" : firstToUpper(packName)) + firstToUpper(className(operationType.getName())) + "FaultContainer";
+        return String.join("", operationType.getOwner().getName().split(SPLITTER)) + firstToUpper(operationType.getName()) + "FaultContainer";
     }
 
 
@@ -167,12 +136,11 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
 
 
     private static boolean hasClassAttributes(ClassType classType) {
-        return classType.getAttributes() != null && classType.getAttributes().size() > 0;
+        return classType.getAttributes() != null && !classType.getAttributes().isEmpty();
     }
     public static HashSet<String> modelImportTokens(ClassType classType) {
-        var tokens = new HashSet<String>();
 
-        tokens.addAll(classType.getRelations().stream().map(r -> classDataName(r.getTarget(), "Attributes")).collect(Collectors.toList()));
+        var tokens = new HashSet<String>(classType.getRelations().stream().map(r -> classDataName(r.getTarget(), "Attributes")).toList());
 
         if (hasClassAttributes(classType)) {
             tokens.add(classDataName(classType, "Attributes"));
@@ -181,37 +149,21 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return tokens;
     }
 
-    public static String className(String fqName) {
-        if(fqName == null) {
-            return null;
-        }
-
-        if(!fqName.contains("::")) {
-            return fqName;
-        }
-
-        String[] splittedfqName = fqName.split("::");
-        return splittedfqName[splittedfqName.length - 1];
-    }
-    public static String unsafeVariable(String fqName) {
-        return className(fqName);
-    }
-
     public static String getRelationType(RelationType relation) {
-        String typeName = classDataName(relation.getTarget(), "Stored");
+        String typeName = classDataName(relation.getTarget(), relation.getTarget().isIsMapped() ? "Stored" : "");
         return relation.isIsCollection() ? ("Array<" + typeName + ">") : typeName;
     }
 
     public static String getClassTypeAttributes(ClassType classType) {
-        return classType.getAttributes().stream().map(r -> unsafeVariable(r.getName())).collect(Collectors.joining("' | '"));
+        return classType.getAttributes().stream().map(NamedElement::getName).collect(Collectors.joining("' | '"));
     }
 
     public static String getClassTypeRelations(ClassType classType) {
-        return classType.getRelations().stream().map(r -> unsafeVariable(r.getName())).collect(Collectors.joining("' | '"));
+        return classType.getRelations().stream().map(NamedElement::getName).collect(Collectors.joining("' | '"));
     }
 
     public static String getFaultTargets(OperationParameterType operationParameterType) {
-        return classDataName(operationParameterType.getTarget(), null).toString();
+        return classDataName(operationParameterType.getTarget(), null);
     }
 
     public static List<OperationParameterType> getOperationTypeFaults(OperationType operationType){
@@ -221,32 +173,16 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
                 .collect(Collectors.toList());
     }
 
-    public static String openApiDataType(String fqDataTypeName){
-        if (fqDataTypeName == null) {
-            return null;
-        }
-
-        String fqDataTypeNames[] = fqDataTypeName.split("\\.");
-        return fqDataTypeNames[fqDataTypeNames.length - 1];
-    }
     public static String restFilterName(DataType dataType) {
-        return "FilterBy" + openApiDataType(dataType.getName());
-    }
-
-    public static Boolean attributeIsFilterable(AttributeType attribute) {
-        return attribute.isIsFilterable();
+        return "FilterBy" + String.join("", dataType.getName().split(SPLITTER));
     }
 
     public static Boolean isGreaterThan(int a, int b) {
-        if (a > b) {
-            return true;
-        } else {
-            return false;
-        }
+        return a > b;
     }
 
     public static String joinModelImportTokens(HashSet<String> modelImportTokens) {
-        return modelImportTokens.stream().collect(Collectors.joining(", "));
+        return String.join(", ", modelImportTokens);
     }
 
     public static List<RelationType> getAggregatedRelations(ClassType classType) {
@@ -263,13 +199,11 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
                 .filter(r -> r.getRelationKind() != RelationKind.ASSOCIATION).collect(Collectors.toList());
     }
 
-
-
     public static HashSet<RelationType> getUniqueRelations(ClassType classType) {
         HashSet<RelationType> uniqueRelations = new HashSet<RelationType>();
 
         for (RelationType relation: getAggregatedRelations(classType)) {
-            if (!uniqueRelations.stream().map(r -> r.getTarget().getName()).collect(Collectors.toList()).contains(relation.getTarget().getName())) {
+            if (!uniqueRelations.stream().map(r -> r.getTarget().getName()).toList().contains(relation.getTarget().getName())) {
                 uniqueRelations.add(relation);
             }
         }
@@ -286,7 +220,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
     }
 
     public static String relationBuilderName (RelationType relationType, ClassType classType, String postfix) {
-        return classDataName(classType, firstToUpper(unsafeVariable(relationType.getName())) + postfix);
+        return classDataName(classType, firstToUpper(relationType.getName()) + postfix);
     }
     public static String getRelationBuilderNames(RelationType relation) {
         String relationBuilderName =  getAggregatedTarget(relation).stream()
@@ -311,9 +245,9 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
                 .map(r -> relationBuilderName(r, classType, "MaskBuilder"))
                 .collect(Collectors.joining(" | ")) : "";
 
-        String res = attrs + (attrs.length() > 0 && rels.length() > 0 ? " | " : "") + rels;
+        String res = attrs + (!attrs.isEmpty() && !rels.isEmpty() ? " | " : "") + rels;
 
-        return res.length() > 0 ? res : "any";
+        return !res.isEmpty() ? res : "any";
     }
 
     public static boolean isEnumType(DataType type) {

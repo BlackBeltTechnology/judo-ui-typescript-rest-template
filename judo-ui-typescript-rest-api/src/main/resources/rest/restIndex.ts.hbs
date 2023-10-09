@@ -1,10 +1,10 @@
 {{> fragment.header.hbs }}
 
-{{# each (getQueryCustomizers application) as | fileName | }}
+{{# each (getClassTypes application) as | fileName | }}
     export * from './{{ classDataName fileName "QueryCustomizer" }}';
 {{/ each }}
 
-{{# each (getQueryCustomizers application) as | fileName | }}
+{{# each (getClassTypes application) as | fileName | }}
     export * from './{{ classDataName fileName "MaskBuilder" }}';
 {{/ each }}
 
