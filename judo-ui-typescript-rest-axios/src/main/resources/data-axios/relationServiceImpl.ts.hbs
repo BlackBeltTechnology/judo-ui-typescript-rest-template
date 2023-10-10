@@ -12,31 +12,16 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
 {{# if relation.isListable }}
     {{# if relation.isCollection }}
         /**
-         * From: relation.isListable
+         * From: relation.isListable, relation.isCollection
          * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
          */
-        async list({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>> {
+        async list(owner?: JudoIdentifiable<any>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>> {
             const path = '{{ restPath (getRelationOwnerAsClassType relation) "/"  relation.name "/~list" }}';
-            const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}{{# unless relation.isAccess }}, {
+            const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, owner ? {
                 headers: {
                     'X-Judo-SignedIdentifier': owner.__signedIdentifier,
                 },
-            } {{/ unless }});
-
-            return response.data;
-        }
-    {{ else }}
-        /**
-         * From: relation.isListable
-         * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
-         */
-        async get({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<{{ classDataName relation.target "Stored" }}> {
-            const path = '{{ restPath (getRelationOwnerAsClassType relation) "/" relation.name "/~get" }}';
-            const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}{{# unless relation.isAccess }}, {
-                headers: {
-                    'X-Judo-SignedIdentifier': owner.__signedIdentifier,
-                },
-            } {{/ unless }});
+            } : undefined);
 
             return response.data;
         }
@@ -48,13 +33,13 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
      * From: relation.isRefreshable
      * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
      */
-    async refresh(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<{{ classDataName relation.target "Stored" }}> {
+    async refresh(owner?: JudoIdentifiable<any>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<{{ classDataName relation.target "Stored" }}> {
         const path = '{{ restPath relation.target "/~get" }}';
-        const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, {
+        const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, owner ? {
             headers: {
                 'X-Judo-SignedIdentifier': owner.__signedIdentifier,
             },
-        });
+        } : undefined);
 
         return response.data;
     }

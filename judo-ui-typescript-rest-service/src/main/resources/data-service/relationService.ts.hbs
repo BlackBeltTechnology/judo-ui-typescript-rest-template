@@ -9,14 +9,12 @@ import { {{ joinedTokensForApiImport relation }} } from '../data-api';
 export interface {{ serviceRelationName relation }} {
 {{# if relation.isListable }}
     {{# if relation.isCollection }}
-        list({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) }}>, {{/ unless }}queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>>;
-    {{ else }}
-        get({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) }}>, {{/ unless }}queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<{{ classDataName relation.target "Stored" }}>;
+        list(owner?: JudoIdentifiable<any>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>>;
     {{/ if }}
 {{/ if }}
 
 {{# if relation.isRefreshable }}
-    refresh(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<{{ classDataName relation.target "Stored" }}>;
+    refresh(owner?: JudoIdentifiable<any>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<{{ classDataName relation.target "Stored" }}>;
 {{/ if }}
 
 {{# if relation.isRangeable }}
