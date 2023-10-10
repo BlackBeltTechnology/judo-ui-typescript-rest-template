@@ -20,7 +20,6 @@ package hu.blackbelt.judo.ui.generator.typescript.rest.api;
  * #L%
  */
 
-import com.github.jknack.handlebars.internal.lang3.StringUtils;
 import hu.blackbelt.judo.generator.commons.StaticMethodValueResolver;
 import hu.blackbelt.judo.generator.commons.annotations.TemplateHelper;
 import hu.blackbelt.judo.meta.ui.Application;
@@ -28,7 +27,6 @@ import hu.blackbelt.judo.meta.ui.NamedElement;
 import hu.blackbelt.judo.meta.ui.data.*;
 import hu.blackbelt.judo.ui.generator.typescript.rest.commons.UiCommonsHelper;
 import lombok.extern.java.Log;
-import org.eclipse.emf.common.util.EList;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -37,7 +35,6 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static hu.blackbelt.judo.ui.generator.typescript.rest.commons.UiCommonsHelper.*;
-import static java.util.Arrays.stream;
 
 @Log
 @TemplateHelper

@@ -69,7 +69,7 @@ public class UiCommonsHelper extends StaticMethodValueResolver {
     }
 
     public static String restParamName(DataType dataType) {
-        String[] tokens = dataType.getName().split("::");
+        String[] tokens = dataType.getName().split(SPLITTER);
         String last = tokens[tokens.length - 1];
         return stream(last.split("\\.")).map(StringUtils::capitalize).collect(Collectors.joining(""));
     }

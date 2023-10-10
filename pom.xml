@@ -15,7 +15,15 @@
             <email>robert.csakany@blackbelt.hu</email>
             <url>https://github.com/robertcsakany</url>
             <organization>BlackBelt Technology</organization>
-            <organizationUrl>http://www.blackbelt.hu</organizationUrl>
+            <organizationUrl>https://www.blackbelt.hu</organizationUrl>
+        </developer>
+        <developer>
+            <id>noherczeg</id>
+            <name>Norbert Herczeg</name>
+            <email>norbert.herczeg@blackbelt.hu</email>
+            <url>https://github.com/noherczeg</url>
+            <organization>BlackBelt Technology</organization>
+            <organizationUrl>https://www.blackbelt.hu</organizationUrl>
         </developer>
     </developers>
 
@@ -58,7 +66,7 @@
 
     </properties>
 
-    <url>http://github.com/${project-repositoryId}</url>
+    <url>https://github.com/${project-repositoryId}</url>
 
     <issueManagement>
         <url>https://github.com/${project-repositoryId}/issues</url>
@@ -70,7 +78,7 @@
         <!--suppress UnresolvedMavenProperty -->
         <developerConnection>scm:git:ssh://${git.username}@github.com:${project-repositoryId}.git
         </developerConnection>
-        <url>http://github.com/${project-repositoryId}</url>
+        <url>https://github.com/${project-repositoryId}</url>
     </scm>
 
     <licenses>
