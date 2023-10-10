@@ -16,7 +16,7 @@ export interface {{ serviceRelationName relation }} {
 {{/ if }}
 
 {{# if relation.isRefreshable }}
-    refresh(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, mask?: string): Promise<{{ classDataName relation.target "Stored" }}>;
+    refresh(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<{{ classDataName relation.target "Stored" }}>;
 {{/ if }}
 
 {{# if relation.isRangeable }}
@@ -60,7 +60,7 @@ export interface {{ serviceRelationName relation }} {
         {{# if targetRelation.isCollection }}
             list{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName targetRelation.target "Stored" }}>>;
         {{ else }}
-            get{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, mask?: string): Promise<{{ classDataName targetRelation.target "Stored" }}>;
+            get{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}): Promise<{{ classDataName targetRelation.target "Stored" }}>;
         {{/ if }}
     {{/ if }}
 

@@ -48,9 +48,8 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
      * From: relation.isRefreshable
      * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
      */
-    async refresh(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, mask?: string): Promise<{{ classDataName relation.target "Stored" }}> {
+    async refresh(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<{{ classDataName relation.target "Stored" }}> {
         const path = '{{ restPath relation.target "/~get" }}';
-        const queryCustomizer: {{ classDataName relation.target "QueryCustomizer" }} | undefined = mask ? { _mask: mask } : undefined;
         const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, {
             headers: {
                 'X-Judo-SignedIdentifier': owner.__signedIdentifier,
@@ -233,9 +232,8 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
                 return response.data;
             }
         {{ else }}
-            async get{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, mask?: string): Promise<{{ classDataName targetRelation.target "Stored" }}> {
+            async get{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}): Promise<{{ classDataName targetRelation.target "Stored" }}> {
                 const path = '{{ restPath relation.target "/" targetRelation.name "/~get" }}';
-                const queryCustomizer: {{ classDataName relation.target "QueryCustomizer" }} | undefined = mask ? { _mask: mask } : undefined;
                 const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, {
                     headers: {
                         'X-Judo-SignedIdentifier': owner.__signedIdentifier,
