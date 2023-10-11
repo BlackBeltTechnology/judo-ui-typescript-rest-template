@@ -114,11 +114,11 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
         {{ else }}
             const path = '{{ restPath relation.target "/~delete" }}';
         {{/ unless }}
-        await this.axios.post(this.getPathForActor(path), target{{# unless relation.isAccess }}, {
+        await this.axios.post(this.getPathForActor(path), target, {
             headers: {
-                'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+                'X-Judo-SignedIdentifier': {{# unless relation.isAccess }}owner{{ else }}target{{/ unless }}.__signedIdentifier,
             },
-        } {{/ unless }});
+        });
     }
 {{/ if }}
 
@@ -133,11 +133,11 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
         {{ else }}
             const path = '{{ restPath relation.target "/~update" }}';
         {{/ unless }}
-        const response = await this.axios.post(this.getPathForActor(path), target{{# unless relation.isAccess }}, {
+        const response = await this.axios.post(this.getPathForActor(path), target, {
             headers: {
-                'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+                'X-Judo-SignedIdentifier': {{# unless relation.isAccess }}owner{{ else }}target{{/ unless }}.__signedIdentifier,
             },
-        } {{/ unless }});
+        });
 
         return response.data;
     }
