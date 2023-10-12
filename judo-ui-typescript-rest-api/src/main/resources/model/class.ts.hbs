@@ -7,11 +7,11 @@ import type { JudoStored } from '@judo/data-api-common';
 
 export interface {{ classDataName classType '' }} {
 {{# each classType.attributes as | attribute | }}
-    {{ unsafeVariable attribute.name }}{{# if attribute.isRequired }}: {{ else }}?: null | {{/ if}}{{ typescriptType attribute.dataType }};
+    {{ attribute.name }}{{# if attribute.isRequired }}: {{ else }}?: null | {{/ if}}{{ typescriptType attribute.dataType }};
 {{/ each }}
 
 {{# each classType.relations as | relation | }}
-    {{ unsafeVariable relation.name }}{{# if relation.isOptional }}?: null | {{ else }}:{{/ if}}{{{ getRelationType relation }}};
+    {{ relation.name }}{{# if relation.isOptional }}?: null | {{ else }}:{{/ if}}{{{ getRelationType relation }}};
 {{/ each }}
 
 }

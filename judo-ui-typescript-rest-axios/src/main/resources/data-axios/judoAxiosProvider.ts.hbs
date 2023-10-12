@@ -22,14 +22,14 @@ export class JudoAxiosProvider implements AxiosProvider {
     }
 
     getBasePath(suffix?: string): string {
-        let base = typeof this.basePathFactory !== 'function' ? '/{{ getAppName application }}' : this.basePathFactory();
+        let base = typeof this.basePathFactory !== 'function' ? '/{{ application.name }}' : this.basePathFactory();
         base = base.replace(/\/+$/, '');
 
         return base + (suffix ? ('/' + suffix) : '');
     }
 
     getFilePath(suffix?: string): string {
-        let base = typeof this.filePathFactory !== 'function' ? '/{{ getAppName application }}' : this.filePathFactory();
+        let base = typeof this.filePathFactory !== 'function' ? '/{{ application.name }}' : this.filePathFactory();
         base = base.replace(/\/+$/, '');
 
         return base + (suffix ? ('/' + suffix) : '');

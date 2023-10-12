@@ -15,7 +15,15 @@
             <email>robert.csakany@blackbelt.hu</email>
             <url>https://github.com/robertcsakany</url>
             <organization>BlackBelt Technology</organization>
-            <organizationUrl>http://www.blackbelt.hu</organizationUrl>
+            <organizationUrl>https://www.blackbelt.hu</organizationUrl>
+        </developer>
+        <developer>
+            <id>noherczeg</id>
+            <name>Norbert Herczeg</name>
+            <email>norbert.herczeg@blackbelt.hu</email>
+            <url>https://github.com/noherczeg</url>
+            <organization>BlackBelt Technology</organization>
+            <organizationUrl>https://www.blackbelt.hu</organizationUrl>
         </developer>
     </developers>
 
@@ -42,8 +50,8 @@
 
         <surefire-version>3.0.0-M7</surefire-version>
 
-        <judo-meta-ui-version>1.1.0.20231010_040555_ac83de2a_develop</judo-meta-ui-version>
-        <judo-generator-commons-version>1.0.0.20231009_184136_321053b3_develop</judo-generator-commons-version>
+        <judo-meta-ui-version>1.1.0.20231011_143440_62adaf9c_feature_JNG_4838_SeparatePageContainerAndDefinition</judo-meta-ui-version>
+        <judo-generator-commons-version>1.0.0.20230826_230139_c0dd2610_develop</judo-generator-commons-version>
 
         <!-- Code Quality-->
         <sonar-maven-plugin-version>3.9.1.2184</sonar-maven-plugin-version>
@@ -58,7 +66,7 @@
 
     </properties>
 
-    <url>http://github.com/${project-repositoryId}</url>
+    <url>https://github.com/${project-repositoryId}</url>
 
     <issueManagement>
         <url>https://github.com/${project-repositoryId}/issues</url>
@@ -70,7 +78,7 @@
         <!--suppress UnresolvedMavenProperty -->
         <developerConnection>scm:git:ssh://${git.username}@github.com:${project-repositoryId}.git
         </developerConnection>
-        <url>http://github.com/${project-repositoryId}</url>
+        <url>https://github.com/${project-repositoryId}</url>
     </scm>
 
     <licenses>
