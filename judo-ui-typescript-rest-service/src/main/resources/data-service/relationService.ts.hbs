@@ -30,7 +30,7 @@ export interface {{ serviceRelationName relation }} {
 {{/ if }}
 
 {{# if relation.isDeletable }}
-    delete({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) }}>, {{/ unless }}target: JudoIdentifiable<{{ classDataName relation.target }}>): Promise<void>;
+    delete(target: JudoIdentifiable<{{ classDataName relation.target }}>): Promise<void>;
 {{/ if }}
 
 {{# if relation.isUpdatable }}
@@ -75,7 +75,7 @@ export interface {{ serviceRelationName relation }} {
     {{/ if }}
 
     {{# if targetRelation.isDeletable }}
-        delete{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target }}>, target: JudoIdentifiable<{{ classDataName targetRelation.target }}>): Promise<void>;
+        delete{{ firstToUpper targetRelation.name }}(target: JudoIdentifiable<{{ classDataName targetRelation.target }}>): Promise<void>;
     {{/ if }}
 
     {{# if targetRelation.isUpdatable }}

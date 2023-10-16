@@ -110,7 +110,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
      */
     async delete(target: JudoIdentifiable<{{ classDataName relation.target "" }}>): Promise<void> {
         const path = '{{ restPath relation.target "/~delete" }}';
-        await this.axios.post(this.getPathForActor(path), target, {
+        await this.axios.post(this.getPathForActor(path), undefined, {
             headers: {
                 'X-Judo-SignedIdentifier': target.__signedIdentifier,
             },
@@ -265,11 +265,11 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     {{/ if }}
 
     {{# if targetRelation.isDeletable }}
-        async delete{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target }}>, target: JudoIdentifiable<{{ classDataName targetRelation.target }}>): Promise<void> {
-            const path = '{{ restPath relation.target "/~update/"  targetRelation.name "/~delete" }}';
+        async delete{{ firstToUpper targetRelation.name }}(target: JudoIdentifiable<{{ classDataName targetRelation.target }}>): Promise<void> {
+            const path = '{{ restPath targetRelation.target "/~delete" }}';
             await this.axios.post(this.getPathForActor(path), undefined, {
                 headers: {
-                    'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+                    'X-Judo-SignedIdentifier': target.__signedIdentifier,
                 },
             });
         }
