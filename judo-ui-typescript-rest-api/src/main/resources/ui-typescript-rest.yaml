@@ -33,7 +33,7 @@ templates:
     templateName: model/modelIndex.ts.hbs
 #TODO: Generate Faults
   - name: queryCustomizer.ts.hbs
-    factoryExpression: "#getQueryCustomizers(#application)"
+    factoryExpression: "#getClassTypes(#application)"
     pathExpression: >
       'data-api/rest/' +
       #classDataName(#self, "QueryCustomizer") + '.ts'
@@ -46,7 +46,7 @@ templates:
 
   - name: mask.ts.hbs
     applicationBased: true
-    factoryExpression: "#getQueryCustomizers(#application)"
+    factoryExpression: "#getClassTypes(#application)"
     pathExpression: >
       'data-api/rest/' +
       #classDataName(#self, "MaskBuilder") + '.ts'
