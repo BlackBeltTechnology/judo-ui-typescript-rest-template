@@ -22,7 +22,7 @@ export interface {{ serviceRelationName relation }} {
 {{/ if }}
 
 {{# if relation.target.isTemplateable }}
-    getTemplate({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) }}>{{/ unless }}): Promise<{{ classDataName relation.target '' }}>;
+    getTemplate(): Promise<{{ classDataName relation.target '' }}>;
 {{/ if }}
 
 {{# if relation.isCreatable }}
@@ -67,7 +67,7 @@ export interface {{ serviceRelationName relation }} {
     {{/ if }}
 
     {{# if targetRelation.target.isTemplateable }}
-        getTemplateFor{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target }}>): Promise<{{ classDataName targetRelation.target '' }}>;
+        getTemplateFor{{ firstToUpper targetRelation.name }}(): Promise<{{ classDataName targetRelation.target '' }}>;
     {{/ if }}
 
     {{# if targetRelation.isCreatable }}

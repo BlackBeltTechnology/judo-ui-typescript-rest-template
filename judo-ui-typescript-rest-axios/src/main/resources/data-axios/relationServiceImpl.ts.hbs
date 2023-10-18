@@ -66,17 +66,9 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
      * From: relation.target.isTemplateable
      * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
      */
-    async getTemplate({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>{{/ unless }}): Promise<{{ classDataName relation.target "" }}> {
-        {{# unless relation.isAccess }}
-            const path = '{{ restPath (getRelationOwnerAsClassType relation) "/" relation.name "/~template" }}';
-        {{ else }}
-            const path = '{{ restPath relation.target "/~template" }}';
-        {{/ unless }}
-        const response = await this.axios.get(this.getPathForActor(path){{# unless relation.isAccess }}, {
-            headers: {
-                'X-Judo-SignedIdentifier': owner.__signedIdentifier,
-            },
-        } {{/ unless }});
+    async getTemplate(): Promise<{{ classDataName relation.target "" }}> {
+        const path = '{{ restPath relation.target "/~template" }}';
+        const response = await this.axios.get(this.getPathForActor(path));
 
         return response.data;
     }
@@ -239,13 +231,9 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     {{/ if }}
 
     {{# if targetRelation.target.isTemplateable }}
-        async getTemplateFor{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target }}>): Promise<{{ classDataName targetRelation.target '' }}> {
+        async getTemplateFor{{ firstToUpper targetRelation.name }}(): Promise<{{ classDataName targetRelation.target '' }}> {
             const path = '{{ restPath targetRelation.target "/~template" }}';
-            const response = await this.axios.get(this.getPathForActor(path), {
-                headers: {
-                    'X-Judo-SignedIdentifier': owner.__signedIdentifier,
-                },
-            });
+            const response = await this.axios.get(this.getPathForActor(path));
 
             return response.data;
         }
