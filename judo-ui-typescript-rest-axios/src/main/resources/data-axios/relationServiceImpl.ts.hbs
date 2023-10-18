@@ -368,6 +368,17 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
         {{/ if }}
     }
 
+    {{# if operation.input }}
+        {{# if operation.input.target.isTemplateable }}
+            async getTemplateFor{{ firstToUpper operation.name }}(): Promise<{{ classDataName operation.input.target '' }}> {
+                const path = '{{ restPath operation.input.target "/~template" }}';
+                const response = await this.axios.get(this.getPathForActor(path));
+
+                return response.data;
+            }
+        {{/ if }}
+    {{/ if }}
+
     {{# if operation.isInputRangeable }}
         /**
          * From: relation.target.operations operation.isInputRangeable
