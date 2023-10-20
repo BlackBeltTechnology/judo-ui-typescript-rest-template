@@ -50,7 +50,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
      * From: relation.isRangeable
      * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
      */
-    async getRange({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}> | {{ classDataName (getRelationOwnerAsClassType relation) "" }}, {{/ unless }}queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>> {
+    async getRangeFor{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}> | {{ classDataName (getRelationOwnerAsClassType relation) "" }}, {{/ unless }}queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>> {
         const path = '{{ restPath (getRelationOwnerAsClassType relation) "/" relation.name "/~range" }}';
         const response = await this.axios.post(this.getPathForActor(path), {
             {{# unless relation.isAccess }}owner: owner ?? {},{{/ unless }}

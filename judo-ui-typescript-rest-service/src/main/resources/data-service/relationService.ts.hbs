@@ -18,7 +18,7 @@ export interface {{ serviceRelationName relation }} {
 {{/ if }}
 
 {{# if relation.isRangeable }}
-    getRange({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) }}> | {{ classDataName (getRelationOwnerAsClassType relation) }}, {{/ unless }}queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>>;
+    getRangeFor{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) }}> | {{ classDataName (getRelationOwnerAsClassType relation) }}, {{/ unless }}queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>>;
 {{/ if }}
 
 {{# if relation.target.isTemplateable }}
