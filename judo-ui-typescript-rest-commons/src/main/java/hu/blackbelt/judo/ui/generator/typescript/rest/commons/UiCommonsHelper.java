@@ -37,23 +37,14 @@ import static java.util.Arrays.stream;
 @Log
 @TemplateHelper
 public class UiCommonsHelper extends StaticMethodValueResolver {
+    public static final String SPLITTER = "::";
+
     public static String firstToUpper(String input) {
         return StringUtils.capitalize(input);
     }
 
-    public static String nameWithoutModel(String fqName) {
-        return stream(fqName.replaceAll("#", "::")
-                .replaceAll("\\.", "::")
-                .replaceAll("/", "::")
-                .replaceAll("_", "::")
-                .split("::"))
-                .skip(1)
-                .map(StringUtils::capitalize)
-                .collect(Collectors.joining());
-    }
-
-    public static String getCamelCaseVersion(String token) {
-        return StringUtils.capitalize(stream(token.split("_")).map(StringUtils::capitalize).collect(Collectors.joining()));
+    public static String firstToLower(String input) {
+        return StringUtils.uncapitalize(input);
     }
 
     public static String getXMIID(EObject element) {
@@ -61,23 +52,24 @@ public class UiCommonsHelper extends StaticMethodValueResolver {
     }
 
     public static String classDataName(ClassType classType, String suffix) {
-        String className = classType.getName();
-        String base = nameWithoutModel(className);
+        String base = String.join("", classType.getName().split(SPLITTER));
 
         return base += suffix != null ? suffix : "";
     }
 
     public static String serviceRelationName(RelationType relation) {
-        return relation.getOwnerPackageNameTokens().stream()
-                .map(UiCommonsHelper::getCamelCaseVersion)
-                .collect(Collectors.joining())
-                .concat(getCamelCaseVersion(relation.getOwnerSimpleName()))
+        return String.join("", relation.getOwner().getName().split(SPLITTER))
                 .concat("ServiceFor")
-                .concat(getCamelCaseVersion(relation.getName()));
+                .concat(firstToUpper(relation.getName()));
+    }
+
+    public static String serviceClassName(ClassType classType) {
+        return String.join("", classType.getName().split(SPLITTER))
+                .concat("Service");
     }
 
     public static String restParamName(DataType dataType) {
-        String[] tokens = dataType.getName().split("::");
+        String[] tokens = dataType.getName().split(SPLITTER);
         String last = tokens[tokens.length - 1];
         return stream(last.split("\\.")).map(StringUtils::capitalize).collect(Collectors.joining(""));
     }
