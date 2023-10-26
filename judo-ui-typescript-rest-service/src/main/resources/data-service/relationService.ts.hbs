@@ -39,7 +39,7 @@ export interface {{ serviceRelationName relation }} {
 {{/ if }}
 
 {{# if relation.isUpdatable }}
-    update({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) }}>, {{/ unless }}target: Partial<{{ classDataName relation.target "Stored" }}>): Promise<{{ classDataName relation.target "Stored" }}>;
+    update(target: Partial<{{ classDataName relation.target "Stored" }}>): Promise<{{ classDataName relation.target "Stored" }}>;
 {{/ if }}
 
 {{# if relation.isSetable }}
