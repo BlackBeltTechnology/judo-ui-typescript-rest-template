@@ -58,9 +58,9 @@ public class UiCommonsHelper extends StaticMethodValueResolver {
     }
 
     public static String serviceRelationName(RelationType relation) {
-        return String.join("", relation.getOwner().getName().split(SPLITTER))
+        return org.springframework.util.StringUtils.capitalize(String.join("", relation.getOwner().getName().split(SPLITTER))
                 .concat("ServiceFor")
-                .concat(firstToUpper(relation.getName()));
+                .concat(firstToUpper(relation.getName())));
     }
 
     public static String serviceClassName(ClassType classType) {

@@ -52,7 +52,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return application.getDataElements().stream()
                 .filter(i -> i instanceof ClassType)
                 .map(i -> (ClassType) i)
-                .filter(i -> !i.isIsActor() && !i.getTransferObjectTypeName().contains(TRANSFER_SKIP_SEGMENT))
+                .filter(i -> !i.isIsActor()/* && !i.getTransferObjectTypeName().contains(TRANSFER_SKIP_SEGMENT)*/)
                 .sorted(Comparator.comparing(NamedElement::getFQName))
                 .toList();
     }
