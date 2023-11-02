@@ -52,7 +52,7 @@ public class UiCommonsHelper extends StaticMethodValueResolver {
     }
 
     public static String classDataName(ClassType classType, String suffix) {
-        String base = String.join("", classType.getName().split(SPLITTER));
+        String base = firstToUpper((String.join("", classType.getName().split(SPLITTER))));
 
         return base += suffix != null ? suffix : "";
     }

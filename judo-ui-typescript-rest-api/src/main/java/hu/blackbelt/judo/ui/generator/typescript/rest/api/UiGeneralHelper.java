@@ -217,7 +217,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
     }
 
     public static String relationBuilderName (RelationType relationType, ClassType classType, String postfix) {
-        return classDataName(classType, firstToUpper(relationType.getName()) + postfix);
+        return firstToUpper(classDataName(classType, firstToUpper(relationType.getName()) + postfix));
     }
     public static String getRelationBuilderNames(RelationType relation) {
         String relationBuilderName =  getAggregatedTarget(relation).stream()
