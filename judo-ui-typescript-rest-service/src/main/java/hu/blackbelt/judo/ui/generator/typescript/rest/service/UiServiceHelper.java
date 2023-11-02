@@ -72,6 +72,10 @@ public class UiServiceHelper extends StaticMethodValueResolver {
                 tokens.add(classDataName(operation.getInput().getTarget(), ""));
                 tokens.add(classDataName(operation.getInput().getTarget(), "Stored"));
             }
+            if (operation.getOutput() != null) {
+                tokens.add(classDataName(operation.getOutput().getTarget(), ""));
+                tokens.add(classDataName(operation.getOutput().getTarget(), "Stored"));
+            }
             if (operation.getIsInputRangeable()) {
                 tokens.add(classDataName(operation.getInput().getTarget(), "QueryCustomizer"));
                 tokens.add(classDataName(operation.getInput().getTarget(), "Stored"));
