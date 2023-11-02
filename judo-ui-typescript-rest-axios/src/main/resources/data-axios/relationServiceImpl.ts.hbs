@@ -230,6 +230,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     {{/ if }}
 
     {{# if targetRelation.isRangeable }}
+        {{# neq relation.name targetRelation.name }}
         /**
          * Form: targetRelation.isRangeable
          * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
@@ -243,6 +244,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
 
             return response.data;
         }
+        {{/ neq }}
     {{/ if }}
 
     {{# if targetRelation.target.isTemplateable }}
@@ -292,6 +294,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     {{/ if }}
 
     {{# if targetRelation.isSetable }}
+        {{# neq relation.name targetRelation.name }}
         /**
          * From: targetRelation.isSetable
          * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
@@ -304,9 +307,11 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
                 },
             });
         }
+        {{/ neq }}
     {{/ if }}
 
     {{# if targetRelation.isUnsetable }}
+        {{# neq relation.name targetRelation.name }}
         /**
          * From: targetRelation.isUnsetable
          * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
@@ -319,9 +324,11 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
                 },
             });
         }
+        {{/ neq }}
     {{/ if }}
 
     {{# if targetRelation.isAddable }}
+        {{# neq relation.name targetRelation.name }}
         /**
          * From: targetRelation.isAddable
          * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
@@ -334,9 +341,11 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
                 },
             });
         }
+        {{/ neq }}
     {{/ if }}
 
     {{# if targetRelation.isRemovable }}
+        {{# neq relation.name targetRelation.name }}
         /**
          * From: targetRelation.isRemovable
          * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
@@ -349,6 +358,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
                 },
             });
         }
+        {{/ neq }}
     {{/ if }}
 {{/ each }}
 
@@ -383,6 +393,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     {{/ if }}
 
     {{# if operation.isInputRangeable }}
+        {{# neq relation.name targetRelation.name }}
         /**
          * From: relation.target.operations operation.isInputRangeable
          * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
@@ -396,6 +407,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
 
             return response.data;
         }
+        {{/ neq }}
     {{/ if }}
 {{/ each }}
 }
