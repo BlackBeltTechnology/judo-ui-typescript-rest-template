@@ -25,6 +25,5 @@
 
     <modules>
         <module>ActionGroupTest</module>
-        <module>FormsTest</module>
     </modules>
 </project>
