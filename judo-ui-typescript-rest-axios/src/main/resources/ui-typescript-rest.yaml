@@ -36,6 +36,17 @@ templates:
       - name: application
         expression: "#application"
 
+  - name: classServiceImpl.ts.hbs
+    applicationBased: true
+    factoryExpression: "#getClassTypes(#application)"
+    pathExpression: >
+      'data-axios/' + 
+      #serviceClassName(#self) + 'Impl.ts'
+    templateName: data-axios/classServiceImpl.ts.hbs
+    templateContext:
+      - name: classType
+        expression: "#self"
+
   - name: relationServiceImpl.ts.hbs
     applicationBased: true
     factoryExpression: "#application.relationTypes"

@@ -3,8 +3,16 @@
 import { judoAxiosProvider } from './JudoAxiosProvider';
 import { AccessServiceImpl } from './AccessServiceImpl';
 
+{{# each (getClassTypes application) as | impl |  }}
+    import type { {{ serviceClassName impl }} } from '../data-service';
+{{/ each }}
+
 {{# each application.relationTypes as | impl |  }}
     import type { {{ serviceRelationName impl }} } from '../data-service';
+{{/ each }}
+
+{{# each (getClassTypes application) as | impl |  }}
+    import { {{ serviceClassName impl }}Impl } from './{{ serviceClassName impl }}Impl';
 {{/ each }}
 
 {{# each application.relationTypes as | impl |  }}
@@ -12,6 +20,10 @@ import { AccessServiceImpl } from './AccessServiceImpl';
 {{/ each }}
 
 export const accessServiceImpl = new AccessServiceImpl(judoAxiosProvider);
+
+{{# each (getClassTypes application) as | impl | }}
+    export const {{ firstToLower (serviceClassName impl) }}Impl: {{ serviceClassName impl }} = new {{ serviceClassName impl }}Impl(judoAxiosProvider);
+{{/ each }}
 
 {{# each application.relationTypes as | impl | }}
     export const {{ firstToLower (serviceRelationName impl) }}Impl: {{ serviceRelationName impl }} = new {{ serviceRelationName impl }}Impl(judoAxiosProvider);

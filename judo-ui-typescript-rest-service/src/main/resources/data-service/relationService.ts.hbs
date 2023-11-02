@@ -14,10 +14,10 @@ export interface {{ serviceRelationName relation }} {
 {{/ if }}
 
 {{# if relation.isRefreshable }}
-{{# if relation.isAccess }}
-    {{# unless relation.isCollection }}
-        refreshFor{{ firstToUpper relation.name }}(queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<{{ classDataName relation.target "Stored" }}>;
-    {{/ unless }}
+    {{# if relation.isAccess }}
+        {{# unless relation.isCollection }}
+            refreshFor{{ firstToUpper relation.name }}(queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<{{ classDataName relation.target "Stored" }}>;
+        {{/ unless }}
     {{/ if }}
     refresh(owner?: JudoIdentifiable<any>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<{{ classDataName relation.target "Stored" }}>;
 {{/ if }}

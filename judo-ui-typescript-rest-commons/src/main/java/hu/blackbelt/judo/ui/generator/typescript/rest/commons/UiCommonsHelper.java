@@ -64,7 +64,7 @@ public class UiCommonsHelper extends StaticMethodValueResolver {
     }
 
     public static String serviceClassName(ClassType classType) {
-        return String.join("", classType.getName().split(SPLITTER))
+        return org.springframework.util.StringUtils.capitalize(String.join("", classType.getName().split(SPLITTER)))
                 .concat("Service");
     }
 

@@ -9,6 +9,19 @@ templates:
       - name: application
         expression: "#application"
 
+  - name: classService.ts.hbs
+    applicationBased: true
+    factoryExpression: "#getClassTypes(#application)"
+    pathExpression: >
+      'data-service/' +
+      #serviceClassName(#self) + '.ts'
+    templateName: data-service/classService.ts.hbs
+    templateContext:
+      - name: classType
+        expression: "#self"
+      - name: application
+        expression: "#application"
+
   - name: relationService.ts.hbs
     applicationBased: true
     factoryExpression: "#application.relationTypes"
