@@ -13,8 +13,8 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
     /**
     * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
     */
-    async getTemplate(): Promise<{{ classDataName classType '' }}> {
-        const path = '{{ restPath classType '/~template' }}';
+    async getTemplate(): Promise<{{ classDataName classType "" }}> {
+        const path = '{{ restPath classType '/~template' '' '' }}';
         const response = await this.axios.get(this.getPathForActor(path));
 
         return response.data;
@@ -26,7 +26,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
      * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
      */
     async refresh(target: JudoIdentifiable<{{ classDataName classType "" }}>, queryCustomizer?:{{ classDataName classType "QueryCustomizer" }}): Promise<{{ classDataName classType "Stored" }}> {
-        const path = '{{ restPath classType '/~get' }}';
+        const path = '{{ restPath classType '/~get' '' '' }}';
         const response = await this.axios.post(this.getPathForActor(path), queryCustomizer, {
             headers: {
                 'X-Judo-SignedIdentifier': target.__signedIdentifier,
@@ -42,7 +42,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
      * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
      */
     async delete(target: JudoIdentifiable<{{ classDataName classType "" }}>): Promise<void> {
-        const path = '{{ restPath classType '/~delete' }}';
+        const path = '{{ restPath classType '/~delete' '' '' }}';
         await this.axios.post(this.getPathForActor(path), undefined, {
             headers: {
                 'X-Judo-SignedIdentifier': target.__signedIdentifier,
@@ -56,7 +56,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
      * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
      */
     async update(target: Partial<{{ classDataName classType "Stored" }}>): Promise<{{ classDataName classType "Stored" }}> {
-        const path = '{{ restPath classType '/~update' }}';
+        const path = '{{ restPath classType '/~update' '' '' }}';
         const response = await this.axios.post(this.getPathForActor(path), target, {
             headers: {
                 'X-Judo-SignedIdentifier': target.__signedIdentifier!,
@@ -70,7 +70,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
 {{# each classType.relations as | relation | }}
     {{# if relation.target.isTemplateable }}
         async getTemplateFor{{ firstToUpper relation.name }}(): Promise<{{ classDataName relation.target "" }}> {
-            const path = '{{ restPath relation.target "/~template" }}';
+            const path = '{{ restPath relation.target "/~template" "" "" }}';
             const response = await this.axios.get(this.getPathForActor(path));
 
             return response.data;
@@ -81,7 +81,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
         /**
          * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
          */
-        async create{{ firstToUpper relation.name }}(owner: JudoIdentifiable<{{ classDataName classType "" }}>, target: JudoIdentifiable<{{ classDataName relation.target }}>): Promise<{{ classDataName relation.target "Stored" }}> {
+        async create{{ firstToUpper relation.name }}(owner: JudoIdentifiable<{{ classDataName classType "" }}>, target: JudoIdentifiable<{{ classDataName relation.target "" }}>): Promise<{{ classDataName relation.target "Stored" }}> {
             const path = '{{ restPath classType "/~update/" relation.name "/~create" }}';
             const response = await this.axios.post(this.getPathForActor(path), target, {
                 headers: {
@@ -180,7 +180,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
          * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
          */
         async delete{{ firstToUpper relation.name }}(target: JudoIdentifiable<{{ classDataName relation.target "" }}>): Promise<void> {
-            const path = '{{ restPath relation.target "/~delete" }}';
+            const path = '{{ restPath relation.target "/~delete" "" "" }}';
            await this.axios.post(this.getPathForActor(path), undefined, {
                headers: {
                    'X-Judo-SignedIdentifier': target.__signedIdentifier,
@@ -210,8 +210,8 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
 
     {{# if operation.input }}
         {{# if operation.input.target.isTemplateable }}
-            async getTemplateFor{{ firstToUpper operation.name }}(): Promise<{{ classDataName operation.input.target '' }}> {
-                const path = '{{ restPath operation.input.target "/~template" }}';
+            async getTemplateFor{{ firstToUpper operation.name }}(): Promise<{{ classDataName operation.input.target "" }}> {
+                const path = '{{ restPath operation.input.target "/~template" "" "" }}';
                 const response = await this.axios.get(this.getPathForActor(path));
 
                 return response.data;

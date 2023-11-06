@@ -68,7 +68,7 @@
                                 ${actor-name}
                             </applications>
                             <ui>${project.parent.basedir}/model/${model-name}-ui.model</ui>
-                            <destination>${generation-target}/src/generated</destination>
+                            <destination>${generation-target}/src/services</destination>
                             <templateParameters>
                                 <debugPrint>true</debugPrint>
                             </templateParameters>

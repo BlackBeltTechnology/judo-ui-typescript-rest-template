@@ -49,7 +49,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
      * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
      */
     async refresh(owner?: JudoIdentifiable<any>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<{{ classDataName relation.target "Stored" }}> {
-        const path = '{{ restPath relation.target "/~get" }}';
+        const path = '{{ restPath relation.target "/~get" "" "" }}';
         const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, owner ? {
             headers: {
                 'X-Judo-SignedIdentifier': owner.__signedIdentifier,
@@ -82,7 +82,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
      * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
      */
     async getTemplate(): Promise<{{ classDataName relation.target "" }}> {
-        const path = '{{ restPath relation.target "/~template" }}';
+        const path = '{{ restPath relation.target "/~template" "" "" }}';
         const response = await this.axios.get(this.getPathForActor(path));
 
         return response.data;
@@ -116,7 +116,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
      * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
      */
     async delete(target: JudoIdentifiable<{{ classDataName relation.target "" }}>): Promise<void> {
-        const path = '{{ restPath relation.target "/~delete" }}';
+        const path = '{{ restPath relation.target "/~delete" "" "" }}';
         await this.axios.post(this.getPathForActor(path), undefined, {
             headers: {
                 'X-Judo-SignedIdentifier': target.__signedIdentifier,
@@ -131,7 +131,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
      * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
      */
     async update(target: Partial<{{ classDataName relation.target "Stored" }}>): Promise<{{ classDataName relation.target "Stored" }}> {
-        const path = '{{ restPath relation.target "/~update" }}';
+        const path = '{{ restPath relation.target "/~update" "" "" }}';
         const response = await this.axios.post(this.getPathForActor(path), target, {
             headers: {
                 'X-Judo-SignedIdentifier': target.__signedIdentifier,
@@ -248,8 +248,8 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     {{/ if }}
 
     {{# if targetRelation.target.isTemplateable }}
-        async getTemplateFor{{ firstToUpper targetRelation.name }}(): Promise<{{ classDataName targetRelation.target '' }}> {
-            const path = '{{ restPath targetRelation.target "/~template" }}';
+        async getTemplateFor{{ firstToUpper targetRelation.name }}(): Promise<{{ classDataName targetRelation.target "" }}> {
+            const path = '{{ restPath targetRelation.target "/~template" "" "" }}';
             const response = await this.axios.get(this.getPathForActor(path));
 
             return response.data;
@@ -257,7 +257,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     {{/ if }}
 
     {{# if targetRelation.isCreatable }}
-        async create{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target }}>, target: {{ classDataName targetRelation.target }}): Promise<{{ classDataName targetRelation.target "Stored" }}> {
+        async create{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: {{ classDataName targetRelation.target "" }}): Promise<{{ classDataName targetRelation.target "Stored" }}> {
             const path = '{{ restPath relation.target "/~update/"  targetRelation.name "/~create" }}';
             const response = await this.axios.post(this.getPathForActor(path), target, {
                 headers: {
@@ -270,8 +270,8 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     {{/ if }}
 
     {{# if targetRelation.isDeletable }}
-        async delete{{ firstToUpper targetRelation.name }}(target: JudoIdentifiable<{{ classDataName targetRelation.target }}>): Promise<void> {
-            const path = '{{ restPath targetRelation.target "/~delete" }}';
+        async delete{{ firstToUpper targetRelation.name }}(target: JudoIdentifiable<{{ classDataName targetRelation.target "" }}>): Promise<void> {
+            const path = '{{ restPath targetRelation.target "/~delete" "" "" }}';
             await this.axios.post(this.getPathForActor(path), undefined, {
                 headers: {
                     'X-Judo-SignedIdentifier': target.__signedIdentifier,
@@ -281,7 +281,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     {{/ if }}
 
     {{# if targetRelation.isUpdatable }}
-        async update{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target }}>, target: Partial<{{ classDataName targetRelation.target "Stored" }}>): Promise<{{ classDataName targetRelation.target "Stored" }}> {
+        async update{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: Partial<{{ classDataName targetRelation.target "Stored" }}>): Promise<{{ classDataName targetRelation.target "Stored" }}> {
             const path = '{{ restPath relation.target "/~update/"  targetRelation.name "/~update" }}';
             const response = await this.axios.post(this.getPathForActor(path), target, {
                 headers: {
@@ -383,8 +383,8 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
 
     {{# if operation.input }}
         {{# if operation.input.target.isTemplateable }}
-            async getTemplateFor{{ firstToUpper operation.name }}(): Promise<{{ classDataName operation.input.target '' }}> {
-                const path = '{{ restPath operation.input.target "/~template" }}';
+            async getTemplateFor{{ firstToUpper operation.name }}(): Promise<{{ classDataName operation.input.target "" }}> {
+                const path = '{{ restPath operation.input.target "/~template" "" "" }}';
                 const response = await this.axios.get(this.getPathForActor(path));
 
                 return response.data;
