@@ -135,15 +135,14 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
     private static boolean hasClassAttributes(ClassType classType) {
         return classType.getAttributes() != null && !classType.getAttributes().isEmpty();
     }
-    public static HashSet<String> modelImportTokens(ClassType classType) {
-
-        var tokens = new HashSet<String>(classType.getRelations().stream().map(r -> classDataName(r.getTarget(), "Attributes")).toList());
+    public static List<String> modelImportTokens(ClassType classType) {
+        var tokens = new HashSet<String>(classType.getRelations().stream().filter(r -> !r.getTarget().getAttributes().isEmpty()).map(r -> classDataName(r.getTarget(), "Attributes")).toList());
 
         if (hasClassAttributes(classType)) {
             tokens.add(classDataName(classType, "Attributes"));
         }
 
-        return tokens;
+        return tokens.stream().sorted().toList();
     }
 
     public static String getRelationType(RelationType relation) {
@@ -178,7 +177,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return a > b;
     }
 
-    public static String joinModelImportTokens(HashSet<String> modelImportTokens) {
+    public static String joinModelImportTokens(Collection<String> modelImportTokens) {
         return String.join(", ", modelImportTokens);
     }
 
