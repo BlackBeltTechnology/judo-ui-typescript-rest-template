@@ -9,32 +9,6 @@ templates:
       - name: application
         expression: "#application"
 
-  - name: relationService.ts.hbs
-    applicationBased: true
-    factoryExpression: "#getNotAccessRelationsTypes(#application)"
-    pathExpression: >
-      'data-service/' +
-      #serviceRelationName(#self) + '.ts'
-    templateName: data-service/relationService.ts.hbs
-    templateContext:
-      - name: relation
-        expression: "#self"
-      - name: application
-        expression: "#application"
-
-  - name: accessRelationService.ts.hbs
-    applicationBased: true
-    factoryExpression: "#getAccessRelationsTypes(#application)"
-    pathExpression: >
-      'data-service/' +
-      #serviceRelationName(#self) + '.ts'
-    templateName: data-service/accessRelationService.ts.hbs
-    templateContext:
-      - name: relation
-        expression: "#self"
-      - name: application
-        expression: "#application"
-
   - name: classService.ts.hbs
     applicationBased: true
     factoryExpression: "#getClassTypes(#application)"
@@ -48,9 +22,25 @@ templates:
       - name: application
         expression: "#application"
 
+  - name: relationService.ts.hbs
+    applicationBased: true
+    factoryExpression: "#application.relationTypes"
+    pathExpression: >
+      'data-service/' +
+      #serviceRelationName(#self) + '.ts'
+    templateName: data-service/relationService.ts.hbs
+    templateContext:
+      - name: relation
+        expression: "#self"
+      - name: application
+        expression: "#application"
+
   - name: serviceIndex.ts.hbs
     applicationBased: true
     pathExpression: >
       'data-service/' +
       'index.ts'
     templateName: data-service/serviceIndex.ts.hbs
+    templateContext:
+      - name: application
+        expression: "#application"
