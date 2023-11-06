@@ -1,3 +1,3 @@
-export * from './generated/data-api';
-export * from './generated/data-service';
-export * from './generated/data-axios';
+export * from './services/data-api';
+export * from './services/data-service';
+export * from './services/data-axios';
