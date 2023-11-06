@@ -18,8 +18,8 @@
         <node-install-dir>${project.basedir}/.nodejs</node-install-dir>
         <generation-target>${project.basedir}/target/test-classes</generation-target>
 
-        <actor>actiongrouptest__god</actor>
-        <actor-fq-name>ActionGroupTest::God</actor-fq-name>
+        <model-name>ActionGroupTest</model-name>
+        <actor-name>God</actor-name>
     </properties>
 
     <build>
@@ -65,7 +65,7 @@
                             </uris>
                             <type>ui-typescript-rest</type>
                             <applications>
-                                ${actor-fq-name}
+                                ${actor-name}
                             </applications>
                             <ui>${project.parent.basedir}/model/${model-name}-ui.model</ui>
                             <destination>${generation-target}/src/generated</destination>
