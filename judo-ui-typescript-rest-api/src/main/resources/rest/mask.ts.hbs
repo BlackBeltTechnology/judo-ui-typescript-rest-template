@@ -9,7 +9,7 @@ import { {{ joinModelImportTokens ( modelImportTokens classType ) }} } from '../
 
 {{# each (getAggregatedRelations classType) as | relation | }}
     export class {{ relationBuilderName relation classType "MaskBuilder" }} extends RelationMaskBuilder {
-    constructor(protected props: Array<{{ classDataName relation.target "Attributes" }}{{ getRelationBuilderNamesWithPipe relation }}>) {
+    constructor(protected props: Array<{{ getRelationBuilderNamesWithPipe relation }}>) {
         super('{{ relation.name }}', props);
     }
 }

@@ -133,7 +133,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
     }
 
 
-    private static boolean hasClassAttributes(ClassType classType) {
+    public static boolean hasClassAttributes(ClassType classType) {
         return classType.getAttributes() != null && !classType.getAttributes().isEmpty();
     }
     public static List<String> modelImportTokens(ClassType classType) {
@@ -229,10 +229,15 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
 
     public static String getRelationBuilderNamesWithPipe(RelationType relation) {
         String relationBuilderName =  getAggregatedTarget(relation).stream()
-                .map(r -> " | " + relationBuilderName(r, relation.getTarget(), "MaskBuilder"))
-                .collect(Collectors.joining());
+                .map(r -> relationBuilderName(r, relation.getTarget(), "MaskBuilder"))
+                .collect(Collectors.joining(" | "));
+        String prefix = hasClassAttributes(relation.getTarget()) ? classDataName(relation.getTarget(), "Attributes") : "";
 
-        return relationBuilderName;
+        if (prefix.isEmpty() && relationBuilderName.isEmpty()) {
+            return "any"; // yes, ideally `props` should be empty, we'll think about this later...
+        }
+
+        return prefix + ((!prefix.isEmpty() && !relationBuilderName.isEmpty()) ? " | " : "") + relationBuilderName;
     }
 
     public static String generateBuilderProps(ClassType classType) {
