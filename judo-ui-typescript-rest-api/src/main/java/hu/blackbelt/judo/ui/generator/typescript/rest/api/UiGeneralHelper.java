@@ -111,6 +111,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         for (RelationType rel: classType.getRelations()) {
             String token = classDataName(rel.getTarget(), null);
             if (!rel.getTarget().equals(classType)) {
+                tokens.put(token + "", token);
                 tokens.put(token + "Stored", token);
             }
         }
