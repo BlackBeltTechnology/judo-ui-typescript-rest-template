@@ -112,6 +112,22 @@ export interface {{ serviceRelationName relation }} {
         remove{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>,  selected: Array<JudoIdentifiable<{{ classDataName targetRelation.target "" }}>>): Promise<void>;
         {{/ neq }}
     {{/ if }}
+
+    {{# each targetRelation.target.operations as | operation | }}
+        {{ operation.name }}For{{ firstToUpper targetRelation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName targetRelation.target "" }}>{{/ unless }}{{# if operation.input }}{{# unless operation.isStatic }}, {{/ unless }}target: {{ classDataName operation.input.target "" }}{{/ if }}): Promise<{{# if operation.output }}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}>;
+
+        {{# if operation.input }}
+            {{# if operation.input.target.isTemplateable }}
+                getTemplateFor{{ firstToUpper operation.name }}For{{ firstToUpper targetRelation.name }}(): Promise<{{ classDataName operation.input.target "" }}>;
+            {{/ if }}
+        {{/ if }}
+
+        {{# if operation.isInputRangeable }}
+            {{# neq relation.name targetRelation.name }}
+            getRangeFor{{ firstToUpper operation.name }}For{{ firstToUpper targetRelation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName targetRelation.target "" }}> | {{ classDataName targetRelation.target "" }}, {{/ unless }}queryCustomizer?: {{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>>;
+            {{/ neq }}
+        {{/ if }}
+    {{/ each }}
 {{/ each}}
 
 {{# each relation.target.operations as | operation | }}

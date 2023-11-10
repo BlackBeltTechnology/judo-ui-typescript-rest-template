@@ -65,9 +65,17 @@ public class UiServiceHelper extends StaticMethodValueResolver {
             tokens.add(classDataName(targetRelation.getTarget(), "QueryCustomizer"));
             tokens.add(classDataName(targetRelation.getTarget(), "Stored"));
             tokens.add(classDataName(targetRelation.getTarget(), ""));
+
+            fillImportTokens(tokens, targetRelation);
         }
 
-        for (OperationType operation: relation.getTarget().getOperations()) {
+        fillImportTokens(tokens, relation);
+
+        return String.join(", ", tokens);
+    }
+
+    private static void fillImportTokens(HashSet<String> tokens, RelationType targetRelation) {
+        for (OperationType operation: targetRelation.getTarget().getOperations()) {
             if (operation.getInput() != null) {
                 tokens.add(classDataName(operation.getInput().getTarget(), ""));
                 tokens.add(classDataName(operation.getInput().getTarget(), "Stored"));
@@ -82,8 +90,6 @@ public class UiServiceHelper extends StaticMethodValueResolver {
                 tokens.add(classDataName(operation.getInput().getTarget(), ""));
             }
         }
-
-        return String.join(", ", tokens);
     }
 
     public static String joinedTokensForApiImportForAccessRelationServiceImpl(RelationType relation){
@@ -119,24 +125,32 @@ public class UiServiceHelper extends StaticMethodValueResolver {
             tokens.add(classDataName(relation.getTarget(), ""));
             tokens.add(classDataName(relation.getTarget(),"Stored"));
             tokens.add(classDataName(relation.getTarget(),"QueryCustomizer"));
+
+            for (OperationType operation: relation.getTarget().getOperations()) {
+                fillOperationTokens(operation, tokens);
+            }
         }
 
         for (OperationType operation: classType.getOperations()) {
-            if (operation.getInput() != null) {
-                tokens.add(classDataName(operation.getInput().getTarget(), ""));
-            }
-
-            if (operation.getOutput() != null) {
-                tokens.add(classDataName(operation.getOutput().getTarget(), "Stored"));
-            }
-
-            if (operation.getIsInputRangeable()) {
-                tokens.add(classDataName(operation.getInput().getTarget(), "QueryCustomizer"));
-                tokens.add(classDataName(operation.getInput().getTarget(), "Stored"));
-            }
+            fillOperationTokens(operation, tokens);
         }
 
         return String.join(", ", tokens);
+    }
+
+    private static void fillOperationTokens(OperationType operation, HashSet<String> tokens) {
+        if (operation.getInput() != null) {
+            tokens.add(classDataName(operation.getInput().getTarget(), ""));
+        }
+
+        if (operation.getOutput() != null) {
+            tokens.add(classDataName(operation.getOutput().getTarget(), "Stored"));
+        }
+
+        if (operation.getIsInputRangeable()) {
+            tokens.add(classDataName(operation.getInput().getTarget(), "QueryCustomizer"));
+            tokens.add(classDataName(operation.getInput().getTarget(), "Stored"));
+        }
     }
 
     public static ClassType getRelationOwnerAsClassType(RelationType relationType){

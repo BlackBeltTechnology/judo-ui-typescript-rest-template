@@ -360,6 +360,55 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
         }
         {{/ neq }}
     {{/ if }}
+
+    {{# each targetRelation.target.operations as | operation | }}
+        /**
+         * From: targetRelation.target.operations
+         * @throws {AxiosError}{{# if (hasFaults operation) }}With data containing {@link{{ faultContainerName operation }} } for business related errors (status code is 422).{{/ if }}
+         * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
+         */
+        async {{ operation.name }}For{{ firstToUpper targetRelation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName targetRelation.target "" }}>{{/ unless }}{{# if operation.input }}{{# unless operation.isStatic }}, {{/ unless }}target:{{ classDataName operation.input.target  "" }}{{/ if }}): Promise<{{# if operation.output }}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}> {
+            const path = '{{ operationRestPath relation.target operation '' }}';
+            const response = await this.axios.post(this.getPathForActor(path){{# if operation.input }}, target{{ else }}, undefined{{/ if }}{{# unless operation.isStatic }}, {
+                headers: {
+                    'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
+                },
+            } {{/ unless }});
+
+            {{# if operation.output }}
+                return response.data;
+            {{/ if }}
+        }
+
+        {{# if operation.input }}
+            {{# if operation.input.target.isTemplateable }}
+                async getTemplateFor{{ firstToUpper operation.name }}For{{ firstToUpper targetRelation.name }}(): Promise<{{ classDataName operation.input.target "" }}> {
+                    const path = '{{ restPath operation.input.target "/~template" "" "" }}';
+                    const response = await this.axios.get(this.getPathForActor(path));
+
+                    return response.data;
+                }
+            {{/ if }}
+        {{/ if }}
+
+        {{# if operation.isInputRangeable }}
+            {{# neq relation.name targetRelation.name }}
+            /**
+             * From: targetRelation.target.operations operation.isInputRangeable
+             * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
+             */
+            async getRangeFor{{ firstToUpper operation.name }}For{{ firstToUpper targetRelation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName targetRelation.target "" }}> | {{ classDataName targetRelation.target "" }}, {{/ unless }}queryCustomizer?:{{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>> {
+                const path = '{{ operationRestPath targetRelation.target operation '/~range' }}';
+                const response = await this.axios.post(this.getPathForActor(path), {
+                    {{# unless operation.isStatic }}owner: owner ?? {},{{/ unless }}
+                    queryCustomizer: queryCustomizer ?? {}
+                });
+
+                return response.data;
+            }
+            {{/ neq }}
+        {{/ if }}
+    {{/ each }}
 {{/ each }}
 
 {{# each relation.target.operations as | operation | }}
