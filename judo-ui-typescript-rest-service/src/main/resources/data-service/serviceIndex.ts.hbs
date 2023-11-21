@@ -1,14 +1,9 @@
 {{> fragment.header.hbs }}
 
 export * from './AccessService';
-{{# each (getAccessRelationsTypes application) as | fileName | }}
+{{# each application.relationTypes as | fileName | }}
     export * from './{{ serviceRelationName fileName }}';
 {{/ each }}
-
-{{# each (getNotAccessRelationsTypes application) as | fileName | }}
-    export * from './{{ serviceRelationName fileName }}';
-{{/ each }}
-
 {{# each (getClassTypes application) as | fileName | }}
     export * from './{{ serviceClassName fileName }}';
 {{/ each }}
