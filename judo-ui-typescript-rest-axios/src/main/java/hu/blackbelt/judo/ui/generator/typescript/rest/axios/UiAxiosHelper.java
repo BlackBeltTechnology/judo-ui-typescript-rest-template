@@ -44,9 +44,11 @@ public class UiAxiosHelper extends StaticMethodValueResolver {
     }
 
     public static String restPath(ClassType classType, String first, String name, String second) {
-        String suffix = first + (name == null ? "" : name) + (second == null ? "" : second);
+        String suffix = first + (name == null ? "" : String.join("/", name.split(SPLITTER))) + (second == null ? "" : second);
         String effectiveSuffix = suffix == null ? "" : suffix;
-        return "/" + stream(classType.getName().split(SPLITTER))
+        String packages = !classType.getPackageNameTokens().isEmpty() ? String.join("/", classType.getPackageNameTokens()) + "/" : "";
+//        return "/" + stream(classType.getFQName().replaceFirst(application.getName() + "::", "").split(SPLITTER))
+        return "/" + packages + stream(classType.getSimpleName().split(SPLITTER))
                 .filter(i -> !i.contains(TRANSFER_SKIP_SEGMENT))
                 .collect(Collectors.joining("/")) + effectiveSuffix;
     }
