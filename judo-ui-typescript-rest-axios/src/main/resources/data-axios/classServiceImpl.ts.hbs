@@ -97,7 +97,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
         /**
          * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
          */
-        async get{{ firstToUpper relation.name }}(target: JudoIdentifiable<{{ classDataName classType "" }}>, queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}): Promise<{{# if relation.isCollection }}Array<{{/ if }}{{ classDataName relation.target "Stored" }}{{# if relation.isCollection }}>{{/ if }}> {
+        async {{# if relation.isCollection }}list{{ else }}get{{/ if }}{{ firstToUpper relation.name }}(target: JudoIdentifiable<{{ classDataName classType "" }}>, queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}): Promise<{{# if relation.isCollection }}Array<{{/ if }}{{ classDataName relation.target "Stored" }}{{# if relation.isCollection }}>{{/ if }}> {
             const path = '{{ restPath classType "/" relation.name "/~" }}{{# if relation.isCollection }}list{{ else }}get{{/ if }}';
             const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, {
                 headers: {

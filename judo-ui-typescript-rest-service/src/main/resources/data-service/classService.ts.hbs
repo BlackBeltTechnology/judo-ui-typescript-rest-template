@@ -34,7 +34,7 @@ export interface {{ serviceClassName classType }} {
         {{/ if }}
 
         {{# if relation.isRefreshable }}
-            get{{ firstToUpper relation.name }}(target: JudoIdentifiable<{{ classDataName classType "" }}>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<{{# if relation.isCollection }}Array<{{/ if }}{{ classDataName relation.target "Stored" }}{{# if relation.isCollection }}>{{/ if }}>
+            {{# if relation.isCollection }}list{{ else }}get{{/ if }}{{ firstToUpper relation.name }}(target: JudoIdentifiable<{{ classDataName classType "" }}>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<{{# if relation.isCollection }}Array<{{/ if }}{{ classDataName relation.target "Stored" }}{{# if relation.isCollection }}>{{/ if }}>
         {{/ if }}
 
         getRangeFor{{ firstToUpper relation.name }}(owner?: JudoIdentifiable<{{ classDataName classType "" }}> | {{ classDataName classType "" }}, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>>;
