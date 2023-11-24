@@ -38,26 +38,16 @@ public class UiServiceHelper extends StaticMethodValueResolver {
 
     public static Collection<RelationType> getNotAccessRelationsTypes(Application application) {
         return (List<RelationType>) application.getRelationTypes().stream()
-                .filter(r -> !hasRelationTypeOwner(r))
+                .filter(r -> !((RelationType) r).isIsAccess())
                 .sorted(Comparator.comparing(NamedElement::getFQName))
                 .collect(Collectors.toList());
     }
 
     public static Collection<RelationType> getAccessRelationsTypes(Application application) {
         return (List<RelationType>) application.getRelationTypes().stream()
-                .filter(r -> hasRelationTypeOwner(r))
+                .filter(r -> ((RelationType) r).isIsAccess())
                 .sorted(Comparator.comparing(NamedElement::getFQName))
                 .collect(Collectors.toList());
-    }
-
-    public static boolean hasRelationTypeOwner(Object relationType) {
-        if(relationType instanceof RelationType) {
-            if (( (RelationType) relationType).isIsAccess())
-                return true;
-            else
-                return false;
-        }
-        return false;
     }
 
     public static String joinedTokensForApiImport(RelationType relation){
@@ -75,17 +65,31 @@ public class UiServiceHelper extends StaticMethodValueResolver {
             tokens.add(classDataName(targetRelation.getTarget(), "QueryCustomizer"));
             tokens.add(classDataName(targetRelation.getTarget(), "Stored"));
             tokens.add(classDataName(targetRelation.getTarget(), ""));
+
+            fillImportTokens(tokens, targetRelation);
         }
 
-        for (OperationType operation: relation.getTarget().getOperations()) {
+        fillImportTokens(tokens, relation);
+
+        return String.join(", ", tokens);
+    }
+
+    private static void fillImportTokens(HashSet<String> tokens, RelationType targetRelation) {
+        for (OperationType operation: targetRelation.getTarget().getOperations()) {
+            if (operation.getInput() != null) {
+                tokens.add(classDataName(operation.getInput().getTarget(), ""));
+                tokens.add(classDataName(operation.getInput().getTarget(), "Stored"));
+            }
+            if (operation.getOutput() != null) {
+                tokens.add(classDataName(operation.getOutput().getTarget(), ""));
+                tokens.add(classDataName(operation.getOutput().getTarget(), "Stored"));
+            }
             if (operation.getIsInputRangeable()) {
                 tokens.add(classDataName(operation.getInput().getTarget(), "QueryCustomizer"));
                 tokens.add(classDataName(operation.getInput().getTarget(), "Stored"));
                 tokens.add(classDataName(operation.getInput().getTarget(), ""));
             }
         }
-
-        return String.join(", ", tokens);
     }
 
     public static String joinedTokensForApiImportForAccessRelationServiceImpl(RelationType relation){
@@ -93,6 +97,11 @@ public class UiServiceHelper extends StaticMethodValueResolver {
 
         if (!relation.isIsAccess()) {
             tokens.add(classDataName((ClassType) relation.getOwner(), ""));
+            tokens.add(classDataName((ClassType) relation.getOwner(), "Stored"));
+        }
+
+        for (OperationType operationType: relation.getTarget().getOperations()) {
+            tokens.add(classDataName(operationType.getInput().getTarget(), ""));
         }
 
         tokens.add(classDataName(relation.getTarget(), "QueryCustomizer"));
@@ -116,40 +125,40 @@ public class UiServiceHelper extends StaticMethodValueResolver {
             tokens.add(classDataName(relation.getTarget(), ""));
             tokens.add(classDataName(relation.getTarget(),"Stored"));
             tokens.add(classDataName(relation.getTarget(),"QueryCustomizer"));
+
+            for (OperationType operation: relation.getTarget().getOperations()) {
+                fillOperationTokens(operation, tokens);
+            }
         }
 
         for (OperationType operation: classType.getOperations()) {
-            if (operation.getInput() != null) {
-                tokens.add(classDataName(operation.getInput().getTarget(), ""));
-            }
-
-            if (operation.getOutput() != null) {
-                tokens.add(classDataName(operation.getOutput().getTarget(), "Stored"));
-            }
-
-            if (operation.getIsInputRangeable()) {
-                tokens.add(classDataName(operation.getInput().getTarget(), "QueryCustomizer"));
-                tokens.add(classDataName(operation.getInput().getTarget(), "Stored"));
-            }
+            fillOperationTokens(operation, tokens);
         }
 
         return String.join(", ", tokens);
     }
 
+    private static void fillOperationTokens(OperationType operation, HashSet<String> tokens) {
+        if (operation.getInput() != null) {
+            tokens.add(classDataName(operation.getInput().getTarget(), ""));
+            for (RelationType relationType: operation.getInput().getTarget().getRelations()) {
+                tokens.add(classDataName(relationType.getTarget(), "Stored"));
+                tokens.add(classDataName(relationType.getTarget(), "QueryCustomizer"));
+            }
+        }
+
+        if (operation.getOutput() != null) {
+            tokens.add(classDataName(operation.getOutput().getTarget(), "Stored"));
+        }
+
+        if (operation.getIsInputRangeable()) {
+            tokens.add(classDataName(operation.getInput().getTarget(), "QueryCustomizer"));
+            tokens.add(classDataName(operation.getInput().getTarget(), "Stored"));
+        }
+    }
+
     public static ClassType getRelationOwnerAsClassType(RelationType relationType){
         return ((ClassType) relationType.getOwner());
-    }
-
-    public static String serviceClassName(ClassType type) {
-        return classDataName(type, "").concat("ServiceForClass");
-    }
-
-    public static boolean classTypeIsMapped(ClassType classType) {
-        return classType.isIsMapped();
-    }
-
-    public static boolean relationIsCollection(RelationType relationType) {
-        return relationType.isIsCollection();
     }
 
 }
