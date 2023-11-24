@@ -64,12 +64,12 @@ export interface {{ serviceClassName classType }} {
 
             {{# if operation.input }}
                 {{# if operation.input.target.isTemplateable }}
-                    getTemplateFor{{ firstToUpper operation.name }}For{{ firstToUpper relation.name }}(): Promise<{{ classDataName operation.input.target "" }}>;
+                    getTemplateOn{{ firstToUpper operation.name }}For{{ firstToUpper relation.name }}(): Promise<{{ classDataName operation.input.target "" }}>;
                 {{/ if }}
             {{/ if }}
 
             {{# if operation.isInputRangeable }}
-                getRangeFor{{ firstToUpper operation.name }}For{{ firstToUpper relation.name }}(owner?: {{ classDataName relation.target "Stored" }}, queryCustomizer?: {{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>>;
+                getRangeOn{{ firstToUpper operation.name }}For{{ firstToUpper relation.name }}(owner?: {{ classDataName relation.target "Stored" }}, queryCustomizer?: {{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>>;
             {{/ if }}
         {{/ each }}
 
@@ -79,12 +79,16 @@ export interface {{ serviceClassName classType }} {
 
         {{# if operation.input }}
             {{# if operation.input.target.isTemplateable }}
-                getTemplateFor{{ firstToUpper operation.name }}(): Promise<{{ classDataName operation.input.target "" }}>;
+                getTemplateOn{{ firstToUpper operation.name }}(): Promise<{{ classDataName operation.input.target "" }}>;
             {{/ if }}
         {{/ if }}
 
+        {{# each operation.input.target.relations as | relation | }}
+            getRangeOn{{ firstToUpper operation.name }}For{{ firstToUpper relation.name }}(owner?: JudoIdentifiable<{{ classDataName operation.input.target "" }}>, queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>>;
+        {{/ each }}
+
         {{# if operation.isInputRangeable }}
-            getRangeFor{{ firstToUpper operation.name }}(owner?: {{ classDataName classType "Stored" }}, queryCustomizer?: {{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>>;
+            getRangeOn{{ firstToUpper operation.name }}(owner?: {{ classDataName classType "Stored" }}, queryCustomizer?: {{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>>;
         {{/ if }}
     {{/ each }}
 }

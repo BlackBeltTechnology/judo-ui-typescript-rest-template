@@ -382,7 +382,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
 
         {{# if operation.input }}
             {{# if operation.input.target.isTemplateable }}
-                async getTemplateFor{{ firstToUpper operation.name }}For{{ firstToUpper targetRelation.name }}(): Promise<{{ classDataName operation.input.target "" }}> {
+                async getTemplateOn{{ firstToUpper operation.name }}For{{ firstToUpper targetRelation.name }}(): Promise<{{ classDataName operation.input.target "" }}> {
                     const path = '{{ restPath operation.input.target "/~template" "" "" }}';
                     const response = await this.axios.get(this.getPathForActor(path));
 
@@ -397,7 +397,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
              * From: targetRelation.target.operations operation.isInputRangeable
              * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
              */
-            async getRangeFor{{ firstToUpper operation.name }}For{{ firstToUpper targetRelation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName targetRelation.target "" }}> | {{ classDataName targetRelation.target "" }}, {{/ unless }}queryCustomizer?:{{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>> {
+            async getRangeOn{{ firstToUpper operation.name }}For{{ firstToUpper targetRelation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName targetRelation.target "" }}> | {{ classDataName targetRelation.target "" }}, {{/ unless }}queryCustomizer?:{{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>> {
                 const path = '{{ operationRestPath targetRelation.target operation '/~range' }}';
                 const response = await this.axios.post(this.getPathForActor(path), {
                     {{# unless operation.isStatic }}owner: owner ?? {},{{/ unless }}
@@ -432,7 +432,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
 
     {{# if operation.input }}
         {{# if operation.input.target.isTemplateable }}
-            async getTemplateFor{{ firstToUpper operation.name }}(): Promise<{{ classDataName operation.input.target "" }}> {
+            async getTemplateOn{{ firstToUpper operation.name }}(): Promise<{{ classDataName operation.input.target "" }}> {
                 const path = '{{ restPath operation.input.target "/~template" "" "" }}';
                 const response = await this.axios.get(this.getPathForActor(path));
 
@@ -447,7 +447,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
          * From: relation.target.operations operation.isInputRangeable
          * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
          */
-        async getRangeFor{{ firstToUpper operation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName relation.target "" }}> | {{ classDataName relation.target "" }}, {{/ unless }}queryCustomizer?:{{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>> {
+        async getRangeOn{{ firstToUpper operation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName relation.target "" }}> | {{ classDataName relation.target "" }}, {{/ unless }}queryCustomizer?:{{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>> {
             const path = '{{ operationRestPath relation.target operation '/~range' }}';
             const response = await this.axios.post(this.getPathForActor(path), {
                 {{# unless operation.isStatic }}owner: owner ?? {},{{/ unless }}

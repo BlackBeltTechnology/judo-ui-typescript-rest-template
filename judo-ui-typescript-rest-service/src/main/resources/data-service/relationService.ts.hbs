@@ -118,13 +118,13 @@ export interface {{ serviceRelationName relation }} {
 
         {{# if operation.input }}
             {{# if operation.input.target.isTemplateable }}
-                getTemplateFor{{ firstToUpper operation.name }}For{{ firstToUpper targetRelation.name }}(): Promise<{{ classDataName operation.input.target "" }}>;
+                getTemplateOn{{ firstToUpper operation.name }}For{{ firstToUpper targetRelation.name }}(): Promise<{{ classDataName operation.input.target "" }}>;
             {{/ if }}
         {{/ if }}
 
         {{# if operation.isInputRangeable }}
             {{# neq relation.name targetRelation.name }}
-            getRangeFor{{ firstToUpper operation.name }}For{{ firstToUpper targetRelation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName targetRelation.target "" }}> | {{ classDataName targetRelation.target "" }}, {{/ unless }}queryCustomizer?: {{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>>;
+            getRangeOn{{ firstToUpper operation.name }}For{{ firstToUpper targetRelation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName targetRelation.target "" }}> | {{ classDataName targetRelation.target "" }}, {{/ unless }}queryCustomizer?: {{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>>;
             {{/ neq }}
         {{/ if }}
     {{/ each }}
@@ -135,13 +135,13 @@ export interface {{ serviceRelationName relation }} {
 
     {{# if operation.input }}
         {{# if operation.input.target.isTemplateable }}
-            getTemplateFor{{ firstToUpper operation.name }}(): Promise<{{ classDataName operation.input.target "" }}>;
+            getTemplateOn{{ firstToUpper operation.name }}(): Promise<{{ classDataName operation.input.target "" }}>;
         {{/ if }}
     {{/ if }}
 
     {{# if operation.isInputRangeable }}
         {{# neq relation.name targetRelation.name }}
-        getRangeFor{{ firstToUpper operation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName relation.target "" }}> | {{ classDataName relation.target "" }}, {{/ unless }}queryCustomizer?: {{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>>;
+        getRangeOn{{ firstToUpper operation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName relation.target "" }}> | {{ classDataName relation.target "" }}, {{/ unless }}queryCustomizer?: {{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>>;
         {{/ neq }}
     {{/ if }}
 {{/ each }}

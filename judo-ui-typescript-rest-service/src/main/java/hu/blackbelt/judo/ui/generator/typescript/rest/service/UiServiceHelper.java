@@ -141,6 +141,10 @@ public class UiServiceHelper extends StaticMethodValueResolver {
     private static void fillOperationTokens(OperationType operation, HashSet<String> tokens) {
         if (operation.getInput() != null) {
             tokens.add(classDataName(operation.getInput().getTarget(), ""));
+            for (RelationType relationType: operation.getInput().getTarget().getRelations()) {
+                tokens.add(classDataName(relationType.getTarget(), "Stored"));
+                tokens.add(classDataName(relationType.getTarget(), "QueryCustomizer"));
+            }
         }
 
         if (operation.getOutput() != null) {
