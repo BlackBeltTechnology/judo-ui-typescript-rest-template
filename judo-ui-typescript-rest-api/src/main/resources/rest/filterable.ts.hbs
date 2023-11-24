@@ -3,6 +3,6 @@
 import { {{ joinModelImports dataType }} } from '../model';
 
 export interface {{ restFilterName dataType }} {
-    value: {{# if (isEnumType dataType) }}{{ restParamName dataType }}{{ else }}{{ typescriptType dataType }}{{/ if }};
-    operator: {{ typescriptType dataType.operator }};
+  value: {{# if (isEnumType dataType) }}{{ restParamName dataType }}{{ else }}{{ typescriptType dataType }}{{/ if }};
+  operator: {{ typescriptType dataType.operator }};
 }

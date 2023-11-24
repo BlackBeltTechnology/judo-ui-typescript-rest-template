@@ -2,8 +2,8 @@
 
 export * from './AccessService';
 {{# each application.relationTypes as | fileName | }}
-    export * from './{{ serviceRelationName fileName }}';
+export * from './{{ serviceRelationName fileName }}';
 {{/ each }}
 {{# each (getClassTypes application) as | fileName | }}
-    export * from './{{ serviceClassName fileName }}';
+export * from './{{ serviceClassName fileName }}';
 {{/ each }}
