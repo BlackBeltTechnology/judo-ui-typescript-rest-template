@@ -67,7 +67,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
   }
 {{/ if }}
 
-{{# each classType.relations as | relation | }}
+{{# each classType.relationsOrderedByName as | relation | }}
   {{# if relation.target.isTemplateable }}
   async getTemplateFor{{ firstToUpper relation.name }}(): Promise<{{ classDataName relation.target "" }}> {
     const path = '{{ restPath relation.target "/~template" "" "" }}';
@@ -189,7 +189,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
   }
   {{/ if }}
 
-  {{# each relation.target.operations as | operation | }}
+  {{# each relation.target.operationsOrderedByName as | operation | }}
   /**
    * @throws {AxiosError}{{# if (hasFaults operation) }}With data containing {@link{{ faultContainerName operation }} } for business related errors (status code is 422).{{/ if }}
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
@@ -232,7 +232,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
   {{/ each }}
 {{/ each }}
 
-{{# each classType.operations as | operation | }}
+{{# each classType.operationsOrderedByName as | operation | }}
   /**
    * @throws {AxiosError}{{# if (hasFaults operation) }}With data containing {@link{{ faultContainerName operation }} } for business related errors (status code is 422).{{/ if }}
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
@@ -260,7 +260,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
   }
   {{/ if }}
 
-  {{# each operation.input.target.relations as | relation | }}
+  {{# each operation.input.target.relationsOrderedByName as | relation | }}
   /**
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
    */

@@ -47,7 +47,7 @@ export interface {{ serviceRelationName relation }} {
 {{# if relation.isRemovable }}
   remove{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}selected: Array<JudoIdentifiable<{{ classDataName relation.target "" }}>>): Promise<void>;
 {{/ if }}
-{{# each relation.target.relations as | targetRelation | }}
+{{# each relation.target.relationsOrderedByName as | targetRelation | }}
   {{# if targetRelation.isListable }}
   {{# if targetRelation.isCollection }}
   list{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName targetRelation.target "Stored" }}>>;
@@ -92,7 +92,7 @@ export interface {{ serviceRelationName relation }} {
   remove{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>,  selected: Array<JudoIdentifiable<{{ classDataName targetRelation.target "" }}>>): Promise<void>;
   {{/ neq }}
   {{/ if }}
-  {{# each targetRelation.target.operations as | operation | }}
+  {{# each targetRelation.target.operationsOrderedByName as | operation | }}
   {{ operation.name }}For{{ firstToUpper targetRelation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName targetRelation.target "" }}>{{/ unless }}{{# if operation.input }}{{# unless operation.isStatic }}, {{/ unless }}target: {{ classDataName operation.input.target "" }}{{/ if }}): Promise<{{# if operation.output }}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}>;
   {{# if operation.input }}
   {{# if operation.input.target.isTemplateable }}
@@ -106,7 +106,7 @@ export interface {{ serviceRelationName relation }} {
   {{/ if }}
   {{/ each }}
 {{/ each}}
-{{# each relation.target.operations as | operation | }}
+{{# each relation.target.operationsOrderedByName as | operation | }}
   {{ operation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName relation.target "" }}>{{/ unless }}{{# if operation.input }}{{# unless operation.isStatic }}, {{/ unless }}target: {{ classDataName operation.input.target "" }}{{/ if }}): Promise<{{# if operation.output }}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}>;
   {{# if operation.input }}
   {{# if operation.input.target.isTemplateable }}

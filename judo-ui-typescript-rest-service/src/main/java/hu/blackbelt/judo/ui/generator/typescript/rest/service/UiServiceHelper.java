@@ -161,4 +161,14 @@ public class UiServiceHelper extends StaticMethodValueResolver {
         return ((ClassType) relationType.getOwner());
     }
 
+    public static Collection<OperationType> operationsOrderedByName(ClassType classType) {
+        return classType.getOperations().stream().sorted(Comparator.comparing(OperationType::getName))
+                .collect(Collectors.toList());
+    }
+
+    public static Collection<RelationType> relationsOrderedByName(ClassType classType) {
+        return classType.getRelations().stream().sorted(Comparator.comparing(RelationType::getName))
+                .collect(Collectors.toList());
+    }
+
 }
