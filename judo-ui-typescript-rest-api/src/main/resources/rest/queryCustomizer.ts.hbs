@@ -2,15 +2,14 @@
 
 import type { QueryCustomizer } from '@judo/data-api-common';
 import { {{ classDataName classType "" }} } from '../model/{{ classDataName classType "" }}';
-
 {{# each (getImportTokensForQueries classType) as | token | }}
-    import { {{ token }} } from './{{ token }}';
+import { {{ token }} } from './{{ token }}';
 {{/ each}}
 
 export interface {{ classDataName classType "QueryCustomizer" }} extends QueryCustomizer<{{ classDataName classType "" }}>{
 {{# each classType.attributes as |attribute| }}
-    {{# if (attributeIsFilterable attribute) }}
-        {{ unsafeVariable attribute.name }}?: Array<{{ restFilterName attribute.dataType }}>;
-    {{/ if}}
+{{# if attribute.isFilterable }}
+  {{ attribute.name }}?: Array<{{ restFilterName attribute.dataType }}>;
+{{/ if}}
 {{/ each}}
 }

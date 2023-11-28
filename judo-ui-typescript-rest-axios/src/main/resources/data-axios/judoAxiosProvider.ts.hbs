@@ -4,36 +4,36 @@ import type { AxiosInstance } from 'axios';
 import { AxiosProvider, JudoAxiosProviderInitData } from './AxiosProvider';
 
 export class JudoAxiosProvider implements AxiosProvider {
-    private axios?: AxiosInstance;
-    private basePathFactory?: () => string;
-    private filePathFactory?: () => string;
+  private axios?: AxiosInstance;
+  private basePathFactory?: () => string;
+  private filePathFactory?: () => string;
 
-    init(data: JudoAxiosProviderInitData): void {
-        this.axios = data.axios;
-        this.basePathFactory = data.basePathFactory;
-        this.filePathFactory = data.filePathFactory;
-    }
+  init(data: JudoAxiosProviderInitData): void {
+    this.axios = data.axios;
+    this.basePathFactory = data.basePathFactory;
+    this.filePathFactory = data.filePathFactory;
+  }
 
-    getAxios(): AxiosInstance {
+  getAxios(): AxiosInstance {
     if (!this.axios) {
-        throw new Error('[JudoAxiosProvider] Axios instance has not been set yet. Please init() the provider first!');
+      throw new Error('[JudoAxiosProvider] Axios instance has not been set yet. Please init() the provider first!');
     }
-        return this.axios;
-    }
+    return this.axios;
+  }
 
-    getBasePath(suffix?: string): string {
-        let base = typeof this.basePathFactory !== 'function' ? '/{{ getAppName application }}' : this.basePathFactory();
-        base = base.replace(/\/+$/, '');
+  getBasePath(suffix?: string): string {
+    let base = typeof this.basePathFactory !== 'function' ? '/{{ application.name }}' : this.basePathFactory();
+    base = base.replace(/\/+$/, '');
 
-        return base + (suffix ? ('/' + suffix) : '');
-    }
+    return base + (suffix ? ('/' + suffix) : '');
+  }
 
-    getFilePath(suffix?: string): string {
-        let base = typeof this.filePathFactory !== 'function' ? '/{{ getAppName application }}' : this.filePathFactory();
-        base = base.replace(/\/+$/, '');
+  getFilePath(suffix?: string): string {
+    let base = typeof this.filePathFactory !== 'function' ? '/{{ application.name }}' : this.filePathFactory();
+    base = base.replace(/\/+$/, '');
 
-        return base + (suffix ? ('/' + suffix) : '');
-    }
+    return base + (suffix ? ('/' + suffix) : '');
+  }
 }
 
 export const judoAxiosProvider: AxiosProvider = new JudoAxiosProvider();

@@ -34,33 +34,28 @@ import static java.util.Arrays.stream;
 @Log
 @TemplateHelper
 public class UiAxiosHelper extends StaticMethodValueResolver {
-    public static String getAppName(Application application) {
-        return application.getName();
-    }
+    public static final String SPLITTER = "::";
+    public static final String TRANSFER_SKIP_SEGMENT = "_default_transferobjecttypes";
 
     public static String rootPathForApp(Application app) {
-        return app.getActor().getPackageNameTokens().stream()
-                .collect(Collectors.joining("/")).concat("/")
+        return String.join("/", app.getActor().getPackageNameTokens())
+                .concat("/")
                 .concat(app.getActor().getSimpleName());
     }
 
-    public static String getAppNameSplittedByColonFirstTag(Application application) {
-        return application.getName().split("::")[0];
-    }
-
     public static String restPath(ClassType classType, String first, String name, String second) {
-        String suffix = first + name + second;
+        String suffix = first + (name == null ? "" : String.join("/", name.split(SPLITTER))) + (second == null ? "" : second);
         String effectiveSuffix = suffix == null ? "" : suffix;
-        return "/" + stream(classType.getName().split("::"))
-                .skip(1)
-                .filter(i -> i != "_default_transferobjecttypes")
+        String packages = !classType.getPackageNameTokens().isEmpty() ? String.join("/", classType.getPackageNameTokens()) + "/" : "";
+//        return "/" + stream(classType.getFQName().replaceFirst(application.getName() + "::", "").split(SPLITTER))
+        return "/" + packages + stream(classType.getSimpleName().split(SPLITTER))
+                .filter(i -> !i.contains(TRANSFER_SKIP_SEGMENT))
                 .collect(Collectors.joining("/")) + effectiveSuffix;
     }
 
     public static String relationRestPath(RelationType relation, String suffix) {
         String effectiveSuffix = suffix == null ? "" : suffix;
-        return relation.getOwnerPackageNameTokens().stream()
-                .collect(Collectors.joining("/"))
+        return String.join("/", relation.getOwnerPackageNameTokens())
                 .concat("/")
                 .concat(relation.getOwnerSimpleName())
                 .concat("/")
@@ -70,9 +65,8 @@ public class UiAxiosHelper extends StaticMethodValueResolver {
 
     public static String classTypeRestPath(ClassType classType, String suffix) {
         String effectiveSuffix = suffix == null ? "" : suffix;
-        return "/" + stream(classType.getName().split("::"))
-                .skip(1)
-                .filter(i -> i != "_default_transferobjecttypes")
+        return "/" + stream(classType.getName().split(SPLITTER))
+                .filter(i -> !i.contains(TRANSFER_SKIP_SEGMENT))
                 .collect(Collectors.joining("/")) + effectiveSuffix;
     }
 
@@ -82,29 +76,24 @@ public class UiAxiosHelper extends StaticMethodValueResolver {
     }
 
     public static String stringConcat(String... strings) {
-        String concatedString = "";
+        StringBuilder concatenatedString = new StringBuilder();
         for (String str : strings) {
-            concatedString += str;
+            concatenatedString.append(str);
         }
 
-        return concatedString;
+        return concatenatedString.toString();
     }
 
-    public static boolean faultsLengthMoreThanZero(OperationType operation) {
-        return operation.getFaults().size() > 0;
+    public static boolean hasFaults(OperationType operation) {
+        return !operation.getFaults().isEmpty();
     }
 
     public static Collection<String> getWrittenImplementations(List<String> writtenFiles) {
         return writtenFiles.stream().filter(f -> f.endsWith("Impl.ts")).map(f -> f.substring(0, f.length() - 3)).collect(Collectors.toList());
     }
 
-
     public static String getDepPath(String importSource) {
         return "../" + importSource;
-    }
-
-    public static boolean classTypeIsIsMapped(ClassType classType) {
-        return classType.isIsMapped();
     }
 
 }
