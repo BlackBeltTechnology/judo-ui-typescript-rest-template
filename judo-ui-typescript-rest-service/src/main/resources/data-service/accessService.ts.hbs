@@ -1,6 +1,6 @@
 {{> fragment.header.hbs }}
 
-import type { JudoDownloadFile, JudoMetaData } from '@judo/data-api-common';
+import type { JudoDownloadFile, JudoMetaData } from '../data-api/common';
 {{# if application.principal }}import { {{ classDataName application.principal "Stored" }} } from '../data-api';{{/ if }}
 
 export interface AccessService {

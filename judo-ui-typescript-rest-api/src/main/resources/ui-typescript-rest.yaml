@@ -1,10 +1,122 @@
 templates:
+  # COMMON
+
+  - name: common/index.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/index.ts'"
+    templateName: common/index.ts.hbs
+
+  - name: common/JudoIdentifiable.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/JudoIdentifiable.ts'"
+    templateName: common/JudoIdentifiable.ts.hbs
+
+  - name: common/JudoStored.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/JudoStored.ts'"
+    templateName: common/JudoStored.ts.hbs
+
+  - name: common/OrderingType.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/OrderingType.ts'"
+    templateName: common/OrderingType.ts.hbs
+
+  - name: common/QueryCustomizer.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/QueryCustomizer.ts'"
+    templateName: common/QueryCustomizer.ts.hbs
+
+  - name: common/Seek.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/Seek.ts'"
+    templateName: common/Seek.ts.hbs
+
+  - name: common/errors/FeedbackItem.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/errors/FeedbackItem.ts'"
+    templateName: common/errors/FeedbackItem.ts.hbs
+
+  - name: common/errors/FeedbackLevel.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/errors/FeedbackLevel.ts'"
+    templateName: common/errors/FeedbackLevel.ts.hbs
+
+  - name: common/errors/index.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/errors/index.ts'"
+    templateName: common/errors/index.ts.hbs
+
+  - name: common/files/index.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/files/index.ts'"
+    templateName: common/files/index.ts.hbs
+
+  - name: common/files/JudoDownloadFile.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/files/JudoDownloadFile.ts'"
+    templateName: common/files/JudoDownloadFile.ts.hbs
+
+  - name: common/files/JudoUploadData.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/files/JudoUploadData.ts'"
+    templateName: common/files/JudoUploadData.ts.hbs
+
+  - name: common/files/JudoUploadFile.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/files/JudoUploadFile.ts'"
+    templateName: common/files/JudoUploadFile.ts.hbs
+
+  - name: common/operations/_BooleanOperation.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/operations/_BooleanOperation.ts'"
+    templateName: common/operations/_BooleanOperation.ts.hbs
+
+  - name: common/operations/_EnumerationOperation.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/operations/_EnumerationOperation.ts'"
+    templateName: common/operations/_EnumerationOperation.ts.hbs
+
+  - name: common/operations/_NumericOperation.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/operations/_NumericOperation.ts'"
+    templateName: common/operations/_NumericOperation.ts.hbs
+
+  - name: common/operations/_StringOperation.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/operations/_StringOperation.ts'"
+    templateName: common/operations/_StringOperation.ts.hbs
+
+  - name: common/operations/index.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/operations/index.ts'"
+    templateName: common/operations/index.ts.hbs
+
+  - name: common/security/index.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/security/index.ts'"
+    templateName: common/security/index.ts.hbs
+
+  - name: common/security/JudoMetaData.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/security/JudoMetaData.ts'"
+    templateName: common/security/JudoMetaData.ts.hbs
+
+  - name: common/security/JudoMetaDataSecurity.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/security/JudoMetaDataSecurity.ts'"
+    templateName: common/security/JudoMetaDataSecurity.ts.hbs
+
+  - name: common/security/JudoToken.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/security/JudoToken.ts'"
+    templateName: common/security/JudoToken.ts.hbs
+
+  # MODEL
+
   - name: enum.ts.hbs
     applicationBased: true
     factoryExpression: "#getEnumerationTypes(#application)"
-    pathExpression: >
-      'data-api/model/' +
-      #restParamName(#self) + '.ts'
+    pathExpression: "'data-api/model/' + #restParamName(#self) + '.ts'"
     templateName: model/enum.ts.hbs
     templateContext:
       - name: enumerationType
@@ -13,9 +125,7 @@ templates:
   - name: class.ts.hbs
     applicationBased: true
     factoryExpression: "#getClassTypes(#application)"
-    pathExpression: >
-      'data-api/model/' +
-      #classDataName(#self, "") + '.ts'
+    pathExpression: "'data-api/model/' + #classDataName(#self, \"\") + '.ts'"
     templateName: model/class.ts.hbs
     templateContext:
       - name: classType
@@ -27,16 +137,14 @@ templates:
 
   - name: modelIndex.ts.hbs
     applicationBased: true
-    pathExpression: >
-      'data-api/model/' +
-      'index.ts'
+    pathExpression: "'data-api/model/' + 'index.ts'"
     templateName: model/modelIndex.ts.hbs
-#TODO: Generate Faults
+
+  # REST
+
   - name: queryCustomizer.ts.hbs
     factoryExpression: "#getClassTypes(#application)"
-    pathExpression: >
-      'data-api/rest/' +
-      #classDataName(#self, "QueryCustomizer") + '.ts'
+    pathExpression: "'data-api/rest/' + #classDataName(#self, \"QueryCustomizer\") + '.ts'"
     templateName: rest/queryCustomizer.ts.hbs
     templateContext:
       - name: classType
@@ -47,9 +155,7 @@ templates:
   - name: mask.ts.hbs
     applicationBased: true
     factoryExpression: "#getClassTypes(#application)"
-    pathExpression: >
-      'data-api/rest/' +
-      #classDataName(#self, "MaskBuilder") + '.ts'
+    pathExpression: "'data-api/rest/' + #classDataName(#self, \"MaskBuilder\") + '.ts'"
     templateName: rest/mask.ts.hbs
     templateContext:
       - name: classType
@@ -58,9 +164,7 @@ templates:
   - name: filterable.ts.hbs
     applicationBased: true
     factoryExpression: "#getFilterableDataTypes(#application)"
-    pathExpression: >
-      'data-api/rest/' +
-      #restFilterName(#self) + '.ts'
+    pathExpression: "'data-api/rest/' + #restFilterName(#self) + '.ts'"
     templateName: rest/filterable.ts.hbs
     templateContext:
       - name: dataType
@@ -72,21 +176,15 @@ templates:
 
   - name: maskBuilder.ts.hbs
     applicationBased: true
-    pathExpression: >
-      'data-api/rest/' +
-      'MaskBuilder.ts'
+    pathExpression: "'data-api/rest/' + 'MaskBuilder.ts'"
     templateName: rest/maskBuilder.ts.hbs
 
   - name: restIndex.ts.hbs
     applicationBased: true
-    pathExpression: >
-      'data-api/rest/' +
-      'index.ts'
+    pathExpression: "'data-api/rest/' + 'index.ts'"
     templateName: rest/restIndex.ts.hbs
 
   - name: apiIndex.ts.hbs
     applicationBased: true
-    pathExpression: >
-      'data-api/' +
-      'index.ts'
+    pathExpression: "'data-api/' + 'index.ts'"
     templateName: apiIndex.ts.hbs

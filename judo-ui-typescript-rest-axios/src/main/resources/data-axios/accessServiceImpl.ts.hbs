@@ -1,7 +1,7 @@
 {{> fragment.header.hbs }}
 
 import type { AxiosResponse } from 'axios';
-import type { JudoDownloadFile, JudoMetaData, JudoToken } from '@judo/data-api-common';
+import type { JudoDownloadFile, JudoMetaData, JudoToken } from '../data-api/common';
 import { JudoAxiosService } from './JudoAxiosService';
 {{# if application.principal }}import type { {{ classDataName application.principal "Stored" }} } from '../data-api';{{/ if }}
 import { AccessService } from '../data-service';
