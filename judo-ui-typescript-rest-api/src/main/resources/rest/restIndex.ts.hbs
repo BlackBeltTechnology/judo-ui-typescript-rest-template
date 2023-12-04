@@ -1,14 +1,12 @@
 {{> fragment.header.hbs }}
 
-{{# each (getQueryCustomizers application) as | fileName | }}
-    export * from './{{ classDataName fileName "QueryCustomizer" }}';
+{{# each (getClassTypes application) as | fileName | }}
+export * from './{{ classDataName fileName "QueryCustomizer" }}';
 {{/ each }}
-
-{{# each (getQueryCustomizers application) as | fileName | }}
-    export * from './{{ classDataName fileName "MaskBuilder" }}';
+{{# each (getClassTypes application) as | fileName | }}
+export * from './{{ classDataName fileName "MaskBuilder" }}';
 {{/ each }}
-
 {{# each (getFilterableDataTypes application) as | fileName | }}
-    export * from './{{ restFilterName fileName }}';
+export * from './{{ restFilterName fileName }}';
 {{/ each }}
 export * from './MaskBuilder';

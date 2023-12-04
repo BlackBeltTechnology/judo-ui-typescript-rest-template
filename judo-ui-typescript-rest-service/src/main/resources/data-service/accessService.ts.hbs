@@ -1,17 +1,16 @@
 {{> fragment.header.hbs }}
 
-import type { JudoDownloadFile, JudoMetaData } from '@judo/data-api-common';
-{{# if application.principal }} import { {{ classDataName application.principal "Stored" }} } from '../data-api';{{/ if }}
+import type { JudoDownloadFile, JudoMetaData } from '../data-api/common';
+{{# if application.principal }}import { {{ classDataName application.principal "Stored" }} } from '../data-api';{{/ if }}
 
 export interface AccessService {
-
 {{# if application.principal }}
-    getPrincipal(): Promise<{{ classDataName application.principal "Stored" }}>;
+  getPrincipal(): Promise<{{ classDataName application.principal "Stored" }}>;
 {{/if}}
 
-    getMetaData(): Promise<JudoMetaData>;
+  getMetaData(): Promise<JudoMetaData>;
 
-    uploadFile(attributePath: string, file: File): Promise<string>;
+  uploadFile(attributePath: string, file: File): Promise<string>;
 
-    downloadFile(downloadToken: string, disposition: 'inline' | 'attachment'): Promise<any>;
+  downloadFile(downloadToken: string, disposition: 'inline' | 'attachment'): Promise<any>;
 }

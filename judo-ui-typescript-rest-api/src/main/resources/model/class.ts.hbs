@@ -1,26 +1,24 @@
 {{> fragment.header.hbs }}
 
-import type { JudoStored } from '@judo/data-api-common';
+import type { JudoStored } from '../common';
 {{# each (getImportTokens application.actor classType) as | token | }}
-    import { {{ @key }} } from './{{ token }}';
+import { {{ @key }} } from './{{ token }}';
 {{/ each }}
 
 export interface {{ classDataName classType '' }} {
 {{# each classType.attributes as | attribute | }}
-    {{ unsafeVariable attribute.name }}{{# if attribute.isRequired }}: {{ else }}?: null | {{/ if}}{{ typescriptType attribute.dataType }};
+  {{ attribute.name }}{{# if attribute.isRequired }}: {{ else }}?: null | {{/ if}}{{ typescriptType attribute.dataType }};
 {{/ each }}
-
 {{# each classType.relations as | relation | }}
-    {{ unsafeVariable relation.name }}{{# if relation.isOptional }}?: null | {{ else }}:{{/ if}}{{{ getRelationType relation }}};
+  {{ relation.name }}{{# if relation.isOptional }}?: null | {{ else }}:{{/ if}}{{{ getRelationType relation }}};
 {{/ each }}
-
 }
-{{# unless classType.attributes.isEmpty }}
-    export type {{ classDataName classType '' }}Attributes = '{{{ getClassTypeAttributes classType }}}';
-{{/ unless }}
 
+{{# unless classType.attributes.isEmpty }}
+export type {{ classDataName classType '' }}Attributes = '{{{ getClassTypeAttributes classType }}}';
+{{/ unless }}
 {{# unless (classTypeRelationsIsEmpty classType) }}
-    export type {{ classDataName classType '' }}Relations = '{{{ getClassTypeRelations classType }}}';
+export type {{ classDataName classType '' }}Relations = '{{{ getClassTypeRelations classType }}}';
 {{/ unless }}
 
 export interface {{ classDataName classType 'Stored' }} extends JudoStored<{{ classDataName classType '' }}>, {{ classDataName classType '' }} {};
