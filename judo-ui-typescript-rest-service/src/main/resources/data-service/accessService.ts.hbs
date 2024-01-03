@@ -1,16 +1,24 @@
 {{> fragment.header.hbs }}
 
 import type { JudoDownloadFile, JudoMetaData } from '../data-api/common';
-{{# if application.principal }}import { {{ classDataName application.principal "Stored" }} } from '../data-api';{{/ if }}
+import { {{ accessJoinedImportTokens application }} } from '../data-api';
 
 export interface AccessService {
-{{# if application.principal }}
+  {{# if application.principal }}
   getPrincipal(): Promise<{{ classDataName application.principal "Stored" }}>;
-{{/if}}
+  {{/ if }}
 
   getMetaData(): Promise<JudoMetaData>;
 
   uploadFile(attributePath: string, file: File): Promise<string>;
 
   downloadFile(downloadToken: string, disposition: 'inline' | 'attachment'): Promise<any>;
+
+  {{# each (getAccessRelationsTypes application) as |relation| }}
+  {{# if relation.isListable }}
+  {{# if relation.isCollection }}
+  findInstanceOf{{ firstToUpper relation.name }}(identifier: string): Promise<{{ classDataName relation.target "Stored" }} | undefined>;
+  {{/ if }}
+  {{/ if }}
+  {{/ each }}
 }

@@ -2,9 +2,9 @@
 
 import type { AxiosResponse } from 'axios';
 import type { JudoDownloadFile, JudoMetaData, JudoToken } from '../data-api/common';
+import type { AccessService } from '../data-service';
 import { JudoAxiosService } from './JudoAxiosService';
-{{# if application.principal }}import type { {{ classDataName application.principal "Stored" }} } from '../data-api';{{/ if }}
-import { AccessService } from '../data-service';
+import { {{ accessJoinedImportTokens application }} } from '../data-api';
 
 export class AccessServiceImpl extends JudoAxiosService implements AccessService {
 {{# if application.principal }}
@@ -69,4 +69,28 @@ export class AccessServiceImpl extends JudoAxiosService implements AccessService
     });
     return response;
   }
+  {{# each (getAccessRelationsTypes application) as |relation| }}
+  {{# if relation.isListable }}
+  {{# if relation.isCollection }}
+  /**
+   * @return {Promise<{{ classDataName relation.target "Stored" }} | undefined>}
+   */
+  async findInstanceOf{{ firstToUpper relation.name }}(identifier: string): Promise<{{ classDataName relation.target "Stored" }} | undefined> {
+    try {
+      const path = '{{ restPath (getRelationOwnerAsClassType relation) "/"  relation.name "/~list" }}';
+      const response = await this.axios.post(this.getPathForActor(path), {
+        _identifier: identifier,
+      });
+
+      if (Array.isArray(response.data) && response.data.length === 1) {
+        return response.data[0];
+      }
+      return undefined;
+    } catch(error) {
+      return undefined;
+    }
+  }
+  {{/ if }}
+  {{/ if }}
+  {{/ each }}
 }
