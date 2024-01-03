@@ -36,22 +36,32 @@ import static hu.blackbelt.judo.ui.generator.typescript.rest.commons.UiCommonsHe
 @TemplateHelper
 public class UiServiceHelper extends StaticMethodValueResolver {
 
-    public static Collection<RelationType> getNotAccessRelationsTypes(Application application) {
+    public static List<RelationType> getNotAccessRelationsTypes(Application application) {
         return (List<RelationType>) application.getRelationTypes().stream()
                 .filter(r -> !((RelationType) r).isIsAccess())
                 .sorted(Comparator.comparing(NamedElement::getFQName))
-                .collect(Collectors.toList());
+                .toList();
     }
 
-    public static Collection<RelationType> getAccessRelationsTypes(Application application) {
+    public static List<RelationType> getAccessRelationsTypes(Application application) {
         return (List<RelationType>) application.getRelationTypes().stream()
                 .filter(r -> ((RelationType) r).isIsAccess())
                 .sorted(Comparator.comparing(NamedElement::getFQName))
-                .collect(Collectors.toList());
+                .toList();
+    }
+
+    public static String accessJoinedImportTokens(Application application) {
+        HashSet<String> tokens = new LinkedHashSet<>();
+        if (application.getPrincipal() != null) {
+            tokens.add(classDataName(application.getPrincipal(), "Stored"));
+        }
+        getAccessRelationsTypes(application)
+                .forEach(relation -> tokens.add(classDataName(relation.getTarget(), "Stored")));
+        return String.join(", ", tokens);
     }
 
     public static String joinedTokensForApiImport(RelationType relation){
-        HashSet<String> tokens = new HashSet<>();
+        HashSet<String> tokens = new LinkedHashSet<>();
 
         if (!relation.isIsAccess()) {
             tokens.add(classDataName((ClassType) relation.getOwner(), ""));
@@ -93,7 +103,7 @@ public class UiServiceHelper extends StaticMethodValueResolver {
     }
 
     public static String joinedTokensForApiImportForAccessRelationServiceImpl(RelationType relation){
-        HashSet<String> tokens = new HashSet<>();
+        HashSet<String> tokens = new LinkedHashSet<>();
 
         if (!relation.isIsAccess()) {
             tokens.add(classDataName((ClassType) relation.getOwner(), ""));
@@ -112,7 +122,7 @@ public class UiServiceHelper extends StaticMethodValueResolver {
     }
 
     public static String joinedTokensForApiImportClassService(ClassType classType){
-        HashSet<String> tokens = new HashSet<>();
+        HashSet<String> tokens = new LinkedHashSet<>();
 
         tokens.add(classDataName(classType, ""));
         tokens.add(classDataName(classType, "Stored"));
