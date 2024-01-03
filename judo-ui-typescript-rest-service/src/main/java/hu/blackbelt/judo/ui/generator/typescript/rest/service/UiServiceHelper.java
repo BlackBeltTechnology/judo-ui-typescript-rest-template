@@ -36,18 +36,30 @@ import static hu.blackbelt.judo.ui.generator.typescript.rest.commons.UiCommonsHe
 @TemplateHelper
 public class UiServiceHelper extends StaticMethodValueResolver {
 
-    public static Collection<RelationType> getNotAccessRelationsTypes(Application application) {
+    public static List<RelationType> getNotAccessRelationsTypes(Application application) {
         return (List<RelationType>) application.getRelationTypes().stream()
                 .filter(r -> !((RelationType) r).isIsAccess())
                 .sorted(Comparator.comparing(NamedElement::getFQName))
-                .collect(Collectors.toList());
+                .toList();
     }
 
-    public static Collection<RelationType> getAccessRelationsTypes(Application application) {
+    public static List<RelationType> getAccessRelationsTypes(Application application) {
         return (List<RelationType>) application.getRelationTypes().stream()
                 .filter(r -> ((RelationType) r).isIsAccess())
                 .sorted(Comparator.comparing(NamedElement::getFQName))
-                .collect(Collectors.toList());
+                .toList();
+    }
+
+    public static String accessJoinedImportTokens(Application application) {
+        HashSet<String> tokens = new HashSet<>();
+        if (application.getPrincipal() != null) {
+            tokens.add(classDataName(application.getPrincipal(), "Stored"));
+        }
+        List<RelationType> relations = getAccessRelationsTypes(application);
+        relations.forEach(relation -> {
+            tokens.add(classDataName(relation.getTarget(), "Stored"));
+        });
+        return String.join(", ", tokens);
     }
 
     public static String joinedTokensForApiImport(RelationType relation){
