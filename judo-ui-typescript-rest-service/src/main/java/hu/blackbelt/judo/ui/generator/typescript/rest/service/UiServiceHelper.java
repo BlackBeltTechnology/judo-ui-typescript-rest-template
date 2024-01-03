@@ -51,19 +51,17 @@ public class UiServiceHelper extends StaticMethodValueResolver {
     }
 
     public static String accessJoinedImportTokens(Application application) {
-        HashSet<String> tokens = new HashSet<>();
+        HashSet<String> tokens = new LinkedHashSet<>();
         if (application.getPrincipal() != null) {
             tokens.add(classDataName(application.getPrincipal(), "Stored"));
         }
-        List<RelationType> relations = getAccessRelationsTypes(application);
-        relations.forEach(relation -> {
-            tokens.add(classDataName(relation.getTarget(), "Stored"));
-        });
+        getAccessRelationsTypes(application)
+                .forEach(relation -> tokens.add(classDataName(relation.getTarget(), "Stored")));
         return String.join(", ", tokens);
     }
 
     public static String joinedTokensForApiImport(RelationType relation){
-        HashSet<String> tokens = new HashSet<>();
+        HashSet<String> tokens = new LinkedHashSet<>();
 
         if (!relation.isIsAccess()) {
             tokens.add(classDataName((ClassType) relation.getOwner(), ""));
@@ -105,7 +103,7 @@ public class UiServiceHelper extends StaticMethodValueResolver {
     }
 
     public static String joinedTokensForApiImportForAccessRelationServiceImpl(RelationType relation){
-        HashSet<String> tokens = new HashSet<>();
+        HashSet<String> tokens = new LinkedHashSet<>();
 
         if (!relation.isIsAccess()) {
             tokens.add(classDataName((ClassType) relation.getOwner(), ""));
@@ -124,7 +122,7 @@ public class UiServiceHelper extends StaticMethodValueResolver {
     }
 
     public static String joinedTokensForApiImportClassService(ClassType classType){
-        HashSet<String> tokens = new HashSet<>();
+        HashSet<String> tokens = new LinkedHashSet<>();
 
         tokens.add(classDataName(classType, ""));
         tokens.add(classDataName(classType, "Stored"));
