@@ -75,13 +75,16 @@ export class AccessServiceImpl extends JudoAxiosService implements AccessService
   /**
    * @return {Promise<{{ classDataName relation.target "Stored" }} | undefined>}
    */
-  async findInstanceOf{{ firstToUpper relation.name }}(identifier: string): Promise<{{ classDataName relation.target "Stored" }} | undefined> {
+  async findInstanceOf{{ firstToUpper relation.name }}(identifier: string, mask?: string): Promise<{{ classDataName relation.target "Stored" }} | undefined> {
     try {
       const path = '{{ restPath (getRelationOwnerAsClassType relation) "/"  relation.name "/~list" }}';
       const response = await this.axios.post(this.getPathForActor(path), {
         _identifier: identifier,
+        _mask: mask,
+        _seek: {
+          limit: 1,
+        },
       });
-
       if (Array.isArray(response.data) && response.data.length === 1) {
         return response.data[0];
       }
