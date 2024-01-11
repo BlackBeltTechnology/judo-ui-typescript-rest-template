@@ -368,7 +368,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
    */
   async {{ operation.name }}For{{ firstToUpper targetRelation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName targetRelation.target "" }}>{{/ unless }}{{# if operation.input }}{{# unless operation.isStatic }}, {{/ unless }}target:{{ classDataName operation.input.target  "" }}{{/ if }}): Promise<{{# if operation.output }}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}> {
-    const path = '{{ operationRestPath relation.target operation '' }}';
+    const path = '{{ operationRestPath targetRelation.target operation '' }}';
     const response = await this.axios.post(this.getPathForActor(path){{# if operation.input }}, target{{ else }}, undefined{{/ if }}{{# unless operation.isStatic }}, {
       headers: {
         'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
