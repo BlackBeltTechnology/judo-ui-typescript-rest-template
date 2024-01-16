@@ -1,0 +1,6 @@
+# judo-ui-typescript-rest-itest
+
+## Source
+
+https://tatami-tests.judo.technology/api/?wadl
+
