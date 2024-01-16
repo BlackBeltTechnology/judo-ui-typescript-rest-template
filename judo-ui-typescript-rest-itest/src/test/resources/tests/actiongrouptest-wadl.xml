@@ -1,0 +1,1073 @@
+<application xmlns="http://wadl.dev.java.net/2009/02" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <grammars></grammars>
+    <resources base="http://tatami-tests.judo.technology/api/ActionGroupTest/God">
+        <resource path="/">
+            <resource path="View/Galaxy/astronomer/~get">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/astronomer/~range">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/createDarkMatter">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/createIntergalacticDust">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/createInterstellarMedium">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/init">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/matter/~list">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/matter/~range">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/stars/~list">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/~delete">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/~get">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/~template">
+                <method name="GET">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/~update">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/~update/astronomer/~create">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/~update/astronomer/~set">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/~update/astronomer/~unset">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/~update/astronomer/~validate">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/~update/matter/~add">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/~update/matter/~remove">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/~update/matter/~set">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/~update/stars/~create">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/~update/stars/~validate">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Galaxy/~validate">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+        </resource>
+        <resource path="/">
+            <resource path="View/CreatureTemplate/signs/~range">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/CreatureTemplate/~template">
+                <method name="GET">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+        </resource>
+        <resource path="/">
+            <resource path="View/Astronomer/~delete">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Astronomer/~get">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Astronomer/~template">
+                <method name="GET">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Astronomer/~update">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Astronomer/~validate">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+        </resource>
+        <resource path="/">
+            <resource path="View/Message/~template">
+                <method name="GET">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+        </resource>
+        <resource path="/">
+            <resource path="View/MatterCreator/~template">
+                <method name="GET">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+        </resource>
+        <resource path="/">
+            <resource path="View/Matter/~delete">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Matter/~get">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Matter/~template">
+                <method name="GET">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+        </resource>
+        <resource path="/">
+            <resource path="View/Star/planets/~list">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Star/~delete">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Star/~get">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Star/~template">
+                <method name="GET">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Star/~update">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Star/~update/planets/~create">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Star/~update/planets/~validate">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Star/~validate">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+        </resource>
+        <resource path="/">
+            <resource path="View/Planet/chooseTheMessiah">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/createCreature">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/createLife">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/creatures/~list">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/creatures/~range">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/destroyLife">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/endWar">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/punishCreature">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/punishCreature/~range">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/rewardCreature">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/rewardCreature/~range">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/sendASign">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/sendASign/~range">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/startWar">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/~delete">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/~get">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/~template">
+                <method name="GET">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/~update">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/~update/creatures/~add">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/~update/creatures/~remove">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/~update/creatures/~set">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Planet/~validate">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+        </resource>
+        <resource path="/">
+            <resource path="View/Creature/hateGod">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Creature/loveGod">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Creature/planet/~get">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Creature/planet/~range">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Creature/talkToGod">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Creature/~delete">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Creature/~get">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Creature/~template">
+                <method name="GET">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Creature/~update">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Creature/~update/planet/~set">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Creature/~update/planet/~unset">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Creature/~validate">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+        </resource>
+        <resource path="/">
+            <resource path="God/creatures/~list">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="God/earth/~create">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="God/earth/~get">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="God/earth/~validate">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="God/galaxies/~create">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="God/galaxies/~list">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="God/galaxies/~validate">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="God/matter/~create">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="God/matter/~list">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="God/matter/~validate">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="God/~meta">
+                <method name="GET">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+        </resource>
+        <resource path="/">
+            <resource path="View/Sign/creatures/~list">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Sign/creatures/~range">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Sign/~get">
+                <method name="POST">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                        <param name="X-Judo-SignedIdentifier" style="header" type="xs:string"/>
+                        <representation mediaType="application/json"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="View/Sign/~template">
+                <method name="GET">
+                    <request>
+                        <param name="X-Judo-CountRecords" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+        </resource>
+    </resources>
+</application>
