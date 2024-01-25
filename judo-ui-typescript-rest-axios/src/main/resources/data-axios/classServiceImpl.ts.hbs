@@ -66,6 +66,21 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
     return response.data;
   }
 {{/ if }}
+{{# if classType.isUpdateValidatable }}
+  /**
+   * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
+   */
+  async validateUpdate(target: Partial<{{ classDataName classType "Stored" }}>): Promise<{{ classDataName classType "Stored" }}> {
+    const path = '{{ restPath classType '/~validate' '' '' }}';
+    const response = await this.axios.post(this.getPathForActor(path), target, {
+      headers: {
+        'X-Judo-SignedIdentifier': target.__signedIdentifier!,
+      },
+    });
+
+    return response.data;
+  }
+{{/ if }}
 
 {{# each classType.relationsOrderedByName as | relation | }}
   {{# if relation.target.isTemplateable }}
@@ -83,6 +98,21 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
    */
   async create{{ firstToUpper relation.name }}(owner: JudoIdentifiable<{{ classDataName classType "" }}>, target: JudoIdentifiable<{{ classDataName relation.target "" }}>): Promise<{{ classDataName relation.target "Stored" }}> {
     const path = '{{ restPath classType "/~update/" relation.name "/~create" }}';
+    const response = await this.axios.post(this.getPathForActor(path), target, {
+      headers: {
+        'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
+      },
+    });
+
+    return response.data;
+  }
+  {{/ if }}
+  {{# if relation.isCreateValidatable }}
+  /**
+   * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
+   */
+  async validateCreate{{ firstToUpper relation.name }}(owner: JudoIdentifiable<{{ classDataName classType "" }}>, target: {{ classDataName relation.target "" }}): Promise<{{ classDataName relation.target "" }}> {
+    const path = '{{ restPath classType "/~update/" relation.name "/~validate" }}';
     const response = await this.axios.post(this.getPathForActor(path), target, {
       headers: {
         'X-Judo-SignedIdentifier': owner.__signedIdentifier!,

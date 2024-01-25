@@ -110,6 +110,27 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
   }
 {{/ if }}
 
+{{# if relation.isCreateValidatable }}
+  /**
+   * From: relation.validateCreate
+   * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
+   */
+  async validateCreate({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}target: {{ classDataName relation.target "" }}): Promise<{{ classDataName relation.target "" }}> {
+    {{# unless relation.isAccess }}
+    const path = '{{ restPath (getRelationOwnerAsClassType relation) "/~update/"  relation.name "/~validate" }}';
+    {{ else }}
+    const path = '{{ restPath (getRelationOwnerAsClassType relation) "/" relation.name "/~validate" }}';
+    {{/ unless }}
+    const response = await this.axios.post(this.getPathForActor(path), target{{# unless relation.isAccess }}, {
+      headers: {
+        'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+      },
+    } {{/ unless }});
+
+    return response.data;
+  }
+{{/ if }}
+
 {{# if relation.isDeletable }}
   /**
    * From: relation.isDeletable
@@ -132,6 +153,23 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
    */
   async update(target: Partial<{{ classDataName relation.target "Stored" }}>): Promise<{{ classDataName relation.target "Stored" }}> {
     const path = '{{ restPath relation.target "/~update" "" "" }}';
+    const response = await this.axios.post(this.getPathForActor(path), target, {
+      headers: {
+        'X-Judo-SignedIdentifier': target.__signedIdentifier,
+      },
+    });
+
+    return response.data;
+  }
+{{/ if }}
+
+{{# if relation.isUpdateValidatable }}
+  /**
+   * From: relation.validateUpdate
+   * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
+   */
+  async validateUpdate({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}target: Partial<{{ classDataName relation.target "Stored" }}>): Promise<{{ classDataName relation.target "Stored" }}> {
+    const path = '{{ restPath relation.target "/~validate" "" "" }}';
     const response = await this.axios.post(this.getPathForActor(path), target, {
       headers: {
         'X-Judo-SignedIdentifier': target.__signedIdentifier,
@@ -269,6 +307,19 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
   }
   {{/ if }}
 
+  {{# if relation.isCreateValidatable }}
+  async validateCreate{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: {{ classDataName targetRelation.target "" }}): Promise<{{ classDataName targetRelation.target "" }}> {
+    const path = '{{ restPath relation.target "/~update/"  targetRelation.name "/~validate" }}';
+    const response = await this.axios.post(this.getPathForActor(path), target, {
+      headers: {
+        'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+      },
+    });
+
+    return response.data;
+  }
+  {{/ if }}
+
   {{# if targetRelation.isDeletable }}
   async delete{{ firstToUpper targetRelation.name }}(target: JudoIdentifiable<{{ classDataName targetRelation.target "" }}>): Promise<void> {
     const path = '{{ restPath targetRelation.target "/~delete" "" "" }}';
@@ -283,6 +334,19 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
   {{# if targetRelation.isUpdatable }}
   async update{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: Partial<{{ classDataName targetRelation.target "Stored" }}>): Promise<{{ classDataName targetRelation.target "Stored" }}> {
     const path = '{{ restPath relation.target "/~update/"  targetRelation.name "/~update" }}';
+    const response = await this.axios.post(this.getPathForActor(path), target, {
+      headers: {
+        'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+      },
+    });
+
+    return response.data;
+  }
+  {{/ if }}
+
+  {{# if relation.isUpdateValidatable }}
+  async validateUpdate{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: Partial<{{ classDataName targetRelation.target "Stored" }}>): Promise<{{ classDataName targetRelation.target "Stored" }}> {
+    const path = '{{ restPath relation.target "/~update/"  targetRelation.name "/~validate" }}';
     const response = await this.axios.post(this.getPathForActor(path), target, {
       headers: {
         'X-Judo-SignedIdentifier': owner.__signedIdentifier,
