@@ -29,11 +29,17 @@ export interface {{ serviceRelationName relation }} {
 {{# if relation.isCreatable }}
   create({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}target: {{ classDataName relation.target "" }}): Promise<{{ classDataName relation.target "Stored" }}>;
 {{/ if }}
+{{# if relation.isCreateValidatable }}
+  validateCreate({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}target: {{ classDataName relation.target "" }}): Promise<{{ classDataName relation.target "" }}>;
+{{/ if }}
 {{# if relation.isDeletable }}
   delete(target: JudoIdentifiable<{{ classDataName relation.target "" }}>): Promise<void>;
 {{/ if }}
 {{# if relation.isUpdatable }}
   update(target: Partial<{{ classDataName relation.target "Stored" }}>): Promise<{{ classDataName relation.target "Stored" }}>;
+{{/ if }}
+{{# if relation.isUpdateValidatable }}
+  validateUpdate({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}target: Partial<{{ classDataName relation.target "Stored" }}>): Promise<{{ classDataName relation.target "Stored" }}>;
 {{/ if }}
 {{# if relation.isSetable }}
   set{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}selected:{{# if relation.isCollection }}Array<{{/ if }}JudoIdentifiable<{{ classDataName relation.target "" }}>{{# if relation.isCollection }}>{{/ if }}): Promise<void>;
@@ -66,11 +72,17 @@ export interface {{ serviceRelationName relation }} {
   {{# if targetRelation.isCreatable }}
   create{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: {{ classDataName targetRelation.target "" }}): Promise<{{ classDataName targetRelation.target "Stored" }}>;
   {{/ if }}
+  {{# if relation.isCreateValidatable }}
+    validateCreate{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: {{ classDataName targetRelation.target "" }}): Promise<{{ classDataName targetRelation.target "" }}>;
+  {{/ if }}
   {{# if targetRelation.isDeletable }}
   delete{{ firstToUpper targetRelation.name }}(target: JudoIdentifiable<{{ classDataName targetRelation.target "" }}>): Promise<void>;
   {{/ if }}
   {{# if targetRelation.isUpdatable }}
   update{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: Partial<{{ classDataName targetRelation.target "Stored" }}>): Promise<{{ classDataName targetRelation.target "Stored" }}>;
+  {{/ if }}
+  {{# if relation.isUpdateValidatable }}
+    validateUpdate{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: Partial<{{ classDataName targetRelation.target "Stored" }}>): Promise<{{ classDataName targetRelation.target "Stored" }}>;
   {{/ if }}
   {{# if targetRelation.isSetable }}
   {{# neq relation.name targetRelation.name }}

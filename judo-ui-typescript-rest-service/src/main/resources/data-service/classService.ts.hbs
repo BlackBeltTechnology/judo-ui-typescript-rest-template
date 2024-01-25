@@ -19,12 +19,18 @@ export interface {{ serviceClassName classType }} {
   {{# if classType.isUpdatable }}
   update(target: Partial<{{ classDataName classType "Stored" }}>): Promise<{{ classDataName classType "Stored" }}>;
   {{/ if }}
+  {{# if classType.isUpdateValidatable }}
+    validateUpdate(target: Partial<{{ classDataName classType "Stored" }}>): Promise<{{ classDataName classType "Stored" }}>;
+  {{/ if }}
   {{# each classType.relationsOrderedByName as | relation | }}
   {{# if relation.target.isTemplateable }}
   getTemplateFor{{ firstToUpper relation.name }}(): Promise<{{ classDataName relation.target "" }}>;
   {{/ if }}
   {{# if relation.isCreatable }}
   create{{ firstToUpper relation.name }}(owner: JudoIdentifiable<{{ classDataName classType "" }}>, target: JudoIdentifiable<{{ classDataName relation.target "" }}>): Promise<{{ classDataName relation.target "Stored" }}>;
+  {{/ if }}
+  {{# if relation.isCreateValidatable }}
+    validateCreate{{ firstToUpper relation.name }}(owner: JudoIdentifiable<{{ classDataName classType "" }}>, target: {{ classDataName relation.target "" }}): Promise<{{ classDataName relation.target "" }}>;
   {{/ if }}
   {{# if relation.isRefreshable }}
   {{# if relation.isCollection }}list{{ else }}get{{/ if }}{{ firstToUpper relation.name }}(target: JudoIdentifiable<{{ classDataName classType "" }}>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<{{# if relation.isCollection }}Array<{{/ if }}{{ classDataName relation.target "Stored" }}{{# if relation.isCollection }}>{{/ if }}>
