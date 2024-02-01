@@ -38,7 +38,6 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
             const path = '{{ restPath (getRelationOwnerAsClassType relation) "/"  relation.name "/~export" }}';
             const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, {
                 responseType: 'blob',
-                //withCredentials: true,
                 headers: owner ? {
                     'X-Judo-SignedIdentifier': owner.__signedIdentifier
                 } : undefined,
@@ -299,7 +298,6 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
         const path = '{{ restPath relation.target "/"  targetRelation.name "/~export" }}';
         const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, {
             responseType: 'blob',
-            //withCredentials: true,
             headers: {
                 'X-Judo-SignedIdentifier': owner.__signedIdentifier,
             },
