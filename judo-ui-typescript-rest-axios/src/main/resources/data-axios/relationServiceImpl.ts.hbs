@@ -28,7 +28,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
   {{/ if }}
 {{/ if }}
 
-{{# if relation.isExportable and relation.isCollection }}
+{{# and relation.isExportable relation.isCollection }}
     /**
     * From: relation.isExportable, relation.isCollection
     * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
@@ -44,7 +44,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
 
         return response;
     }
-{{/ if }}
+{{/ and }}
 
 {{# if relation.isRefreshable }}
   {{# if relation.isAccess }}
@@ -286,7 +286,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
   {{/ if }}
 
 
-{{# if targetRelation.isExportable and targetRelation.isCollection }}
+{{# and targetRelation.isExportable targetRelation.isCollection }}
     /**
      * From: relation.isExportable, relation.isCollection
      * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
@@ -302,7 +302,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
 
         return response;
     }
-{{/ if }}
+{{/ and }}
 
   {{# if targetRelation.isRangeable }}
   {{# neq relation.name targetRelation.name }}
