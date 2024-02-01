@@ -28,24 +28,22 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
   {{/ if }}
 {{/ if }}
 
-{{# if relation.isExportable }}
-    {{# if relation.isCollection }}
-        /**
-        * From: relation.isExportable, relation.isCollection
-        * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
-        */
-        async export(owner?: JudoIdentifiable<any>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<any> {
-            const path = '{{ restPath (getRelationOwnerAsClassType relation) "/"  relation.name "/~export" }}';
-            const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, {
-                responseType: 'blob',
-                headers: owner ? {
-                    'X-Judo-SignedIdentifier': owner.__signedIdentifier
-                } : undefined,
-            });
+{{# if relation.isExportable and relation.isCollection }}
+    /**
+    * From: relation.isExportable, relation.isCollection
+    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
+    */
+    async export(owner?: JudoIdentifiable<any>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<any> {
+        const path = '{{ restPath (getRelationOwnerAsClassType relation) "/"  relation.name "/~export" }}';
+        const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, {
+            responseType: 'blob',
+            headers: owner ? {
+                'X-Judo-SignedIdentifier': owner.__signedIdentifier
+            } : undefined,
+        });
 
-            return response;
-        }
-    {{/ if }}
+        return response;
+    }
 {{/ if }}
 
 {{# if relation.isRefreshable }}
@@ -288,8 +286,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
   {{/ if }}
 
 
-  {{# if targetRelation.isExportable }}
-  {{# if targetRelation.isCollection }}
+{{# if targetRelation.isExportable and targetRelation.isCollection }}
     /**
      * From: relation.isExportable, relation.isCollection
      * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
@@ -305,8 +302,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
 
         return response;
     }
-  {{/ if }}
-  {{/ if }}
+{{/ if }}
 
   {{# if targetRelation.isRangeable }}
   {{# neq relation.name targetRelation.name }}
