@@ -49,6 +49,7 @@
         <log4j.configuration>log4j.properties</log4j.configuration>
 
         <surefire-version>3.0.0-M7</surefire-version>
+
         <judo-meta-ui-version>1.1.0.20240131_164018_b11ebd81_develop</judo-meta-ui-version>
         <judo-generator-commons-version>1.0.0.20231009_184136_321053b3_develop</judo-generator-commons-version>
 

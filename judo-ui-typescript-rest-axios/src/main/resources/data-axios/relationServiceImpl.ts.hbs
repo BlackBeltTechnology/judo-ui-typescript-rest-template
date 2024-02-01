@@ -39,7 +39,9 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
             const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, {
                 responseType: 'blob',
                 //withCredentials: true,
-                headers: owner ? { 'X-Judo-SignedIdentifier': owner.__signedIdentifier } : undefined,
+                headers: owner ? {
+                    'X-Judo-SignedIdentifier': owner.__signedIdentifier
+                } : undefined,
             });
 
             return response;
