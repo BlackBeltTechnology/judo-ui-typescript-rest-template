@@ -174,6 +174,11 @@ templates:
       - name: actor
         expression: "#actor"
 
+  - name: headers.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/rest/headers.ts'"
+    templateName: rest/headers.ts.hbs
+
   - name: maskBuilder.ts.hbs
     applicationBased: true
     pathExpression: "'data-api/rest/' + 'MaskBuilder.ts'"

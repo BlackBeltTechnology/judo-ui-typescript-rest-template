@@ -1,6 +1,7 @@
 {{> fragment.header.hbs }}
 
 import type { JudoIdentifiable } from '../data-api/common';
+import { X_JUDO_SIGNED_IDENTIFIER } from '../data-api/rest/headers';
 import { JudoAxiosService } from './JudoAxiosService';
 import type { {{ joinedTokensForApiImportClassService classType }} } from '../data-api';
 import type { {{ serviceClassName classType }} } from '../data-service';
@@ -25,11 +26,12 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
   /**
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
    */
-  async refresh(target: JudoIdentifiable<{{ classDataName classType "" }}>, queryCustomizer?:{{ classDataName classType "QueryCustomizer" }}): Promise<{{ classDataName classType "Stored" }}> {
+  async refresh(target: JudoIdentifiable<{{ classDataName classType "" }}>, queryCustomizer?:{{ classDataName classType "QueryCustomizer" }}, headers?: Record<string, string>): Promise<{{ classDataName classType "Stored" }}> {
     const path = '{{ restPath classType '/~get' '' '' }}';
     const response = await this.axios.post(this.getPathForActor(path), queryCustomizer, {
       headers: {
-        'X-Judo-SignedIdentifier': target.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: target.__signedIdentifier,
+        ...(headers ?? {}),
       },
     });
 
@@ -45,7 +47,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
     const path = '{{ restPath classType '/~delete' '' '' }}';
     await this.axios.post(this.getPathForActor(path), undefined, {
       headers: {
-        'X-Judo-SignedIdentifier': target.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: target.__signedIdentifier,
       },
     });
   }
@@ -59,7 +61,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
     const path = '{{ restPath classType '/~update' '' '' }}';
     const response = await this.axios.post(this.getPathForActor(path), target, {
       headers: {
-        'X-Judo-SignedIdentifier': target.__signedIdentifier!,
+        [X_JUDO_SIGNED_IDENTIFIER]: target.__signedIdentifier!,
       },
     });
 
@@ -74,7 +76,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
     const path = '{{ restPath classType '/~validate' '' '' }}';
     const response = await this.axios.post(this.getPathForActor(path), target, {
       headers: {
-        'X-Judo-SignedIdentifier': target.__signedIdentifier!,
+        [X_JUDO_SIGNED_IDENTIFIER]: target.__signedIdentifier!,
       },
     });
 
@@ -100,7 +102,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
     const path = '{{ restPath classType "/~update/" relation.name "/~create" }}';
     const response = await this.axios.post(this.getPathForActor(path), target, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier!,
       },
     });
 
@@ -115,7 +117,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
     const path = '{{ restPath classType "/~update/" relation.name "/~validate" }}';
     const response = await this.axios.post(this.getPathForActor(path), target, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier!,
       },
     });
 
@@ -127,11 +129,12 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
   /**
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
    */
-  async {{# if relation.isCollection }}list{{ else }}get{{/ if }}{{ firstToUpper relation.name }}(target: JudoIdentifiable<{{ classDataName classType "" }}>, queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}): Promise<{{# if relation.isCollection }}Array<{{/ if }}{{ classDataName relation.target "Stored" }}{{# if relation.isCollection }}>{{/ if }}> {
+  async {{# if relation.isCollection }}list{{ else }}get{{/ if }}{{ firstToUpper relation.name }}(target: JudoIdentifiable<{{ classDataName classType "" }}>, queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<{{# if relation.isCollection }}Array<{{/ if }}{{ classDataName relation.target "Stored" }}{{# if relation.isCollection }}>{{/ if }}> {
     const path = '{{ restPath classType "/" relation.name "/~" }}{{# if relation.isCollection }}list{{ else }}get{{/ if }}';
     const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, {
       headers: {
-        'X-Judo-SignedIdentifier': target.__signedIdentifier!,
+        [X_JUDO_SIGNED_IDENTIFIER]: target.__signedIdentifier!,
+        ...(headers ?? {}),
       },
     });
 
@@ -142,9 +145,9 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
   /**
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
    */
-  async getRangeFor{{ firstToUpper relation.name }}(owner?: JudoIdentifiable<{{ classDataName classType "" }}> | {{ classDataName classType "" }}, queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>> {
+  async getRangeFor{{ firstToUpper relation.name }}(owner?: JudoIdentifiable<{{ classDataName classType "" }}> | {{ classDataName classType "" }}, queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<Array<{{ classDataName relation.target "Stored" }}>> {
     const path = '{{ restPath classType "/" relation.name "/~range" }}';
-    const response = await this.axios.post(this.getPathForActor(path), { owner: owner ?? {}, queryCustomizer: queryCustomizer ?? {} });
+    const response = await this.axios.post(this.getPathForActor(path), { owner: owner ?? {}, queryCustomizer: queryCustomizer ?? {} }, headers ? { headers } : undefined);
 
     return response.data;
   }
@@ -157,7 +160,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
     const path = '{{ restPath classType "/~update/" relation.name "/~set" }}';
     await this.axios.post(this.getPathForActor(path), selected, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier!,
       },
     });
   }
@@ -171,7 +174,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
     const path = '{{ restPath classType "/~update/" relation.name "/~unset" }}';
     await this.axios.post(this.getPathForActor(path), undefined, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier!,
       },
     });
   }
@@ -185,7 +188,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
     const path = '{{ restPath classType "/~update/" relation.name "/~add" }}';
     await this.axios.post(this.getPathForActor(path), selected, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier!,
       },
     });
   }
@@ -199,7 +202,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
     const path = '{{ restPath classType "/~update/" relation.name "/~remove" }}';
     await this.axios.post(this.getPathForActor(path), selected, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier!,
       },
     });
   }
@@ -213,7 +216,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
     const path = '{{ restPath relation.target "/~delete" "" "" }}';
     await this.axios.post(this.getPathForActor(path), undefined, {
       headers: {
-        'X-Judo-SignedIdentifier': target.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: target.__signedIdentifier,
       },
     });
   }
@@ -228,7 +231,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
     const path = '{{ operationRestPath relation.target operation '' }}';
     const response = await this.axios.post(this.getPathForActor(path){{# if operation.input }}, target{{ else }}, undefined{{/ if }}{{# if operation.isMapped }}, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier!,
       },
     } {{/ if }});
 
@@ -252,9 +255,9 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
   /**
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
    */
-  async getRangeOn{{ firstToUpper operation.name }}For{{ firstToUpper relation.name }}(owner?: {{ classDataName relation.target "Stored" }}, queryCustomizer?:{{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>> {
+  async getRangeOn{{ firstToUpper operation.name }}For{{ firstToUpper relation.name }}(owner?: {{ classDataName relation.target "Stored" }}, queryCustomizer?:{{ classDataName operation.input.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<Array<{{ classDataName operation.input.target "Stored" }}>> {
     const path = '{{ operationRestPath relation.target operation '/~range' }}';
-    const response = await this.axios.post(this.getPathForActor(path), { owner: owner ?? {}, queryCustomizer: queryCustomizer ?? {} });
+    const response = await this.axios.post(this.getPathForActor(path), { owner: owner ?? {}, queryCustomizer: queryCustomizer ?? {} }, headers ? { headers } : undefined);
 
     return response.data;
   }
@@ -271,7 +274,7 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
     const path = '{{ operationRestPath classType operation '' }}';
     const response = await this.axios.post(this.getPathForActor(path){{# if operation.input }}, target{{ else }}, undefined{{/ if }}{{# if operation.isMapped }}, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier!,
       },
     } {{/ if }});
 
@@ -294,9 +297,9 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
   /**
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
    */
-  async getRangeOn{{ firstToUpper operation.name }}For{{ firstToUpper relation.name }}(owner?: JudoIdentifiable<{{ classDataName operation.input.target "" }}>, queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>> {
+  async getRangeOn{{ firstToUpper operation.name }}For{{ firstToUpper relation.name }}(owner?: JudoIdentifiable<{{ classDataName operation.input.target "" }}>, queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<Array<{{ classDataName relation.target "Stored" }}>> {
     const path = '{{ restPath operation.input.target "/" relation.name "/~range" }}';
-    const response = await this.axios.post(this.getPathForActor(path), { owner: owner ?? {}, queryCustomizer: queryCustomizer ?? {} });
+    const response = await this.axios.post(this.getPathForActor(path), { owner: owner ?? {}, queryCustomizer: queryCustomizer ?? {} }, headers ? { headers } : undefined);
 
     return response.data;
   }
@@ -307,9 +310,9 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
   /**
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
    */
-  async getRangeOn{{ firstToUpper operation.name }}(owner?: {{ classDataName classType "Stored" }}, queryCustomizer?:{{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>> {
+  async getRangeOn{{ firstToUpper operation.name }}(owner?: {{ classDataName classType "Stored" }}, queryCustomizer?:{{ classDataName operation.input.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<Array<{{ classDataName operation.input.target "Stored" }}>> {
     const path = '{{ operationRestPath classType operation '/~range' }}';
-    const response = await this.axios.post(this.getPathForActor(path), { owner: owner ?? {}, queryCustomizer: queryCustomizer ?? {} });
+    const response = await this.axios.post(this.getPathForActor(path), { owner: owner ?? {}, queryCustomizer: queryCustomizer ?? {} }, headers ? { headers } : undefined);
 
     return response.data;
   }
