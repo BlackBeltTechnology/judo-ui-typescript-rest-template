@@ -45,7 +45,7 @@ suite('API Tests', () => {
 
         await godServiceForEarthImpl.refreshForEarth();
 
-        assertSinglePostCall(getSignedId, {}, undefined, true);
+        assertSinglePostCall(getSignedId, {}, undefined);
 
         axiosPostMock.mockClear(); // clear mock to reset counter, etc...
 
@@ -83,6 +83,23 @@ suite('API Tests', () => {
         assertSinglePostCall(resource, {});
     });
 
+    test('List Access POST request with total count flag', async () => {
+        const resource: Resource = mappedXml.find(r => r.path === 'God/galaxies/~list');
+        const godServiceForGalaxiesImpl = new GodServiceForGalaxiesImpl(judoAxiosProvider);
+
+        assertSinglePostResource(resource);
+
+        await godServiceForGalaxiesImpl.list(undefined, undefined, {
+            X_JUDO_COUNT_RECORDS: 'true',
+        });
+
+        assertSinglePostCall(resource, {}, {
+            headers: {
+                X_JUDO_COUNT_RECORDS: 'true',
+            },
+        });
+    });
+
     test('View Access POST request is mapped properly', async () => {
         const resource: Resource = mappedXml.find(r => r.path === 'View/Galaxy/~get');
         const viewGalaxyServiceImpl = new ViewGalaxyServiceImpl(judoAxiosProvider);
@@ -107,13 +124,13 @@ suite('API Tests', () => {
         expect(resource.methods[0].name).toBe('POST');
     }
 
-    function assertSinglePostCall(resource: Resource, payload?: any, headers?: any, skipHeaders = false): void {
+    function assertSinglePostCall(resource: Resource, payload?: any, options?: any, skipHeaders = false): void {
         expect(axiosPostMock).toHaveBeenCalledTimes(1);
         // test tool is sensitive for undefined parameters, in certain cases we skip the 3rd param, and are not passing undefiend
         if (skipHeaders) {
             expect(axiosPostMock).toHaveBeenCalledWith(xml.application.resources.base + '/' + resource.path, payload);
         } else {
-            expect(axiosPostMock).toHaveBeenCalledWith(xml.application.resources.base + '/' + resource.path, payload, headers);
+            expect(axiosPostMock).toHaveBeenCalledWith(xml.application.resources.base + '/' + resource.path, payload, options);
         }
     }
 });
