@@ -179,6 +179,11 @@ templates:
     pathExpression: "'data-api/rest/headers.ts'"
     templateName: rest/headers.ts.hbs
 
+  - name: requestResponse.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/rest/requestResponse.ts'"
+    templateName: rest/requestResponse.ts.hbs
+
   - name: maskBuilder.ts.hbs
     applicationBased: true
     pathExpression: "'data-api/rest/' + 'MaskBuilder.ts'"
