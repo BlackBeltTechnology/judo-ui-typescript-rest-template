@@ -1,6 +1,7 @@
 {{> fragment.header.hbs }}
 
 import type { JudoIdentifiable } from '../data-api/common';
+import { X_JUDO_SIGNED_IDENTIFIER } from '../data-api/rest/headers';
 import { JudoAxiosService } from './JudoAxiosService';
 import type { {{ joinedTokensForApiImport relation }} } from '../data-api';
 import type { {{ serviceRelationName relation }} } from '../data-service';
@@ -15,13 +16,14 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
    * From: relation.isListable, relation.isCollection
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
    */
-  async list(owner?: JudoIdentifiable<any>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>> {
+  async list(owner?: JudoIdentifiable<any>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<Array<{{ classDataName relation.target "Stored" }}>> {
     const path = '{{ restPath (getRelationOwnerAsClassType relation) "/"  relation.name "/~list" }}';
     const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, owner ? {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier,
+        ...(headers ?? {}),
       },
-    } : undefined);
+    } : (headers ? { headers } : undefined));
 
     return response.data;
   }
@@ -35,9 +37,9 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
    * From: relation.isAccess, !relation.isCollection
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
    */
-  async refreshFor{{ firstToUpper relation.name }}(queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<{{ classDataName relation.target "Stored" }}> {
+  async refreshFor{{ firstToUpper relation.name }}(queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<{{ classDataName relation.target "Stored" }}> {
     const path = '{{ restPath (getRelationOwnerAsClassType relation) "/" relation.name "/~get" }}';
-    const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {});
+    const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, headers ? { headers } : undefined);
 
     return response.data;
   }
@@ -48,13 +50,14 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
    * From: relation.isRefreshable
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
    */
-  async refresh(owner?: JudoIdentifiable<any>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<{{ classDataName relation.target "Stored" }}> {
+  async refresh(owner?: JudoIdentifiable<any>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<{{ classDataName relation.target "Stored" }}> {
     const path = '{{ restPath relation.target "/~get" "" "" }}';
     const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, owner ? {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier,
+        ...(headers ?? {}),
       },
-    } : undefined);
+    } : (headers ? { headers } : undefined));
 
     return response.data;
   }
@@ -65,12 +68,12 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
    * From: relation.isRangeable
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
    */
-  async getRangeFor{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}> | {{ classDataName (getRelationOwnerAsClassType relation) "" }}, {{/ unless }}queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName relation.target "Stored" }}>> {
+  async getRangeFor{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}> | {{ classDataName (getRelationOwnerAsClassType relation) "" }}, {{/ unless }}queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<Array<{{ classDataName relation.target "Stored" }}>> {
     const path = '{{ restPath (getRelationOwnerAsClassType relation) "/" relation.name "/~range" }}';
     const response = await this.axios.post(this.getPathForActor(path), {
       {{# unless relation.isAccess }}owner: owner ?? {},{{/ unless }}
       queryCustomizer: queryCustomizer ?? {}
-    });
+    }, headers ? { headers } : undefined);
 
     return response.data;
   }
@@ -102,7 +105,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     {{/ unless }}
     const response = await this.axios.post(this.getPathForActor(path), target{{# unless relation.isAccess }}, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier,
       },
     } {{/ unless }});
 
@@ -123,7 +126,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     {{/ unless }}
     const response = await this.axios.post(this.getPathForActor(path), target{{# unless relation.isAccess }}, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier,
       },
     } {{/ unless }});
 
@@ -140,7 +143,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     const path = '{{ restPath relation.target "/~delete" "" "" }}';
     await this.axios.post(this.getPathForActor(path), undefined, {
       headers: {
-        'X-Judo-SignedIdentifier': target.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: target.__signedIdentifier,
       },
     });
   }
@@ -155,7 +158,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     const path = '{{ restPath relation.target "/~update" "" "" }}';
     const response = await this.axios.post(this.getPathForActor(path), target, {
       headers: {
-        'X-Judo-SignedIdentifier': target.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: target.__signedIdentifier,
       },
     });
 
@@ -172,7 +175,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     const path = '{{ restPath relation.target "/~validate" "" "" }}';
     const response = await this.axios.post(this.getPathForActor(path), target, {
       headers: {
-        'X-Judo-SignedIdentifier': target.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: target.__signedIdentifier,
       },
     });
 
@@ -189,7 +192,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     const path = '{{ restPath (getRelationOwnerAsClassType relation) "/~update/" relation.name "/~set" }}';
     await this.axios.post(this.getPathForActor(path), selected{{# unless relation.isAccess }}, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier!,
       },
     } {{/ unless }});
   }
@@ -204,7 +207,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     const path = '{{ restPath (getRelationOwnerAsClassType relation) "/~update/" relation.name "/~unset" }}';
     await this.axios.post(this.getPathForActor(path), undefined{{# unless relation.isAccess }}, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier!,
       },
     } {{/ unless }});
   }
@@ -219,7 +222,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     const path = '{{ restPath (getRelationOwnerAsClassType relation) "/~update/" relation.name "/~add" }}';
     await this.axios.post(this.getPathForActor(path), selected{{# unless relation.isAccess }}, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier!,
       },
     } {{/ unless }});
   }
@@ -234,7 +237,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     const path = '{{ restPath (getRelationOwnerAsClassType relation) "/~update/" relation.name "/~remove" }}';
     await this.axios.post(this.getPathForActor(path), selected{{# unless relation.isAccess }}, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier!,
       },
     } {{/ unless }});
   }
@@ -243,11 +246,12 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
 {{# each relation.target.relations as | targetRelation | }}
   {{# if targetRelation.isListable }}
   {{# if targetRelation.isCollection }}
-  async list{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName targetRelation.target "Stored" }}>> {
+  async list{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<Array<{{ classDataName targetRelation.target "Stored" }}>> {
     const path = '{{ restPath relation.target "/"  targetRelation.name "/~list" }}';
     const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier,
+        ...(headers ?? {}),
       },
     });
 
@@ -258,7 +262,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     const path = '{{ restPath relation.target "/" targetRelation.name "/~get" }}';
     const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier,
       },
     });
 
@@ -273,12 +277,12 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
    * Form: targetRelation.isRangeable
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
    */
-  async getRangeFor{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}> | {{ classDataName relation.target "" }}, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}): Promise<Array<{{ classDataName targetRelation.target "Stored" }}>> {
+  async getRangeFor{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}> | {{ classDataName relation.target "" }}, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<Array<{{ classDataName targetRelation.target "Stored" }}>> {
     const path = '{{ restPath relation.target "/" targetRelation.name "/~range" }}';
     const response = await this.axios.post(this.getPathForActor(path), {
       owner: owner,
       queryCustomizer: queryCustomizer ?? {}
-    });
+    }, headers ? { headers } : undefined);
 
     return response.data;
   }
@@ -299,7 +303,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     const path = '{{ restPath relation.target "/~update/"  targetRelation.name "/~create" }}';
     const response = await this.axios.post(this.getPathForActor(path), target, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier,
       },
     });
 
@@ -312,7 +316,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     const path = '{{ restPath relation.target "/~update/"  targetRelation.name "/~validate" }}';
     const response = await this.axios.post(this.getPathForActor(path), target, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier,
       },
     });
 
@@ -325,7 +329,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     const path = '{{ restPath targetRelation.target "/~delete" "" "" }}';
     await this.axios.post(this.getPathForActor(path), undefined, {
       headers: {
-        'X-Judo-SignedIdentifier': target.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: target.__signedIdentifier,
       },
     });
   }
@@ -336,7 +340,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     const path = '{{ restPath relation.target "/~update/"  targetRelation.name "/~update" }}';
     const response = await this.axios.post(this.getPathForActor(path), target, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier,
       },
     });
 
@@ -349,7 +353,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     const path = '{{ restPath relation.target "/~update/"  targetRelation.name "/~validate" }}';
     const response = await this.axios.post(this.getPathForActor(path), target, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier,
       },
     });
 
@@ -367,7 +371,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     const path = '{{ restPath relation.target "/~update/"  targetRelation.name "/~set" }}';
     await this.axios.post(this.getPathForActor(path), selected, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier,
       },
     });
   }
@@ -384,7 +388,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     const path = '{{ restPath relation.target "/~update/"  targetRelation.name "/~unset" }}';
     await this.axios.post(this.getPathForActor(path), undefined, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier,
       },
     });
   }
@@ -401,7 +405,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     const path = '{{ restPath relation.target "/~update/"  targetRelation.name "/~add" }}';
     await this.axios.post(this.getPathForActor(path), selected, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier,
       },
     });
   }
@@ -418,7 +422,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     const path = '{{ restPath relation.target "/~update/"  targetRelation.name "/~remove" }}';
     await this.axios.post(this.getPathForActor(path), selected, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier,
       },
     });
   }
@@ -435,7 +439,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     const path = '{{ operationRestPath targetRelation.target operation '' }}';
     const response = await this.axios.post(this.getPathForActor(path){{# if operation.input }}, target{{ else }}, undefined{{/ if }}{{# unless operation.isStatic }}, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier!,
       },
     } {{/ unless }});
 
@@ -461,12 +465,12 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
    * From: targetRelation.target.operations operation.isInputRangeable
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
    */
-  async getRangeOn{{ firstToUpper operation.name }}For{{ firstToUpper targetRelation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName targetRelation.target "" }}> | {{ classDataName targetRelation.target "" }}, {{/ unless }}queryCustomizer?:{{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>> {
+  async getRangeOn{{ firstToUpper operation.name }}For{{ firstToUpper targetRelation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName targetRelation.target "" }}> | {{ classDataName targetRelation.target "" }}, {{/ unless }}queryCustomizer?:{{ classDataName operation.input.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<Array<{{ classDataName operation.input.target "Stored" }}>> {
     const path = '{{ operationRestPath targetRelation.target operation '/~range' }}';
     const response = await this.axios.post(this.getPathForActor(path), {
       {{# unless operation.isStatic }}owner: owner ?? {},{{/ unless }}
       queryCustomizer: queryCustomizer ?? {}
-    });
+    }, headers ? { headers } : undefined);
 
     return response.data;
   }
@@ -485,7 +489,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
     const path = '{{ operationRestPath relation.target operation '' }}';
     const response = await this.axios.post(this.getPathForActor(path){{# if operation.input }}, target{{ else }}, undefined{{/ if }}{{# unless operation.isStatic }}, {
       headers: {
-        'X-Judo-SignedIdentifier': owner.__signedIdentifier!,
+        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier!,
       },
     } {{/ unless }});
 
@@ -511,12 +515,12 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
    * From: relation.target.operations operation.isInputRangeable
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
    */
-  async getRangeOn{{ firstToUpper operation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName relation.target "" }}> | {{ classDataName relation.target "" }}, {{/ unless }}queryCustomizer?:{{ classDataName operation.input.target "QueryCustomizer" }}): Promise<Array<{{ classDataName operation.input.target "Stored" }}>> {
+  async getRangeOn{{ firstToUpper operation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName relation.target "" }}> | {{ classDataName relation.target "" }}, {{/ unless }}queryCustomizer?:{{ classDataName operation.input.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<Array<{{ classDataName operation.input.target "Stored" }}>> {
     const path = '{{ operationRestPath relation.target operation '/~range' }}';
     const response = await this.axios.post(this.getPathForActor(path), {
       {{# unless operation.isStatic }}owner: owner ?? {},{{/ unless }}
-      queryCustomizer: queryCustomizer ?? {}
-    });
+      queryCustomizer: queryCustomizer ?? {},
+    }, headers ? { headers } : undefined);
 
     return response.data;
   }
