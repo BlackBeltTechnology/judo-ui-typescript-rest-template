@@ -5,10 +5,10 @@ import { {{ accessJoinedImportTokens application }} } from '../data-api';
 
 export interface AccessService {
   {{# if application.principal }}
-  getPrincipal(): Promise<{{ classDataName application.principal "Stored" }}>;
+  getPrincipal(): Promise<JudoRestResponse<{{ classDataName application.principal "Stored" }}>>;
   {{/ if }}
 
-  getMetaData(): Promise<JudoMetaData>;
+  getMetaData(): Promise<JudoRestResponse<JudoMetaData>>;
 
   uploadFile(attributePath: string, file: File): Promise<string>;
 

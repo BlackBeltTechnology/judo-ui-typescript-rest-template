@@ -12,10 +12,8 @@ export class AccessServiceImpl extends JudoAxiosService implements AccessService
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
    * @return {Promise<{{ classDataName application.principal "" }}>}
    */
-  async getPrincipal(): Promise<{{ classDataName application.principal "Stored" }}> {
-    const response = await this.axios.get(this.getPathForActor('{{ rootPathForApp application }}/~principal'));
-
-    return response.data;
+  async getPrincipal(): Promise<JudoRestResponse<{{ classDataName application.principal "Stored" }}>> {
+    return this.axios.get(this.getPathForActor('{{ rootPathForApp application }}/~principal'));
   }
 {{/ if }}
 
@@ -23,9 +21,8 @@ export class AccessServiceImpl extends JudoAxiosService implements AccessService
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
    * @return {Promise<JudoMetaData>}
    */
-  async getMetaData(): Promise<JudoMetaData> {
-    const response = await this.axios.get(this.getPathForActor('{{ rootPathForApp application }}/~meta'));
-    return response.data;
+  async getMetaData(): Promise<JudoRestResponse<JudoMetaData>> {
+    return this.axios.get(this.getPathForActor('{{ rootPathForApp application }}/~meta'));
   }
 
   /**

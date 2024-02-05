@@ -52,6 +52,7 @@ public class UiServiceHelper extends StaticMethodValueResolver {
 
     public static String accessJoinedImportTokens(Application application) {
         HashSet<String> tokens = new LinkedHashSet<>();
+        tokens.add("JudoRestResponse");
         if (application.getPrincipal() != null) {
             tokens.add(classDataName(application.getPrincipal(), "Stored"));
         }
@@ -62,6 +63,8 @@ public class UiServiceHelper extends StaticMethodValueResolver {
 
     public static String joinedTokensForApiImport(RelationType relation){
         HashSet<String> tokens = new LinkedHashSet<>();
+
+        tokens.add("JudoRestResponse");
 
         if (!relation.isIsAccess()) {
             tokens.add(classDataName((ClassType) relation.getOwner(), ""));
@@ -124,6 +127,7 @@ public class UiServiceHelper extends StaticMethodValueResolver {
     public static String joinedTokensForApiImportClassService(ClassType classType){
         HashSet<String> tokens = new LinkedHashSet<>();
 
+        tokens.add("JudoRestResponse");
         tokens.add(classDataName(classType, ""));
         tokens.add(classDataName(classType, "Stored"));
 
