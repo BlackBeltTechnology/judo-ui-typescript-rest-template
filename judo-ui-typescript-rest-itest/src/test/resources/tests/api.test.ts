@@ -2,6 +2,7 @@ import { expect, beforeEach, test, suite, vi, Mock } from 'vitest';
 import type { AxiosInstance } from 'axios';
 import { type Resource, fetchWadlContent, extractResourceRoot } from './process-wadl';
 import { JudoAxiosProvider } from '../src/services/data-axios';
+import { X_JUDO_SIGNED_IDENTIFIER, X_JUDO_COUNT_RECORDS } from '../src/services/data-api/rest';
 import { GodServiceForGalaxiesImpl } from '../src/services/data-axios/GodServiceForGalaxiesImpl';
 import { GodServiceForEarthImpl } from '../src/services/data-axios/GodServiceForEarthImpl';
 import { ViewGalaxyServiceImpl } from '../src/services/data-axios/ViewGalaxyServiceImpl';
@@ -67,7 +68,7 @@ suite('API Tests', () => {
 
         assertSinglePostCall(resource, undefined, {
             'headers': {
-                'X-Judo-SignedIdentifier': target.__signedIdentifier,
+                [X_JUDO_SIGNED_IDENTIFIER]: target.__signedIdentifier,
             },
         });
     });
@@ -90,12 +91,12 @@ suite('API Tests', () => {
         assertSinglePostResource(resource);
 
         await godServiceForGalaxiesImpl.list(undefined, undefined, {
-            X_JUDO_COUNT_RECORDS: 'true',
+            [X_JUDO_COUNT_RECORDS]: 'true',
         });
 
         assertSinglePostCall(resource, {}, {
             headers: {
-                X_JUDO_COUNT_RECORDS: 'true',
+                [X_JUDO_COUNT_RECORDS]: 'true',
             },
         });
     });
@@ -113,7 +114,7 @@ suite('API Tests', () => {
 
         assertSinglePostCall(resource, {}, {
             'headers': {
-                'X-Judo-SignedIdentifier': target.__signedIdentifier,
+                [X_JUDO_SIGNED_IDENTIFIER]: target.__signedIdentifier,
             },
         });
     });
