@@ -12,7 +12,7 @@ export class AccessServiceImpl extends JudoAxiosService implements AccessService
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
    * @return {Promise<{{ classDataName application.principal "" }}>}
    */
-  async getPrincipal(): Promise<JudoRestResponse<{{ classDataName application.principal "Stored" }}>JudoRestResponse> {
+  async getPrincipal(): Promise<JudoRestResponse<{{ classDataName application.principal "Stored" }}>> {
     return this.axios.get(this.getPathForActor('{{ rootPathForApp application }}/~principal'));
   }
 {{/ if }}
