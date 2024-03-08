@@ -1,6 +1,6 @@
 {{> fragment.header.hbs }}
 
-import type { JudoIdentifiable } from '../data-api/common';
+import type { JudoIdentifiable, CommandQueryCustomizer } from '../data-api/common';
 import { {{ joinedTokensForApiImport relation }} } from '../data-api';
 
 /**
@@ -27,19 +27,19 @@ export interface {{ serviceRelationName relation }} {
   getTemplate(): Promise<JudoRestResponse<{{ classDataName relation.target "" }}>>;
 {{/ if }}
 {{# if relation.isCreatable }}
-  create({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}target: {{ classDataName relation.target "" }}): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>>;
+  create({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}target: {{ classDataName relation.target "" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>>;
 {{/ if }}
 {{# if relation.isCreateValidatable }}
-  validateCreate({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}target: {{ classDataName relation.target "" }}): Promise<JudoRestResponse<{{ classDataName relation.target "" }}>>;
+  validateCreate({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}target: {{ classDataName relation.target "" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName relation.target "" }}>>;
 {{/ if }}
 {{# if relation.isDeletable }}
   delete(target: JudoIdentifiable<{{ classDataName relation.target "" }}>): Promise<JudoRestResponse<void>>;
 {{/ if }}
 {{# if relation.isUpdatable }}
-  update(target: Partial<{{ classDataName relation.target "Stored" }}>): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>>;
+  update(target: Partial<{{ classDataName relation.target "Stored" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>>;
 {{/ if }}
 {{# if relation.isUpdateValidatable }}
-  validateUpdate({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}target: Partial<{{ classDataName relation.target "Stored" }}>): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>>;
+  validateUpdate({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}target: Partial<{{ classDataName relation.target "Stored" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>>;
 {{/ if }}
 {{# if relation.isSetable }}
   set{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}selected:{{# if relation.isCollection }}Array<{{/ if }}JudoIdentifiable<{{ classDataName relation.target "" }}>{{# if relation.isCollection }}>{{/ if }}): Promise<JudoRestResponse<void>>;
@@ -70,19 +70,19 @@ export interface {{ serviceRelationName relation }} {
   getTemplateFor{{ firstToUpper targetRelation.name }}(): Promise<JudoRestResponse<{{ classDataName targetRelation.target "" }}>>;
   {{/ if }}
   {{# if targetRelation.isCreatable }}
-  create{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: {{ classDataName targetRelation.target "" }}): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>>;
+  create{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: {{ classDataName targetRelation.target "" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>>;
   {{/ if }}
   {{# if relation.isCreateValidatable }}
-    validateCreate{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: {{ classDataName targetRelation.target "" }}): Promise<JudoRestResponse<{{ classDataName targetRelation.target "" }}>>;
+    validateCreate{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: {{ classDataName targetRelation.target "" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName targetRelation.target "" }}>>;
   {{/ if }}
   {{# if targetRelation.isDeletable }}
   delete{{ firstToUpper targetRelation.name }}(target: JudoIdentifiable<{{ classDataName targetRelation.target "" }}>): Promise<JudoRestResponse<void>>;
   {{/ if }}
   {{# if targetRelation.isUpdatable }}
-  update{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: Partial<{{ classDataName targetRelation.target "Stored" }}>): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>>;
+  update{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: Partial<{{ classDataName targetRelation.target "Stored" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>>;
   {{/ if }}
   {{# if relation.isUpdateValidatable }}
-    validateUpdate{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: Partial<{{ classDataName targetRelation.target "Stored" }}>): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>>;
+    validateUpdate{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: Partial<{{ classDataName targetRelation.target "Stored" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>>;
   {{/ if }}
   {{# if targetRelation.isSetable }}
   {{# neq relation.name targetRelation.name }}
