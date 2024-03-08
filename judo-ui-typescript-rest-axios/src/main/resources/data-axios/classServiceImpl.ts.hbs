@@ -70,12 +70,11 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
   /**
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
    */
-  async validateUpdate(target: Partial<{{ classDataName classType "Stored" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName classType "Stored" }}>> {
+  async validateUpdate(target: Partial<{{ classDataName classType "Stored" }}>): Promise<JudoRestResponse<{{ classDataName classType "Stored" }}>> {
     const path = '{{ restPath classType '/~validate' '' '' }}';
     return this.axios.post(this.getPathForActor(path), target, {
       headers: {
         [X_JUDO_SIGNED_IDENTIFIER]: target.__signedIdentifier!,
-        [X_JUDO_MASK]: queryCustomizer?._mask ?? DEFAULT_COMMAND_MASK,
       },
     });
   }
@@ -107,12 +106,11 @@ export class {{ serviceClassName classType }}Impl extends JudoAxiosService imple
   /**
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
    */
-  async validateCreate{{ firstToUpper relation.name }}(owner: JudoIdentifiable<{{ classDataName classType "" }}>, target: {{ classDataName relation.target "" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName relation.target "" }}>> {
+  async validateCreate{{ firstToUpper relation.name }}(owner: JudoIdentifiable<{{ classDataName classType "" }}>, target: {{ classDataName relation.target "" }}): Promise<JudoRestResponse<{{ classDataName relation.target "" }}>> {
     const path = '{{ restPath classType "/~update/" relation.name "/~validate" }}';
     return this.axios.post(this.getPathForActor(path), target, {
       headers: {
         [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier!,
-        [X_JUDO_MASK]: queryCustomizer?._mask ?? DEFAULT_COMMAND_MASK,
       },
     });
   }
