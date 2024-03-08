@@ -1,6 +1,6 @@
 {{> fragment.header.hbs }}
 
-import type { JudoIdentifiable } from '../data-api/common';
+import type { JudoIdentifiable, CommandQueryCustomizer } from '../data-api/common';
 import { {{ joinedTokensForApiImportClassService classType }} } from '../data-api';
 
 /**
@@ -17,20 +17,20 @@ export interface {{ serviceClassName classType }} {
   delete(target: JudoIdentifiable<{{ classDataName classType "" }}>): Promise<JudoRestResponse<void>>;
   {{/ if }}
   {{# if classType.isUpdatable }}
-  update(target: Partial<{{ classDataName classType "Stored" }}>): Promise<JudoRestResponse<{{ classDataName classType "Stored" }}>>;
+  update(target: Partial<{{ classDataName classType "Stored" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName classType "Stored" }}>>;
   {{/ if }}
   {{# if classType.isUpdateValidatable }}
-    validateUpdate(target: Partial<{{ classDataName classType "Stored" }}>): Promise<JudoRestResponse<{{ classDataName classType "Stored" }}>>;
+    validateUpdate(target: Partial<{{ classDataName classType "Stored" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName classType "Stored" }}>>;
   {{/ if }}
   {{# each classType.relationsOrderedByName as | relation | }}
   {{# if relation.target.isTemplateable }}
   getTemplateFor{{ firstToUpper relation.name }}(): Promise<JudoRestResponse<{{ classDataName relation.target "" }}>>;
   {{/ if }}
   {{# if relation.isCreatable }}
-  create{{ firstToUpper relation.name }}(owner: JudoIdentifiable<{{ classDataName classType "" }}>, target: JudoIdentifiable<{{ classDataName relation.target "" }}>): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>>;
+  create{{ firstToUpper relation.name }}(owner: JudoIdentifiable<{{ classDataName classType "" }}>, target: JudoIdentifiable<{{ classDataName relation.target "" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>>;
   {{/ if }}
   {{# if relation.isCreateValidatable }}
-    validateCreate{{ firstToUpper relation.name }}(owner: JudoIdentifiable<{{ classDataName classType "" }}>, target: {{ classDataName relation.target "" }}): Promise<JudoRestResponse<{{ classDataName relation.target "" }}>>;
+    validateCreate{{ firstToUpper relation.name }}(owner: JudoIdentifiable<{{ classDataName classType "" }}>, target: {{ classDataName relation.target "" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName relation.target "" }}>>;
   {{/ if }}
   {{# if relation.isRefreshable }}
   {{# if relation.isCollection }}list{{ else }}get{{/ if }}{{ firstToUpper relation.name }}(target: JudoIdentifiable<{{ classDataName classType "" }}>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<{{# if relation.isCollection }}Array<{{/ if }}{{ classDataName relation.target "Stored" }}{{# if relation.isCollection }}>{{/ if }}>>
