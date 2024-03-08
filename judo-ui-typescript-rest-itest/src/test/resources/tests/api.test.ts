@@ -2,11 +2,11 @@ import { expect, beforeEach, test, suite, vi, Mock } from 'vitest';
 import type { AxiosInstance } from 'axios';
 import { type Resource, fetchWadlContent, extractResourceRoot } from './process-wadl';
 import { JudoAxiosProvider } from '../src/services/data-axios';
-import { X_JUDO_SIGNED_IDENTIFIER, X_JUDO_COUNT_RECORDS } from '../src/services/data-api/rest';
+import { X_JUDO_SIGNED_IDENTIFIER, X_JUDO_COUNT_RECORDS, X_JUDO_MASK } from '../src/services/data-api/rest';
 import { GodServiceForGalaxiesImpl } from '../src/services/data-axios/GodServiceForGalaxiesImpl';
 import { GodServiceForEarthImpl } from '../src/services/data-axios/GodServiceForEarthImpl';
 import { ViewGalaxyServiceImpl } from '../src/services/data-axios/ViewGalaxyServiceImpl';
-import type { JudoIdentifiable, ViewCreature, ViewGalaxy, ViewGalaxyQueryCustomizer } from '../src/services/data-api';
+import type { JudoIdentifiable, ViewCreature, ViewGalaxy, ViewGalaxyQueryCustomizer, ViewGalaxyStored } from '../src/services/data-api';
 
 const ORIGIN = 'http://tatami-tests.judo.technology';
 const API_DEFAULT_BASE_URL = ORIGIN;
@@ -115,6 +115,46 @@ suite('API Tests', () => {
         assertSinglePostCall(resource, {}, {
             'headers': {
                 [X_JUDO_SIGNED_IDENTIFIER]: target.__signedIdentifier,
+            },
+        });
+    });
+
+    test('Default create Access POST request is mapped properly', async () => {
+        const resource: Resource = mappedXml.find(r => r.path === 'God/galaxies/~create');
+        const godServiceForGalaxiesImpl = new GodServiceForGalaxiesImpl(judoAxiosProvider);
+        const target: ViewGalaxy = {
+            name: 'abc',
+            magnitude: 11,
+            constellation: 'test',
+        };
+
+        assertSinglePostResource(resource);
+
+        await godServiceForGalaxiesImpl.create(target);
+
+        assertSinglePostCall(resource, target, {
+            'headers': {
+                [X_JUDO_MASK]: '{}',
+            },
+        });
+    });
+
+    test('Modified update Access POST request is mapped properly', async () => {
+        const resource: Resource = mappedXml.find(r => r.path === 'View/Galaxy/~update');
+        const viewGalaxyServiceImpl = new ViewGalaxyServiceImpl(judoAxiosProvider);
+        const target: Partial<ViewGalaxyStored> = {
+            __signedIdentifier: 'abc',
+            magnitude: 222,
+        };
+
+        assertSinglePostResource(resource);
+
+        await viewGalaxyServiceImpl.update(target, { _mask: '{magnitude}' });
+
+        assertSinglePostCall(resource, target, {
+            'headers': {
+                [X_JUDO_SIGNED_IDENTIFIER]: target.__signedIdentifier,
+                [X_JUDO_MASK]: '{magnitude}',
             },
         });
     });
