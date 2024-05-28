@@ -330,7 +330,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
   }
   {{/ if }}
 
-  {{# if relation.isCreateValidatable }}
+  {{# if targetRelation.isCreateValidatable }}
   async validateCreate{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: {{ classDataName targetRelation.target "" }}): Promise<JudoRestResponse<{{ classDataName targetRelation.target "" }}>> {
     const path = '{{ restPath relation.target "/~update/"  targetRelation.name "/~validate" }}';
     return this.axios.post(this.getPathForActor(path), target, {
@@ -364,7 +364,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
   }
   {{/ if }}
 
-  {{# if relation.isUpdateValidatable }}
+  {{# if targetRelation.isUpdateValidatable }}
   async validateUpdate{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: Partial<{{ classDataName targetRelation.target "Stored" }}>): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>> {
     const path = '{{ restPath relation.target "/~update/"  targetRelation.name "/~validate" }}';
     return this.axios.post(this.getPathForActor(path), target, {

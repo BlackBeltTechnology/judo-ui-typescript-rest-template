@@ -72,7 +72,7 @@ export interface {{ serviceRelationName relation }} {
   {{# if targetRelation.isCreatable }}
   create{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: {{ classDataName targetRelation.target "" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>>;
   {{/ if }}
-  {{# if relation.isCreateValidatable }}
+  {{# if targetRelation.isCreateValidatable }}
     validateCreate{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: {{ classDataName targetRelation.target "" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName targetRelation.target "" }}>>;
   {{/ if }}
   {{# if targetRelation.isDeletable }}
@@ -81,7 +81,7 @@ export interface {{ serviceRelationName relation }} {
   {{# if targetRelation.isUpdatable }}
   update{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: Partial<{{ classDataName targetRelation.target "Stored" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>>;
   {{/ if }}
-  {{# if relation.isUpdateValidatable }}
+  {{# if targetRelation.isUpdateValidatable }}
     validateUpdate{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: Partial<{{ classDataName targetRelation.target "Stored" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>>;
   {{/ if }}
   {{# if targetRelation.isSetable }}
