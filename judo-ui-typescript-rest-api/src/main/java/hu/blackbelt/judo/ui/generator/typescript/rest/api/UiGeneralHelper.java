@@ -137,11 +137,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return classType.getAttributes() != null && !classType.getAttributes().isEmpty();
     }
     public static List<String> modelImportTokens(ClassType classType) {
-        var tokens = new HashSet<String>(classType.getRelations().stream().filter(r -> !r.getTarget().getAttributes().isEmpty()).map(r -> classDataName(r.getTarget(), "Attributes")).toList());
-
-        if (hasClassAttributes(classType)) {
-            tokens.add(classDataName(classType, "Attributes"));
-        }
+        var tokens = new HashSet<String>(classType.getRelations().stream().filter(r -> !r.getTarget().getAttributes().isEmpty()).map(r -> classDataName(r.getTarget(), "")).toList());
 
         return tokens.stream().sorted().toList();
     }
@@ -256,7 +252,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return type instanceof EnumerationType;
     }
 
-    public static String joinModelImports(DataType dataType) {
+    public static List<String> joinModelImports(DataType dataType) {
         ArrayList<String> tokens = new ArrayList<String>();
 
         tokens.add(typescriptType(dataType.getOperator()));
@@ -265,7 +261,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
             tokens.add(restParamName(dataType));
         }
 
-        return tokens.stream().collect(Collectors.joining(", "));
+        return tokens.stream().sorted().toList();
     }
 
     public static boolean classTypeRelationsIsEmpty(ClassType classType) {

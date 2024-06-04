@@ -4,7 +4,11 @@ import type { JudoIdentifiable } from '../data-api/common';
 import { CommandQueryCustomizer } from '../data-api/common';
 import { X_JUDO_SIGNED_IDENTIFIER, X_JUDO_MASK } from '../data-api/rest/headers';
 import { JudoAxiosService } from './JudoAxiosService';
-import type { {{ joinedTokensForApiImportClassService classType }} } from '../data-api';
+import type { JudoRestResponse } from '../data-api/rest/requestResponse';
+{{# each (joinedTokensForApiImportClassService classType) as |imp| }}
+    import type { {{ imp }}, {{ imp }}Stored } from '../data-api/model/{{ imp }}';
+    import type { {{ imp }}QueryCustomizer } from '../data-api/rest/{{ imp }}QueryCustomizer';
+{{/ each }}
 import type { {{ serviceClassName classType }} } from '../data-service';
 
 const DEFAULT_COMMAND_MASK = '{}';

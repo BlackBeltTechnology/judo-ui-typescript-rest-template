@@ -1,0 +1,8 @@
+export interface Serializer {
+  serializeDate: (date: Date) => string;
+  serializeTime: (time: Date) => string;
+  serializeTimestamp: (timestamp: Date) => string;
+  deserializeDate: (date: string) => Date;
+  deserializeTime: (time: string) => Date;
+  deserializeTimestamp: (string: Date) => Date;
+}
