@@ -1,4 +1,6 @@
-export interface Serializer {
+import { type JudoStored } from './JudoStored';
+
+export interface SerializerUtil {
   serializeDate: (date: Date) => string;
   serializeTime: (time: Date) => string;
   serializeTimestamp: (timestamp: Date) => string;
@@ -6,3 +8,31 @@ export interface Serializer {
   deserializeTime: (time: string) => Date;
   deserializeTimestamp: (string: Date) => Date;
 }
+
+export interface Serializer<T> {
+  serialize(instance: T, cleanup: boolean): object;
+  deserialize(data: object): T;
+}
+
+export const draftIdentifierPrefix = 'draft:';
+
+export const applySerializedStoredMembers = (result: any, instance: JudoStored<any>, cleanup = false): void => {
+  if (typeof instance.__deleteable === 'boolean') {
+    result.__deleteable = instance.__deleteable;
+  }
+  if (typeof instance.__updateable === 'boolean') {
+    result.__updateable = instance.__updateable;
+  }
+  if (instance.__version !== undefined) {
+    result.__version = instance.__version;
+  }
+  if (instance.__entityType !== undefined) {
+    result.__entityType = instance.__entityType;
+  }
+  if (instance.__identifier !== undefined && (!cleanup || !instance.__identifier.startsWith(draftIdentifierPrefix))) {
+    result.__identifier = instance.__identifier;
+  }
+  if (instance.__signedIdentifier !== undefined) {
+    result.__signedIdentifier = instance.__signedIdentifier;
+  }
+};

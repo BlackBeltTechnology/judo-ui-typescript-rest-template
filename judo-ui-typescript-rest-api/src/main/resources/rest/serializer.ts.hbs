@@ -1,0 +1,70 @@
+{{> fragment.header.hbs }}
+
+import type { Serializer, SerializerUtil } from '../common';
+import { applySerializedStoredMembers } from '../common';
+import type { {{ classDataName classType '' }}, {{ classDataName classType 'Stored' }} } from '../model/{{ classDataName classType '' }}';
+{{# each classType.relations as |relation| }}
+  import { {{ classDataName relation.target 'Serializer' }} } from './{{ classDataName relation.target 'Serializer' }}';
+{{/ each }}
+
+export class {{ classDataName classType 'Stored' }}Serializer implements Serializer<{{ classDataName classType 'Stored' }}> {
+  private readonly util: SerializerUtil;
+  private readonly normalSerializer: {{ classDataName classType 'Serializer' }};
+
+  constructor(serializerUtil: SerializerUtil) {
+    this.util = serializerUtil;
+    this.normalSerializer = new {{ classDataName classType 'Serializer' }}(this.util);
+  }
+
+  serialize(instance: {{ classDataName classType 'Stored' }}, cleanup = false): object {
+    const result: any = this.normalSerializer.serialize(instance, cleanup);
+    applySerializedStoredMembers(result, instance, cleanup);
+    return result;
+  }
+
+  deserialize(data: object): {{ classDataName classType 'Stored' }} {
+    const result: {{ classDataName classType 'Stored' }} = {} as unknown as {{ classDataName classType 'Stored' }};
+    return result;
+  }
+}
+
+export class {{ classDataName classType 'Serializer' }} implements Serializer<{{ classDataName classType '' }}> {
+  private readonly util: SerializerUtil;
+  {{# each classType.relations as |relation| }}
+  private readonly {{ relation.name }}Serializer: {{ classDataName relation.target 'Serializer' }};
+  {{/ each }}
+
+  constructor(serializerUtil: SerializerUtil) {
+    this.util = serializerUtil;
+    {{# each classType.relations as |relation| }}
+    this.{{ relation.name }}Serializer = new {{ classDataName relation.target 'Serializer' }}(this.util);
+    {{/ each }}
+  }
+
+  serialize(instance: {{ classDataName classType '' }}, cleanup = false): object {
+    const result: any = {};
+    {{# each classType.attributes as |attribute| }}
+    if (instance.{{ attribute.name }} !== undefined) {
+      result.{{ attribute.name }} = {{# unless attribute.isRequired }}instance.{{ attribute.name }} === null ? null : {{/ unless }}{{ serializePrimitive attribute }};
+    }
+    {{/ each }}
+    {{# each classType.relations as |relation| }}
+      {{# if relation.isCollection }}
+      if (Array.isArray(instance.{{ relation.name }})) {
+        result.{{ relation.name }} = instance.{{ relation.name }}.map(r => this.{{ relation.name }}Serializer.serialize(r, cleanup));
+      }
+      {{ else }}
+      if (instance.{{ relation.name }} !== undefined) {
+        result.{{ relation.name }} = {{# if relation.isOptional }}instance.{{ relation.name }} === null ? null : {{/ if }}this.{{ relation.name }}Serializer.serialize(instance.{{ relation.name }}, cleanup);
+      }
+      {{/ if }}
+    {{/ each }}
+    return result;
+  }
+
+  deserialize(data: object): {{ classDataName classType '' }} {
+    const result: {{ classDataName classType '' }} = {} as unknown as {{ classDataName classType '' }};
+
+    return result;
+  }
+}

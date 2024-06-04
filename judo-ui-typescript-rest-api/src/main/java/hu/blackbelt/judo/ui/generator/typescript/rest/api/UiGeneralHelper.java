@@ -277,9 +277,9 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         } else if (dataType instanceof BooleanType) {
             return "boolean";
         } else if (dataType instanceof TimeType) {
-            return "string";
+            return "Date";
         } else if (dataType instanceof DateType) {
-            return "string";
+            return "Date";
         } else if (dataType instanceof TimestampType) {
             return "Date";
         } else if (dataType instanceof StringType) {
@@ -289,4 +289,26 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         }
     }
 
+    public static boolean isAttributeTimestamp(AttributeType attributeType) {
+        return attributeType.getDataType() instanceof TimestampType;
+    }
+
+    public static boolean isAttributeTime(AttributeType attributeType) {
+        return attributeType.getDataType() instanceof TimeType;
+    }
+
+    public static boolean isAttributeDate(AttributeType attributeType) {
+        return attributeType.getDataType() instanceof DateType;
+    }
+
+    public static String serializePrimitive(AttributeType attributeType) {
+        if (isAttributeDate(attributeType)) {
+            return "this.util.serializeDate(instance." + attributeType.getName() + ")";
+        } else if (isAttributeTime(attributeType)) {
+            return "this.util.serializeTime(instance." + attributeType.getName() + ")";
+        } else if (isAttributeTimestamp(attributeType)) {
+            return "this.util.serializeTimestamp(instance." + attributeType.getName() + ")";
+        }
+        return "instance." + attributeType.getName();
+    }
 }

@@ -161,6 +161,15 @@ templates:
       - name: classType
         expression: "#self"
 
+  - name: serializer.ts.hbs
+    applicationBased: true
+    factoryExpression: "#getClassTypes(#application)"
+    pathExpression: "'data-api/rest/' + #classDataName(#self, \"Serializer\") + '.ts'"
+    templateName: rest/serializer.ts.hbs
+    templateContext:
+      - name: classType
+        expression: "#self"
+
   - name: filterable.ts.hbs
     applicationBased: true
     factoryExpression: "#getFilterableDataTypes(#application)"
