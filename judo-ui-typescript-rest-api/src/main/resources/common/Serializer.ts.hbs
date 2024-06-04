@@ -11,28 +11,28 @@ export interface SerializerUtil {
 
 export interface Serializer<T> {
   serialize(instance: T, cleanup: boolean): object;
-  deserialize(data: object): T;
+  deserialize(data: any): T;
 }
 
 export const draftIdentifierPrefix = 'draft:';
 
-export const applySerializedStoredMembers = (result: any, instance: JudoStored<any>, cleanup = false): void => {
+export const applyStoredMembers = (result: JudoStored<any>, instance: JudoStored<any>, cleanup = false): void => {
   if (typeof instance.__deleteable === 'boolean') {
     result.__deleteable = instance.__deleteable;
   }
   if (typeof instance.__updateable === 'boolean') {
     result.__updateable = instance.__updateable;
   }
-  if (instance.__version !== undefined) {
+  if (typeof instance.__version === 'string') {
     result.__version = instance.__version;
   }
-  if (instance.__entityType !== undefined) {
+  if (typeof instance.__entityType === 'string') {
     result.__entityType = instance.__entityType;
   }
-  if (instance.__identifier !== undefined && (!cleanup || !instance.__identifier.startsWith(draftIdentifierPrefix))) {
+  if (typeof instance.__identifier === 'string' && (!cleanup || !instance.__identifier.startsWith(draftIdentifierPrefix))) {
     result.__identifier = instance.__identifier;
   }
-  if (instance.__signedIdentifier !== undefined) {
+  if (typeof instance.__signedIdentifier === 'string') {
     result.__signedIdentifier = instance.__signedIdentifier;
   }
 };

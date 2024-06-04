@@ -311,4 +311,15 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         }
         return "instance." + attributeType.getName();
     }
+
+    public static String deserializePrimitive(AttributeType attributeType) {
+        if (isAttributeDate(attributeType)) {
+            return "this.util.deserializeDate(instance." + attributeType.getName() + ")";
+        } else if (isAttributeTime(attributeType)) {
+            return "this.util.deserializeTime(instance." + attributeType.getName() + ")";
+        } else if (isAttributeTimestamp(attributeType)) {
+            return "this.util.deserializeTimestamp(instance." + attributeType.getName() + ")";
+        }
+        return "instance." + attributeType.getName();
+    }
 }
