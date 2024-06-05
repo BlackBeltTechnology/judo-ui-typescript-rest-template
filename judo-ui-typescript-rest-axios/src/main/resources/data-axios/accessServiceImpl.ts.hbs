@@ -4,7 +4,10 @@ import type { AxiosResponse } from 'axios';
 import type { JudoDownloadFile, JudoMetaData, JudoToken } from '../data-api/common';
 import type { AccessService } from '../data-service';
 import { JudoAxiosService } from './JudoAxiosService';
-import { {{ accessJoinedImportTokens application }} } from '../data-api';
+import type { JudoRestResponse } from '../data-api/rest/requestResponse';
+{{# each (accessJoinedImportTokens application) as |imp| }}
+import type { {{ imp }}, {{ imp }}Stored } from '../data-api/model/{{ imp }}';
+{{/ each }}
 
 export class AccessServiceImpl extends JudoAxiosService implements AccessService {
 {{# if application.principal }}

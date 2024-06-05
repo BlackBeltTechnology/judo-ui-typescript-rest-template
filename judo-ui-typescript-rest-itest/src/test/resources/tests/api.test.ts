@@ -1,12 +1,14 @@
-import { expect, beforeEach, test, suite, vi, Mock } from 'vitest';
+import { expect, beforeEach, test, suite, vi } from 'vitest';
 import type { AxiosInstance } from 'axios';
 import { type Resource, fetchWadlContent, extractResourceRoot } from './process-wadl';
-import { JudoAxiosProvider } from '../src/services/data-axios';
-import { X_JUDO_SIGNED_IDENTIFIER, X_JUDO_COUNT_RECORDS, X_JUDO_MASK } from '../src/services/data-api/rest';
+import { JudoAxiosProvider } from '../src/services/data-axios/JudoAxiosProvider';
+import { X_JUDO_SIGNED_IDENTIFIER, X_JUDO_COUNT_RECORDS, X_JUDO_MASK } from '../src/services/data-api/rest/headers';
 import { GodServiceForGalaxiesImpl } from '../src/services/data-axios/GodServiceForGalaxiesImpl';
 import { GodServiceForEarthImpl } from '../src/services/data-axios/GodServiceForEarthImpl';
 import { ViewGalaxyServiceImpl } from '../src/services/data-axios/ViewGalaxyServiceImpl';
-import type { JudoIdentifiable, ViewCreature, ViewGalaxy, ViewGalaxyQueryCustomizer, ViewGalaxyStored } from '../src/services/data-api';
+import type { JudoIdentifiable } from '../src/services/data-api/common/JudoIdentifiable';
+import type { ViewCreature } from '../src/services/data-api/model/ViewCreature';
+import type { ViewGalaxy, ViewGalaxyStored } from '../src/services/data-api/model/ViewGalaxy';
 
 const ORIGIN = 'http://tatami-tests.judo.technology';
 const API_DEFAULT_BASE_URL = ORIGIN;
