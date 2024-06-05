@@ -5,6 +5,7 @@ specifiers:
   '@types/node': ^16.18.4
   axios: ^1.2.1
   cross-env: ^7.0.3
+  date-fns: ^3.6.0
   dotenv: ^16.0.3
   fast-xml-parser: ^4.3.3
   prettier: ^2.8.0
@@ -19,6 +20,7 @@ devDependencies:
   '@judo/data-api-common': 0.4.2
   '@types/node': 16.18.13
   cross-env: 7.0.3
+  date-fns: 3.6.0
   dotenv: 16.0.3
   prettier: 2.8.4
   typescript: 5.2.2
@@ -483,6 +485,10 @@ packages:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+    dev: true
+
+  /date-fns/3.6.0:
+    resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
     dev: true
 
   /debug/4.3.4:
