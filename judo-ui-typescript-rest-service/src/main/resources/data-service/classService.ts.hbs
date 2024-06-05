@@ -21,10 +21,10 @@ export interface {{ serviceClassName classType }} {
   delete(target: {{ classDataName classType "Stored" }}): Promise<JudoRestResponse<void>>;
   {{/ if }}
   {{# if classType.isUpdatable }}
-  update(target: Partial<{{ classDataName classType "Stored" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName classType "Stored" }}>>;
+  update(target: {{ classDataName classType "Stored" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName classType "Stored" }}>>;
   {{/ if }}
   {{# if classType.isUpdateValidatable }}
-    validateUpdate(target: Partial<{{ classDataName classType "Stored" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName classType "Stored" }}>>;
+    validateUpdate(target: {{ classDataName classType "Stored" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName classType "Stored" }}>>;
   {{/ if }}
   {{# each classType.relationsOrderedByName as | relation | }}
   {{# if relation.target.isTemplateable }}
