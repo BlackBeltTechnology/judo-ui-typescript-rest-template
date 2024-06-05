@@ -134,6 +134,17 @@
                     </execution>
 
                     <execution>
+                        <id>format</id>
+                        <goals>
+                            <goal>pnpm</goal>
+                        </goals>
+                        <phase>test</phase>
+                        <configuration>
+                            <arguments>run format</arguments>
+                        </configuration>
+                    </execution>
+
+                    <execution>
                         <id>pnpm test</id>
                         <goals>
                             <goal>pnpm</goal>
