@@ -8,10 +8,14 @@ import type { JudoRestResponse } from '../data-api/rest/requestResponse';
 {{# each (joinedTokensForApiImport relation) as |imp| }}
     import type { {{ imp }}, {{ imp }}Stored } from '../data-api/model/{{ imp }}';
     import type { {{ imp }}QueryCustomizer } from '../data-api/rest/{{ imp }}QueryCustomizer';
+    import { {{ imp }}Serializer } from '../data-api/rest/{{ imp }}Serializer';
 {{/ each }}
 import type { {{ serviceRelationName relation }} } from '../data-service';
 
 const DEFAULT_COMMAND_MASK = '{}';
+{{# each (joinedTokensForApiImport relation) as |imp| }}
+const {{ firstToLower imp }}Serializer = new {{ imp }}Serializer();
+{{/ each }}
 
 /**
  * Relation Service Implementation for {{ classDataName (getRelationOwnerAsClassType relation) "" }}.{{ relation.name }}
@@ -170,7 +174,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
    * From: relation.isUpdatable
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
    */
-  async update(target: Partial<{{ classDataName relation.target "Stored" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>> {
+  async update(target: {{ classDataName relation.target "Stored" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>> {
     const path = '{{ restPath relation.target "/~update" "" "" }}';
     return this.axios.post(this.getPathForActor(path), target, {
       headers: {
@@ -186,7 +190,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
    * From: relation.validateUpdate
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
    */
-  async validateUpdate({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}target: Partial<{{ classDataName relation.target "Stored" }}>): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>> {
+  async validateUpdate({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}target: {{ classDataName relation.target "Stored" }}): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>> {
     const path = '{{ restPath relation.target "/~validate" "" "" }}';
     return this.axios.post(this.getPathForActor(path), target, {
       headers: {
@@ -357,7 +361,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
   {{/ if }}
 
   {{# if targetRelation.isUpdatable }}
-  async update{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: Partial<{{ classDataName targetRelation.target "Stored" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>> {
+  async update{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: {{ classDataName targetRelation.target "Stored" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>> {
     const path = '{{ restPath relation.target "/~update/"  targetRelation.name "/~update" }}';
     return this.axios.post(this.getPathForActor(path), target, {
       headers: {
@@ -369,7 +373,7 @@ export class {{ serviceRelationName relation }}Impl extends JudoAxiosService imp
   {{/ if }}
 
   {{# if targetRelation.isUpdateValidatable }}
-  async validateUpdate{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: Partial<{{ classDataName targetRelation.target "Stored" }}>): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>> {
+  async validateUpdate{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: {{ classDataName targetRelation.target "Stored" }}): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>> {
     const path = '{{ restPath relation.target "/~update/"  targetRelation.name "/~validate" }}';
     return this.axios.post(this.getPathForActor(path), target, {
       headers: {

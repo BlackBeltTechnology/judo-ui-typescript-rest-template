@@ -1,14 +1,10 @@
 import { expect, test, suite } from 'vitest';
-import { draftIdentifierPrefix, type SerializerUtil } from '../src/services/data-api/common/Serializer';
+import { draftIdentifierPrefix } from '../src/services/data-api/common/Serializer';
 import type { ViewGalaxyStored } from '../src/services/data-api/model/ViewGalaxy';
 import { ViewGalaxyStoredSerializer } from '../src/services/data-api/rest/ViewGalaxySerializer';
 
 suite('Serialization Tests', () => {
-    const util: Partial<SerializerUtil> = {
-        serializeDate: (date: Date) => date.toISOString().substring(0, 10),
-        deserializeDate: (date: any) => new Date(date as string),
-    };
-    const galaxySerializer = new ViewGalaxyStoredSerializer(util as SerializerUtil);
+    const galaxySerializer = new ViewGalaxyStoredSerializer();
 
     const serialized = Object.freeze({
         __signedIdentifier: 'aaa',

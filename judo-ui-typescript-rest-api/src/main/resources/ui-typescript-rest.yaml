@@ -193,6 +193,11 @@ templates:
     pathExpression: "'data-api/rest/requestResponse.ts'"
     templateName: rest/requestResponse.ts.hbs
 
+  - name: serialization.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/rest/serialization.ts'"
+    templateName: rest/serialization.ts.hbs
+
   - name: maskBuilder.ts.hbs
     applicationBased: true
     pathExpression: "'data-api/rest/' + 'MaskBuilder.ts'"

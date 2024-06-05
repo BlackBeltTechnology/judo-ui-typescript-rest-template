@@ -6,17 +6,17 @@ import type { {{ classDataName classType '' }}, {{ classDataName classType 'Stor
 {{# each (getRelatedClasses classType) as |classType| }}
   import { {{ classDataName classType 'Serializer' }} } from './{{ classDataName classType 'Serializer' }}';
 {{/ each }}
+import { serializerUtil } from './serialization';
 
 export class {{ classDataName classType 'Stored' }}Serializer implements Serializer<{{ classDataName classType 'Stored' }}> {
-  private readonly util: SerializerUtil;
+  private readonly util = serializerUtil;
   private readonly normalSerializer: {{ classDataName classType 'Serializer' }};
 
-  constructor(serializerUtil: SerializerUtil) {
-    this.util = serializerUtil;
-    this.normalSerializer = new {{ classDataName classType 'Serializer' }}(this.util);
+  constructor() {
+    this.normalSerializer = new {{ classDataName classType 'Serializer' }}();
   }
 
-  serialize(instance: {{ classDataName classType 'Stored' }}, cleanup = false): object {
+  serialize(instance: {{ classDataName classType 'Stored' }}, cleanup = false): any {
     return this.normalSerializer.serialize(instance, cleanup);
   }
 
@@ -26,17 +26,16 @@ export class {{ classDataName classType 'Stored' }}Serializer implements Seriali
 }
 
 export class {{ classDataName classType 'Serializer' }} implements Serializer<{{ classDataName classType '' }}> {
-  private readonly util: SerializerUtil;
+  private readonly util = serializerUtil;
   {{# each classType.relations as |relation| }}
   private {{ relation.name }}Serializer?: {{ classDataName relation.target 'Serializer' }};
   {{/ each }}
 
-  constructor(serializerUtil: SerializerUtil) {
-    this.util = serializerUtil;
+  constructor() {
     // Relation serializer instantiation is delayed to prevent stack overflows due to potential recursions.
   }
 
-  serialize(instance: {{ classDataName classType '' }}, cleanup = false): object {
+  serialize(instance: {{ classDataName classType '' }}, cleanup = false): any {
     const result: any = {};
     {{# each classType.attributes as |attribute| }}
     if (instance.{{ attribute.name }} !== undefined) {
@@ -45,7 +44,7 @@ export class {{ classDataName classType 'Serializer' }} implements Serializer<{{
     {{/ each }}
     {{# each classType.relations as |relation| }}
       if (!this.{{ relation.name }}Serializer) {
-        this.{{ relation.name }}Serializer = new {{ classDataName relation.target 'Serializer' }}(this.util);
+        this.{{ relation.name }}Serializer = new {{ classDataName relation.target 'Serializer' }}();
       }
       {{# if relation.isCollection }}
       if (Array.isArray(instance.{{ relation.name }})) {
@@ -70,7 +69,7 @@ export class {{ classDataName classType 'Serializer' }} implements Serializer<{{
     {{/ each }}
     {{# each classType.relations as |relation| }}
       if (!this.{{ relation.name }}Serializer) {
-        this.{{ relation.name }}Serializer = new {{ classDataName relation.target 'Serializer' }}(this.util);
+        this.{{ relation.name }}Serializer = new {{ classDataName relation.target 'Serializer' }}();
       }
       {{# if relation.isCollection }}
       if (Array.isArray(instance.{{ relation.name }})) {

@@ -10,7 +10,7 @@ export interface SerializerUtil {
 }
 
 export interface Serializer<T> {
-  serialize(instance: T, cleanup: boolean): object;
+  serialize(instance: T, cleanup: boolean): any;
   deserialize(data: any): T;
 }
 
