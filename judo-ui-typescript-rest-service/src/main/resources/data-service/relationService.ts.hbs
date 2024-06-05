@@ -13,103 +13,106 @@ import type { JudoRestResponse } from '../data-api/rest/requestResponse';
 export interface {{ serviceRelationName relation }} {
 {{# if relation.isListable }}
   {{# if relation.isCollection }}
-  list(owner?: JudoIdentifiable<any>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName relation.target "Stored" }}>>>;
+  list(owner?: {{# if relation.isAccess }}JudoIdentifiable<any>{{ else }}{{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}{{/ if }}, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName relation.target "Stored" }}>>>;
   {{/ if }}
 {{/ if }}
+{{# and relation.isExportable relation.isCollection }}
+    export(owner?: {{# if relation.isAccess }}JudoIdentifiable<any>{{ else }}{{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}{{/ if }}, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<any>;
+{{/ and }}
 {{# if relation.isRefreshable }}
   {{# if relation.isAccess }}
   {{# unless relation.isCollection }}
   refreshFor{{ firstToUpper relation.name }}(queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>>;
   {{/ unless }}
   {{/ if }}
-  refresh(owner?: JudoIdentifiable<any>, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>>;
+  refresh(owner?: {{# if relation.isAccess }}JudoIdentifiable<any>{{ else }}{{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}{{/ if }}, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>>;
 {{/ if }}
 {{# if relation.isRangeable }}
-  getRangeFor{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}> | {{ classDataName (getRelationOwnerAsClassType relation) "" }}, {{/ unless }}queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName relation.target "Stored" }}>>>;
+  getRangeFor{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName relation.target "Stored" }}>>>;
 {{/ if }}
 {{# if relation.target.isTemplateable }}
   getTemplate(): Promise<JudoRestResponse<{{ classDataName relation.target "" }}>>;
 {{/ if }}
 {{# if relation.isCreatable }}
-  create({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}target: {{ classDataName relation.target "" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>>;
+  create({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}target: {{ classDataName relation.target "" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>>;
 {{/ if }}
 {{# if relation.isCreateValidatable }}
-  validateCreate({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}target: {{ classDataName relation.target "" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName relation.target "" }}>>;
+  validateCreate({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}target: {{ classDataName relation.target "" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName relation.target "" }}>>;
 {{/ if }}
 {{# if relation.isDeletable }}
-  delete(target: JudoIdentifiable<{{ classDataName relation.target "" }}>): Promise<JudoRestResponse<void>>;
+  delete(target: {{ classDataName relation.target "Stored" }}): Promise<JudoRestResponse<void>>;
 {{/ if }}
 {{# if relation.isUpdatable }}
   update(target: Partial<{{ classDataName relation.target "Stored" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>>;
 {{/ if }}
 {{# if relation.isUpdateValidatable }}
-  validateUpdate({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}target: Partial<{{ classDataName relation.target "Stored" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>>;
+  validateUpdate({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}target: Partial<{{ classDataName relation.target "Stored" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>>;
 {{/ if }}
 {{# if relation.isSetable }}
-  set{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}selected:{{# if relation.isCollection }}Array<{{/ if }}JudoIdentifiable<{{ classDataName relation.target "" }}>{{# if relation.isCollection }}>{{/ if }}): Promise<JudoRestResponse<void>>;
+  set{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}selected:{{# if relation.isCollection }}Array<{{/ if }}{{ classDataName relation.target "Stored" }}{{# if relation.isCollection }}>{{/ if }}): Promise<JudoRestResponse<void>>;
 {{/ if }}
 {{# if relation.isUnsetable }}
-  unset{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}): Promise<JudoRestResponse<void>>;
+  unset{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}): Promise<JudoRestResponse<void>>;
 {{/ if }}
 {{# if relation.isAddable }}
-  add{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}selected: Array<JudoIdentifiable<{{ classDataName relation.target "" }}>>): Promise<JudoRestResponse<void>>;
+  add{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}selected: Array<{{ classDataName relation.target "Stored" }}>): Promise<JudoRestResponse<void>>;
 {{/ if }}
 {{# if relation.isRemovable }}
-  remove{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: JudoIdentifiable<{{ classDataName (getRelationOwnerAsClassType relation) "" }}>, {{/ unless }}selected: Array<JudoIdentifiable<{{ classDataName relation.target "" }}>>): Promise<JudoRestResponse<void>>;
+  remove{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}selected: Array<{{ classDataName relation.target "Stored" }}>): Promise<JudoRestResponse<void>>;
 {{/ if }}
 {{# each relation.target.relationsOrderedByName as | targetRelation | }}
   {{# if targetRelation.isListable }}
   {{# if targetRelation.isCollection }}
-  list{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName targetRelation.target "Stored" }}>>>;
+  list{{ firstToUpper targetRelation.name }}(owner: {{ classDataName relation.target "Stored" }}, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName targetRelation.target "Stored" }}>>>;
   {{ else }}
-  get{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>>;
+  get{{ firstToUpper targetRelation.name }}(owner: {{ classDataName relation.target "Stored" }}, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>>;
   {{/ if }}
   {{/ if }}
   {{# if targetRelation.isRangeable }}
   {{# neq relation.name targetRelation.name }}
-  getRangeFor{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}> | {{ classDataName relation.target "" }}, queryCustomizer: {{ classDataName targetRelation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName targetRelation.target "Stored" }}>>>;
+  getRangeFor{{ firstToUpper targetRelation.name }}(owner: {{ classDataName relation.target "Stored" }}, queryCustomizer: {{ classDataName targetRelation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName targetRelation.target "Stored" }}>>>;
   {{/ neq }}
   {{/ if }}
   {{# if targetRelation.target.isTemplateable }}
   getTemplateFor{{ firstToUpper targetRelation.name }}(): Promise<JudoRestResponse<{{ classDataName targetRelation.target "" }}>>;
   {{/ if }}
   {{# if targetRelation.isCreatable }}
-  create{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: {{ classDataName targetRelation.target "" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>>;
+  create{{ firstToUpper targetRelation.name }}(owner: {{ classDataName relation.target "Stored" }}, target: {{ classDataName targetRelation.target "" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>>;
   {{/ if }}
   {{# if targetRelation.isCreateValidatable }}
-    validateCreate{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: {{ classDataName targetRelation.target "" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName targetRelation.target "" }}>>;
+    validateCreate{{ firstToUpper targetRelation.name }}(owner: {{ classDataName relation.target "Stored" }}, target: {{ classDataName targetRelation.target "" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName targetRelation.target "" }}>>;
   {{/ if }}
   {{# if targetRelation.isDeletable }}
-  delete{{ firstToUpper targetRelation.name }}(target: JudoIdentifiable<{{ classDataName targetRelation.target "" }}>): Promise<JudoRestResponse<void>>;
+  delete{{ firstToUpper targetRelation.name }}(target: {{ classDataName targetRelation.target "Stored" }}): Promise<JudoRestResponse<void>>;
   {{/ if }}
   {{# if targetRelation.isUpdatable }}
-  update{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: Partial<{{ classDataName targetRelation.target "Stored" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>>;
+  update{{ firstToUpper targetRelation.name }}(owner: {{ classDataName relation.target "Stored" }}, target: Partial<{{ classDataName targetRelation.target "Stored" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>>;
   {{/ if }}
   {{# if targetRelation.isUpdateValidatable }}
-    validateUpdate{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: Partial<{{ classDataName targetRelation.target "Stored" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>>;
+    validateUpdate{{ firstToUpper targetRelation.name }}(owner: {{ classDataName relation.target "Stored" }}, target: Partial<{{ classDataName targetRelation.target "Stored" }}>, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>>;
   {{/ if }}
   {{# if targetRelation.isSetable }}
   {{# neq relation.name targetRelation.name }}
-  set{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, selected: {{# if targetRelation.isCollection }}Array<{{/ if }}JudoIdentifiable<{{ classDataName targetRelation.target "" }}>{{# if targetRelation.isCollection }}>{{/ if }}): Promise<JudoRestResponse<void>>;
+  set{{ firstToUpper targetRelation.name }}(owner: {{ classDataName relation.target "Stored" }}, selected: {{# if targetRelation.isCollection }}Array<{{/ if }}{{ classDataName targetRelation.target "Stored" }}{{# if targetRelation.isCollection }}>{{/ if }}): Promise<JudoRestResponse<void>>;
   {{/ neq }}
   {{/ if }}
   {{# if targetRelation.isUnsetable }}
   {{# neq relation.name targetRelation.name }}
-  unset{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, target: JudoIdentifiable<{{ classDataName targetRelation.target "" }}>): Promise<JudoRestResponse<void>>;
+  unset{{ firstToUpper targetRelation.name }}(owner: {{ classDataName relation.target "Stored" }}, target: {{ classDataName targetRelation.target "Stored" }}): Promise<JudoRestResponse<void>>;
   {{/ neq }}
   {{/ if }}
   {{# if targetRelation.isAddable }}
   {{# neq relation.name targetRelation.name }}
-  add{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>, selected: Array<JudoIdentifiable<{{ classDataName targetRelation.target "" }}>>): Promise<JudoRestResponse<void>>;
+  add{{ firstToUpper targetRelation.name }}(owner: {{ classDataName relation.target "Stored" }}, selected: Array<{{ classDataName targetRelation.target "Stored" }}>): Promise<JudoRestResponse<void>>;
   {{/ neq }}
   {{/ if }}
   {{# if targetRelation.isRemovable }}
   {{# neq relation.name targetRelation.name }}
-  remove{{ firstToUpper targetRelation.name }}(owner: JudoIdentifiable<{{ classDataName relation.target "" }}>,  selected: Array<JudoIdentifiable<{{ classDataName targetRelation.target "" }}>>): Promise<JudoRestResponse<void>>;
+  remove{{ firstToUpper targetRelation.name }}(owner: {{ classDataName relation.target "Stored" }},  selected: Array<{{ classDataName targetRelation.target "Stored" }}>): Promise<JudoRestResponse<void>>;
   {{/ neq }}
   {{/ if }}
   {{# each targetRelation.target.operationsOrderedByName as | operation | }}
-  {{ operation.name }}For{{ firstToUpper targetRelation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName targetRelation.target "" }}>{{/ unless }}{{# if operation.input }}{{# unless operation.isStatic }}, {{/ unless }}target: {{ classDataName operation.input.target "" }}{{/ if }}): Promise<JudoRestResponse<{{# if operation.output }}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}>>;
+  {{ operation.name }}For{{ firstToUpper targetRelation.name }}({{# unless operation.isStatic }}owner: {{ classDataName targetRelation.target "Stored" }}{{/ unless }}{{# if operation.input }}{{# unless operation.isStatic }}, {{/ unless }}target: {{ classDataName operation.input.target "" }}{{/ if }}): Promise<JudoRestResponse<{{# if operation.output }}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}>>;
   {{# if operation.input }}
   {{# if operation.input.target.isTemplateable }}
   getTemplateOn{{ firstToUpper operation.name }}For{{ firstToUpper targetRelation.name }}(): Promise<JudoRestResponse<{{ classDataName operation.input.target "" }}>>;
@@ -117,13 +120,13 @@ export interface {{ serviceRelationName relation }} {
   {{/ if }}
   {{# if operation.isInputRangeable }}
   {{# neq relation.name targetRelation.name }}
-  getRangeOn{{ firstToUpper operation.name }}For{{ firstToUpper targetRelation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName targetRelation.target "" }}> | {{ classDataName targetRelation.target "" }}, {{/ unless }}queryCustomizer?: {{ classDataName operation.input.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName operation.input.target "Stored" }}>>>;
+  getRangeOn{{ firstToUpper operation.name }}For{{ firstToUpper targetRelation.name }}({{# unless operation.isStatic }}owner: {{ classDataName targetRelation.target "Stored" }}, {{/ unless }}queryCustomizer?: {{ classDataName operation.input.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName operation.input.target "Stored" }}>>>;
   {{/ neq }}
   {{/ if }}
   {{/ each }}
 {{/ each}}
 {{# each relation.target.operationsOrderedByName as | operation | }}
-  {{ operation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName relation.target "" }}>{{/ unless }}{{# if operation.input }}{{# unless operation.isStatic }}, {{/ unless }}target: {{ classDataName operation.input.target "" }}{{/ if }}): Promise<JudoRestResponse<{{# if operation.output }}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}>>;
+  {{ operation.name }}({{# unless operation.isStatic }}owner: {{ classDataName relation.target "Stored" }}{{/ unless }}{{# if operation.input }}{{# unless operation.isStatic }}, {{/ unless }}target: {{ classDataName operation.input.target "" }}{{/ if }}): Promise<JudoRestResponse<{{# if operation.output }}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}>>;
   {{# if operation.input }}
   {{# if operation.input.target.isTemplateable }}
   getTemplateOn{{ firstToUpper operation.name }}(): Promise<JudoRestResponse<{{ classDataName operation.input.target "" }}>>;
@@ -131,7 +134,7 @@ export interface {{ serviceRelationName relation }} {
   {{/ if }}
   {{# if operation.isInputRangeable }}
   {{# neq relation.name targetRelation.name }}
-  getRangeOn{{ firstToUpper operation.name }}({{# unless operation.isStatic }}owner: JudoIdentifiable<{{ classDataName relation.target "" }}> | {{ classDataName relation.target "" }}, {{/ unless }}queryCustomizer?: {{ classDataName operation.input.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName operation.input.target "Stored" }}>>>;
+  getRangeOn{{ firstToUpper operation.name }}({{# unless operation.isStatic }}owner: {{ classDataName relation.target "Stored" }}, {{/ unless }}queryCustomizer?: {{ classDataName operation.input.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName operation.input.target "Stored" }}>>>;
   {{/ neq }}
   {{/ if }}
 {{/ each }}
