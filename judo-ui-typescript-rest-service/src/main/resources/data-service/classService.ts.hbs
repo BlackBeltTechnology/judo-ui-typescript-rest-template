@@ -1,7 +1,11 @@
 {{> fragment.header.hbs }}
 
 import type { JudoIdentifiable, CommandQueryCustomizer } from '../data-api/common';
-import { {{ joinedTokensForApiImportClassService classType }} } from '../data-api';
+import type { JudoRestResponse } from '../data-api/rest/requestResponse';
+{{# each (joinedTokensForApiImportClassService classType) as |imp| }}
+    import type { {{ imp }}, {{ imp }}Stored } from '../data-api/model/{{ imp }}';
+    import type { {{ imp }}QueryCustomizer } from '../data-api/rest/{{ imp }}QueryCustomizer';
+{{/ each }}
 
 /**
  * Class Service for {{ classDataName classType "" }}

@@ -31,6 +31,11 @@ templates:
     pathExpression: "'data-api/common/Seek.ts'"
     templateName: common/Seek.ts.hbs
 
+  - name: common/Serializer.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/Serializer.ts'"
+    templateName: common/Serializer.ts.hbs
+
   - name: common/errors/FeedbackItem.ts.hbs
     applicationBased: true
     pathExpression: "'data-api/common/errors/FeedbackItem.ts'"
@@ -135,11 +140,6 @@ templates:
       - name: actor
         expression: "#actor"
 
-  - name: modelIndex.ts.hbs
-    applicationBased: true
-    pathExpression: "'data-api/model/' + 'index.ts'"
-    templateName: model/modelIndex.ts.hbs
-
   # REST
 
   - name: queryCustomizer.ts.hbs
@@ -157,6 +157,15 @@ templates:
     factoryExpression: "#getClassTypes(#application)"
     pathExpression: "'data-api/rest/' + #classDataName(#self, \"MaskBuilder\") + '.ts'"
     templateName: rest/mask.ts.hbs
+    templateContext:
+      - name: classType
+        expression: "#self"
+
+  - name: serializer.ts.hbs
+    applicationBased: true
+    factoryExpression: "#getClassTypes(#application)"
+    pathExpression: "'data-api/rest/' + #classDataName(#self, \"Serializer\") + '.ts'"
+    templateName: rest/serializer.ts.hbs
     templateContext:
       - name: classType
         expression: "#self"
@@ -188,13 +197,3 @@ templates:
     applicationBased: true
     pathExpression: "'data-api/rest/' + 'MaskBuilder.ts'"
     templateName: rest/maskBuilder.ts.hbs
-
-  - name: restIndex.ts.hbs
-    applicationBased: true
-    pathExpression: "'data-api/rest/' + 'index.ts'"
-    templateName: rest/restIndex.ts.hbs
-
-  - name: apiIndex.ts.hbs
-    applicationBased: true
-    pathExpression: "'data-api/' + 'index.ts'"
-    templateName: apiIndex.ts.hbs

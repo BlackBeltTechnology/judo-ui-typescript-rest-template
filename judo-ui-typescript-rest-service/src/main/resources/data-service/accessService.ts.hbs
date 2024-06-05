@@ -1,7 +1,10 @@
 {{> fragment.header.hbs }}
 
 import type { JudoDownloadFile, JudoMetaData } from '../data-api/common';
-import { {{ accessJoinedImportTokens application }} } from '../data-api';
+import type { JudoRestResponse } from '../data-api/rest/requestResponse';
+{{# each (accessJoinedImportTokens application) as |imp| }}
+import type { {{ imp }}, {{ imp }}Stored } from '../data-api/model/{{ imp }}';
+{{/ each }}
 
 export interface AccessService {
   {{# if application.principal }}
