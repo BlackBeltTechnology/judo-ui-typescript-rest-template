@@ -37,7 +37,7 @@ suite('API Tests', () => {
     });
 
     test('Singleton Access GET request is mapped properly', async () => {
-        const getSignedId: Resource = mappedXml.find(r => r.path === 'God/earth/~get');
+        const getSignedId: Resource = mappedXml.find(r => r.path === 'God/God/earth/~get');
         const getInstance: Resource = mappedXml.find(r => r.path === 'View/Planet/~get');
         const godServiceForEarthImpl = new GodServiceForEarthImpl(judoAxiosProvider);
 
@@ -74,7 +74,7 @@ suite('API Tests', () => {
     });
 
     test('List Access POST request is mapped properly', async () => {
-        const resource: Resource = mappedXml.find(r => r.path === 'God/galaxies/~list');
+        const resource: Resource = mappedXml.find(r => r.path === 'God/God/galaxies/~list');
         const godServiceForGalaxiesImpl = new GodServiceForGalaxiesImpl(judoAxiosProvider);
 
         assertSinglePostResource(resource);
@@ -85,7 +85,7 @@ suite('API Tests', () => {
     });
 
     test('List Access POST request with total count flag', async () => {
-        const resource: Resource = mappedXml.find(r => r.path === 'God/galaxies/~list');
+        const resource: Resource = mappedXml.find(r => r.path === 'God/God/galaxies/~list');
         const godServiceForGalaxiesImpl = new GodServiceForGalaxiesImpl(judoAxiosProvider);
 
         assertSinglePostResource(resource);
@@ -120,7 +120,7 @@ suite('API Tests', () => {
     });
 
     test('Default create Access POST request is mapped properly', async () => {
-        const resource: Resource = mappedXml.find(r => r.path === 'God/galaxies/~create');
+        const resource: Resource = mappedXml.find(r => r.path === 'God/God/galaxies/~create');
         const godServiceForGalaxiesImpl = new GodServiceForGalaxiesImpl(judoAxiosProvider);
         const target: ViewGalaxy = {
             name: 'abc',
