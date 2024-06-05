@@ -6,7 +6,7 @@ export interface SerializerUtil {
   serializeTimestamp: (timestamp: Date) => string;
   deserializeDate: (date: string) => Date;
   deserializeTime: (time: string) => Date;
-  deserializeTimestamp: (string: Date) => Date;
+  deserializeTimestamp: (timestamp: Date) => Date;
 }
 
 export interface Serializer<T> {
