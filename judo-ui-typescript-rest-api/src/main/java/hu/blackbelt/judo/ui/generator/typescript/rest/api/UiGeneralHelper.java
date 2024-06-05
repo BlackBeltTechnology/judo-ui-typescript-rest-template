@@ -137,8 +137,13 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return classType.getAttributes() != null && !classType.getAttributes().isEmpty();
     }
     public static List<String> modelImportTokens(ClassType classType) {
-        var tokens = new HashSet<String>(classType.getRelations().stream().filter(r -> !r.getTarget().getAttributes().isEmpty()).map(r -> classDataName(r.getTarget(), "")).toList());
-
+        var tokens = new HashSet<String>(classType.getRelations().stream()
+                .filter(r -> !r.getTarget().getAttributes().isEmpty())
+                .map(r -> classDataName(r.getTarget(), ""))
+                .collect(Collectors.toSet()));
+        if (hasClassAttributes(classType)) {
+            tokens.add(classDataName(classType, ""));
+        }
         return tokens.stream().sorted().toList();
     }
 
@@ -321,5 +326,15 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
             return "this.util.deserializeTimestamp(instance." + attributeType.getName() + ")";
         }
         return "instance." + attributeType.getName();
+    }
+
+    public static List<ClassType> getRelatedClasses(ClassType classType) {
+        return classType.getRelations().stream()
+                .map(ReferenceType::getTarget)
+                .filter(c -> !c.equals(classType))
+                .collect(Collectors.toSet())
+                .stream()
+                .sorted(Comparator.comparing(NamedElement::getFQName))
+                .toList();
     }
 }

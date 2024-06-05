@@ -4,9 +4,6 @@ import { MaskBuilder{{# if (isGreaterThan (getAggregatedRelationsSize classType)
 {{# each (modelImportTokens classType) as |imp| }}
 import type { {{ imp }}Attributes } from '../model/{{ imp }}';
 {{/ each }}
-{{# if (hasClassAttributes classType) }}
-import type { {{ classDataName classType 'Attributes' }} } from '../model/{{ classDataName classType '' }}';
-{{/ if }}
 {{# each (getNotClassTypeRelations (getUniqueRelations classType) classType) as | relation | }}
 import { {{ getRelationBuilderNames relation }} } from './{{ classDataName relation.target "MaskBuilder" }}';
 {{/ each}}

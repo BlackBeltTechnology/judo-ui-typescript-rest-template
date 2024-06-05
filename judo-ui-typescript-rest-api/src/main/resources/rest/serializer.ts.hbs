@@ -3,8 +3,8 @@
 import type { JudoStored, Serializer, SerializerUtil } from '../common';
 import { applyStoredMembers } from '../common';
 import type { {{ classDataName classType '' }}, {{ classDataName classType 'Stored' }} } from '../model/{{ classDataName classType '' }}';
-{{# each classType.relations as |relation| }}
-  import { {{ classDataName relation.target 'Serializer' }} } from './{{ classDataName relation.target 'Serializer' }}';
+{{# each (getRelatedClasses classType) as |classType| }}
+  import { {{ classDataName classType 'Serializer' }} } from './{{ classDataName classType 'Serializer' }}';
 {{/ each }}
 
 export class {{ classDataName classType 'Stored' }}Serializer implements Serializer<{{ classDataName classType 'Stored' }}> {
