@@ -137,12 +137,13 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return classType.getAttributes() != null && !classType.getAttributes().isEmpty();
     }
     public static List<String> modelImportTokens(ClassType classType) {
-        var tokens = new HashSet<String>(classType.getRelations().stream().filter(r -> !r.getTarget().getAttributes().isEmpty()).map(r -> classDataName(r.getTarget(), "Attributes")).toList());
-
+        var tokens = new HashSet<String>(classType.getRelations().stream()
+                .filter(r -> !r.getTarget().getAttributes().isEmpty())
+                .map(r -> classDataName(r.getTarget(), ""))
+                .collect(Collectors.toSet()));
         if (hasClassAttributes(classType)) {
-            tokens.add(classDataName(classType, "Attributes"));
+            tokens.add(classDataName(classType, ""));
         }
-
         return tokens.stream().sorted().toList();
     }
 
@@ -256,7 +257,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return type instanceof EnumerationType;
     }
 
-    public static String joinModelImports(DataType dataType) {
+    public static List<String> joinModelImports(DataType dataType) {
         ArrayList<String> tokens = new ArrayList<String>();
 
         tokens.add(typescriptType(dataType.getOperator()));
@@ -265,7 +266,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
             tokens.add(restParamName(dataType));
         }
 
-        return tokens.stream().collect(Collectors.joining(", "));
+        return tokens.stream().sorted().toList();
     }
 
     public static boolean classTypeRelationsIsEmpty(ClassType classType) {
@@ -281,9 +282,9 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         } else if (dataType instanceof BooleanType) {
             return "boolean";
         } else if (dataType instanceof TimeType) {
-            return "string";
+            return "Date";
         } else if (dataType instanceof DateType) {
-            return "string";
+            return "Date";
         } else if (dataType instanceof TimestampType) {
             return "Date";
         } else if (dataType instanceof StringType) {
@@ -293,4 +294,47 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         }
     }
 
+    public static boolean isAttributeTimestamp(AttributeType attributeType) {
+        return attributeType.getDataType() instanceof TimestampType;
+    }
+
+    public static boolean isAttributeTime(AttributeType attributeType) {
+        return attributeType.getDataType() instanceof TimeType;
+    }
+
+    public static boolean isAttributeDate(AttributeType attributeType) {
+        return attributeType.getDataType() instanceof DateType;
+    }
+
+    public static String serializePrimitive(AttributeType attributeType) {
+        if (isAttributeDate(attributeType)) {
+            return "this.util.serializeDate(instance." + attributeType.getName() + ")";
+        } else if (isAttributeTime(attributeType)) {
+            return "this.util.serializeTime(instance." + attributeType.getName() + ")";
+        } else if (isAttributeTimestamp(attributeType)) {
+            return "this.util.serializeTimestamp(instance." + attributeType.getName() + ")";
+        }
+        return "instance." + attributeType.getName();
+    }
+
+    public static String deserializePrimitive(AttributeType attributeType) {
+        if (isAttributeDate(attributeType)) {
+            return "this.util.deserializeDate(instance." + attributeType.getName() + ")";
+        } else if (isAttributeTime(attributeType)) {
+            return "this.util.deserializeTime(instance." + attributeType.getName() + ")";
+        } else if (isAttributeTimestamp(attributeType)) {
+            return "this.util.deserializeTimestamp(instance." + attributeType.getName() + ")";
+        }
+        return "instance." + attributeType.getName();
+    }
+
+    public static List<ClassType> getRelatedClasses(ClassType classType) {
+        return classType.getRelations().stream()
+                .map(ReferenceType::getTarget)
+                .filter(c -> !c.equals(classType))
+                .collect(Collectors.toSet())
+                .stream()
+                .sorted(Comparator.comparing(NamedElement::getFQName))
+                .toList();
+    }
 }
