@@ -27,6 +27,7 @@ import hu.blackbelt.judo.meta.ui.NamedElement;
 import hu.blackbelt.judo.meta.ui.data.*;
 import hu.blackbelt.judo.ui.generator.typescript.rest.commons.UiCommonsHelper;
 import lombok.extern.java.Log;
+import org.springframework.util.StringUtils;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -172,7 +173,7 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
     }
 
     public static String restFilterName(DataType dataType) {
-        return "FilterBy" + String.join("", dataType.getName().split(SPLITTER));
+        return "FilterBy" + Arrays.stream(dataType.getName().split(SPLITTER)).map(StringUtils::capitalize).collect(Collectors.joining());
     }
 
     public static Boolean isGreaterThan(int a, int b) {
