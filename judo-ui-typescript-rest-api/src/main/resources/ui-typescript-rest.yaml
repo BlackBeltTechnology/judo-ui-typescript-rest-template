@@ -152,6 +152,16 @@ templates:
       - name: actor
         expression: "#application.actor"
 
+  - name: queryCustomizerSerializer.ts.hbs
+    factoryExpression: "#getClassTypes(#application)"
+    pathExpression: "'data-api/rest/' + #classDataName(#self, \"QueryCustomizerSerializer\") + '.ts'"
+    templateName: rest/queryCustomizerSerializer.ts.hbs
+    templateContext:
+      - name: classType
+        expression: "#self"
+      - name: actor
+        expression: "#application.actor"
+
   - name: mask.ts.hbs
     applicationBased: true
     factoryExpression: "#getClassTypes(#application)"

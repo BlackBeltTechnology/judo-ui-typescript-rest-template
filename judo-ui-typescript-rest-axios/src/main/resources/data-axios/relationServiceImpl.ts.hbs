@@ -8,6 +8,7 @@ import type { JudoRestResponse } from '../data-api/rest/requestResponse';
 {{# each (joinedTokensForApiImport relation) as |imp| }}
     import type { {{ imp }}, {{ imp }}Stored } from '../data-api/model/{{ imp }}';
     import type { {{ imp }}QueryCustomizer } from '../data-api/rest/{{ imp }}QueryCustomizer';
+    import { serialize{{ imp }}QueryCustomizer } from '../data-api/rest/{{ imp }}QueryCustomizerSerializer';
     import { {{ imp }}Serializer, {{ imp }}StoredSerializer } from '../data-api/rest/{{ imp }}Serializer';
 {{/ each }}
 import type { {{ serviceRelationName relation }} } from '../data-service';
@@ -31,7 +32,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = new {{ imp }}StoredSer
    */
   async list(owner?: {{# if relation.isAccess }}JudoIdentifiable<any>{{ else }}{{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}{{/ if }}, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName relation.target "Stored" }}>>> {
     const path = '{{ restPath (getRelationOwnerAsClassType relation) "/"  relation.name "/~list" }}';
-    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, owner ? {
+    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), serialize{{ classDataName relation.target "QueryCustomizer" }}(queryCustomizer) ?? {}, owner ? {
       headers: {
         [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier,
         ...(headers ?? {}),
@@ -52,7 +53,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = new {{ imp }}StoredSer
     */
     async export(owner?: {{# if relation.isAccess }}JudoIdentifiable<any>{{ else }}{{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}{{/ if }}, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<any> {
         const path = '{{ restPath (getRelationOwnerAsClassType relation) "/"  relation.name "/~export" }}';
-        const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, {
+        const response = await this.axios.post(this.getPathForActor(path), serialize{{ classDataName relation.target "QueryCustomizer" }}(queryCustomizer) ?? {}, {
             responseType: 'blob',
             headers: owner ? {
                 'X-Judo-SignedIdentifier': owner.__signedIdentifier
@@ -72,7 +73,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = new {{ imp }}StoredSer
    */
   async refreshFor{{ firstToUpper relation.name }}(queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>> {
     const path = '{{ restPath (getRelationOwnerAsClassType relation) "/" relation.name "/~get" }}';
-    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, headers ? { headers } : undefined);
+    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), serialize{{ classDataName relation.target "QueryCustomizer" }}(queryCustomizer) ?? {}, headers ? { headers } : undefined);
     return {
       ...rest,
       data: this.{{ firstToLower (classDataName relation.target "StoredSerializer") }}.deserialize(data),
@@ -87,7 +88,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = new {{ imp }}StoredSer
    */
   async refresh(owner?: {{# if relation.isAccess }}JudoIdentifiable<any>{{ else }}{{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}{{/ if }}, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>> {
     const path = '{{ restPath relation.target "/~get" "" "" }}';
-    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, owner ? {
+    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), serialize{{ classDataName relation.target "QueryCustomizer" }}(queryCustomizer) ?? {}, owner ? {
       headers: {
         [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier,
         ...(headers ?? {}),
@@ -105,14 +106,14 @@ private readonly {{ firstToLower imp }}StoredSerializer = new {{ imp }}StoredSer
    * From: relation.isRangeable
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
    */
-  async getRangeFor{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName relation.target "Stored" }}>>> {
+  async getRangeFor{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName relation.target "Stored" }}>>> {
     const path = '{{ restPath (getRelationOwnerAsClassType relation) "/" relation.name "/~range" }}';
     {{# unless relation.isAccess }}
     const input = this.{{ firstToLower (classDataName (getRelationOwnerAsClassType relation) "StoredSerializer") }}.serialize(owner);
     {{/ unless }}
     const { data, ...rest } = await this.axios.post(this.getPathForActor(path), {
       {{# unless relation.isAccess }}owner: input,{{/ unless }}
-      queryCustomizer: queryCustomizer ?? {}
+      queryCustomizer: serialize{{ classDataName relation.target "QueryCustomizer" }}(queryCustomizer) ?? {}
     }, headers ? { headers } : undefined);
     return {
       ...rest,
@@ -316,7 +317,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = new {{ imp }}StoredSer
   {{# if targetRelation.isCollection }}
   async list{{ firstToUpper targetRelation.name }}(owner: {{ classDataName relation.target "Stored" }}, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName targetRelation.target "Stored" }}>>> {
     const path = '{{ restPath relation.target "/"  targetRelation.name "/~list" }}';
-    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, {
+    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), serialize{{ classDataName targetRelation.target "QueryCustomizer" }}(queryCustomizer) ?? {}, {
       headers: {
         [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier,
         ...(headers ?? {}),
@@ -330,7 +331,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = new {{ imp }}StoredSer
   {{ else }}
   async get{{ firstToUpper targetRelation.name }}(owner: {{ classDataName relation.target "Stored" }}, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>> {
     const path = '{{ restPath relation.target "/" targetRelation.name "/~get" }}';
-    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, {
+    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), serialize{{ classDataName targetRelation.target "QueryCustomizer" }}(queryCustomizer) ?? {}, {
       headers: {
         [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier,
       },
@@ -351,7 +352,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = new {{ imp }}StoredSer
      */
     async export{{ firstToUpper targetRelation.name }}(owner: {{ classDataName relation.target "Stored" }}, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}): Promise<any> {
         const path = '{{ restPath relation.target "/"  targetRelation.name "/~export" }}';
-        const response = await this.axios.post(this.getPathForActor(path), queryCustomizer ?? {}, {
+        const response = await this.axios.post(this.getPathForActor(path), serialize{{ classDataName targetRelation.target "QueryCustomizer" }}(queryCustomizer) ?? {}, {
             responseType: 'blob',
             headers: {
                 'X-Judo-SignedIdentifier': owner.__signedIdentifier,
@@ -373,7 +374,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = new {{ imp }}StoredSer
     const input = this.{{ firstToLower (classDataName relation.target "StoredSerializer") }}.serialize(owner);
     const { data, ...rest } = await this.axios.post(this.getPathForActor(path), {
       owner: input,
-      queryCustomizer: queryCustomizer ?? {}
+      queryCustomizer: serialize{{ classDataName targetRelation.target "QueryCustomizer" }}(queryCustomizer) ?? {}
     }, headers ? { headers } : undefined);
     return {
       ...rest,
@@ -596,7 +597,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = new {{ imp }}StoredSer
     const input = this.{{ firstToLower (classDataName targetRelation.target "StoredSerializer") }}.serialize(owner);
     const { data, ...rest } = await this.axios.post(this.getPathForActor(path), {
       {{# unless operation.isStatic }}owner: input,{{/ unless }}
-      queryCustomizer: queryCustomizer ?? {}
+      queryCustomizer: serialize{{ classDataName operation.input.target "QueryCustomizer" }}(queryCustomizer) ?? {}
     }, headers ? { headers } : undefined);
     return {
       ...rest,
@@ -658,7 +659,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = new {{ imp }}StoredSer
     const input = this.{{ firstToLower (classDataName relation.target "StoredSerializer") }}.serialize(owner);
     const { data, ...rest } = await this.axios.post(this.getPathForActor(path), {
       {{# unless operation.isStatic }}owner: input,{{/ unless }}
-      queryCustomizer: queryCustomizer ?? {},
+      queryCustomizer: serialize{{ classDataName operation.input.target "QueryCustomizer" }}(queryCustomizer) ?? {},
     }, headers ? { headers } : undefined);
     return {
       ...rest,
