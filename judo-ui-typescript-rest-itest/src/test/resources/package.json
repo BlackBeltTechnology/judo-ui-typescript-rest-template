@@ -17,9 +17,10 @@
     "@judo/data-api-common": "^0.4.2",
     "@types/node": "^16.18.4",
     "cross-env": "^7.0.3",
+    "date-fns": "^3.6.0",
     "dotenv": "^16.0.3",
     "prettier": "^2.8.0",
-    "typescript": "^5.2.2",
+    "typescript": "^5.4.3",
     "vitest": "^1.2.0"
   }
 }
