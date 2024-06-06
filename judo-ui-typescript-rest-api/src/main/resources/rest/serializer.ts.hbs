@@ -1,0 +1,87 @@
+{{> fragment.header.hbs }}
+
+import type { JudoStored, Serializer, SerializerUtil } from '../common';
+import { applyStoredMembers } from '../common/utils';
+import type { {{ classDataName classType '' }}, {{ classDataName classType 'Stored' }} } from '../model/{{ classDataName classType '' }}';
+{{# each (getRelatedClasses classType) as |classType| }}
+  import { {{ classDataName classType 'Serializer' }} } from './{{ classDataName classType 'Serializer' }}';
+{{/ each }}
+import { serializerUtil } from './serialization';
+
+export class {{ classDataName classType 'Stored' }}Serializer implements Serializer<{{ classDataName classType 'Stored' }}> {
+  private readonly util = serializerUtil;
+  private readonly normalSerializer: {{ classDataName classType 'Serializer' }};
+
+  constructor() {
+    this.normalSerializer = new {{ classDataName classType 'Serializer' }}();
+  }
+
+  serialize(instance: {{ classDataName classType 'Stored' }}): any {
+    return this.normalSerializer.serialize(instance);
+  }
+
+  deserialize(data: any = {}): {{ classDataName classType 'Stored' }} {
+    return this.normalSerializer.deserialize(data) as {{ classDataName classType 'Stored' }};
+  }
+}
+
+export class {{ classDataName classType 'Serializer' }} implements Serializer<{{ classDataName classType '' }}> {
+  private readonly util = serializerUtil;
+  {{# each classType.relations as |relation| }}
+  private {{ relation.name }}Serializer?: {{ classDataName relation.target 'Serializer' }};
+  {{/ each }}
+
+  constructor() {
+    // Relation serializer instantiation is delayed to prevent stack overflows due to potential recursions.
+  }
+
+  serialize(instance: {{ classDataName classType '' }}): any {
+    const result: any = {};
+    {{# each classType.attributes as |attribute| }}
+    if (instance.{{ attribute.name }} !== undefined) {
+      result.{{ attribute.name }} = {{# unless attribute.isRequired }}instance.{{ attribute.name }} === null ? null : {{/ unless }}{{ serializePrimitive attribute }};
+    }
+    {{/ each }}
+    {{# each classType.relations as |relation| }}
+      if (!this.{{ relation.name }}Serializer) {
+        this.{{ relation.name }}Serializer = new {{ classDataName relation.target 'Serializer' }}();
+      }
+      {{# if relation.isCollection }}
+      if (Array.isArray(instance.{{ relation.name }})) {
+        result.{{ relation.name }} = instance.{{ relation.name }}.map(r => this.{{ relation.name }}Serializer!.serialize(r));
+      }
+      {{ else }}
+      if (instance.{{ relation.name }} !== undefined) {
+        result.{{ relation.name }} = {{# if relation.isOptional }}instance.{{ relation.name }} === null ? null : {{/ if }}this.{{ relation.name }}Serializer!.serialize(instance.{{ relation.name }});
+      }
+      {{/ if }}
+    {{/ each }}
+    applyStoredMembers(result, instance as unknown as JudoStored<any>, true);
+    return result;
+  }
+
+  deserialize(instance: any = {}): {{ classDataName classType '' }} {
+    const result: any = {};
+    {{# each classType.attributes as |attribute| }}
+    if (instance.{{ attribute.name }} !== undefined) {
+      result.{{ attribute.name }} = {{# unless attribute.isRequired }}instance.{{ attribute.name }} === null ? null : {{/ unless }}{{ deserializePrimitive attribute }};
+    }
+    {{/ each }}
+    {{# each classType.relations as |relation| }}
+      if (!this.{{ relation.name }}Serializer) {
+        this.{{ relation.name }}Serializer = new {{ classDataName relation.target 'Serializer' }}();
+      }
+      {{# if relation.isCollection }}
+      if (Array.isArray(instance.{{ relation.name }})) {
+        result.{{ relation.name }} = instance.{{ relation.name }}.map((r: any) => this.{{ relation.name }}Serializer!.deserialize(r));
+      }
+      {{ else }}
+      if (instance.{{ relation.name }} !== undefined) {
+        result.{{ relation.name }} = {{# if relation.isOptional }}instance.{{ relation.name }} === null ? null : {{/ if }}this.{{ relation.name }}Serializer!.deserialize(instance.{{ relation.name }});
+      }
+      {{/ if }}
+    {{/ each }}
+    applyStoredMembers(result, instance as unknown as JudoStored<any>);
+    return result as {{ classDataName classType '' }};
+  }
+}

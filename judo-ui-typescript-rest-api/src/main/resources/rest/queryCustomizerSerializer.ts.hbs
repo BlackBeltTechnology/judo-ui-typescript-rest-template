@@ -1,0 +1,23 @@
+{{> fragment.header.hbs }}
+
+import type { {{ classDataName classType "Stored" }} } from '../model/{{ classDataName classType "" }}';
+import type { {{ classDataName classType "QueryCustomizer" }} } from './{{ classDataName classType "QueryCustomizer" }}';
+import { {{ classDataName classType "StoredSerializer" }} } from './{{ classDataName classType "Serializer" }}';
+
+const serializer = new {{ classDataName classType "StoredSerializer" }}();
+
+export function serialize{{ classDataName classType "QueryCustomizer" }}(queryCustomizer?: {{ classDataName classType "QueryCustomizer" }} | null): any | null {
+  if (queryCustomizer === undefined || queryCustomizer === null) {
+    return null;
+  }
+  const { _seek, ...rest } = queryCustomizer;
+  const result: any = { ...rest };
+  if (_seek) {
+    const { lastItem, ...seekRest } = _seek;
+    result._seek = { ...seekRest };
+    if (lastItem) {
+      result._seek.lastItem = serializer.serialize(lastItem as {{ classDataName classType "Stored" }});
+    }
+  }
+  return result;
+}
