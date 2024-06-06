@@ -4,8 +4,6 @@ import type { ViewGalaxyStored } from '../src/services/data-api/model/ViewGalaxy
 import { ViewGalaxyStoredSerializer } from '../src/services/data-api/rest/ViewGalaxySerializer';
 
 suite('Serialization Tests', () => {
-    const galaxySerializer = new ViewGalaxyStoredSerializer();
-
     const serialized = Object.freeze({
         __identifier: 'id1',
         __signedIdentifier: 'aaa',
@@ -60,7 +58,7 @@ suite('Serialization Tests', () => {
     };
 
     test('Serialization with nested relations', async () => {
-        const result = galaxySerializer.serialize(galaxy);
+        const result = ViewGalaxyStoredSerializer.getInstance().serialize(galaxy);
         expect(result).toEqual(serialized);
     });
 
@@ -71,7 +69,7 @@ suite('Serialization Tests', () => {
             name: 'hello',
             constellation: 'test const',
         };
-        const result = galaxySerializer.serialize(galaxyToClean);
+        const result = ViewGalaxyStoredSerializer.getInstance().serialize(galaxyToClean);
         expect(result).toEqual({
             __signedIdentifier: 'bbb',
             name: 'hello',
@@ -80,7 +78,7 @@ suite('Serialization Tests', () => {
     });
 
     test('Deserialize withn ested relations', async () => {
-        const result = galaxySerializer.deserialize(serialized);
+        const result = ViewGalaxyStoredSerializer.getInstance().deserialize(serialized);
         expect(result).toEqual(galaxy);
     });
 });

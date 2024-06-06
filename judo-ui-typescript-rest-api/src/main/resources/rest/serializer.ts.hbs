@@ -12,12 +12,21 @@ export class {{ classDataName classType 'Stored' }}Serializer implements Seriali
   private readonly util = serializerUtil;
   private readonly normalSerializer: {{ classDataName classType 'Serializer' }};
 
+  static _instance: {{ classDataName classType 'Stored' }}Serializer;
+
+  static getInstance() : {{ classDataName classType 'Stored' }}Serializer {
+    if (!{{ classDataName classType 'Stored' }}Serializer._instance) {
+      {{ classDataName classType 'Stored' }}Serializer._instance = new {{ classDataName classType 'Stored' }}Serializer();
+    }
+    return {{ classDataName classType 'Stored' }}Serializer._instance;
+  }
+
   constructor() {
     this.normalSerializer = new {{ classDataName classType 'Serializer' }}();
   }
 
-  serialize(instance: {{ classDataName classType 'Stored' }}): any {
-    return this.normalSerializer.serialize(instance);
+  serialize(instance: {{ classDataName classType 'Stored' }}, cleanup = false): any {
+    return this.normalSerializer.serialize(instance, cleanup);
   }
 
   deserialize(data: any = {}): {{ classDataName classType 'Stored' }} {
@@ -31,28 +40,30 @@ export class {{ classDataName classType 'Serializer' }} implements Serializer<{{
   private {{ relation.name }}Serializer?: {{ classDataName relation.target 'Serializer' }};
   {{/ each }}
 
-  constructor() {
-    // Relation serializer instantiation is delayed to prevent stack overflows due to potential recursions.
+  static _instance: {{ classDataName classType '' }}Serializer;
+
+  static getInstance(): {{ classDataName classType '' }}Serializer {
+    if (!{{ classDataName classType '' }}Serializer._instance) {
+      {{ classDataName classType '' }}Serializer._instance = new {{ classDataName classType '' }}Serializer();
+    }
+    return {{ classDataName classType '' }}Serializer._instance;
   }
 
-  serialize(instance: {{ classDataName classType '' }}): any {
+  serialize(instance: {{ classDataName classType '' }}, cleanup = false): any {
     const result: any = {};
     {{# each classType.attributes as |attribute| }}
-    if (instance.{{ attribute.name }} !== undefined) {
+    if (instance.{{ attribute.name }} !== undefined{{# if attribute.isReadOnly }} && !cleanup{{/ if }}) {
       result.{{ attribute.name }} = {{# unless attribute.isRequired }}instance.{{ attribute.name }} === null ? null : {{/ unless }}{{ serializePrimitive attribute }};
     }
     {{/ each }}
     {{# each classType.relations as |relation| }}
-      if (!this.{{ relation.name }}Serializer) {
-        this.{{ relation.name }}Serializer = new {{ classDataName relation.target 'Serializer' }}();
-      }
       {{# if relation.isCollection }}
-      if (Array.isArray(instance.{{ relation.name }})) {
-        result.{{ relation.name }} = instance.{{ relation.name }}.map(r => this.{{ relation.name }}Serializer!.serialize(r));
+      if (Array.isArray(instance.{{ relation.name }}){{# if relation.isReadOnly }} && !cleanup{{/ if }}) {
+        result.{{ relation.name }} = instance.{{ relation.name }}.map(r => {{ classDataName relation.target 'Serializer' }}.getInstance().serialize(r, cleanup));
       }
       {{ else }}
-      if (instance.{{ relation.name }} !== undefined) {
-        result.{{ relation.name }} = {{# if relation.isOptional }}instance.{{ relation.name }} === null ? null : {{/ if }}this.{{ relation.name }}Serializer!.serialize(instance.{{ relation.name }});
+      if (instance.{{ relation.name }} !== undefined{{# if relation.isReadOnly }} && !cleanup{{/ if }}) {
+        result.{{ relation.name }} = {{# if relation.isOptional }}instance.{{ relation.name }} === null ? null : {{/ if }}{{ classDataName relation.target 'Serializer' }}.getInstance().serialize(instance.{{ relation.name }}, cleanup);
       }
       {{/ if }}
     {{/ each }}
@@ -68,16 +79,13 @@ export class {{ classDataName classType 'Serializer' }} implements Serializer<{{
     }
     {{/ each }}
     {{# each classType.relations as |relation| }}
-      if (!this.{{ relation.name }}Serializer) {
-        this.{{ relation.name }}Serializer = new {{ classDataName relation.target 'Serializer' }}();
-      }
       {{# if relation.isCollection }}
       if (Array.isArray(instance.{{ relation.name }})) {
-        result.{{ relation.name }} = instance.{{ relation.name }}.map((r: any) => this.{{ relation.name }}Serializer!.deserialize(r));
+        result.{{ relation.name }} = instance.{{ relation.name }}.map((r: any) => {{ classDataName relation.target 'Serializer' }}.getInstance().deserialize(r));
       }
       {{ else }}
       if (instance.{{ relation.name }} !== undefined) {
-        result.{{ relation.name }} = {{# if relation.isOptional }}instance.{{ relation.name }} === null ? null : {{/ if }}this.{{ relation.name }}Serializer!.deserialize(instance.{{ relation.name }});
+        result.{{ relation.name }} = {{# if relation.isOptional }}instance.{{ relation.name }} === null ? null : {{/ if }}{{ classDataName relation.target 'Serializer' }}.getInstance().deserialize(instance.{{ relation.name }});
       }
       {{/ if }}
     {{/ each }}
