@@ -1,7 +1,7 @@
 {{> fragment.header.hbs }}
 
 import type { JudoStored, Serializer, SerializerUtil } from '../common';
-import { applyStoredMembers } from '../common';
+import { applyStoredMembers } from '../common/utils';
 import type { {{ classDataName classType '' }}, {{ classDataName classType 'Stored' }} } from '../model/{{ classDataName classType '' }}';
 {{# each (getRelatedClasses classType) as |classType| }}
   import { {{ classDataName classType 'Serializer' }} } from './{{ classDataName classType 'Serializer' }}';
@@ -16,8 +16,8 @@ export class {{ classDataName classType 'Stored' }}Serializer implements Seriali
     this.normalSerializer = new {{ classDataName classType 'Serializer' }}();
   }
 
-  serialize(instance: {{ classDataName classType 'Stored' }}, cleanup = false): any {
-    return this.normalSerializer.serialize(instance, cleanup);
+  serialize(instance: {{ classDataName classType 'Stored' }}): any {
+    return this.normalSerializer.serialize(instance);
   }
 
   deserialize(data: any = {}): {{ classDataName classType 'Stored' }} {
@@ -35,7 +35,7 @@ export class {{ classDataName classType 'Serializer' }} implements Serializer<{{
     // Relation serializer instantiation is delayed to prevent stack overflows due to potential recursions.
   }
 
-  serialize(instance: {{ classDataName classType '' }}, cleanup = false): any {
+  serialize(instance: {{ classDataName classType '' }}): any {
     const result: any = {};
     {{# each classType.attributes as |attribute| }}
     if (instance.{{ attribute.name }} !== undefined) {
@@ -48,15 +48,15 @@ export class {{ classDataName classType 'Serializer' }} implements Serializer<{{
       }
       {{# if relation.isCollection }}
       if (Array.isArray(instance.{{ relation.name }})) {
-        result.{{ relation.name }} = instance.{{ relation.name }}.map(r => this.{{ relation.name }}Serializer!.serialize(r, cleanup));
+        result.{{ relation.name }} = instance.{{ relation.name }}.map(r => this.{{ relation.name }}Serializer!.serialize(r));
       }
       {{ else }}
       if (instance.{{ relation.name }} !== undefined) {
-        result.{{ relation.name }} = {{# if relation.isOptional }}instance.{{ relation.name }} === null ? null : {{/ if }}this.{{ relation.name }}Serializer!.serialize(instance.{{ relation.name }}, cleanup);
+        result.{{ relation.name }} = {{# if relation.isOptional }}instance.{{ relation.name }} === null ? null : {{/ if }}this.{{ relation.name }}Serializer!.serialize(instance.{{ relation.name }});
       }
       {{/ if }}
     {{/ each }}
-    applyStoredMembers(result, instance as unknown as JudoStored<any>, cleanup);
+    applyStoredMembers(result, instance as unknown as JudoStored<any>, true);
     return result;
   }
 

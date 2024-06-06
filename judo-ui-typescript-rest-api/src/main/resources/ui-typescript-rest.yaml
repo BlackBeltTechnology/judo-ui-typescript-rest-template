@@ -36,6 +36,11 @@ templates:
     pathExpression: "'data-api/common/Serializer.ts'"
     templateName: common/Serializer.ts.hbs
 
+  - name: common/utils.ts.hbs
+    applicationBased: true
+    pathExpression: "'data-api/common/utils.ts'"
+    templateName: common/utils.ts.hbs
+
   - name: common/errors/FeedbackItem.ts.hbs
     applicationBased: true
     pathExpression: "'data-api/common/errors/FeedbackItem.ts'"
