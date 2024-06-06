@@ -1,6 +1,8 @@
 {{> fragment.header.hbs }}
 
-import { {{ joinModelImports dataType }} } from '../model';
+{{# each (joinModelImports dataType) as |imp| }}
+import type { {{ imp }} } from '../model/{{ imp }}';
+{{/ each }}
 
 export interface {{ restFilterName dataType }} {
   value: {{# if (isEnumType dataType) }}{{ restParamName dataType }}{{ else }}{{ typescriptType dataType }}{{/ if }};
