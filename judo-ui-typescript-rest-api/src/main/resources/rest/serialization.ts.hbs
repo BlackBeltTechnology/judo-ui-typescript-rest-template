@@ -1,0 +1,44 @@
+import { format, parse } from 'date-fns';
+import type { SerializerUtil } from '../common/Serializer';
+
+export const uiDateToServiceDate = (date?: any | null): string | null => {
+  if (date === undefined || date === null) {
+    return null;
+  }
+
+  const resolved: Date = typeof date === 'string' ? new Date(date) : date;
+
+  return format(resolved, 'yyyy-MM-dd')
+};
+
+export const serviceDateToUiDate = (dateStr?: any) => {
+  if (typeof dateStr === 'string') {
+    return new Date(dateStr);
+  }
+  return dateStr;
+};
+
+export const uiTimeToServiceTime = (time?: any | null): string | null => {
+    if(time === undefined || time === null) {
+        return null;
+    }
+    // const resolved: Date = typeof time === 'string' ? new Date(time) : time;
+    // return resolved.getUTCHours().toString().padStart(2, '0') + ':' + resolved.getUTCMinutes().toString().padStart(2, '0');
+    return format(time, 'HH:mm:ss');
+}
+
+export const serviceTimeToUiTime = (timeStr?: any) => {
+    if (typeof timeStr === 'string') {
+        return parse(timeStr, 'HH:mm:ss', new Date());
+    }
+    return timeStr;
+};
+
+export const serializerUtil: SerializerUtil = {
+  serializeDate: (date) => uiDateToServiceDate(date)!,
+  serializeTime: (time) => uiTimeToServiceTime(time)!,
+  serializeTimestamp: (timestamp) => timestamp.toISOString(),
+  deserializeDate: (date) => serviceDateToUiDate(date),
+  deserializeTime: (time) => serviceTimeToUiTime(time),
+  deserializeTimestamp: (timestamp) => serviceDateToUiDate(timestamp),
+};
