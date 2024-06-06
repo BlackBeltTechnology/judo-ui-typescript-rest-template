@@ -9,7 +9,6 @@ import type { {{ classDataName classType '' }}, {{ classDataName classType 'Stor
 import { serializerUtil } from './serialization';
 
 export class {{ classDataName classType 'Stored' }}Serializer implements Serializer<{{ classDataName classType 'Stored' }}> {
-  private readonly util = serializerUtil;
   private readonly normalSerializer: {{ classDataName classType 'Serializer' }};
 
   static _instance: {{ classDataName classType 'Stored' }}Serializer;
@@ -35,7 +34,6 @@ export class {{ classDataName classType 'Stored' }}Serializer implements Seriali
 }
 
 export class {{ classDataName classType 'Serializer' }} implements Serializer<{{ classDataName classType '' }}> {
-  private readonly util = serializerUtil;
   {{# each classType.relations as |relation| }}
   private {{ relation.name }}Serializer?: {{ classDataName relation.target 'Serializer' }};
   {{/ each }}
@@ -53,7 +51,7 @@ export class {{ classDataName classType 'Serializer' }} implements Serializer<{{
     const result: any = {};
     {{# each classType.attributes as |attribute| }}
     if (instance.{{ attribute.name }} !== undefined{{# if attribute.isReadOnly }} && !cleanup{{/ if }}) {
-      result.{{ attribute.name }} = {{# unless attribute.isRequired }}instance.{{ attribute.name }} === null ? null : {{/ unless }}{{ serializePrimitive attribute }};
+      result.{{ attribute.name }} = {{# unless attribute.isRequired }}instance.{{ attribute.name }} === null ? null : {{/ unless }}{{ serializePrimitiveInstance attribute }};
     }
     {{/ each }}
     {{# each classType.relations as |relation| }}

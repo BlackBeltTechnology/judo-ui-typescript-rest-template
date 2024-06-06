@@ -307,24 +307,28 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
         return attributeType.getDataType() instanceof DateType;
     }
 
-    public static String serializePrimitive(AttributeType attributeType) {
+    public static String serializePrimitiveInstance(AttributeType attributeType) {
+        return serializePrimitive(attributeType, "instance." + attributeType.getName());
+    }
+
+    public static String serializePrimitive(AttributeType attributeType, String paramName) {
         if (isAttributeDate(attributeType)) {
-            return "this.util.serializeDate(instance." + attributeType.getName() + ")";
+            return "serializerUtil.serializeDate(" + paramName + ")";
         } else if (isAttributeTime(attributeType)) {
-            return "this.util.serializeTime(instance." + attributeType.getName() + ")";
+            return "serializerUtil.serializeTime(" + paramName + ")";
         } else if (isAttributeTimestamp(attributeType)) {
-            return "this.util.serializeTimestamp(instance." + attributeType.getName() + ")";
+            return "serializerUtil.serializeTimestamp(" + paramName + ")";
         }
-        return "instance." + attributeType.getName();
+        return paramName;
     }
 
     public static String deserializePrimitive(AttributeType attributeType) {
         if (isAttributeDate(attributeType)) {
-            return "this.util.deserializeDate(instance." + attributeType.getName() + ")";
+            return "serializerUtil.deserializeDate(instance." + attributeType.getName() + ")";
         } else if (isAttributeTime(attributeType)) {
-            return "this.util.deserializeTime(instance." + attributeType.getName() + ")";
+            return "serializerUtil.deserializeTime(instance." + attributeType.getName() + ")";
         } else if (isAttributeTimestamp(attributeType)) {
-            return "this.util.deserializeTimestamp(instance." + attributeType.getName() + ")";
+            return "serializerUtil.deserializeTimestamp(instance." + attributeType.getName() + ")";
         }
         return "instance." + attributeType.getName();
     }
@@ -337,5 +341,9 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
                 .stream()
                 .sorted(Comparator.comparing(NamedElement::getFQName))
                 .toList();
+    }
+
+    public static boolean isAttributeFilterable(AttributeType attributeType) {
+        return !(attributeType.getDataType() instanceof BinaryType) && !attributeType.getIsMemberTypeTransient();
     }
 }

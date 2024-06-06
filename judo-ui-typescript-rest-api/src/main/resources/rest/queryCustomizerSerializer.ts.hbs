@@ -3,6 +3,7 @@
 import type { {{ classDataName classType "Stored" }} } from '../model/{{ classDataName classType "" }}';
 import type { {{ classDataName classType "QueryCustomizer" }} } from './{{ classDataName classType "QueryCustomizer" }}';
 import { {{ classDataName classType "StoredSerializer" }} } from './{{ classDataName classType "Serializer" }}';
+import { serializerUtil } from './serialization';
 
 const serializer = new {{ classDataName classType "StoredSerializer" }}();
 
@@ -10,8 +11,29 @@ export function serialize{{ classDataName classType "QueryCustomizer" }}(queryCu
   if (queryCustomizer === undefined || queryCustomizer === null) {
     return null;
   }
-  const { _seek, ...rest } = queryCustomizer;
+  // we are renaming filter keys because they can be reserved JS tokens
+  const {
+    _seek,
+    {{# each classType.attributes as |attribute| }}
+    {{# if (isAttributeFilterable attribute) }}
+    {{ attribute.name }}: filter{{ firstToUpper attribute.name }},
+    {{/ if }}
+    {{/ each }}
+    ...rest,
+  } = queryCustomizer;
   const result: any = { ...rest };
+
+  {{# each classType.attributes as |attribute| }}
+  {{# if (isAttributeFilterable attribute) }}
+  if (Array.isArray(filter{{ firstToUpper attribute.name }})) {
+    result.{{ attribute.name }} = filter{{ firstToUpper attribute.name }}.map(({ operator, value }) => ({
+      operator,
+      value: {{ serializePrimitive attribute 'value' }},
+    }));
+  }
+  {{/ if }}
+  {{/ each }}
+
   if (_seek) {
     const { lastItem, ...seekRest } = _seek;
     result._seek = { ...seekRest };
