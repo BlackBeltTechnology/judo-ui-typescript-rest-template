@@ -19,8 +19,8 @@ const DEFAULT_COMMAND_MASK = '{}';
  */
 export class {{ serviceClassName classType }}Impl extends JudoAxiosService implements {{ serviceClassName classType }} {
 {{# each (joinedTokensForApiImportClassService classType) as |imp| }}
-private readonly {{ firstToLower imp }}Serializer = new {{ imp }}Serializer();
-private readonly {{ firstToLower imp }}StoredSerializer = new {{ imp }}StoredSerializer();
+private readonly {{ firstToLower imp }}Serializer = {{ imp }}Serializer.getInstance();
+private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSerializer.getInstance();
 {{/ each }}
 
 {{# if classType.isTemplateable }}

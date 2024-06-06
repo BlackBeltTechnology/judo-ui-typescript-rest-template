@@ -20,8 +20,8 @@ const DEFAULT_COMMAND_MASK = '{}';
  */
 export class {{ serviceRelationName relation }}Impl extends JudoAxiosService implements {{ serviceRelationName relation }} {
 {{# each (joinedTokensForApiImport relation) as |imp| }}
-private readonly {{ firstToLower imp }}Serializer = new {{ imp }}Serializer();
-private readonly {{ firstToLower imp }}StoredSerializer = new {{ imp }}StoredSerializer();
+private readonly {{ firstToLower imp }}Serializer = {{ imp }}Serializer.getInstance();
+private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSerializer.getInstance();
 {{/ each }}
 
 {{# if relation.isListable }}
