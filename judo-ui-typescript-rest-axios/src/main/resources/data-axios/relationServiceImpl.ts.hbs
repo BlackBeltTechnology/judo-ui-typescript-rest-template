@@ -233,7 +233,8 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
    */
   async validateUpdate({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}target: {{ classDataName relation.target "Stored" }}): Promise<JudoRestResponse<{{ classDataName relation.target "Stored" }}>> {
     const path = '{{ restPath relation.target "/~validate" "" "" }}';
-    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), target, {
+    const input = this.{{ firstToLower (classDataName relation.target "StoredSerializer") }}.serialize(target, true);
+    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), input, {
       headers: {
         [X_JUDO_SIGNED_IDENTIFIER]: target.__signedIdentifier,
       },
