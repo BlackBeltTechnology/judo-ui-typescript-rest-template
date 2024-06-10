@@ -9,6 +9,9 @@ export const applyStoredMembers = (result: JudoStored<any>, instance: JudoStored
   if (typeof instance.__updateable === 'boolean') {
     result.__updateable = instance.__updateable;
   }
+  if (typeof instance.__selected === 'boolean') {
+    result.__selected = instance.__selected;
+  }
   if (typeof instance.__version === 'string') {
     result.__version = instance.__version;
   }
