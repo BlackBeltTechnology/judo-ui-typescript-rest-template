@@ -1,0 +1,13 @@
+export interface SerializerUtil {
+  serializeDate: (date: Date) => string;
+  serializeTime: (time: Date) => string;
+  serializeTimestamp: (timestamp: Date) => string;
+  deserializeDate: (date: string) => Date;
+  deserializeTime: (time: string) => Date;
+  deserializeTimestamp: (timestamp: Date) => Date;
+}
+
+export interface Serializer<T> {
+  serialize(instance: T, cleanup?: boolean): any;
+  deserialize(data: any): T;
+}
