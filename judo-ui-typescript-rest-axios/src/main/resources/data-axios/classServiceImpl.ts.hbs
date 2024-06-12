@@ -279,7 +279,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
   async {{ operation.name }}For{{ firstToUpper relation.name }}({{# if operation.isMapped }}owner: {{ classDataName relation.target "Stored" }}{{/ if }}{{# if operation.input }}{{# if operation.isMapped }},{{/ if }}target:{{ classDataName operation.input.target "Stored" }}{{/ if }}): Promise<JudoRestResponse<{{# if operation.output }}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}>> {
     const path = '{{ operationRestPath relation.target operation '' }}';
     {{# if operation.input }}
-    const input = this.{{ firstToLower (classDataName operation.input.target "StoredSerializer") }}.serialize(target, true);
+    const input = target ? this.{{ firstToLower (classDataName operation.input.target "StoredSerializer") }}.serialize(target, true) : null;
     {{/ if }}
     const { data, ...rest } = await this.axios.post(this.getPathForActor(path){{# if operation.input }}, input{{ else }}, undefined{{/ if }}{{# if operation.isMapped }}, {
       headers: {
@@ -334,7 +334,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
   async {{ operation.name }}({{# if operation.isMapped }}owner: {{ classDataName classType "Stored" }}{{/ if }}{{# if operation.input }}{{# if operation.isMapped }},{{/ if }}target:{{ classDataName operation.input.target  "" }}{{/ if }}): Promise<JudoRestResponse<{{# if operation.output }}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}>> {
     const path = '{{ operationRestPath classType operation '' }}';
     {{# if operation.input }}
-    const input = this.{{ firstToLower (classDataName operation.input.target "Serializer") }}.serialize(target, true);
+    const input = target ? this.{{ firstToLower (classDataName operation.input.target "Serializer") }}.serialize(target, true) : null;
     {{/ if }}
     const { data, ...rest } = await this.axios.post(this.getPathForActor(path){{# if operation.input }}, input{{ else }}, undefined{{/ if }}{{# if operation.isMapped }}, {
       headers: {
