@@ -595,7 +595,9 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
    */
   async getRangeOn{{ firstToUpper operation.name }}For{{ firstToUpper targetRelation.name }}({{# unless operation.isStatic }}owner: {{ classDataName targetRelation.target "Stored" }}, {{/ unless }}queryCustomizer?:{{ classDataName operation.input.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName operation.input.target "Stored" }}>>> {
     const path = '{{ operationRestPath targetRelation.target operation '/~range' }}';
+    {{# unless operation.isStatic }}
     const input = this.{{ firstToLower (classDataName targetRelation.target "StoredSerializer") }}.serialize(owner, true);
+    {{/ unless }}
     const { data, ...rest } = await this.axios.post(this.getPathForActor(path), {
       {{# unless operation.isStatic }}owner: input,{{/ unless }}
       queryCustomizer: serialize{{ classDataName operation.input.target "QueryCustomizer" }}(queryCustomizer) ?? {}
@@ -657,7 +659,9 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
    */
   async getRangeOn{{ firstToUpper operation.name }}({{# unless operation.isStatic }}owner: {{ classDataName relation.target "Stored" }}, {{/ unless }}queryCustomizer?:{{ classDataName operation.input.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName operation.input.target "Stored" }}>>> {
     const path = '{{ operationRestPath relation.target operation '/~range' }}';
+    {{# unless operation.isStatic }}
     const input = this.{{ firstToLower (classDataName relation.target "StoredSerializer") }}.serialize(owner, true);
+    {{/ unless }}
     const { data, ...rest } = await this.axios.post(this.getPathForActor(path), {
       {{# unless operation.isStatic }}owner: input,{{/ unless }}
       queryCustomizer: serialize{{ classDataName operation.input.target "QueryCustomizer" }}(queryCustomizer) ?? {},
