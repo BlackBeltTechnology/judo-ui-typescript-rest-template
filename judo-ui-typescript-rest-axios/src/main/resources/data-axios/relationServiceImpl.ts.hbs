@@ -330,7 +330,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
     };
   }
   {{ else }}
-  async get{{ firstToUpper targetRelation.name }}(owner: {{ classDataName relation.target "Stored" }}, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>> {
+  async get{{ firstToUpper targetRelation.name }}(owner: {{ classDataName relation.target "Stored" }}, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }} | null>> {
     const path = '{{ restPath relation.target "/" targetRelation.name "/~get" }}';
     const { data, ...rest } = await this.axios.post(this.getPathForActor(path), serialize{{ classDataName targetRelation.target "QueryCustomizer" }}(queryCustomizer) ?? {}, {
       headers: {
@@ -339,7 +339,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
     });
     return {
       ...rest,
-      data: this.{{ firstToLower (classDataName targetRelation.target "StoredSerializer") }}.deserialize(data),
+      data: (typeof data === 'string' && !data.length) ? null : this.{{ firstToLower (classDataName targetRelation.target "StoredSerializer") }}.deserialize(data),
     };
   }
   {{/ if }}

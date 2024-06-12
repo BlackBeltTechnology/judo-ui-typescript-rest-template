@@ -162,7 +162,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
   /**
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
    */
-  async {{# if relation.isCollection }}list{{ else }}get{{/ if }}{{ firstToUpper relation.name }}(target: {{ classDataName classType "Stored" }}, queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<{{# if relation.isCollection }}Array<{{/ if }}{{ classDataName relation.target "Stored" }}{{# if relation.isCollection }}>{{/ if }}>> {
+  async {{# if relation.isCollection }}list{{ else }}get{{/ if }}{{ firstToUpper relation.name }}(target: {{ classDataName classType "Stored" }}, queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<{{# if relation.isCollection }}Array<{{/ if }}{{ classDataName relation.target "Stored" }}{{# unless relation.isCollection }} | null{{/ unless }}{{# if relation.isCollection }}>{{/ if }}>> {
     const path = '{{ restPath classType "/" relation.name "/~" }}{{# if relation.isCollection }}list{{ else }}get{{/ if }}';
     const { data, ...rest } = await this.axios.post(this.getPathForActor(path), serialize{{ classDataName relation.target "QueryCustomizer" }}(queryCustomizer) ?? {}, {
       headers: {
@@ -175,7 +175,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
       {{# if relation.isCollection }}
       data: Array.isArray(data) ? data.map(d => this.{{ firstToLower (classDataName relation.target "StoredSerializer") }}.deserialize(d)) : [],
       {{ else }}
-      data: data ? this.{{ firstToLower (classDataName relation.target "StoredSerializer") }}.deserialize(data) : data,
+      data: (typeof data === 'string' && !data.length) ? null : this.{{ firstToLower (classDataName relation.target "StoredSerializer") }}.deserialize(data),
       {{/ if }}
     }
   }
