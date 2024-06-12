@@ -24,6 +24,11 @@ suite('API Tests', () => {
     let axiosMock: Partial<AxiosInstance> = {
         post: axiosPostMock,
         get: axiosGetMock,
+        defaults: {
+            headers: {
+                post: {},
+            } as any,
+        },
     };
     let judoAxiosProvider: JudoAxiosProvider;
 

@@ -12,6 +12,9 @@ export class JudoAxiosProvider implements AxiosProvider {
     this.axios = data.axios;
     this.basePathFactory = data.basePathFactory;
     this.filePathFactory = data.filePathFactory;
+
+    // sending requests without body defaults to form content type
+    this.axios.defaults.headers.post['Content-Type'] = 'application/json';
   }
 
   getAxios(): AxiosInstance {
