@@ -50,17 +50,17 @@ export class {{ classDataName classType 'Serializer' }} implements Serializer<{{
   serialize(instance: {{ classDataName classType '' }}, cleanup = false): any {
     const result: any = {};
     {{# each classType.attributes as |attribute| }}
-    if (instance.{{ attribute.name }} !== undefined{{# if attribute.isReadOnly }} && !cleanup{{/ if }}) {
+    if (instance.{{ attribute.name }} !== undefined) {
       result.{{ attribute.name }} = {{# unless attribute.isRequired }}instance.{{ attribute.name }} === null ? null : {{/ unless }}{{ serializePrimitiveInstance attribute }};
     }
     {{/ each }}
     {{# each classType.relations as |relation| }}
       {{# if relation.isCollection }}
-      if (Array.isArray(instance.{{ relation.name }}){{# if relation.isReadOnly }} && !cleanup{{/ if }}) {
+      if (Array.isArray(instance.{{ relation.name }})) {
         result.{{ relation.name }} = instance.{{ relation.name }}.map(r => {{ classDataName relation.target 'Serializer' }}.getInstance().serialize(r, cleanup));
       }
       {{ else }}
-      if (instance.{{ relation.name }} !== undefined{{# if relation.isReadOnly }} && !cleanup{{/ if }}) {
+      if (instance.{{ relation.name }} !== undefined) {
         result.{{ relation.name }} = {{# if relation.isOptional }}instance.{{ relation.name }} === null ? null : {{/ if }}{{ classDataName relation.target 'Serializer' }}.getInstance().serialize(instance.{{ relation.name }}, cleanup);
       }
       {{/ if }}
