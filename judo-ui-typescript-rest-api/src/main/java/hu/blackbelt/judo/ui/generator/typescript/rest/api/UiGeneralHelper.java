@@ -342,8 +342,4 @@ public class UiGeneralHelper extends StaticMethodValueResolver {
                 .sorted(Comparator.comparing(NamedElement::getFQName))
                 .toList();
     }
-
-    public static boolean isAttributeFilterable(AttributeType attributeType) {
-        return !(attributeType.getDataType() instanceof BinaryType) && !attributeType.getIsMemberTypeTransient();
-    }
 }
