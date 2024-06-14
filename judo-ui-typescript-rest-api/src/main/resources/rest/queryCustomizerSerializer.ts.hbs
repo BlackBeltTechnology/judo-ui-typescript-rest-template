@@ -15,7 +15,7 @@ export function serialize{{ classDataName classType "QueryCustomizer" }}(queryCu
   const {
     _seek,
     {{# each classType.attributes as |attribute| }}
-    {{# if (isAttributeFilterable attribute) }}
+    {{# if attribute.isFilterable }}
     {{ attribute.name }}: filter{{ firstToUpper attribute.name }},
     {{/ if }}
     {{/ each }}
@@ -24,7 +24,7 @@ export function serialize{{ classDataName classType "QueryCustomizer" }}(queryCu
   const result: any = { ...rest };
 
   {{# each classType.attributes as |attribute| }}
-  {{# if (isAttributeFilterable attribute) }}
+  {{# if attribute.isFilterable }}
   if (Array.isArray(filter{{ firstToUpper attribute.name }})) {
     result.{{ attribute.name }} = filter{{ firstToUpper attribute.name }}.map(({ operator, value }) => ({
       operator,
