@@ -46,9 +46,9 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
   {{/ if }}
 {{/ if }}
 
-{{# and relation.isExportable relation.isCollection }}
+{{# if relation.isExportable }}
     /**
-    * From: relation.isExportable, relation.isCollection
+    * From: relation.isExportable
     * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
     */
     async export(owner?: {{# if relation.isAccess }}JudoIdentifiable<any>{{ else }}{{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}{{/ if }}, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<any> {
@@ -62,7 +62,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
 
         return response;
     }
-{{/ and }}
+{{/ if }}
 
 {{# if relation.isRefreshable }}
   {{# if relation.isAccess }}
@@ -346,9 +346,9 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
   {{/ if }}
 
 
-{{# and targetRelation.isExportable targetRelation.isCollection }}
+{{# if targetRelation.isExportable }}
     /**
-     * From: relation.isExportable, relation.isCollection
+     * From: relation.isExportable
      * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
      */
     async export{{ firstToUpper targetRelation.name }}(owner: {{ classDataName relation.target "Stored" }}, queryCustomizer?: {{ classDataName targetRelation.target "QueryCustomizer" }}): Promise<any> {
@@ -362,7 +362,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
 
         return response;
     }
-{{/ and }}
+{{/ if }}
 
   {{# if targetRelation.isRangeable }}
   {{# neq relation.name targetRelation.name }}
