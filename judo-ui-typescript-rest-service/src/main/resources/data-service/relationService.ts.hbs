@@ -16,9 +16,9 @@ export interface {{ serviceRelationName relation }} {
   list(owner?: {{# if relation.isAccess }}JudoIdentifiable<any>{{ else }}{{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}{{/ if }}, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName relation.target "Stored" }}>>>;
   {{/ if }}
 {{/ if }}
-{{# and relation.isExportable relation.isCollection }}
+{{# if relation.isExportable }}
     export(owner?: {{# if relation.isAccess }}JudoIdentifiable<any>{{ else }}{{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}{{/ if }}, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<any>;
-{{/ and }}
+{{/ if }}
 {{# if relation.isRefreshable }}
   {{# if relation.isAccess }}
   {{# unless relation.isCollection }}
