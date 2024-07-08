@@ -50,7 +50,7 @@
 
         <surefire-version>3.0.0-M7</surefire-version>
 
-        <judo-meta-ui-version>1.1.0.20240705_152025_0a9b5431_feature_JNG_5504_modelled_table_actions</judo-meta-ui-version>
+        <judo-meta-ui-version>1.1.0.20240708_083112_18bbdd70_develop</judo-meta-ui-version>
         <judo-generator-commons-version>1.0.0.20240621_215702_cc6f5a66_develop</judo-generator-commons-version>
 
         <!-- Code Quality-->
