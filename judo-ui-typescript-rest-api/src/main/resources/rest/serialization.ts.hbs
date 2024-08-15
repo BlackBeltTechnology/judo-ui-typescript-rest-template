@@ -35,9 +35,9 @@ export const serviceTimeToUiTime = (timeStr?: any) => {
 };
 
 export const serializerUtil: SerializerUtil = {
-  serializeDate: (date) => uiDateToServiceDate(date)!,
-  serializeTime: (time) => uiTimeToServiceTime(time)!,
-  serializeTimestamp: (timestamp) => timestamp.toISOString(),
+  serializeDate: (date) => uiDateToServiceDate(date),
+  serializeTime: (time) => uiTimeToServiceTime(time),
+  serializeTimestamp: (timestamp) => timestamp?.toISOString(),
   deserializeDate: (date) => serviceDateToUiDate(date),
   deserializeTime: (time) => serviceTimeToUiTime(time),
   deserializeTimestamp: (timestamp) => serviceDateToUiDate(timestamp),
