@@ -1,10 +1,10 @@
 export interface SerializerUtil {
-  serializeDate: (date: Date) => string;
-  serializeTime: (time: Date) => string;
-  serializeTimestamp: (timestamp: Date) => string;
-  deserializeDate: (date: string) => Date;
-  deserializeTime: (time: string) => Date;
-  deserializeTimestamp: (timestamp: Date) => Date;
+  serializeDate: (date?: Date | null) => string | null | undefined;
+  serializeTime: (time?: Date | null) => string | null | undefined;
+  serializeTimestamp: (timestamp?: Date | null) => string | null | undefined;
+  deserializeDate: (date?: string | null) => Date | null | undefined;
+  deserializeTime: (time?: string | null) => Date | null | undefined;
+  deserializeTimestamp: (timestamp?: Date | null) => Date | null | undefined;
 }
 
 export interface Serializer<T> {
