@@ -1,11 +1,12 @@
 {{> fragment.header.hbs }}
 
-import type { JudoStored } from '../common';
+import type { JudoStored, JudoTechnicalIdentifiable } from '../common';
 {{# each (getImportTokens application.actor classType) as | token | }}
 import { {{ @key }} } from './{{ token }}';
 {{/ each }}
 
-export interface {{ classDataName classType '' }} {
+export interface {{ classDataName classType '' }} extends JudoTechnicalIdentifiable {
+  __identifier?: string;
 {{# each classType.attributes as | attribute | }}
   {{ attribute.name }}{{# if attribute.isRequired }}: {{ else }}?: null | {{/ if}}{{ typescriptType attribute.dataType }};
 {{/ each }}

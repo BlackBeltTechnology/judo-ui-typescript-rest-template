@@ -1,8 +1,17 @@
 /**
- * Utility Interface to use in places where we are not interested in a Stored object's data, only
- * it's `__signedIdentifier`.
+ * Utility interface used for
+ * - mapped elements received from the backend
+ * - ui unmapped element discrimination which is mandatory in case an element is inside an iterable visual element such as tables.
  */
-export interface JudoIdentifiable<T> {
+export interface JudoTechnicalIdentifiable {
   __identifier?: string;
+}
+
+/**
+ * Utility Interface to use in places where we are not interested in a Stored object's data, only
+ * it's `__signedIdentifier`. This identifier may change on the backend based on what operations are triggered on it,
+ * or it's containing parent.
+ */
+export interface JudoIdentifiable<T> extends JudoTechnicalIdentifiable {
   __signedIdentifier: string;
 }

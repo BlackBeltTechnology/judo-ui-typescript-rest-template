@@ -8,6 +8,6 @@ export interface SerializerUtil {
 }
 
 export interface Serializer<T> {
-  serialize(instance: T, cleanup?: boolean): any;
+  serialize(instance: T): any;
   deserialize(data: any): T;
 }
