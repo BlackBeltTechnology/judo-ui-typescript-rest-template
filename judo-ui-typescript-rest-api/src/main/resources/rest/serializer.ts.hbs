@@ -1,7 +1,8 @@
 {{> fragment.header.hbs }}
 
+import { v4 as uuidv4 } from 'uuid';
 import type { JudoStored, Serializer, SerializerUtil } from '../common';
-import { applyStoredMembers } from '../common/utils';
+import { applyStoredMembers, draftIdentifierPrefix } from '../common/utils';
 import type { {{ classDataName classType '' }}, {{ classDataName classType 'Stored' }} } from '../model/{{ classDataName classType '' }}';
 {{# each (getRelatedClasses classType) as |classType| }}
   import { {{ classDataName classType 'Serializer' }} } from './{{ classDataName classType 'Serializer' }}';
@@ -24,8 +25,8 @@ export class {{ classDataName classType 'Stored' }}Serializer implements Seriali
     this.normalSerializer = new {{ classDataName classType 'Serializer' }}();
   }
 
-  serialize(instance: {{ classDataName classType 'Stored' }}, cleanup = false): any {
-    return this.normalSerializer.serialize(instance, cleanup);
+  serialize(instance: {{ classDataName classType 'Stored' }}): any {
+    return this.normalSerializer.serialize(instance);
   }
 
   deserialize(data: any = {}): {{ classDataName classType 'Stored' }} {
@@ -47,7 +48,7 @@ export class {{ classDataName classType 'Serializer' }} implements Serializer<{{
     return {{ classDataName classType '' }}Serializer._instance;
   }
 
-  serialize(instance: {{ classDataName classType '' }}, cleanup = false): any {
+  serialize(instance: {{ classDataName classType '' }}): any {
     const result: any = {};
     {{# each classType.attributes as |attribute| }}
     if (instance.{{ attribute.name }} !== undefined) {
@@ -57,15 +58,15 @@ export class {{ classDataName classType 'Serializer' }} implements Serializer<{{
     {{# each classType.relations as |relation| }}
       {{# if relation.isCollection }}
       if (Array.isArray(instance.{{ relation.name }})) {
-        result.{{ relation.name }} = instance.{{ relation.name }}.map(r => {{ classDataName relation.target 'Serializer' }}.getInstance().serialize(r, cleanup));
+        result.{{ relation.name }} = instance.{{ relation.name }}.map(r => {{ classDataName relation.target 'Serializer' }}.getInstance().serialize(r));
       }
       {{ else }}
       if (instance.{{ relation.name }} !== undefined) {
-        result.{{ relation.name }} = {{# if relation.isOptional }}instance.{{ relation.name }} === null ? null : {{/ if }}{{ classDataName relation.target 'Serializer' }}.getInstance().serialize(instance.{{ relation.name }}, cleanup);
+        result.{{ relation.name }} = {{# if relation.isOptional }}instance.{{ relation.name }} === null ? null : {{/ if }}{{ classDataName relation.target 'Serializer' }}.getInstance().serialize(instance.{{ relation.name }});
       }
       {{/ if }}
     {{/ each }}
-    applyStoredMembers(result, instance as unknown as JudoStored<any>, true);
+    applyStoredMembers(result, instance as unknown as JudoStored<any>);
     return result;
   }
 
@@ -88,6 +89,10 @@ export class {{ classDataName classType 'Serializer' }} implements Serializer<{{
       {{/ if }}
     {{/ each }}
     applyStoredMembers(result, instance as unknown as JudoStored<any>);
+    if (!result.__identifier) {
+      result.__identifier = `${draftIdentifierPrefix}${uuidv4()}`;
+    }
+
     return result as {{ classDataName classType '' }};
   }
 }
