@@ -38,7 +38,7 @@ export function serialize{{ classDataName classType "QueryCustomizer" }}(queryCu
     const { lastItem, ...seekRest } = _seek;
     result._seek = { ...seekRest };
     if (lastItem) {
-      result._seek.lastItem = serializer.serialize(lastItem as {{ classDataName classType "Stored" }}, true);
+      result._seek.lastItem = serializer.serialize(lastItem as {{ classDataName classType "Stored" }});
     }
   }
   return result;
