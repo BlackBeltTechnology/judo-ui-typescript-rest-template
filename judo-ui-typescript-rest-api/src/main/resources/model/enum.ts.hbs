@@ -5,3 +5,31 @@ export enum {{ restParamName enumerationType }} {
   {{ member.name }} = '{{ member.name }}',
 {{/ each}}
 }
+
+type OrdinalOf{{ restParamName enumerationType }} = {{# each enumerationType.members as | member | }}{{ member.ordinal }}{{# unless @last }} | {{/ unless }}{{/ each }}
+
+export function get{{ restParamName enumerationType }}LiteralByOrdinal(ordinal: OrdinalOf{{ restParamName enumerationType }}): {{ restParamName enumerationType }} {
+  switch(ordinal) {
+  {{# each enumerationType.members as | member | }}
+    {{# unless @last }}
+    case {{ member.ordinal }}:
+    {{ else }}
+    default:
+    {{/ unless }}
+      return {{ restParamName enumerationType }}.{{ member.name }};
+  {{/ each}}
+  }
+}
+
+export function get{{ restParamName enumerationType }}OrdinalByLiteral(literal: {{ restParamName enumerationType }}): OrdinalOf{{ restParamName enumerationType }} {
+  switch(literal) {
+  {{# each enumerationType.members as | member | }}
+    {{# unless @last }}
+    case {{ restParamName enumerationType }}.{{ member.name }}:
+    {{ else }}
+    default:
+    {{/ unless }}
+      return {{ member.ordinal }};
+  {{/ each}}
+  }
+}
