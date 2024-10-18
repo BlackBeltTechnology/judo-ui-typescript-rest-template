@@ -442,11 +442,11 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
 
   {{# if targetRelation.isUpdatable }}
   async update{{ firstToUpper targetRelation.name }}(owner: {{ classDataName relation.target "Stored" }}, target: {{ classDataName targetRelation.target "Stored" }}, queryCustomizer?: CommandQueryCustomizer): Promise<JudoRestResponse<{{ classDataName targetRelation.target "Stored" }}>> {
-    const path = '{{ restPath relation.target "/~update/"  targetRelation.name "/~update" }}';
+    const path = '{{ restPath targetRelation.target "/~update" "" "" }}';
     const input = this.{{ firstToLower (classDataName targetRelation.target "StoredSerializer") }}.serialize(target);
     const { data, ...rest } = await this.axios.post(this.getPathForActor(path), input, {
       headers: {
-        [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier,
+        [X_JUDO_SIGNED_IDENTIFIER]: input.__signedIdentifier,
         [X_JUDO_MASK]: queryCustomizer?._mask ?? DEFAULT_COMMAND_MASK,
       },
     });
