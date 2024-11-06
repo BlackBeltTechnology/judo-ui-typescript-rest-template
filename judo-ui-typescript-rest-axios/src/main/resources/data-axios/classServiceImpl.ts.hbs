@@ -271,6 +271,24 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
   }
   {{/ if }}
 
+  {{# if relation.isExportable }}
+    /**
+     * From: relation.isExportable
+     * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
+     */
+    async export{{ firstToUpper relation.name }}(owner?: {{ classDataName classType "Stored" }}, queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}): Promise<any> {
+      const path = '{{ restPath (getRelationOwnerAsClassType relation) "/"  relation.name "/~export" }}';
+      const response = await this.axios.post(this.getPathForActor(path), serialize{{ classDataName relation.target "QueryCustomizer" }}(queryCustomizer) ?? {}, {
+        responseType: 'blob',
+        headers: owner ? {
+          'X-Judo-SignedIdentifier': owner.__signedIdentifier
+        } : undefined,
+      });
+
+      return response;
+    }
+  {{/ if }}
+
   {{# each relation.target.operationsOrderedByName as | operation | }}
   /**
    * @throws {AxiosError}{{# if (hasFaults operation) }}With data containing {@link{{ faultContainerName operation }} } for business related errors (status code is 422).{{/ if }}

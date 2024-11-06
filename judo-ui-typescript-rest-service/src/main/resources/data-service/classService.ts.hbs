@@ -55,6 +55,9 @@ export interface {{ serviceClassName classType }} {
   {{# if relation.isDeletable }}
   delete{{ firstToUpper relation.name }}(target: {{ classDataName relation.target "Stored" }}): Promise<JudoRestResponse<void>>;
   {{/ if }}
+  {{# if relation.isExportable }}
+  export{{ firstToUpper relation.name }}(owner?: {{ classDataName classType "Stored" }}, queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}): Promise<any>;
+  {{/ if }}
   {{# each relation.target.operationsOrderedByName as | operation | }}
   {{ operation.name }}For{{ firstToUpper relation.name }}({{# if operation.isMapped }}owner: {{ classDataName relation.target "Stored" }}{{/ if }}{{# if operation.input }}{{# if operation.isMapped }}, {{/ if }}target: {{ classDataName operation.input.target "" }}{{/ if }}): Promise<JudoRestResponse<{{# if operation.output }}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}>>;
   {{# if operation.input }}
