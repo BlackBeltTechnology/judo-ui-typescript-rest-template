@@ -52,7 +52,7 @@
 
         <surefire-version>3.5.1</surefire-version>
 
-        <judo-meta-ui-version>1.1.0.20250117_220601_613a299a_develop</judo-meta-ui-version>
+        <judo-meta-ui-version>1.1.0.20250128_205208_8de2ee9c_develop</judo-meta-ui-version>
         <judo-generator-commons-version>1.0.0.20241127_150150_30b65e30_develop</judo-generator-commons-version>
 
         <!-- Code Quality-->
