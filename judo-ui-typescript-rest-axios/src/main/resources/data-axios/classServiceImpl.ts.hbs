@@ -1,7 +1,7 @@
 {{> fragment.header.hbs }}
 
 import { CommandQueryCustomizer } from '../data-api/common';
-import { X_JUDO_SIGNED_IDENTIFIER, X_JUDO_MASK } from '../data-api/rest/headers';
+import { X_JUDO_SIGNED_IDENTIFIER, X_JUDO_MASK, X_JUDO_MARK_SELECTED_RANGE_ITEMS } from '../data-api/rest/headers';
 import { JudoAxiosService } from './JudoAxiosService';
 import type { JudoRestResponse } from '../data-api/rest/requestResponse';
 {{# each (joinedTokensForApiImportClassService classType) as |imp| }}
@@ -187,7 +187,8 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
   async getRangeFor{{ firstToUpper relation.name }}(owner?: {{ classDataName classType "Stored" }}, queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName relation.target "Stored" }}>>> {
     const path = '{{ restPath classType "/" relation.name "/~range" }}';
     const input = owner ? this.{{ firstToLower (classDataName classType "StoredSerializer") }}.serialize(owner) : {};
-    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), { owner: input, queryCustomizer: serialize{{ classDataName relation.target "QueryCustomizer" }}(queryCustomizer) ?? {} }, headers ? { headers } : undefined);
+    const head = headers ?? {};
+    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), { owner: input, queryCustomizer: serialize{{ classDataName relation.target "QueryCustomizer" }}(queryCustomizer) ?? {} }, { headers: { ...head, [X_JUDO_MARK_SELECTED_RANGE_ITEMS]: 'true'} } );
     return {
       ...rest,
       data: Array.isArray(data) ? data.map(d => this.{{ firstToLower (classDataName relation.target "StoredSerializer") }}.deserialize(d)) : [],
@@ -334,7 +335,8 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
   async getRangeOn{{ firstToUpper operation.name }}For{{ firstToUpper relation.name }}(owner?: {{ classDataName relation.target "Stored" }}, queryCustomizer?:{{ classDataName operation.input.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName operation.input.target "Stored" }}>>> {
     const path = '{{ operationRestPath relation.target operation '/~range' }}';
     const input = owner ? this.{{ firstToLower (classDataName relation.target "StoredSerializer") }}.serialize(owner) : {};
-    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), { owner: input, queryCustomizer: serialize{{ classDataName operation.input.target "QueryCustomizer" }}(queryCustomizer) ?? {} }, headers ? { headers } : undefined);
+    const head = headers ?? {};
+    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), { owner: input, queryCustomizer: serialize{{ classDataName operation.input.target "QueryCustomizer" }}(queryCustomizer) ?? {} }, { headers: { ...head, [X_JUDO_MARK_SELECTED_RANGE_ITEMS]: 'true'} } );
     return {
       ...rest,
       data: Array.isArray(data) ? data.map(d => this.{{ firstToLower (classDataName operation.input.target "StoredSerializer") }}.deserialize(d)) : [],
@@ -388,7 +390,8 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
   async getRangeOn{{ firstToUpper operation.name }}For{{ firstToUpper relation.name }}(owner?: {{ classDataName operation.input.target "Stored" }}, queryCustomizer?:{{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName relation.target "Stored" }}>>> {
     const path = '{{ restPath operation.input.target "/" relation.name "/~range" }}';
     const input = owner ? this.{{ firstToLower (classDataName operation.input.target "StoredSerializer") }}.serialize(owner) : {};
-    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), { owner: input, queryCustomizer: serialize{{ classDataName relation.target "QueryCustomizer" }}(queryCustomizer) ?? {} }, headers ? { headers } : undefined);
+    const head = headers ?? {};
+    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), { owner: input, queryCustomizer: serialize{{ classDataName relation.target "QueryCustomizer" }}(queryCustomizer) ?? {} }, { headers: { ...head, [X_JUDO_MARK_SELECTED_RANGE_ITEMS]: 'true'} } );
     return {
       ...rest,
       data: Array.isArray(data) ? data.map(d => this.{{ firstToLower (classDataName relation.target "StoredSerializer") }}.deserialize(d)) : [],
@@ -404,7 +407,8 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
   async getRangeOn{{ firstToUpper operation.name }}(owner?: {{ classDataName classType "Stored" }}, queryCustomizer?:{{ classDataName operation.input.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName operation.input.target "Stored" }}>>> {
     const path = '{{ operationRestPath classType operation '/~range' }}';
     const input = owner ? this.{{ firstToLower (classDataName classType "StoredSerializer") }}.serialize(owner) : {};
-    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), { owner: input, queryCustomizer: serialize{{ classDataName operation.input.target "QueryCustomizer" }}(queryCustomizer) ?? {} }, headers ? { headers } : undefined);
+    const head = headers ?? {};
+    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), { owner: input, queryCustomizer: serialize{{ classDataName operation.input.target "QueryCustomizer" }}(queryCustomizer) ?? {} }, { headers: { ...head, [X_JUDO_MARK_SELECTED_RANGE_ITEMS]: 'true'} } );
     return {
       ...rest,
       data: Array.isArray(data) ? data.map(d => this.{{ firstToLower (classDataName operation.input.target "StoredSerializer") }}.deserialize(d)) : [],
