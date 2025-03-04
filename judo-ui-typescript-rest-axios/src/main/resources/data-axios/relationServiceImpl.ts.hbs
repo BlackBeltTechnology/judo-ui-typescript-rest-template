@@ -106,7 +106,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
    * From: relation.isRangeable
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
    */
-  async getRangeFor{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName relation.target "Stored" }}>>> {
+  async getRange({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}queryCustomizer?: {{ classDataName relation.target "QueryCustomizer" }}, headers?: Record<string, string>): Promise<JudoRestResponse<Array<{{ classDataName relation.target "Stored" }}>>> {
     const path = '{{ restPath (getRelationOwnerAsClassType relation) "/" relation.name "/~range" }}';
     const head = headers ?? {};
     {{# unless relation.isAccess }}
@@ -252,7 +252,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
    * From: relation.isSetable
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
    */
-  async set{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}selected:{{# if relation.isCollection }}Array<{{/ if }}{{ classDataName relation.target "Stored" }}{{# if relation.isCollection }}>{{/ if }}): Promise<JudoRestResponse<void>> {
+  async set({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}selected:{{# if relation.isCollection }}Array<{{/ if }}{{ classDataName relation.target "Stored" }}{{# if relation.isCollection }}>{{/ if }}): Promise<JudoRestResponse<void>> {
     const path = '{{ restPath (getRelationOwnerAsClassType relation) "/~update/" relation.name "/~set" }}';
     {{# if relation.isCollection }}
     const input = selected.map(s => this.{{ firstToLower (classDataName relation.target "StoredSerializer") }}.serialize(s));
@@ -272,7 +272,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
    * From: relation.isUnsetable
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
    */
-  async unset{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}): Promise<JudoRestResponse<void>> {
+  async unset({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}): Promise<JudoRestResponse<void>> {
     const path = '{{ restPath (getRelationOwnerAsClassType relation) "/~update/" relation.name "/~unset" }}';
     return this.axios.post(this.getPathForActor(path), undefined{{# unless relation.isAccess }}, {
       headers: {
@@ -287,7 +287,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
    * From: relation.isAddable
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
    */
-  async add{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}selected: Array<{{ classDataName relation.target "Stored" }}>): Promise<JudoRestResponse<void>> {
+  async add({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}selected: Array<{{ classDataName relation.target "Stored" }}>): Promise<JudoRestResponse<void>> {
     const path = '{{ restPath (getRelationOwnerAsClassType relation) "/~update/" relation.name "/~add" }}';
     const input = selected.map(s => this.{{ firstToLower (classDataName relation.target "StoredSerializer") }}.serialize(s));
     return this.axios.post(this.getPathForActor(path), input{{# unless relation.isAccess }}, {
@@ -303,7 +303,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
    * From: relation.isRemovable
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
    */
-  async remove{{ firstToUpper relation.name }}({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}selected: Array<{{ classDataName relation.target "Stored" }}>): Promise<JudoRestResponse<void>> {
+  async remove({{# unless relation.isAccess }}owner: {{ classDataName (getRelationOwnerAsClassType relation) "Stored" }}, {{/ unless }}selected: Array<{{ classDataName relation.target "Stored" }}>): Promise<JudoRestResponse<void>> {
     const path = '{{ restPath (getRelationOwnerAsClassType relation) "/~update/" relation.name "/~remove" }}';
     const input = selected.map(s => this.{{ firstToLower (classDataName relation.target "StoredSerializer") }}.serialize(s));
     return this.axios.post(this.getPathForActor(path), selected{{# unless relation.isAccess }}, {
@@ -366,7 +366,6 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
 {{/ if }}
 
   {{# if targetRelation.isRangeable }}
-  {{# neq relation.name targetRelation.name }}
   /**
    * Form: targetRelation.isRangeable
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
@@ -384,7 +383,6 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
       data: Array.isArray(data) ? data.map(d => this.{{ firstToLower (classDataName targetRelation.target "StoredSerializer") }}.deserialize(d)) : [],
     }
   }
-  {{/ neq }}
   {{/ if }}
 
   {{# if targetRelation.target.isTemplateable }}
@@ -476,7 +474,6 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
   {{/ if }}
 
   {{# if targetRelation.isSetable }}
-  {{# neq relation.name targetRelation.name }}
   /**
    * From: targetRelation.isSetable
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
@@ -494,11 +491,9 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
       },
     });
   }
-  {{/ neq }}
   {{/ if }}
 
   {{# if targetRelation.isUnsetable }}
-  {{# neq relation.name targetRelation.name }}
   /**
    * From: targetRelation.isUnsetable
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
@@ -511,11 +506,9 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
       },
     });
   }
-  {{/ neq }}
   {{/ if }}
 
   {{# if targetRelation.isAddable }}
-  {{# neq relation.name targetRelation.name }}
   /**
    * From: targetRelation.isAddable
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
@@ -529,11 +522,9 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
       },
     });
   }
-  {{/ neq }}
   {{/ if }}
 
   {{# if targetRelation.isRemovable }}
-  {{# neq relation.name targetRelation.name }}
   /**
    * From: targetRelation.isRemovable
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 400, 401, 403.
@@ -547,7 +538,6 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
       },
     });
   }
-  {{/ neq }}
   {{/ if }}
 
   {{# each targetRelation.target.operations as | operation | }}
@@ -590,7 +580,6 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
   {{/ if }}
 
   {{# if operation.isInputRangeable }}
-  {{# neq relation.name targetRelation.name }}
   /**
    * From: targetRelation.target.operations operation.isInputRangeable
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
@@ -610,7 +599,6 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
       data: Array.isArray(data) ? data.map(d => this.{{ firstToLower (classDataName operation.input.target "StoredSerializer") }}.deserialize(d)) : [],
     };
   }
-  {{/ neq }}
   {{/ if }}
   {{/ each }}
 {{/ each }}
@@ -655,7 +643,6 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
   {{/ if }}
 
   {{# if operation.isInputRangeable }}
-  {{# neq relation.name targetRelation.name }}
   /**
    * From: relation.target.operations operation.isInputRangeable
    * @throws {AxiosError} With data containing {@link Array<FeedbackItem>} for status codes: 401, 403.
@@ -675,7 +662,6 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
       data: Array.isArray(data) ? data.map(d => this.{{ firstToLower (classDataName operation.input.target "StoredSerializer") }}.deserialize(d)) : [],
     };
   }
-  {{/ neq }}
   {{/ if }}
 {{/ each }}
 }
