@@ -174,7 +174,7 @@ suite('API Tests', () => {
 
     function assertSinglePostCall(resource: Resource, payload?: any, options?: any, skipHeaders = false): void {
         expect(axiosPostMock).toHaveBeenCalledTimes(1);
-        // test tool is sensitive for undefined parameters, in certain cases we skip the 3rd param, and are not passing undefiend
+        // test tool is sensitive for undefined parameters, in certain cases we skip the 3rd param, and are not passing undefined
         if (skipHeaders) {
             expect(axiosPostMock).toHaveBeenCalledWith(xml.application.resources.base + '/' + resource.path, payload);
         } else {
