@@ -29,7 +29,7 @@ export const uiTimeToServiceTime = (time?: any | null): string | null => {
 
 export const serviceTimeToUiTime = (timeStr?: any) => {
     if (typeof timeStr === 'string') {
-         const format = timeStr.includes('.') ? 'HH:mm:ss.SSS' : 'HH:mm:ss';
+        const format = timeStr.includes('.') ? 'HH:mm:ss.SSS' : 'HH:mm:ss';
         return parse(timeStr, format, new Date());
     }
     return timeStr;
