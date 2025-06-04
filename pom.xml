@@ -39,8 +39,8 @@
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
         <src.dir>src/main</src.dir>
 
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
 
         <!--suppress UnresolvedMavenProperty -->
         <logback-test-config>${maven.multiModuleProjectDirectory}/logback-test.xml</logback-test-config>
@@ -52,8 +52,8 @@
 
         <surefire-version>3.5.1</surefire-version>
 
-        <judo-meta-ui-version>1.1.0.20250429_141356_d4d0ed6b_develop</judo-meta-ui-version>
-        <judo-generator-commons-version>1.0.0.20241127_150150_30b65e30_develop</judo-generator-commons-version>
+        <judo-meta-ui-version>1.1.0.20250604_200459_febb18de_feature_JNG_6310_UpdateEpsilon</judo-meta-ui-version>
+        <judo-generator-commons-version>1.0.0.20250604_005413_e4565e35_feature_JNG_6310_UpdateEpsilon</judo-generator-commons-version>
 
         <!-- Code Quality-->
         <sonar-maven-plugin-version>3.9.1.2184</sonar-maven-plugin-version>
@@ -107,7 +107,7 @@
         <dependency>
             <groupId>com.github.jknack</groupId>
             <artifactId>handlebars</artifactId>
-            <version>4.1.2</version>
+            <version>4.4.0</version>
         </dependency>
 
         <dependency>
@@ -382,7 +382,7 @@
                     <plugin>
                         <groupId>org.simplify4u.plugins</groupId>
                         <artifactId>sign-maven-plugin</artifactId>
-                        <version>1.0.1</version>
+                        <version>1.1.0</version>
                         <executions>
                             <execution>
                                 <goals>

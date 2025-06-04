@@ -20,8 +20,8 @@ package hu.blackbelt.judo.ui.generator.typescript.rest.commons;
  * #L%
  */
 
-import com.github.jknack.handlebars.internal.lang3.StringUtils;
 import hu.blackbelt.judo.generator.commons.StaticMethodValueResolver;
+import hu.blackbelt.judo.generator.commons.StringHelper;
 import hu.blackbelt.judo.generator.commons.annotations.TemplateHelper;
 import hu.blackbelt.judo.meta.ui.data.ClassType;
 import hu.blackbelt.judo.meta.ui.data.DataType;
@@ -40,11 +40,11 @@ public class UiCommonsHelper extends StaticMethodValueResolver {
     public static final String SPLITTER = "::";
 
     public static String firstToUpper(String input) {
-        return StringUtils.capitalize(input);
+        return StringHelper.firstToUpperCase(input);
     }
 
     public static String firstToLower(String input) {
-        return StringUtils.uncapitalize(input);
+        return StringHelper.firstToLowerCase(input);
     }
 
     public static String getXMIID(EObject element) {
@@ -58,19 +58,19 @@ public class UiCommonsHelper extends StaticMethodValueResolver {
     }
 
     public static String serviceRelationName(RelationType relation) {
-        return org.springframework.util.StringUtils.capitalize(String.join("", relation.getOwner().getName().split(SPLITTER))
+        return StringHelper.firstToUpperCase(String.join("", relation.getOwner().getName().split(SPLITTER))
                 .concat("ServiceFor")
                 .concat(firstToUpper(relation.getName())));
     }
 
     public static String serviceClassName(ClassType classType) {
-        return org.springframework.util.StringUtils.capitalize(String.join("", classType.getName().split(SPLITTER)))
+        return StringHelper.firstToUpperCase(String.join("", classType.getName().split(SPLITTER)))
                 .concat("Service");
     }
 
     public static String restParamName(DataType dataType) {
         String[] tokens = dataType.getName().split(SPLITTER);
         String last = tokens[tokens.length - 1];
-        return stream(last.split("\\.")).map(StringUtils::capitalize).collect(Collectors.joining(""));
+        return stream(last.split("\\.")).map(StringHelper::firstToUpperCase).collect(Collectors.joining(""));
     }
 }
