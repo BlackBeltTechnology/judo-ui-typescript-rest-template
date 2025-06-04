@@ -52,7 +52,7 @@
 
         <surefire-version>3.5.1</surefire-version>
 
-        <judo-meta-ui-version>1.1.0.20250604_122327_78a19518_feature_JNG_6310_UpdateEpsilon</judo-meta-ui-version>
+        <judo-meta-ui-version>1.1.0.20250604_124557_29e7d5fa_feature_JNG_6310_UpdateEpsilon</judo-meta-ui-version>
         <judo-generator-commons-version>1.0.0.20250604_005413_e4565e35_feature_JNG_6310_UpdateEpsilon</judo-generator-commons-version>
 
         <!-- Code Quality-->
