@@ -567,6 +567,21 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
   }
 
   {{# if operation.input }}
+  {{# if (isOperationInputValidateable operation) }}
+  async validateOn{{ firstToUpper operation.name }}For{{ firstToUpper targetRelation.name }}({{# unless operation.isStatic }}owner: {{ classDataName targetRelation.target "Stored" }}, {{/ unless }}target: {{ classDataName operation.input.target "" }}): Promise<JudoRestResponse<{{ classDataName operation.input.target "" }}>> {
+    const path = '{{ operationRestPath targetRelation.target operation '/~validate' }}';
+    const input = this.{{ firstToLower (classDataName operation.input.target "Serializer") }}.serialize(target);
+    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), input{{# unless operation.isStatic }}, {
+     headers: {
+       [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier!,
+     },
+    } {{/ unless }});
+    return {
+      ...rest,
+      data: this.{{ firstToLower (classDataName operation.input.target "Serializer") }}.deserialize(data),
+    };
+  }
+  {{/ if }}
   {{# if operation.input.target.isTemplateable }}
   async getTemplateOn{{ firstToUpper operation.name }}For{{ firstToUpper targetRelation.name }}(): Promise<JudoRestResponse<{{ classDataName operation.input.target "" }}>> {
     const path = '{{ restPath operation.input.target "/~template" "" "" }}';
@@ -630,6 +645,21 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
   }
 
   {{# if operation.input }}
+  {{# if (isOperationInputValidateable operation) }}
+  async validateOn{{ firstToUpper operation.name }}({{# unless operation.isStatic }}owner: {{ classDataName relation.target "Stored" }}, {{/ unless }}target: {{ classDataName operation.input.target "" }}): Promise<JudoRestResponse<{{ classDataName operation.input.target "" }}>> {
+    const path = '{{ operationRestPath relation.target operation '/~validate' }}';
+    const input = this.{{ firstToLower (classDataName operation.input.target "Serializer") }}.serialize(target);
+    const { data, ...rest } = await this.axios.post(this.getPathForActor(path), input{{# unless operation.isStatic }}, {
+     headers: {
+       [X_JUDO_SIGNED_IDENTIFIER]: owner.__signedIdentifier!,
+     },
+    } {{/ unless }});
+    return {
+      ...rest,
+      data: this.{{ firstToLower (classDataName operation.input.target "Serializer") }}.deserialize(data),
+    };
+  }
+  {{/ if }}
   {{# if operation.input.target.isTemplateable }}
   async getTemplateOn{{ firstToUpper operation.name }}(): Promise<JudoRestResponse<{{ classDataName operation.input.target "" }}>> {
     const path = '{{ restPath operation.input.target "/~template" "" "" }}';
