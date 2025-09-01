@@ -161,4 +161,8 @@ public class UiServiceHelper extends StaticMethodValueResolver {
                 .collect(Collectors.toList());
     }
 
+    public static boolean isOperationInputValidateable(OperationType operation) {
+        return operation.getInput() != null && operation.getInput().getBehaviours().contains(OperationTargetBehaviourType.VALIDATE_INPUT);
+    }
+
 }
