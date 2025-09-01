@@ -61,6 +61,9 @@ export interface {{ serviceClassName classType }} {
   {{# each relation.target.operationsOrderedByName as | operation | }}
   {{ operation.name }}For{{ firstToUpper relation.name }}({{# if operation.isMapped }}owner: {{ classDataName relation.target "Stored" }}{{/ if }}{{# if operation.input }}{{# if operation.isMapped }}, {{/ if }}target: {{ classDataName operation.input.target "" }}{{/ if }}): Promise<JudoRestResponse<{{# if operation.output }}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}>>;
   {{# if operation.input }}
+  {{# if (isOperationInputValidateable operation) }}
+  validateOn{{ firstToUpper operation.name }}For{{ firstToUpper relation.name }}({{# if operation.isMapped }}owner: {{ classDataName relation.target "Stored" }}, {{/ if }}target: {{ classDataName operation.input.target "" }}): Promise<JudoRestResponse<{{ classDataName operation.input.target "" }}>>;
+  {{/ if }}
   {{# if operation.input.target.isTemplateable }}
   getTemplateOn{{ firstToUpper operation.name }}For{{ firstToUpper relation.name }}(): Promise<JudoRestResponse<{{ classDataName operation.input.target "" }}>>;
   {{/ if }}
@@ -73,6 +76,9 @@ export interface {{ serviceClassName classType }} {
   {{# each classType.operationsOrderedByName as | operation | }}
   {{ operation.name }}({{# if operation.isMapped }}owner: {{ classDataName classType "Stored" }}{{/ if }}{{# if operation.input }}{{# if operation.isMapped }}, {{/ if }}target: {{ classDataName operation.input.target "" }}{{/ if }}): Promise<JudoRestResponse<{{# if operation.output }}{{ classDataName operation.output.target "Stored" }}{{ else }}void{{/ if }}>>;
   {{# if operation.input }}
+  {{# if (isOperationInputValidateable operation) }}
+  validateOn{{ firstToUpper operation.name }}({{# if operation.isMapped }}owner: {{ classDataName classType "Stored" }}, {{/ if }}target: {{ classDataName operation.input.target "" }}): Promise<JudoRestResponse<{{ classDataName operation.input.target "" }}>>;
+  {{/ if }}
   {{# if operation.input.target.isTemplateable }}
   getTemplateOn{{ firstToUpper operation.name }}(): Promise<JudoRestResponse<{{ classDataName operation.input.target "" }}>>;
   {{/ if }}
