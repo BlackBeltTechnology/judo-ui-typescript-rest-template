@@ -389,7 +389,7 @@ private readonly {{ firstToLower imp }}StoredSerializer = {{ imp }}StoredSeriali
 
   {{# if operation.input }}
   {{# if (isOperationInputValidateable operation) }}
-  async validateOn{{ firstToUpper operation.name }}({{# if operation.isMapped }}owner: {{ classDataName operation.input.target "Stored" }}, {{/ if }}target: {{ classDataName operation.input.target "" }}): Promise<JudoRestResponse<{{ classDataName operation.input.target "" }}>> {
+  async validateOn{{ firstToUpper operation.name }}({{# if operation.isMapped }}owner: {{ classDataName classType "Stored" }}, {{/ if }}target: {{ classDataName operation.input.target "" }}): Promise<JudoRestResponse<{{ classDataName operation.input.target "" }}>> {
     const path = '{{ operationRestPath classType operation '/~validate' }}';
     const input = this.{{ firstToLower (classDataName operation.input.target "Serializer") }}.serialize(target);
     const { data, ...rest } = await this.axios.post(this.getPathForActor(path), input{{# if operation.isMapped }}, {
