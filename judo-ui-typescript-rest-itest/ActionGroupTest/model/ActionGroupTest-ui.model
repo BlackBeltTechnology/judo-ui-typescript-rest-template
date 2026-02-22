@@ -2195,7 +2195,7 @@
         <autocompleteSetActionDefinition xsi:type="ui:AutocompleteSetActionDefinition" xmi:id="God/(esm/_DpoUpc8xEe6U3KSieLrWmg)/TabularReferenceFieldLinkAutocompleteSetActionDefinition" name="BinaryTypeTest::GalaxyDocumentTransfer::GalaxyDocumentTransfer_Form::pictureInfo::AutocompleteSet" sourceId="_DpoUpc8xEe6U3KSieLrWmg" targetType="God/(esm/_Dqda5s8xEe6U3KSieLrWmg)/ClassType" isContainedRelationAction="true"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_DpoUkM8xEe6U3KSieLrWmg)/TransferObjectFormButtonGroup" name="BinaryTypeTest::GalaxyDocumentTransfer::GalaxyDocumentTransfer_Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_DpoUkM8xEe6U3KSieLrWmg)/TransferObjectFormButtonGroup" name="BinaryTypeTest::GalaxyDocumentTransfer::GalaxyDocumentTransfer_Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_DpoUkM8xEe6U3KSieLrWmg)/TransferObjectFormBackButton" name="BinaryTypeTest::GalaxyDocumentTransfer::GalaxyDocumentTransfer_Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_DpoUkM8xEe6U3KSieLrWmg)/TransferObjectFormBackButtonIcon" name="GalaxyDocumentTransfer_Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_DpoUkM8xEe6U3KSieLrWmg)/TransferObjectFormBackActionDefinition" name="BinaryTypeTest::GalaxyDocumentTransfer::GalaxyDocumentTransfer_Form::Back" sourceId="_DpoUkM8xEe6U3KSieLrWmg"/>
@@ -2204,7 +2204,7 @@
         <icon xmi:id="God/(esm/_DpoUkM8xEe6U3KSieLrWmg)/TransferObjectFormCreateButtonIcon" name="GalaxyDocumentTransfer_Form::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:CreateActionDefinition" xmi:id="God/(esm/_DpoUkM8xEe6U3KSieLrWmg)/TransferObjectFormCreateActionDefinition" name="BinaryTypeTest::GalaxyDocumentTransfer::GalaxyDocumentTransfer_Form::Create" sourceId="_DpoUkM8xEe6U3KSieLrWmg"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_DpoUkM8xEe6U3KSieLrWmg)/TransferObjectFormGetTemplateActionDefinition" name="BinaryTypeTest::GalaxyDocumentTransfer::GalaxyDocumentTransfer_Form::GetTemplate" sourceId="_DpoUkM8xEe6U3KSieLrWmg" targetType="God/(esm/_DpoUcM8xEe6U3KSieLrWmg)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_DpoUp88xEe6U3KSieLrWmg)/TransferObjectTablePageContainer" name="BinaryTypeTest::GalaxyDocumentTransfer::GalaxyDocumentTransfer_Table" label="GalaxyDocumentTransfer Table" dataElement="God/(esm/_DpoUcM8xEe6U3KSieLrWmg)/ClassType" onInit="God/(esm/_DpoUp88xEe6U3KSieLrWmg)/TransferObjectTableTableRefreshActionDefinition">
@@ -2284,7 +2284,7 @@
       </children>
       <frame xmi:id="God/(esm/_DpoUp88xEe6U3KSieLrWmg)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_DpoUp88xEe6U3KSieLrWmg)/TransferObjectTableButtonGroup" name="BinaryTypeTest::GalaxyDocumentTransfer::GalaxyDocumentTransfer_Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_DpoUp88xEe6U3KSieLrWmg)/TransferObjectTableButtonGroup" name="BinaryTypeTest::GalaxyDocumentTransfer::GalaxyDocumentTransfer_Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_DpoUp88xEe6U3KSieLrWmg)/TransferObjectTableBackButton" name="BinaryTypeTest::GalaxyDocumentTransfer::GalaxyDocumentTransfer_Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_DpoUp88xEe6U3KSieLrWmg)/TransferObjectTableBackButtonIcon" name="GalaxyDocumentTransfer_Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_DpoUp88xEe6U3KSieLrWmg)/TransferObjectTableBackActionDefinition" name="BinaryTypeTest::GalaxyDocumentTransfer::GalaxyDocumentTransfer_Table::Back" sourceId="_DpoUp88xEe6U3KSieLrWmg"/>
@@ -2297,7 +2297,7 @@
         <icon xmi:id="God/(esm/_DpoUp88xEe6U3KSieLrWmg)/TransferObjectTableAddSelectorAddButtonIcon" name="GalaxyDocumentTransfer_Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_DpoUp88xEe6U3KSieLrWmg)/TransferObjectTableAddSelectorAddActionDefinition" name="BinaryTypeTest::GalaxyDocumentTransfer::GalaxyDocumentTransfer_Table::Add" sourceId="_DpoUp88xEe6U3KSieLrWmg" targetType="God/(esm/_DpoUcM8xEe6U3KSieLrWmg)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_DpoUtc8xEe6U3KSieLrWmg)/TransferObjectViewPageContainer" name="BinaryTypeTest::GalaxyDocumentTransfer::GalaxyDocumentTransfer_View_Edit" label="GalaxyDocumentTransfer View / Edit" dataElement="God/(esm/_DpoUcM8xEe6U3KSieLrWmg)/ClassType" onInit="God/(esm/_DpoUtc8xEe6U3KSieLrWmg)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_DpoUtc8xEe6U3KSieLrWmg)/TransferObjectViewVisualElement" name="GalaxyDocumentTransfer_View_Edit" sourceId="_DpoUtc8xEe6U3KSieLrWmg" col="12.0" stretch="BOTH" mainAxisAlignment="START">
@@ -2425,7 +2425,7 @@
         <autocompleteSetActionDefinition xsi:type="ui:AutocompleteSetActionDefinition" xmi:id="God/(esm/_DpoUys8xEe6U3KSieLrWmg)/TabularReferenceFieldLinkAutocompleteSetActionDefinition" name="BinaryTypeTest::GalaxyDocumentTransfer::GalaxyDocumentTransfer_View_Edit::pictureInfo::AutocompleteSet" sourceId="_DpoUys8xEe6U3KSieLrWmg" targetType="God/(esm/_Dqda5s8xEe6U3KSieLrWmg)/ClassType" isContainedRelationAction="true"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_DpoUtc8xEe6U3KSieLrWmg)/TransferObjectViewButtonGroup" name="BinaryTypeTest::GalaxyDocumentTransfer::GalaxyDocumentTransfer_View_Edit::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_DpoUtc8xEe6U3KSieLrWmg)/TransferObjectViewButtonGroup" name="BinaryTypeTest::GalaxyDocumentTransfer::GalaxyDocumentTransfer_View_Edit::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_DpoUtc8xEe6U3KSieLrWmg)/TransferObjectViewBackButton" name="BinaryTypeTest::GalaxyDocumentTransfer::GalaxyDocumentTransfer_View_Edit::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_DpoUtc8xEe6U3KSieLrWmg)/TransferObjectViewBackButtonIcon" name="GalaxyDocumentTransfer_View_Edit::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_DpoUtc8xEe6U3KSieLrWmg)/TransferObjectViewBackActionDefinition" name="BinaryTypeTest::GalaxyDocumentTransfer::GalaxyDocumentTransfer_View_Edit::Back" sourceId="_DpoUtc8xEe6U3KSieLrWmg"/>
@@ -2446,7 +2446,7 @@
         <icon xmi:id="God/(esm/_DpoUtc8xEe6U3KSieLrWmg)/TransferObjectViewUpdateButtonIcon" name="GalaxyDocumentTransfer_View_Edit::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/_DpoUtc8xEe6U3KSieLrWmg)/TransferObjectViewUpdateActionDefinition" name="BinaryTypeTest::GalaxyDocumentTransfer::GalaxyDocumentTransfer_View_Edit::Update" sourceId="_DpoUtc8xEe6U3KSieLrWmg"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_Dqda6s8xEe6U3KSieLrWmg)/TransferObjectFormPageContainer" name="BinaryTypeTest::PictureInfo::Form" label="Form" dataElement="God/(esm/_Dqda5s8xEe6U3KSieLrWmg)/ClassType" onInit="God/(esm/_Dqda6s8xEe6U3KSieLrWmg)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_Dqda6s8xEe6U3KSieLrWmg)/TransferObjectFormVisualElement" name="Form" sourceId="_Dqda6s8xEe6U3KSieLrWmg" col="12.0" stretch="BOTH" mainAxisAlignment="START">
@@ -2454,7 +2454,7 @@
         <icon xmi:id="God/(esm/_Dqda688xEe6U3KSieLrWmg)/VisualElementIcon" name="picture::Icon" iconName="file-document-outline"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_Dqda6s8xEe6U3KSieLrWmg)/TransferObjectFormButtonGroup" name="BinaryTypeTest::PictureInfo::Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_Dqda6s8xEe6U3KSieLrWmg)/TransferObjectFormButtonGroup" name="BinaryTypeTest::PictureInfo::Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_Dqda6s8xEe6U3KSieLrWmg)/TransferObjectFormBackButton" name="BinaryTypeTest::PictureInfo::Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_Dqda6s8xEe6U3KSieLrWmg)/TransferObjectFormBackButtonIcon" name="Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_Dqda6s8xEe6U3KSieLrWmg)/TransferObjectFormBackActionDefinition" name="BinaryTypeTest::PictureInfo::Form::Back" sourceId="_Dqda6s8xEe6U3KSieLrWmg"/>
@@ -2463,7 +2463,7 @@
         <icon xmi:id="God/(esm/_Dqda6s8xEe6U3KSieLrWmg)/TransferObjectFormCreateButtonIcon" name="Form::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:CreateActionDefinition" xmi:id="God/(esm/_Dqda6s8xEe6U3KSieLrWmg)/TransferObjectFormCreateActionDefinition" name="BinaryTypeTest::PictureInfo::Form::Create" sourceId="_Dqda6s8xEe6U3KSieLrWmg"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_Dqda6s8xEe6U3KSieLrWmg)/TransferObjectFormGetTemplateActionDefinition" name="BinaryTypeTest::PictureInfo::Form::GetTemplate" sourceId="_Dqda6s8xEe6U3KSieLrWmg" targetType="God/(esm/_Dqda5s8xEe6U3KSieLrWmg)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_Dqda7M8xEe6U3KSieLrWmg)/TransferObjectTablePageContainer" name="BinaryTypeTest::PictureInfo::Table" label="Table" dataElement="God/(esm/_Dqda5s8xEe6U3KSieLrWmg)/ClassType" onInit="God/(esm/_Dqda7M8xEe6U3KSieLrWmg)/TransferObjectTableTableRefreshActionDefinition">
@@ -2529,7 +2529,7 @@
       </children>
       <frame xmi:id="God/(esm/_Dqda7M8xEe6U3KSieLrWmg)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_Dqda7M8xEe6U3KSieLrWmg)/TransferObjectTableButtonGroup" name="BinaryTypeTest::PictureInfo::Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_Dqda7M8xEe6U3KSieLrWmg)/TransferObjectTableButtonGroup" name="BinaryTypeTest::PictureInfo::Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_Dqda7M8xEe6U3KSieLrWmg)/TransferObjectTableBackButton" name="BinaryTypeTest::PictureInfo::Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_Dqda7M8xEe6U3KSieLrWmg)/TransferObjectTableBackButtonIcon" name="Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_Dqda7M8xEe6U3KSieLrWmg)/TransferObjectTableBackActionDefinition" name="BinaryTypeTest::PictureInfo::Table::Back" sourceId="_Dqda7M8xEe6U3KSieLrWmg"/>
@@ -2542,7 +2542,7 @@
         <icon xmi:id="God/(esm/_Dqda7M8xEe6U3KSieLrWmg)/TransferObjectTableAddSelectorAddButtonIcon" name="Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_Dqda7M8xEe6U3KSieLrWmg)/TransferObjectTableAddSelectorAddActionDefinition" name="BinaryTypeTest::PictureInfo::Table::Add" sourceId="_Dqda7M8xEe6U3KSieLrWmg" targetType="God/(esm/_Dqda5s8xEe6U3KSieLrWmg)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_Dqda7s8xEe6U3KSieLrWmg)/TransferObjectViewPageContainer" name="BinaryTypeTest::PictureInfo::View" label="View" dataElement="God/(esm/_Dqda5s8xEe6U3KSieLrWmg)/ClassType" onInit="God/(esm/_Dqda7s8xEe6U3KSieLrWmg)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_Dqda7s8xEe6U3KSieLrWmg)/TransferObjectViewVisualElement" name="View" sourceId="_Dqda7s8xEe6U3KSieLrWmg" col="12.0" stretch="BOTH" mainAxisAlignment="START">
@@ -2550,7 +2550,7 @@
         <icon xmi:id="God/(esm/_Dqda788xEe6U3KSieLrWmg)/VisualElementIcon" name="picture::Icon" iconName="file-document-outline"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_Dqda7s8xEe6U3KSieLrWmg)/TransferObjectViewButtonGroup" name="BinaryTypeTest::PictureInfo::View::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_Dqda7s8xEe6U3KSieLrWmg)/TransferObjectViewButtonGroup" name="BinaryTypeTest::PictureInfo::View::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_Dqda7s8xEe6U3KSieLrWmg)/TransferObjectViewBackButton" name="BinaryTypeTest::PictureInfo::View::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_Dqda7s8xEe6U3KSieLrWmg)/TransferObjectViewBackButtonIcon" name="View::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_Dqda7s8xEe6U3KSieLrWmg)/TransferObjectViewBackActionDefinition" name="BinaryTypeTest::PictureInfo::View::Back" sourceId="_Dqda7s8xEe6U3KSieLrWmg"/>
@@ -2571,13 +2571,13 @@
         <icon xmi:id="God/(esm/_Dqda7s8xEe6U3KSieLrWmg)/TransferObjectViewUpdateButtonIcon" name="View::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/_Dqda7s8xEe6U3KSieLrWmg)/TransferObjectViewUpdateActionDefinition" name="BinaryTypeTest::PictureInfo::View::Update" sourceId="_Dqda7s8xEe6U3KSieLrWmg"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_yQjtQNYqEe61sPEiAs6Ysw)/TransferObjectTablePageContainer" name="CreatePageTest::Observation::Observation_Table" label="Observation Table" dataElement="God/(esm/_yQW48NYqEe61sPEiAs6Ysw)/ClassType">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_yQjtQNYqEe61sPEiAs6Ysw)/TransferObjectTableVisualElement" name="Observation_Table" col="12.0" direction="VERTICAL" mainAxisAlignment="START" crossAxisAlignment="STRETCH">
       <frame xmi:id="God/(esm/_yQjtQNYqEe61sPEiAs6Ysw)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_yQjtQNYqEe61sPEiAs6Ysw)/TransferObjectTableButtonGroup" name="CreatePageTest::Observation::Observation_Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_yQjtQNYqEe61sPEiAs6Ysw)/TransferObjectTableButtonGroup" name="CreatePageTest::Observation::Observation_Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_yQjtQNYqEe61sPEiAs6Ysw)/TransferObjectTableBackButton" name="CreatePageTest::Observation::Observation_Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_yQjtQNYqEe61sPEiAs6Ysw)/TransferObjectTableBackButtonIcon" name="Observation_Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_yQjtQNYqEe61sPEiAs6Ysw)/TransferObjectTableBackActionDefinition" name="CreatePageTest::Observation::Observation_Table::Back" sourceId="_yQjtQNYqEe61sPEiAs6Ysw"/>
@@ -2590,7 +2590,7 @@
         <icon xmi:id="God/(esm/_yQjtQNYqEe61sPEiAs6Ysw)/TransferObjectTableAddSelectorAddButtonIcon" name="Observation_Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_yQjtQNYqEe61sPEiAs6Ysw)/TransferObjectTableAddSelectorAddActionDefinition" name="CreatePageTest::Observation::Observation_Table::Add" sourceId="_yQjtQNYqEe61sPEiAs6Ysw" targetType="God/(esm/_yQW48NYqEe61sPEiAs6Ysw)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_eoHRkNYrEe61sPEiAs6Ysw)/TransferObjectFormPageContainer" name="CreatePageTest::ObservationTransfer::ObservationTransfer_Form" label="ObservationTransfer Form" dataElement="God/(esm/_eoCZENYrEe61sPEiAs6Ysw)/ClassType" onInit="God/(esm/_eoHRkNYrEe61sPEiAs6Ysw)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_eoHRkNYrEe61sPEiAs6Ysw)/TransferObjectFormVisualElement" name="ObservationTransfer_Form" sourceId="_eoHRkNYrEe61sPEiAs6Ysw" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -2601,7 +2601,7 @@
         <icon xmi:id="God/(esm/_jPvAINYvEe61sPEiAs6Ysw)/VisualElementIcon" name="date::Icon" iconName="calendar-blank"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_eoHRkNYrEe61sPEiAs6Ysw)/TransferObjectFormButtonGroup" name="CreatePageTest::ObservationTransfer::ObservationTransfer_Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_eoHRkNYrEe61sPEiAs6Ysw)/TransferObjectFormButtonGroup" name="CreatePageTest::ObservationTransfer::ObservationTransfer_Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_eoHRkNYrEe61sPEiAs6Ysw)/TransferObjectFormBackButton" name="CreatePageTest::ObservationTransfer::ObservationTransfer_Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_eoHRkNYrEe61sPEiAs6Ysw)/TransferObjectFormBackButtonIcon" name="ObservationTransfer_Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_eoHRkNYrEe61sPEiAs6Ysw)/TransferObjectFormBackActionDefinition" name="CreatePageTest::ObservationTransfer::ObservationTransfer_Form::Back" sourceId="_eoHRkNYrEe61sPEiAs6Ysw"/>
@@ -2610,7 +2610,7 @@
         <icon xmi:id="God/(esm/_eoHRkNYrEe61sPEiAs6Ysw)/TransferObjectFormCreateButtonIcon" name="ObservationTransfer_Form::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:CreateActionDefinition" xmi:id="God/(esm/_eoHRkNYrEe61sPEiAs6Ysw)/TransferObjectFormCreateActionDefinition" name="CreatePageTest::ObservationTransfer::ObservationTransfer_Form::Create" sourceId="_eoHRkNYrEe61sPEiAs6Ysw"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_eoHRkNYrEe61sPEiAs6Ysw)/TransferObjectFormGetTemplateActionDefinition" name="CreatePageTest::ObservationTransfer::ObservationTransfer_Form::GetTemplate" sourceId="_eoHRkNYrEe61sPEiAs6Ysw" targetType="God/(esm/_eoCZENYrEe61sPEiAs6Ysw)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_eoKU4NYrEe61sPEiAs6Ysw)/TransferObjectTablePageContainer" name="CreatePageTest::ObservationTransfer::ObservationTransfer_Table" label="ObservationTransfer Table" dataElement="God/(esm/_eoCZENYrEe61sPEiAs6Ysw)/ClassType" onInit="God/(esm/_eoKU4NYrEe61sPEiAs6Ysw)/TransferObjectTableTableRefreshActionDefinition">
@@ -2679,7 +2679,7 @@
       </children>
       <frame xmi:id="God/(esm/_eoKU4NYrEe61sPEiAs6Ysw)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_eoKU4NYrEe61sPEiAs6Ysw)/TransferObjectTableButtonGroup" name="CreatePageTest::ObservationTransfer::ObservationTransfer_Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_eoKU4NYrEe61sPEiAs6Ysw)/TransferObjectTableButtonGroup" name="CreatePageTest::ObservationTransfer::ObservationTransfer_Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_eoKU4NYrEe61sPEiAs6Ysw)/TransferObjectTableBackButton" name="CreatePageTest::ObservationTransfer::ObservationTransfer_Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_eoKU4NYrEe61sPEiAs6Ysw)/TransferObjectTableBackButtonIcon" name="ObservationTransfer_Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_eoKU4NYrEe61sPEiAs6Ysw)/TransferObjectTableBackActionDefinition" name="CreatePageTest::ObservationTransfer::ObservationTransfer_Table::Back" sourceId="_eoKU4NYrEe61sPEiAs6Ysw"/>
@@ -2692,7 +2692,7 @@
         <icon xmi:id="God/(esm/_eoKU4NYrEe61sPEiAs6Ysw)/TransferObjectTableAddSelectorAddButtonIcon" name="ObservationTransfer_Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_eoKU4NYrEe61sPEiAs6Ysw)/TransferObjectTableAddSelectorAddActionDefinition" name="CreatePageTest::ObservationTransfer::ObservationTransfer_Table::Add" sourceId="_eoKU4NYrEe61sPEiAs6Ysw" targetType="God/(esm/_eoCZENYrEe61sPEiAs6Ysw)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_eoEOQNYrEe61sPEiAs6Ysw)/TransferObjectViewPageContainer" name="CreatePageTest::ObservationTransfer::ObservationTransfer_View_Edit" label="ObservationTransfer View / Edit" dataElement="God/(esm/_eoCZENYrEe61sPEiAs6Ysw)/ClassType" onInit="God/(esm/_eoEOQNYrEe61sPEiAs6Ysw)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_eoEOQNYrEe61sPEiAs6Ysw)/TransferObjectViewVisualElement" name="ObservationTransfer_View_Edit" sourceId="_eoEOQNYrEe61sPEiAs6Ysw" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -2703,7 +2703,7 @@
         <icon xmi:id="God/(esm/_jPr80NYvEe61sPEiAs6Ysw)/VisualElementIcon" name="date::Icon" iconName="calendar-blank"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_eoEOQNYrEe61sPEiAs6Ysw)/TransferObjectViewButtonGroup" name="CreatePageTest::ObservationTransfer::ObservationTransfer_View_Edit::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_eoEOQNYrEe61sPEiAs6Ysw)/TransferObjectViewButtonGroup" name="CreatePageTest::ObservationTransfer::ObservationTransfer_View_Edit::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_eoEOQNYrEe61sPEiAs6Ysw)/TransferObjectViewBackButton" name="CreatePageTest::ObservationTransfer::ObservationTransfer_View_Edit::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_eoEOQNYrEe61sPEiAs6Ysw)/TransferObjectViewBackButtonIcon" name="ObservationTransfer_View_Edit::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_eoEOQNYrEe61sPEiAs6Ysw)/TransferObjectViewBackActionDefinition" name="CreatePageTest::ObservationTransfer::ObservationTransfer_View_Edit::Back" sourceId="_eoEOQNYrEe61sPEiAs6Ysw"/>
@@ -2724,7 +2724,7 @@
         <icon xmi:id="God/(esm/_eoEOQNYrEe61sPEiAs6Ysw)/TransferObjectViewUpdateButtonIcon" name="ObservationTransfer_View_Edit::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/_eoEOQNYrEe61sPEiAs6Ysw)/TransferObjectViewUpdateActionDefinition" name="CreatePageTest::ObservationTransfer::ObservationTransfer_View_Edit::Update" sourceId="_eoEOQNYrEe61sPEiAs6Ysw"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/__wDrcNCcEe6s2MvrQlzFKQ)/TransferObjectFormPageContainer" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_Form" label="StarSystemTransfer Form" dataElement="God/(esm/__wBPMNCcEe6s2MvrQlzFKQ)/ClassType" onInit="God/(esm/__wDrcNCcEe6s2MvrQlzFKQ)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/__wDrcNCcEe6s2MvrQlzFKQ)/TransferObjectFormVisualElement" name="StarSystemTransfer_Form" sourceId="__wDrcNCcEe6s2MvrQlzFKQ" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -2809,7 +2809,7 @@
         <actionDefinition xsi:type="ui:OpenPageActionDefinition" xmi:id="God/(esm/_w92wMNbjEe61sPEiAs6Ysw)/TabularReferenceFieldButtonOpenPageActionDefinition" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_Form::stars::OpenPage" sourceId="_w92wMNbjEe61sPEiAs6Ysw" targetType="God/(esm/_ePJ3QE7rEeycO-gUAWxcVg)/ClassType"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/__wDrcNCcEe6s2MvrQlzFKQ)/TransferObjectFormButtonGroup" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/__wDrcNCcEe6s2MvrQlzFKQ)/TransferObjectFormButtonGroup" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/__wDrcNCcEe6s2MvrQlzFKQ)/TransferObjectFormBackButton" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/__wDrcNCcEe6s2MvrQlzFKQ)/TransferObjectFormBackButtonIcon" name="StarSystemTransfer_Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/__wDrcNCcEe6s2MvrQlzFKQ)/TransferObjectFormBackActionDefinition" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_Form::Back" sourceId="__wDrcNCcEe6s2MvrQlzFKQ"/>
@@ -2818,7 +2818,7 @@
         <icon xmi:id="God/(esm/__wDrcNCcEe6s2MvrQlzFKQ)/TransferObjectFormCreateButtonIcon" name="StarSystemTransfer_Form::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:CreateActionDefinition" xmi:id="God/(esm/__wDrcNCcEe6s2MvrQlzFKQ)/TransferObjectFormCreateActionDefinition" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_Form::Create" sourceId="__wDrcNCcEe6s2MvrQlzFKQ"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/__wDrcNCcEe6s2MvrQlzFKQ)/TransferObjectFormGetTemplateActionDefinition" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_Form::GetTemplate" sourceId="__wDrcNCcEe6s2MvrQlzFKQ" targetType="God/(esm/__wBPMNCcEe6s2MvrQlzFKQ)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/__wFgoNCcEe6s2MvrQlzFKQ)/TransferObjectTablePageContainer" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_Table" label="StarSystemTransfer Table" dataElement="God/(esm/__wBPMNCcEe6s2MvrQlzFKQ)/ClassType" onInit="God/(esm/__wFgoNCcEe6s2MvrQlzFKQ)/TransferObjectTableTableRefreshActionDefinition">
@@ -2885,7 +2885,7 @@
       </children>
       <frame xmi:id="God/(esm/__wFgoNCcEe6s2MvrQlzFKQ)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/__wFgoNCcEe6s2MvrQlzFKQ)/TransferObjectTableButtonGroup" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/__wFgoNCcEe6s2MvrQlzFKQ)/TransferObjectTableButtonGroup" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/__wFgoNCcEe6s2MvrQlzFKQ)/TransferObjectTableBackButton" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/__wFgoNCcEe6s2MvrQlzFKQ)/TransferObjectTableBackButtonIcon" name="StarSystemTransfer_Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/__wFgoNCcEe6s2MvrQlzFKQ)/TransferObjectTableBackActionDefinition" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_Table::Back" sourceId="__wFgoNCcEe6s2MvrQlzFKQ"/>
@@ -2898,7 +2898,7 @@
         <icon xmi:id="God/(esm/__wFgoNCcEe6s2MvrQlzFKQ)/TransferObjectTableAddSelectorAddButtonIcon" name="StarSystemTransfer_Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/__wFgoNCcEe6s2MvrQlzFKQ)/TransferObjectTableAddSelectorAddActionDefinition" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_Table::Add" sourceId="__wFgoNCcEe6s2MvrQlzFKQ" targetType="God/(esm/__wBPMNCcEe6s2MvrQlzFKQ)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/__wCdUNCcEe6s2MvrQlzFKQ)/TransferObjectViewPageContainer" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_View_Edit" label="StarSystemTransfer View / Edit" dataElement="God/(esm/__wBPMNCcEe6s2MvrQlzFKQ)/ClassType" onInit="God/(esm/__wCdUNCcEe6s2MvrQlzFKQ)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/__wCdUNCcEe6s2MvrQlzFKQ)/TransferObjectViewVisualElement" name="StarSystemTransfer_View_Edit" sourceId="__wCdUNCcEe6s2MvrQlzFKQ" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -2983,7 +2983,7 @@
         <actionDefinition xsi:type="ui:OpenPageActionDefinition" xmi:id="God/(esm/_s9HeoNbjEe61sPEiAs6Ysw)/TabularReferenceFieldButtonOpenPageActionDefinition" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_View_Edit::stars::OpenPage" sourceId="_s9HeoNbjEe61sPEiAs6Ysw" targetType="God/(esm/_ePJ3QE7rEeycO-gUAWxcVg)/ClassType"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/__wCdUNCcEe6s2MvrQlzFKQ)/TransferObjectViewButtonGroup" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_View_Edit::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/__wCdUNCcEe6s2MvrQlzFKQ)/TransferObjectViewButtonGroup" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_View_Edit::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/__wCdUNCcEe6s2MvrQlzFKQ)/TransferObjectViewBackButton" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_View_Edit::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/__wCdUNCcEe6s2MvrQlzFKQ)/TransferObjectViewBackButtonIcon" name="StarSystemTransfer_View_Edit::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/__wCdUNCcEe6s2MvrQlzFKQ)/TransferObjectViewBackActionDefinition" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_View_Edit::Back" sourceId="__wCdUNCcEe6s2MvrQlzFKQ"/>
@@ -3004,13 +3004,13 @@
         <icon xmi:id="God/(esm/__wCdUNCcEe6s2MvrQlzFKQ)/TransferObjectViewUpdateButtonIcon" name="StarSystemTransfer_View_Edit::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/__wCdUNCcEe6s2MvrQlzFKQ)/TransferObjectViewUpdateActionDefinition" name="CreatePageTest::StarSystemTransfer::StarSystemTransfer_View_Edit::Update" sourceId="__wCdUNCcEe6s2MvrQlzFKQ"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_8Up9IE7pEeycO-gUAWxcVg)/TransferObjectTablePageContainer" name="Creature::Table" dataElement="God/(esm/_8UXCME7pEeycO-gUAWxcVg)/ClassType">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_8Up9IE7pEeycO-gUAWxcVg)/TransferObjectTableVisualElement" name="Table" col="12.0" direction="VERTICAL" mainAxisAlignment="START" crossAxisAlignment="STRETCH">
       <frame xmi:id="God/(esm/_8Up9IE7pEeycO-gUAWxcVg)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_8Up9IE7pEeycO-gUAWxcVg)/TransferObjectTableButtonGroup" name="Creature::Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_8Up9IE7pEeycO-gUAWxcVg)/TransferObjectTableButtonGroup" name="Creature::Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_8Up9IE7pEeycO-gUAWxcVg)/TransferObjectTableBackButton" name="Creature::Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_8Up9IE7pEeycO-gUAWxcVg)/TransferObjectTableBackButtonIcon" name="Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_8Up9IE7pEeycO-gUAWxcVg)/TransferObjectTableBackActionDefinition" name="Creature::Table::Back" sourceId="_8Up9IE7pEeycO-gUAWxcVg"/>
@@ -3023,7 +3023,7 @@
         <icon xmi:id="God/(esm/_8Up9IE7pEeycO-gUAWxcVg)/TransferObjectTableAddSelectorAddButtonIcon" name="Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_8Up9IE7pEeycO-gUAWxcVg)/TransferObjectTableAddSelectorAddActionDefinition" name="Creature::Table::Add" sourceId="_8Up9IE7pEeycO-gUAWxcVg" targetType="God/(esm/_8UXCME7pEeycO-gUAWxcVg)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/__DiFINF3Ee6VerkxrKTO4w)/TransferObjectFormPageContainer" name="EntitiesOnFrontend::SpaceProbe::SpaceProbe_Form" label="SpaceProbe Form" dataElement="God/(esm/__DdzsNF3Ee6VerkxrKTO4w)/ClassType" onInit="God/(esm/__DiFINF3Ee6VerkxrKTO4w)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/__DiFINF3Ee6VerkxrKTO4w)/TransferObjectFormVisualElement" name="SpaceProbe_Form" sourceId="__DiFINF3Ee6VerkxrKTO4w" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -3095,7 +3095,7 @@
         </children>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/__DiFINF3Ee6VerkxrKTO4w)/TransferObjectFormButtonGroup" name="EntitiesOnFrontend::SpaceProbe::SpaceProbe_Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/__DiFINF3Ee6VerkxrKTO4w)/TransferObjectFormButtonGroup" name="EntitiesOnFrontend::SpaceProbe::SpaceProbe_Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/__DiFINF3Ee6VerkxrKTO4w)/TransferObjectFormBackButton" name="EntitiesOnFrontend::SpaceProbe::SpaceProbe_Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/__DiFINF3Ee6VerkxrKTO4w)/TransferObjectFormBackButtonIcon" name="SpaceProbe_Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/__DiFINF3Ee6VerkxrKTO4w)/TransferObjectFormBackActionDefinition" name="EntitiesOnFrontend::SpaceProbe::SpaceProbe_Form::Back" sourceId="__DiFINF3Ee6VerkxrKTO4w"/>
@@ -3104,7 +3104,7 @@
         <icon xmi:id="God/(esm/__DiFINF3Ee6VerkxrKTO4w)/TransferObjectFormCreateButtonIcon" name="SpaceProbe_Form::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:CreateActionDefinition" xmi:id="God/(esm/__DiFINF3Ee6VerkxrKTO4w)/TransferObjectFormCreateActionDefinition" name="EntitiesOnFrontend::SpaceProbe::SpaceProbe_Form::Create" sourceId="__DiFINF3Ee6VerkxrKTO4w"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/__DiFINF3Ee6VerkxrKTO4w)/TransferObjectFormGetTemplateActionDefinition" name="EntitiesOnFrontend::SpaceProbe::SpaceProbe_Form::GetTemplate" sourceId="__DiFINF3Ee6VerkxrKTO4w" targetType="God/(esm/__DdzsNF3Ee6VerkxrKTO4w)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/__DjTQNF3Ee6VerkxrKTO4w)/TransferObjectTablePageContainer" name="EntitiesOnFrontend::SpaceProbe::SpaceProbe_Table" label="SpaceProbe Table" dataElement="God/(esm/__DdzsNF3Ee6VerkxrKTO4w)/ClassType" onInit="God/(esm/__DjTQNF3Ee6VerkxrKTO4w)/TransferObjectTableTableRefreshActionDefinition">
@@ -3175,7 +3175,7 @@
       </children>
       <frame xmi:id="God/(esm/__DjTQNF3Ee6VerkxrKTO4w)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/__DjTQNF3Ee6VerkxrKTO4w)/TransferObjectTableButtonGroup" name="EntitiesOnFrontend::SpaceProbe::SpaceProbe_Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/__DjTQNF3Ee6VerkxrKTO4w)/TransferObjectTableButtonGroup" name="EntitiesOnFrontend::SpaceProbe::SpaceProbe_Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/__DjTQNF3Ee6VerkxrKTO4w)/TransferObjectTableBackButton" name="EntitiesOnFrontend::SpaceProbe::SpaceProbe_Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/__DjTQNF3Ee6VerkxrKTO4w)/TransferObjectTableBackButtonIcon" name="SpaceProbe_Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/__DjTQNF3Ee6VerkxrKTO4w)/TransferObjectTableBackActionDefinition" name="EntitiesOnFrontend::SpaceProbe::SpaceProbe_Table::Back" sourceId="__DjTQNF3Ee6VerkxrKTO4w"/>
@@ -3188,7 +3188,7 @@
         <icon xmi:id="God/(esm/__DjTQNF3Ee6VerkxrKTO4w)/TransferObjectTableAddSelectorAddButtonIcon" name="SpaceProbe_Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/__DjTQNF3Ee6VerkxrKTO4w)/TransferObjectTableAddSelectorAddActionDefinition" name="EntitiesOnFrontend::SpaceProbe::SpaceProbe_Table::Add" sourceId="__DjTQNF3Ee6VerkxrKTO4w" targetType="God/(esm/__DdzsNF3Ee6VerkxrKTO4w)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/__Dfo4NF3Ee6VerkxrKTO4w)/TransferObjectViewPageContainer" name="EntitiesOnFrontend::SpaceProbe::SpaceProbe_View_Edit" label="SpaceProbe View / Edit" dataElement="God/(esm/__DdzsNF3Ee6VerkxrKTO4w)/ClassType" onInit="God/(esm/__Dfo4NF3Ee6VerkxrKTO4w)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/__Dfo4NF3Ee6VerkxrKTO4w)/TransferObjectViewVisualElement" name="SpaceProbe_View_Edit" sourceId="__Dfo4NF3Ee6VerkxrKTO4w" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -3260,7 +3260,7 @@
         </children>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/__Dfo4NF3Ee6VerkxrKTO4w)/TransferObjectViewButtonGroup" name="EntitiesOnFrontend::SpaceProbe::SpaceProbe_View_Edit::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/__Dfo4NF3Ee6VerkxrKTO4w)/TransferObjectViewButtonGroup" name="EntitiesOnFrontend::SpaceProbe::SpaceProbe_View_Edit::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/__Dfo4NF3Ee6VerkxrKTO4w)/TransferObjectViewBackButton" name="EntitiesOnFrontend::SpaceProbe::SpaceProbe_View_Edit::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/__Dfo4NF3Ee6VerkxrKTO4w)/TransferObjectViewBackButtonIcon" name="SpaceProbe_View_Edit::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/__Dfo4NF3Ee6VerkxrKTO4w)/TransferObjectViewBackActionDefinition" name="EntitiesOnFrontend::SpaceProbe::SpaceProbe_View_Edit::Back" sourceId="__Dfo4NF3Ee6VerkxrKTO4w"/>
@@ -3281,7 +3281,7 @@
         <icon xmi:id="God/(esm/__Dfo4NF3Ee6VerkxrKTO4w)/TransferObjectViewUpdateButtonIcon" name="SpaceProbe_View_Edit::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/__Dfo4NF3Ee6VerkxrKTO4w)/TransferObjectViewUpdateActionDefinition" name="EntitiesOnFrontend::SpaceProbe::SpaceProbe_View_Edit::Update" sourceId="__Dfo4NF3Ee6VerkxrKTO4w"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_l2GwYM8nEe6U3KSieLrWmg)/EmptyDashboardPageContainer" name="God::Dashboard" label="Dashboard" dataElement="God/(esm/_l2GwYM8nEe6U3KSieLrWmg)/Actor"/>
   <pageContainers xmi:id="God/(esm/_iyRyYORqEeuSU8xLq1yYbw)/TransferObjectFormPageContainer" name="Planet::Form" dataElement="God/(esm/_ix-3cORqEeuSU8xLq1yYbw)/ClassType" onInit="God/(esm/_iyRyYORqEeuSU8xLq1yYbw)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
@@ -3290,7 +3290,7 @@
         <icon xmi:id="God/(esm/_0wQwAORsEeuSU8xLq1yYbw)/VisualElementIcon" name="name::Icon" iconName="brightness-1"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_iyRyYORqEeuSU8xLq1yYbw)/TransferObjectFormButtonGroup" name="Planet::Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_iyRyYORqEeuSU8xLq1yYbw)/TransferObjectFormButtonGroup" name="Planet::Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_iyRyYORqEeuSU8xLq1yYbw)/TransferObjectFormBackButton" name="Planet::Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_iyRyYORqEeuSU8xLq1yYbw)/TransferObjectFormBackButtonIcon" name="Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_iyRyYORqEeuSU8xLq1yYbw)/TransferObjectFormBackActionDefinition" name="Planet::Form::Back" sourceId="_iyRyYORqEeuSU8xLq1yYbw"/>
@@ -3299,7 +3299,7 @@
         <icon xmi:id="God/(esm/_iyRyYORqEeuSU8xLq1yYbw)/TransferObjectFormCreateButtonIcon" name="Form::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:CreateActionDefinition" xmi:id="God/(esm/_iyRyYORqEeuSU8xLq1yYbw)/TransferObjectFormCreateActionDefinition" name="Planet::Form::Create" sourceId="_iyRyYORqEeuSU8xLq1yYbw"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_iyRyYORqEeuSU8xLq1yYbw)/TransferObjectFormGetTemplateActionDefinition" name="Planet::Form::GetTemplate" sourceId="_iyRyYORqEeuSU8xLq1yYbw" targetType="God/(esm/_ix-3cORqEeuSU8xLq1yYbw)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_iyX5AORqEeuSU8xLq1yYbw)/TransferObjectTablePageContainer" name="Planet::Table" dataElement="God/(esm/_ix-3cORqEeuSU8xLq1yYbw)/ClassType" onInit="God/(esm/_iyX5AORqEeuSU8xLq1yYbw)/TransferObjectTableTableRefreshActionDefinition">
@@ -3366,7 +3366,7 @@
       </children>
       <frame xmi:id="God/(esm/_iyX5AORqEeuSU8xLq1yYbw)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_iyX5AORqEeuSU8xLq1yYbw)/TransferObjectTableButtonGroup" name="Planet::Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_iyX5AORqEeuSU8xLq1yYbw)/TransferObjectTableButtonGroup" name="Planet::Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_iyX5AORqEeuSU8xLq1yYbw)/TransferObjectTableBackButton" name="Planet::Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_iyX5AORqEeuSU8xLq1yYbw)/TransferObjectTableBackButtonIcon" name="Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_iyX5AORqEeuSU8xLq1yYbw)/TransferObjectTableBackActionDefinition" name="Planet::Table::Back" sourceId="_iyX5AORqEeuSU8xLq1yYbw"/>
@@ -3379,7 +3379,7 @@
         <icon xmi:id="God/(esm/_iyX5AORqEeuSU8xLq1yYbw)/TransferObjectTableAddSelectorAddButtonIcon" name="Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_iyX5AORqEeuSU8xLq1yYbw)/TransferObjectTableAddSelectorAddActionDefinition" name="Planet::Table::Add" sourceId="_iyX5AORqEeuSU8xLq1yYbw" targetType="God/(esm/_ix-3cORqEeuSU8xLq1yYbw)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_iyJ2kORqEeuSU8xLq1yYbw)/TransferObjectViewPageContainer" name="Planet::View" dataElement="God/(esm/_ix-3cORqEeuSU8xLq1yYbw)/ClassType" onInit="God/(esm/_iyJ2kORqEeuSU8xLq1yYbw)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_iyJ2kORqEeuSU8xLq1yYbw)/TransferObjectViewVisualElement" name="View" sourceId="_iyJ2kORqEeuSU8xLq1yYbw" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START" crossAxisAlignment="STRETCH">
@@ -3387,7 +3387,7 @@
         <icon xmi:id="God/(esm/_0wQI8ORsEeuSU8xLq1yYbw)/VisualElementIcon" name="name::Icon" iconName="brightness-1"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_iyJ2kORqEeuSU8xLq1yYbw)/TransferObjectViewButtonGroup" name="Planet::View::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_iyJ2kORqEeuSU8xLq1yYbw)/TransferObjectViewButtonGroup" name="Planet::View::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_iyJ2kORqEeuSU8xLq1yYbw)/TransferObjectViewBackButton" name="Planet::View::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_iyJ2kORqEeuSU8xLq1yYbw)/TransferObjectViewBackButtonIcon" name="View::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_iyJ2kORqEeuSU8xLq1yYbw)/TransferObjectViewBackActionDefinition" name="Planet::View::Back" sourceId="_iyJ2kORqEeuSU8xLq1yYbw"/>
@@ -3408,7 +3408,7 @@
         <icon xmi:id="God/(esm/_iyJ2kORqEeuSU8xLq1yYbw)/TransferObjectViewUpdateButtonIcon" name="View::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/_iyJ2kORqEeuSU8xLq1yYbw)/TransferObjectViewUpdateActionDefinition" name="Planet::View::Update" sourceId="_iyJ2kORqEeuSU8xLq1yYbw"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_g9uxYNGGEe6VerkxrKTO4w)/TransferObjectFormPageContainer" name="ReadOnlyTest::CrewTransfer::CrewTransfer_Form" label="CrewTransfer Form" dataElement="God/(esm/_g9m1kNGGEe6VerkxrKTO4w)/ClassType" onInit="God/(esm/_g9uxYNGGEe6VerkxrKTO4w)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_g9uxYNGGEe6VerkxrKTO4w)/TransferObjectFormVisualElement" name="CrewTransfer_Form" sourceId="_g9uxYNGGEe6VerkxrKTO4w" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -3416,7 +3416,7 @@
         <icon xmi:id="God/(esm/_LuQwsNGLEe6VerkxrKTO4w)/VisualElementIcon" name="crewName::Icon" iconName="format-size"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_g9uxYNGGEe6VerkxrKTO4w)/TransferObjectFormButtonGroup" name="ReadOnlyTest::CrewTransfer::CrewTransfer_Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_g9uxYNGGEe6VerkxrKTO4w)/TransferObjectFormButtonGroup" name="ReadOnlyTest::CrewTransfer::CrewTransfer_Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_g9uxYNGGEe6VerkxrKTO4w)/TransferObjectFormBackButton" name="ReadOnlyTest::CrewTransfer::CrewTransfer_Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_g9uxYNGGEe6VerkxrKTO4w)/TransferObjectFormBackButtonIcon" name="CrewTransfer_Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_g9uxYNGGEe6VerkxrKTO4w)/TransferObjectFormBackActionDefinition" name="ReadOnlyTest::CrewTransfer::CrewTransfer_Form::Back" sourceId="_g9uxYNGGEe6VerkxrKTO4w"/>
@@ -3425,7 +3425,7 @@
         <icon xmi:id="God/(esm/_g9uxYNGGEe6VerkxrKTO4w)/TransferObjectFormCreateButtonIcon" name="CrewTransfer_Form::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:CreateActionDefinition" xmi:id="God/(esm/_g9uxYNGGEe6VerkxrKTO4w)/TransferObjectFormCreateActionDefinition" name="ReadOnlyTest::CrewTransfer::CrewTransfer_Form::Create" sourceId="_g9uxYNGGEe6VerkxrKTO4w"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_g9uxYNGGEe6VerkxrKTO4w)/TransferObjectFormGetTemplateActionDefinition" name="ReadOnlyTest::CrewTransfer::CrewTransfer_Form::GetTemplate" sourceId="_g9uxYNGGEe6VerkxrKTO4w" targetType="God/(esm/_g9m1kNGGEe6VerkxrKTO4w)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_g9zC0NGGEe6VerkxrKTO4w)/TransferObjectTablePageContainer" name="ReadOnlyTest::CrewTransfer::CrewTransfer_Table" label="CrewTransfer Table" dataElement="God/(esm/_g9m1kNGGEe6VerkxrKTO4w)/ClassType" onInit="God/(esm/_g9zC0NGGEe6VerkxrKTO4w)/TransferObjectTableTableRefreshActionDefinition">
@@ -3492,7 +3492,7 @@
       </children>
       <frame xmi:id="God/(esm/_g9zC0NGGEe6VerkxrKTO4w)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_g9zC0NGGEe6VerkxrKTO4w)/TransferObjectTableButtonGroup" name="ReadOnlyTest::CrewTransfer::CrewTransfer_Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_g9zC0NGGEe6VerkxrKTO4w)/TransferObjectTableButtonGroup" name="ReadOnlyTest::CrewTransfer::CrewTransfer_Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_g9zC0NGGEe6VerkxrKTO4w)/TransferObjectTableBackButton" name="ReadOnlyTest::CrewTransfer::CrewTransfer_Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_g9zC0NGGEe6VerkxrKTO4w)/TransferObjectTableBackButtonIcon" name="CrewTransfer_Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_g9zC0NGGEe6VerkxrKTO4w)/TransferObjectTableBackActionDefinition" name="ReadOnlyTest::CrewTransfer::CrewTransfer_Table::Back" sourceId="_g9zC0NGGEe6VerkxrKTO4w"/>
@@ -3505,7 +3505,7 @@
         <icon xmi:id="God/(esm/_g9zC0NGGEe6VerkxrKTO4w)/TransferObjectTableAddSelectorAddButtonIcon" name="CrewTransfer_Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_g9zC0NGGEe6VerkxrKTO4w)/TransferObjectTableAddSelectorAddActionDefinition" name="ReadOnlyTest::CrewTransfer::CrewTransfer_Table::Add" sourceId="_g9zC0NGGEe6VerkxrKTO4w" targetType="God/(esm/_g9m1kNGGEe6VerkxrKTO4w)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_g9oqwNGGEe6VerkxrKTO4w)/TransferObjectViewPageContainer" name="ReadOnlyTest::CrewTransfer::CrewTransfer_View_Edit" label="CrewTransfer View / Edit" dataElement="God/(esm/_g9m1kNGGEe6VerkxrKTO4w)/ClassType" onInit="God/(esm/_g9oqwNGGEe6VerkxrKTO4w)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_g9oqwNGGEe6VerkxrKTO4w)/TransferObjectViewVisualElement" name="CrewTransfer_View_Edit" sourceId="_g9oqwNGGEe6VerkxrKTO4w" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -3513,7 +3513,7 @@
         <icon xmi:id="God/(esm/_LuIN0NGLEe6VerkxrKTO4w)/VisualElementIcon" name="crewName::Icon" iconName="format-size"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_g9oqwNGGEe6VerkxrKTO4w)/TransferObjectViewButtonGroup" name="ReadOnlyTest::CrewTransfer::CrewTransfer_View_Edit::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_g9oqwNGGEe6VerkxrKTO4w)/TransferObjectViewButtonGroup" name="ReadOnlyTest::CrewTransfer::CrewTransfer_View_Edit::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_g9oqwNGGEe6VerkxrKTO4w)/TransferObjectViewBackButton" name="ReadOnlyTest::CrewTransfer::CrewTransfer_View_Edit::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_g9oqwNGGEe6VerkxrKTO4w)/TransferObjectViewBackButtonIcon" name="CrewTransfer_View_Edit::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_g9oqwNGGEe6VerkxrKTO4w)/TransferObjectViewBackActionDefinition" name="ReadOnlyTest::CrewTransfer::CrewTransfer_View_Edit::Back" sourceId="_g9oqwNGGEe6VerkxrKTO4w"/>
@@ -3534,7 +3534,7 @@
         <icon xmi:id="God/(esm/_g9oqwNGGEe6VerkxrKTO4w)/TransferObjectViewUpdateButtonIcon" name="CrewTransfer_View_Edit::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/_g9oqwNGGEe6VerkxrKTO4w)/TransferObjectViewUpdateActionDefinition" name="ReadOnlyTest::CrewTransfer::CrewTransfer_View_Edit::Update" sourceId="_g9oqwNGGEe6VerkxrKTO4w"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_quRB4NGHEe6VerkxrKTO4w)/TransferObjectFormPageContainer" name="ReadOnlyTest::EngineTransfer::EngineTransfer_Form" label="EngineTransfer Form" dataElement="God/(esm/_quH38NGHEe6VerkxrKTO4w)/ClassType" onInit="God/(esm/_quRB4NGHEe6VerkxrKTO4w)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_quRB4NGHEe6VerkxrKTO4w)/TransferObjectFormVisualElement" name="EngineTransfer_Form" sourceId="_quRB4NGHEe6VerkxrKTO4w" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -3545,7 +3545,7 @@
         <icon xmi:id="God/(esm/_NJgmsNGLEe6VerkxrKTO4w)/VisualElementIcon" name="enginePerformance::Icon" iconName="numeric"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_quRB4NGHEe6VerkxrKTO4w)/TransferObjectFormButtonGroup" name="ReadOnlyTest::EngineTransfer::EngineTransfer_Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_quRB4NGHEe6VerkxrKTO4w)/TransferObjectFormButtonGroup" name="ReadOnlyTest::EngineTransfer::EngineTransfer_Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_quRB4NGHEe6VerkxrKTO4w)/TransferObjectFormBackButton" name="ReadOnlyTest::EngineTransfer::EngineTransfer_Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_quRB4NGHEe6VerkxrKTO4w)/TransferObjectFormBackButtonIcon" name="EngineTransfer_Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_quRB4NGHEe6VerkxrKTO4w)/TransferObjectFormBackActionDefinition" name="ReadOnlyTest::EngineTransfer::EngineTransfer_Form::Back" sourceId="_quRB4NGHEe6VerkxrKTO4w"/>
@@ -3554,7 +3554,7 @@
         <icon xmi:id="God/(esm/_quRB4NGHEe6VerkxrKTO4w)/TransferObjectFormCreateButtonIcon" name="EngineTransfer_Form::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:CreateActionDefinition" xmi:id="God/(esm/_quRB4NGHEe6VerkxrKTO4w)/TransferObjectFormCreateActionDefinition" name="ReadOnlyTest::EngineTransfer::EngineTransfer_Form::Create" sourceId="_quRB4NGHEe6VerkxrKTO4w"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_quRB4NGHEe6VerkxrKTO4w)/TransferObjectFormGetTemplateActionDefinition" name="ReadOnlyTest::EngineTransfer::EngineTransfer_Form::GetTemplate" sourceId="_quRB4NGHEe6VerkxrKTO4w" targetType="God/(esm/_quH38NGHEe6VerkxrKTO4w)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_quV6YNGHEe6VerkxrKTO4w)/TransferObjectTablePageContainer" name="ReadOnlyTest::EngineTransfer::EngineTransfer_Table" label="EngineTransfer Table" dataElement="God/(esm/_quH38NGHEe6VerkxrKTO4w)/ClassType" onInit="God/(esm/_quV6YNGHEe6VerkxrKTO4w)/TransferObjectTableTableRefreshActionDefinition">
@@ -3623,7 +3623,7 @@
       </children>
       <frame xmi:id="God/(esm/_quV6YNGHEe6VerkxrKTO4w)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_quV6YNGHEe6VerkxrKTO4w)/TransferObjectTableButtonGroup" name="ReadOnlyTest::EngineTransfer::EngineTransfer_Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_quV6YNGHEe6VerkxrKTO4w)/TransferObjectTableButtonGroup" name="ReadOnlyTest::EngineTransfer::EngineTransfer_Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_quV6YNGHEe6VerkxrKTO4w)/TransferObjectTableBackButton" name="ReadOnlyTest::EngineTransfer::EngineTransfer_Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_quV6YNGHEe6VerkxrKTO4w)/TransferObjectTableBackButtonIcon" name="EngineTransfer_Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_quV6YNGHEe6VerkxrKTO4w)/TransferObjectTableBackActionDefinition" name="ReadOnlyTest::EngineTransfer::EngineTransfer_Table::Back" sourceId="_quV6YNGHEe6VerkxrKTO4w"/>
@@ -3636,7 +3636,7 @@
         <icon xmi:id="God/(esm/_quV6YNGHEe6VerkxrKTO4w)/TransferObjectTableAddSelectorAddButtonIcon" name="EngineTransfer_Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_quV6YNGHEe6VerkxrKTO4w)/TransferObjectTableAddSelectorAddActionDefinition" name="ReadOnlyTest::EngineTransfer::EngineTransfer_Table::Add" sourceId="_quV6YNGHEe6VerkxrKTO4w" targetType="God/(esm/_quH38NGHEe6VerkxrKTO4w)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_quK7QNGHEe6VerkxrKTO4w)/TransferObjectViewPageContainer" name="ReadOnlyTest::EngineTransfer::EngineTransfer_View_Edit" label="EngineTransfer View / Edit" dataElement="God/(esm/_quH38NGHEe6VerkxrKTO4w)/ClassType" onInit="God/(esm/_quK7QNGHEe6VerkxrKTO4w)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_quK7QNGHEe6VerkxrKTO4w)/TransferObjectViewVisualElement" name="EngineTransfer_View_Edit" sourceId="_quK7QNGHEe6VerkxrKTO4w" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -3647,7 +3647,7 @@
         <icon xmi:id="God/(esm/_NJbHINGLEe6VerkxrKTO4w)/VisualElementIcon" name="enginePerformance::Icon" iconName="numeric"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_quK7QNGHEe6VerkxrKTO4w)/TransferObjectViewButtonGroup" name="ReadOnlyTest::EngineTransfer::EngineTransfer_View_Edit::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_quK7QNGHEe6VerkxrKTO4w)/TransferObjectViewButtonGroup" name="ReadOnlyTest::EngineTransfer::EngineTransfer_View_Edit::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_quK7QNGHEe6VerkxrKTO4w)/TransferObjectViewBackButton" name="ReadOnlyTest::EngineTransfer::EngineTransfer_View_Edit::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_quK7QNGHEe6VerkxrKTO4w)/TransferObjectViewBackButtonIcon" name="EngineTransfer_View_Edit::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_quK7QNGHEe6VerkxrKTO4w)/TransferObjectViewBackActionDefinition" name="ReadOnlyTest::EngineTransfer::EngineTransfer_View_Edit::Back" sourceId="_quK7QNGHEe6VerkxrKTO4w"/>
@@ -3668,7 +3668,7 @@
         <icon xmi:id="God/(esm/_quK7QNGHEe6VerkxrKTO4w)/TransferObjectViewUpdateButtonIcon" name="EngineTransfer_View_Edit::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/_quK7QNGHEe6VerkxrKTO4w)/TransferObjectViewUpdateActionDefinition" name="ReadOnlyTest::EngineTransfer::EngineTransfer_View_Edit::Update" sourceId="_quK7QNGHEe6VerkxrKTO4w"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_yuIwkNGJEe6VerkxrKTO4w)/TransferObjectFormPageContainer" name="ReadOnlyTest::MissionTransfer::MissionTransfer_Form" label="MissionTransfer Form" dataElement="God/(esm/_yt_moNGJEe6VerkxrKTO4w)/ClassType" onInit="God/(esm/_yuIwkNGJEe6VerkxrKTO4w)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_yuIwkNGJEe6VerkxrKTO4w)/TransferObjectFormVisualElement" name="MissionTransfer_Form" sourceId="_yuIwkNGJEe6VerkxrKTO4w" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -3682,7 +3682,7 @@
         <icon xmi:id="God/(esm/_OVwXYNGLEe6VerkxrKTO4w)/VisualElementIcon" name="endDate::Icon" iconName="format-size"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_yuIwkNGJEe6VerkxrKTO4w)/TransferObjectFormButtonGroup" name="ReadOnlyTest::MissionTransfer::MissionTransfer_Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_yuIwkNGJEe6VerkxrKTO4w)/TransferObjectFormButtonGroup" name="ReadOnlyTest::MissionTransfer::MissionTransfer_Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_yuIwkNGJEe6VerkxrKTO4w)/TransferObjectFormBackButton" name="ReadOnlyTest::MissionTransfer::MissionTransfer_Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_yuIwkNGJEe6VerkxrKTO4w)/TransferObjectFormBackButtonIcon" name="MissionTransfer_Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_yuIwkNGJEe6VerkxrKTO4w)/TransferObjectFormBackActionDefinition" name="ReadOnlyTest::MissionTransfer::MissionTransfer_Form::Back" sourceId="_yuIwkNGJEe6VerkxrKTO4w"/>
@@ -3691,7 +3691,7 @@
         <icon xmi:id="God/(esm/_yuIwkNGJEe6VerkxrKTO4w)/TransferObjectFormCreateButtonIcon" name="MissionTransfer_Form::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:CreateActionDefinition" xmi:id="God/(esm/_yuIwkNGJEe6VerkxrKTO4w)/TransferObjectFormCreateActionDefinition" name="ReadOnlyTest::MissionTransfer::MissionTransfer_Form::Create" sourceId="_yuIwkNGJEe6VerkxrKTO4w"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_yuIwkNGJEe6VerkxrKTO4w)/TransferObjectFormGetTemplateActionDefinition" name="ReadOnlyTest::MissionTransfer::MissionTransfer_Form::GetTemplate" sourceId="_yuIwkNGJEe6VerkxrKTO4w" targetType="God/(esm/_yt_moNGJEe6VerkxrKTO4w)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_yuOQINGJEe6VerkxrKTO4w)/TransferObjectTablePageContainer" name="ReadOnlyTest::MissionTransfer::MissionTransfer_Table" label="MissionTransfer Table" dataElement="God/(esm/_yt_moNGJEe6VerkxrKTO4w)/ClassType" onInit="God/(esm/_yuOQINGJEe6VerkxrKTO4w)/TransferObjectTableTableRefreshActionDefinition">
@@ -3761,7 +3761,7 @@
         </rowActionButtonGroup>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_yuOQINGJEe6VerkxrKTO4w)/TransferObjectTableButtonGroup" name="ReadOnlyTest::MissionTransfer::MissionTransfer_Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_yuOQINGJEe6VerkxrKTO4w)/TransferObjectTableButtonGroup" name="ReadOnlyTest::MissionTransfer::MissionTransfer_Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_yuOQINGJEe6VerkxrKTO4w)/TransferObjectTableBackButton" name="ReadOnlyTest::MissionTransfer::MissionTransfer_Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_yuOQINGJEe6VerkxrKTO4w)/TransferObjectTableBackButtonIcon" name="MissionTransfer_Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_yuOQINGJEe6VerkxrKTO4w)/TransferObjectTableBackActionDefinition" name="ReadOnlyTest::MissionTransfer::MissionTransfer_Table::Back" sourceId="_yuOQINGJEe6VerkxrKTO4w"/>
@@ -3774,7 +3774,7 @@
         <icon xmi:id="God/(esm/_yuOQINGJEe6VerkxrKTO4w)/TransferObjectTableAddSelectorAddButtonIcon" name="MissionTransfer_Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_yuOQINGJEe6VerkxrKTO4w)/TransferObjectTableAddSelectorAddActionDefinition" name="ReadOnlyTest::MissionTransfer::MissionTransfer_Table::Add" sourceId="_yuOQINGJEe6VerkxrKTO4w" targetType="God/(esm/_yt_moNGJEe6VerkxrKTO4w)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_yuCp8NGJEe6VerkxrKTO4w)/TransferObjectViewPageContainer" name="ReadOnlyTest::MissionTransfer::MissionTransfer_View_Edit" label="MissionTransfer View / Edit" dataElement="God/(esm/_yt_moNGJEe6VerkxrKTO4w)/ClassType" onInit="God/(esm/_yuCp8NGJEe6VerkxrKTO4w)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_yuCp8NGJEe6VerkxrKTO4w)/TransferObjectViewVisualElement" name="MissionTransfer_View_Edit" sourceId="_yuCp8NGJEe6VerkxrKTO4w" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -3788,7 +3788,7 @@
         <icon xmi:id="God/(esm/_OVre4NGLEe6VerkxrKTO4w)/VisualElementIcon" name="endDate::Icon" iconName="format-size"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_yuCp8NGJEe6VerkxrKTO4w)/TransferObjectViewButtonGroup" name="ReadOnlyTest::MissionTransfer::MissionTransfer_View_Edit::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_yuCp8NGJEe6VerkxrKTO4w)/TransferObjectViewButtonGroup" name="ReadOnlyTest::MissionTransfer::MissionTransfer_View_Edit::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_yuCp8NGJEe6VerkxrKTO4w)/TransferObjectViewBackButton" name="ReadOnlyTest::MissionTransfer::MissionTransfer_View_Edit::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_yuCp8NGJEe6VerkxrKTO4w)/TransferObjectViewBackButtonIcon" name="MissionTransfer_View_Edit::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_yuCp8NGJEe6VerkxrKTO4w)/TransferObjectViewBackActionDefinition" name="ReadOnlyTest::MissionTransfer::MissionTransfer_View_Edit::Back" sourceId="_yuCp8NGJEe6VerkxrKTO4w"/>
@@ -3809,7 +3809,7 @@
         <icon xmi:id="God/(esm/_yuCp8NGJEe6VerkxrKTO4w)/TransferObjectViewUpdateButtonIcon" name="MissionTransfer_View_Edit::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/_yuCp8NGJEe6VerkxrKTO4w)/TransferObjectViewUpdateActionDefinition" name="ReadOnlyTest::MissionTransfer::MissionTransfer_View_Edit::Update" sourceId="_yuCp8NGJEe6VerkxrKTO4w"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_3NnJYNGFEe6VerkxrKTO4w)/TransferObjectFormPageContainer" name="ReadOnlyTest::SpaceShipTransfer::SpaceShipTransfer_Form" label="SpaceShipTransfer Form" dataElement="God/(esm/_3Ni38NGFEe6VerkxrKTO4w)/ClassType" onInit="God/(esm/_3NnJYNGFEe6VerkxrKTO4w)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_3NnJYNGFEe6VerkxrKTO4w)/TransferObjectFormVisualElement" name="SpaceShipTransfer_Form" sourceId="_3NnJYNGFEe6VerkxrKTO4w" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -3954,7 +3954,7 @@
         </children>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_3NnJYNGFEe6VerkxrKTO4w)/TransferObjectFormButtonGroup" name="ReadOnlyTest::SpaceShipTransfer::SpaceShipTransfer_Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_3NnJYNGFEe6VerkxrKTO4w)/TransferObjectFormButtonGroup" name="ReadOnlyTest::SpaceShipTransfer::SpaceShipTransfer_Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_3NnJYNGFEe6VerkxrKTO4w)/TransferObjectFormBackButton" name="ReadOnlyTest::SpaceShipTransfer::SpaceShipTransfer_Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_3NnJYNGFEe6VerkxrKTO4w)/TransferObjectFormBackButtonIcon" name="SpaceShipTransfer_Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_3NnJYNGFEe6VerkxrKTO4w)/TransferObjectFormBackActionDefinition" name="ReadOnlyTest::SpaceShipTransfer::SpaceShipTransfer_Form::Back" sourceId="_3NnJYNGFEe6VerkxrKTO4w"/>
@@ -3963,7 +3963,7 @@
         <icon xmi:id="God/(esm/_3NnJYNGFEe6VerkxrKTO4w)/TransferObjectFormCreateButtonIcon" name="SpaceShipTransfer_Form::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:CreateActionDefinition" xmi:id="God/(esm/_3NnJYNGFEe6VerkxrKTO4w)/TransferObjectFormCreateActionDefinition" name="ReadOnlyTest::SpaceShipTransfer::SpaceShipTransfer_Form::Create" sourceId="_3NnJYNGFEe6VerkxrKTO4w"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_3NnJYNGFEe6VerkxrKTO4w)/TransferObjectFormGetTemplateActionDefinition" name="ReadOnlyTest::SpaceShipTransfer::SpaceShipTransfer_Form::GetTemplate" sourceId="_3NnJYNGFEe6VerkxrKTO4w" targetType="God/(esm/_3Ni38NGFEe6VerkxrKTO4w)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_3NqMsNGFEe6VerkxrKTO4w)/TransferObjectTablePageContainer" name="ReadOnlyTest::SpaceShipTransfer::SpaceShipTransfer_Table" label="SpaceShipTransfer Table" dataElement="God/(esm/_3Ni38NGFEe6VerkxrKTO4w)/ClassType" onInit="God/(esm/_3NqMsNGFEe6VerkxrKTO4w)/TransferObjectTableTableRefreshActionDefinition">
@@ -4045,7 +4045,7 @@
       </children>
       <frame xmi:id="God/(esm/_3NqMsNGFEe6VerkxrKTO4w)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_3NqMsNGFEe6VerkxrKTO4w)/TransferObjectTableButtonGroup" name="ReadOnlyTest::SpaceShipTransfer::SpaceShipTransfer_Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_3NqMsNGFEe6VerkxrKTO4w)/TransferObjectTableButtonGroup" name="ReadOnlyTest::SpaceShipTransfer::SpaceShipTransfer_Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_3NqMsNGFEe6VerkxrKTO4w)/TransferObjectTableBackButton" name="ReadOnlyTest::SpaceShipTransfer::SpaceShipTransfer_Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_3NqMsNGFEe6VerkxrKTO4w)/TransferObjectTableBackButtonIcon" name="SpaceShipTransfer_Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_3NqMsNGFEe6VerkxrKTO4w)/TransferObjectTableBackActionDefinition" name="ReadOnlyTest::SpaceShipTransfer::SpaceShipTransfer_Table::Back" sourceId="_3NqMsNGFEe6VerkxrKTO4w"/>
@@ -4058,7 +4058,7 @@
         <icon xmi:id="God/(esm/_3NqMsNGFEe6VerkxrKTO4w)/TransferObjectTableAddSelectorAddButtonIcon" name="SpaceShipTransfer_Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_3NqMsNGFEe6VerkxrKTO4w)/TransferObjectTableAddSelectorAddActionDefinition" name="ReadOnlyTest::SpaceShipTransfer::SpaceShipTransfer_Table::Add" sourceId="_3NqMsNGFEe6VerkxrKTO4w" targetType="God/(esm/_3Ni38NGFEe6VerkxrKTO4w)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_3NkGENGFEe6VerkxrKTO4w)/TransferObjectViewPageContainer" name="ReadOnlyTest::SpaceShipTransfer::SpaceShipTransfer_View_Edit" label="SpaceShipTransfer View / Edit" dataElement="God/(esm/_3Ni38NGFEe6VerkxrKTO4w)/ClassType" onInit="God/(esm/_3NkGENGFEe6VerkxrKTO4w)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_3NkGENGFEe6VerkxrKTO4w)/TransferObjectViewVisualElement" name="SpaceShipTransfer_View_Edit" sourceId="_3NkGENGFEe6VerkxrKTO4w" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -4206,7 +4206,7 @@
         </rowActionButtonGroup>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_3NkGENGFEe6VerkxrKTO4w)/TransferObjectViewButtonGroup" name="ReadOnlyTest::SpaceShipTransfer::SpaceShipTransfer_View_Edit::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_3NkGENGFEe6VerkxrKTO4w)/TransferObjectViewButtonGroup" name="ReadOnlyTest::SpaceShipTransfer::SpaceShipTransfer_View_Edit::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_3NkGENGFEe6VerkxrKTO4w)/TransferObjectViewBackButton" name="ReadOnlyTest::SpaceShipTransfer::SpaceShipTransfer_View_Edit::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_3NkGENGFEe6VerkxrKTO4w)/TransferObjectViewBackButtonIcon" name="SpaceShipTransfer_View_Edit::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_3NkGENGFEe6VerkxrKTO4w)/TransferObjectViewBackActionDefinition" name="ReadOnlyTest::SpaceShipTransfer::SpaceShipTransfer_View_Edit::Back" sourceId="_3NkGENGFEe6VerkxrKTO4w"/>
@@ -4227,7 +4227,7 @@
         <icon xmi:id="God/(esm/_3NkGENGFEe6VerkxrKTO4w)/TransferObjectViewUpdateButtonIcon" name="SpaceShipTransfer_View_Edit::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/_3NkGENGFEe6VerkxrKTO4w)/TransferObjectViewUpdateActionDefinition" name="ReadOnlyTest::SpaceShipTransfer::SpaceShipTransfer_View_Edit::Update" sourceId="_3NkGENGFEe6VerkxrKTO4w"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_-Ln-kORpEeuSU8xLq1yYbw)/TransferObjectFormPageContainer" name="Star::Form" dataElement="God/(esm/_-LVDoORpEeuSU8xLq1yYbw)/ClassType" onInit="God/(esm/_-Ln-kORpEeuSU8xLq1yYbw)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_-Ln-kORpEeuSU8xLq1yYbw)/TransferObjectFormVisualElement" name="Form" sourceId="_-Ln-kORpEeuSU8xLq1yYbw" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START" crossAxisAlignment="STRETCH">
@@ -4235,7 +4235,7 @@
         <icon xmi:id="God/(esm/_0wKpYORsEeuSU8xLq1yYbw)/VisualElementIcon" name="name::Icon" iconName="star-shooting"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_-Ln-kORpEeuSU8xLq1yYbw)/TransferObjectFormButtonGroup" name="Star::Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_-Ln-kORpEeuSU8xLq1yYbw)/TransferObjectFormButtonGroup" name="Star::Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_-Ln-kORpEeuSU8xLq1yYbw)/TransferObjectFormBackButton" name="Star::Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_-Ln-kORpEeuSU8xLq1yYbw)/TransferObjectFormBackButtonIcon" name="Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_-Ln-kORpEeuSU8xLq1yYbw)/TransferObjectFormBackActionDefinition" name="Star::Form::Back" sourceId="_-Ln-kORpEeuSU8xLq1yYbw"/>
@@ -4244,7 +4244,7 @@
         <icon xmi:id="God/(esm/_-Ln-kORpEeuSU8xLq1yYbw)/TransferObjectFormCreateButtonIcon" name="Form::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:CreateActionDefinition" xmi:id="God/(esm/_-Ln-kORpEeuSU8xLq1yYbw)/TransferObjectFormCreateActionDefinition" name="Star::Form::Create" sourceId="_-Ln-kORpEeuSU8xLq1yYbw"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_-Ln-kORpEeuSU8xLq1yYbw)/TransferObjectFormGetTemplateActionDefinition" name="Star::Form::GetTemplate" sourceId="_-Ln-kORpEeuSU8xLq1yYbw" targetType="God/(esm/_-LVDoORpEeuSU8xLq1yYbw)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_-LteIORpEeuSU8xLq1yYbw)/TransferObjectTablePageContainer" name="Star::Table" dataElement="God/(esm/_-LVDoORpEeuSU8xLq1yYbw)/ClassType" onInit="God/(esm/_-LteIORpEeuSU8xLq1yYbw)/TransferObjectTableTableRefreshActionDefinition">
@@ -4311,7 +4311,7 @@
       </children>
       <frame xmi:id="God/(esm/_-LteIORpEeuSU8xLq1yYbw)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_-LteIORpEeuSU8xLq1yYbw)/TransferObjectTableButtonGroup" name="Star::Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_-LteIORpEeuSU8xLq1yYbw)/TransferObjectTableButtonGroup" name="Star::Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_-LteIORpEeuSU8xLq1yYbw)/TransferObjectTableBackButton" name="Star::Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_-LteIORpEeuSU8xLq1yYbw)/TransferObjectTableBackButtonIcon" name="Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_-LteIORpEeuSU8xLq1yYbw)/TransferObjectTableBackActionDefinition" name="Star::Table::Back" sourceId="_-LteIORpEeuSU8xLq1yYbw"/>
@@ -4324,7 +4324,7 @@
         <icon xmi:id="God/(esm/_-LteIORpEeuSU8xLq1yYbw)/TransferObjectTableAddSelectorAddButtonIcon" name="Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_-LteIORpEeuSU8xLq1yYbw)/TransferObjectTableAddSelectorAddActionDefinition" name="Star::Table::Add" sourceId="_-LteIORpEeuSU8xLq1yYbw" targetType="God/(esm/_-LVDoORpEeuSU8xLq1yYbw)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_-LhQ4ORpEeuSU8xLq1yYbw)/TransferObjectViewPageContainer" name="Star::View" dataElement="God/(esm/_-LVDoORpEeuSU8xLq1yYbw)/ClassType" onInit="God/(esm/_-LhQ4ORpEeuSU8xLq1yYbw)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_-LhQ4ORpEeuSU8xLq1yYbw)/TransferObjectViewVisualElement" name="View" sourceId="_-LhQ4ORpEeuSU8xLq1yYbw" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START" crossAxisAlignment="STRETCH">
@@ -4377,7 +4377,7 @@
         </rowActionButtonGroup>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_-LhQ4ORpEeuSU8xLq1yYbw)/TransferObjectViewButtonGroup" name="Star::View::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_-LhQ4ORpEeuSU8xLq1yYbw)/TransferObjectViewButtonGroup" name="Star::View::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_-LhQ4ORpEeuSU8xLq1yYbw)/TransferObjectViewBackButton" name="Star::View::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_-LhQ4ORpEeuSU8xLq1yYbw)/TransferObjectViewBackButtonIcon" name="View::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_-LhQ4ORpEeuSU8xLq1yYbw)/TransferObjectViewBackActionDefinition" name="Star::View::Back" sourceId="_-LhQ4ORpEeuSU8xLq1yYbw"/>
@@ -4398,7 +4398,7 @@
         <icon xmi:id="God/(esm/_-LhQ4ORpEeuSU8xLq1yYbw)/TransferObjectViewUpdateButtonIcon" name="View::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/_-LhQ4ORpEeuSU8xLq1yYbw)/TransferObjectViewUpdateActionDefinition" name="Star::View::Update" sourceId="_-LhQ4ORpEeuSU8xLq1yYbw"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_3uEGQBMaEe2_DOUDKkB20Q)/TransferObjectFormPageContainer" name="View::Astronomer::TransferObject_Form" label="TransferObject Form" dataElement="God/(esm/_3t5HIBMaEe2_DOUDKkB20Q)/ClassType" onInit="God/(esm/_3uEGQBMaEe2_DOUDKkB20Q)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_3uEGQBMaEe2_DOUDKkB20Q)/TransferObjectFormVisualElement" name="TransferObject_Form" sourceId="_3uEGQBMaEe2_DOUDKkB20Q" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -4479,7 +4479,7 @@
         <autocompleteSetActionDefinition xsi:type="ui:AutocompleteSetActionDefinition" xmi:id="God/(esm/_J_cp0NY-Ee61sPEiAs6Ysw)/TabularReferenceFieldLinkAutocompleteSetActionDefinition" name="View::Astronomer::TransferObject_Form::singleMessage::AutocompleteSet" sourceId="_J_cp0NY-Ee61sPEiAs6Ysw" targetType="God/(esm/_WhMpAORvEeuSU8xLq1yYbw)/ClassType" isContainedRelationAction="true"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_3uEGQBMaEe2_DOUDKkB20Q)/TransferObjectFormButtonGroup" name="View::Astronomer::TransferObject_Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_3uEGQBMaEe2_DOUDKkB20Q)/TransferObjectFormButtonGroup" name="View::Astronomer::TransferObject_Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_3uEGQBMaEe2_DOUDKkB20Q)/TransferObjectFormBackButton" name="View::Astronomer::TransferObject_Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_3uEGQBMaEe2_DOUDKkB20Q)/TransferObjectFormBackButtonIcon" name="TransferObject_Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_3uEGQBMaEe2_DOUDKkB20Q)/TransferObjectFormBackActionDefinition" name="View::Astronomer::TransferObject_Form::Back" sourceId="_3uEGQBMaEe2_DOUDKkB20Q"/>
@@ -4488,7 +4488,7 @@
         <icon xmi:id="God/(esm/_3uEGQBMaEe2_DOUDKkB20Q)/TransferObjectFormCreateButtonIcon" name="TransferObject_Form::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:CreateActionDefinition" xmi:id="God/(esm/_3uEGQBMaEe2_DOUDKkB20Q)/TransferObjectFormCreateActionDefinition" name="View::Astronomer::TransferObject_Form::Create" sourceId="_3uEGQBMaEe2_DOUDKkB20Q"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_3uEGQBMaEe2_DOUDKkB20Q)/TransferObjectFormGetTemplateActionDefinition" name="View::Astronomer::TransferObject_Form::GetTemplate" sourceId="_3uEGQBMaEe2_DOUDKkB20Q" targetType="God/(esm/_3t5HIBMaEe2_DOUDKkB20Q)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_3uHwoBMaEe2_DOUDKkB20Q)/TransferObjectTablePageContainer" name="View::Astronomer::TransferObject_Table" label="TransferObject Table" dataElement="God/(esm/_3t5HIBMaEe2_DOUDKkB20Q)/ClassType" onInit="God/(esm/_3uHwoBMaEe2_DOUDKkB20Q)/TransferObjectTableTableRefreshActionDefinition">
@@ -4557,7 +4557,7 @@
       </children>
       <frame xmi:id="God/(esm/_3uHwoBMaEe2_DOUDKkB20Q)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_3uHwoBMaEe2_DOUDKkB20Q)/TransferObjectTableButtonGroup" name="View::Astronomer::TransferObject_Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_3uHwoBMaEe2_DOUDKkB20Q)/TransferObjectTableButtonGroup" name="View::Astronomer::TransferObject_Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_3uHwoBMaEe2_DOUDKkB20Q)/TransferObjectTableBackButton" name="View::Astronomer::TransferObject_Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_3uHwoBMaEe2_DOUDKkB20Q)/TransferObjectTableBackButtonIcon" name="TransferObject_Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_3uHwoBMaEe2_DOUDKkB20Q)/TransferObjectTableBackActionDefinition" name="View::Astronomer::TransferObject_Table::Back" sourceId="_3uHwoBMaEe2_DOUDKkB20Q"/>
@@ -4570,7 +4570,7 @@
         <icon xmi:id="God/(esm/_3uHwoBMaEe2_DOUDKkB20Q)/TransferObjectTableAddSelectorAddButtonIcon" name="TransferObject_Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_3uHwoBMaEe2_DOUDKkB20Q)/TransferObjectTableAddSelectorAddActionDefinition" name="View::Astronomer::TransferObject_Table::Add" sourceId="_3uHwoBMaEe2_DOUDKkB20Q" targetType="God/(esm/_3t5HIBMaEe2_DOUDKkB20Q)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_3t-msBMaEe2_DOUDKkB20Q)/TransferObjectViewPageContainer" name="View::Astronomer::TransferObject_View" label="TransferObject View" dataElement="God/(esm/_3t5HIBMaEe2_DOUDKkB20Q)/ClassType" onInit="God/(esm/_3t-msBMaEe2_DOUDKkB20Q)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_3t-msBMaEe2_DOUDKkB20Q)/TransferObjectViewVisualElement" name="TransferObject_View" sourceId="_3t-msBMaEe2_DOUDKkB20Q" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -4651,7 +4651,7 @@
         <autocompleteSetActionDefinition xsi:type="ui:AutocompleteSetActionDefinition" xmi:id="God/(esm/_ZYj-UNY9Ee61sPEiAs6Ysw)/TabularReferenceFieldLinkAutocompleteSetActionDefinition" name="View::Astronomer::TransferObject_View::singleMessage::AutocompleteSet" sourceId="_ZYj-UNY9Ee61sPEiAs6Ysw" targetType="God/(esm/_WhMpAORvEeuSU8xLq1yYbw)/ClassType" isContainedRelationAction="true"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_3t-msBMaEe2_DOUDKkB20Q)/TransferObjectViewButtonGroup" name="View::Astronomer::TransferObject_View::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_3t-msBMaEe2_DOUDKkB20Q)/TransferObjectViewButtonGroup" name="View::Astronomer::TransferObject_View::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_3t-msBMaEe2_DOUDKkB20Q)/TransferObjectViewBackButton" name="View::Astronomer::TransferObject_View::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_3t-msBMaEe2_DOUDKkB20Q)/TransferObjectViewBackButtonIcon" name="TransferObject_View::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_3t-msBMaEe2_DOUDKkB20Q)/TransferObjectViewBackActionDefinition" name="View::Astronomer::TransferObject_View::Back" sourceId="_3t-msBMaEe2_DOUDKkB20Q"/>
@@ -4672,7 +4672,7 @@
         <icon xmi:id="God/(esm/_3t-msBMaEe2_DOUDKkB20Q)/TransferObjectViewUpdateButtonIcon" name="TransferObject_View::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/_3t-msBMaEe2_DOUDKkB20Q)/TransferObjectViewUpdateActionDefinition" name="View::Astronomer::TransferObject_View::Update" sourceId="_3t-msBMaEe2_DOUDKkB20Q"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_rJEI8E7rEeycO-gUAWxcVg)/TransferObjectFormPageContainer" name="View::Creature::Form" label="Create Creature" dataElement="God/(esm/_rI5J0E7rEeycO-gUAWxcVg)/ClassType" onInit="God/(esm/_rJEI8E7rEeycO-gUAWxcVg)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_rJEI8E7rEeycO-gUAWxcVg)/TransferObjectFormVisualElement" name="Form" sourceId="_rJEI8E7rEeycO-gUAWxcVg" col="12.0" stretch="BOTH" mainAxisAlignment="START">
@@ -4689,7 +4689,7 @@
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_cR8U8E7xEeycO-gUAWxcVg)/ActionButtonCancelActionDefinition" name="View::Creature::Form::actionButton_2::Back" sourceId="_cR8U8E7xEeycO-gUAWxcVg"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_rJEI8E7rEeycO-gUAWxcVg)/TransferObjectFormButtonGroup" name="View::Creature::Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_rJEI8E7rEeycO-gUAWxcVg)/TransferObjectFormButtonGroup" name="View::Creature::Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_rJEI8E7rEeycO-gUAWxcVg)/TransferObjectFormBackButton" name="View::Creature::Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_rJEI8E7rEeycO-gUAWxcVg)/TransferObjectFormBackButtonIcon" name="Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_rJEI8E7rEeycO-gUAWxcVg)/TransferObjectFormBackActionDefinition" name="View::Creature::Form::Back" sourceId="_rJEI8E7rEeycO-gUAWxcVg"/>
@@ -4698,7 +4698,7 @@
         <icon xmi:id="God/(esm/_rJEI8E7rEeycO-gUAWxcVg)/TransferObjectFormCreateButtonIcon" name="Form::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:CreateActionDefinition" xmi:id="God/(esm/_rJEI8E7rEeycO-gUAWxcVg)/TransferObjectFormCreateActionDefinition" name="View::Creature::Form::Create" sourceId="_rJEI8E7rEeycO-gUAWxcVg"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_rJEI8E7rEeycO-gUAWxcVg)/TransferObjectFormGetTemplateActionDefinition" name="View::Creature::Form::GetTemplate" sourceId="_rJEI8E7rEeycO-gUAWxcVg" targetType="God/(esm/_rI5J0E7rEeycO-gUAWxcVg)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_rJJBcE7rEeycO-gUAWxcVg)/TransferObjectTablePageContainer" name="View::Creature::Table" label="Creatures" dataElement="God/(esm/_rI5J0E7rEeycO-gUAWxcVg)/ClassType" onInit="God/(esm/_rJJBcE7rEeycO-gUAWxcVg)/TransferObjectTableTableRefreshActionDefinition">
@@ -4779,7 +4779,7 @@
       </children>
       <frame xmi:id="God/(esm/_rJJBcE7rEeycO-gUAWxcVg)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_rJJBcE7rEeycO-gUAWxcVg)/TransferObjectTableButtonGroup" name="View::Creature::Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_rJJBcE7rEeycO-gUAWxcVg)/TransferObjectTableButtonGroup" name="View::Creature::Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_rJJBcE7rEeycO-gUAWxcVg)/TransferObjectTableBackButton" name="View::Creature::Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_rJJBcE7rEeycO-gUAWxcVg)/TransferObjectTableBackButtonIcon" name="Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_rJJBcE7rEeycO-gUAWxcVg)/TransferObjectTableBackActionDefinition" name="View::Creature::Table::Back" sourceId="_rJJBcE7rEeycO-gUAWxcVg"/>
@@ -4800,7 +4800,7 @@
         <icon xmi:id="God/(esm/_VRoNcz0wEe-oxNmZsPxMmA)/OperationFormMappedInputCallOperationSelectorCallOperationButtonIcon" name="rewardCreature::Icon" iconName="rocket-launch"/>
         <actionDefinition xsi:type="ui:InputSelectorCallOperationActionDefinition" xmi:id="God/(esm/_VRoNcz0wEe-oxNmZsPxMmA)/OperationFormMappedInputCallOperationSelectorCallOperationActionDefinition" name="View::Planet::View::group_2::Right::creatures::rewardCreature::CallOperation" sourceId="_VRoNcz0wEe-oxNmZsPxMmA" operation="God/(esm/_VLBu4k7sEeycO-gUAWxcVg)/OperationType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_rI_3gE7rEeycO-gUAWxcVg)/TransferObjectViewPageContainer" name="View::Creature::View" dataElement="God/(esm/_rI5J0E7rEeycO-gUAWxcVg)/ClassType" titleAttribute="God/(esm/_rJOhAE7rEeycO-gUAWxcVg)/AttributeType" titleFrom="ATTRIBUTE" onInit="God/(esm/_rI_3gE7rEeycO-gUAWxcVg)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_rI_3gE7rEeycO-gUAWxcVg)/TransferObjectViewVisualElement" name="View" sourceId="_rI_3gE7rEeycO-gUAWxcVg" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START" crossAxisAlignment="CENTER">
@@ -4850,7 +4850,7 @@
         </buttons>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_rI_3gE7rEeycO-gUAWxcVg)/TransferObjectViewButtonGroup" name="View::Creature::View::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_rI_3gE7rEeycO-gUAWxcVg)/TransferObjectViewButtonGroup" name="View::Creature::View::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_rI_3gE7rEeycO-gUAWxcVg)/TransferObjectViewBackButton" name="View::Creature::View::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_rI_3gE7rEeycO-gUAWxcVg)/TransferObjectViewBackButtonIcon" name="View::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_rI_3gE7rEeycO-gUAWxcVg)/TransferObjectViewBackActionDefinition" name="View::Creature::View::Back" sourceId="_rI_3gE7rEeycO-gUAWxcVg"/>
@@ -4871,7 +4871,7 @@
         <icon xmi:id="God/(esm/_rI_3gE7rEeycO-gUAWxcVg)/TransferObjectViewUpdateButtonIcon" name="View::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/_rI_3gE7rEeycO-gUAWxcVg)/TransferObjectViewUpdateActionDefinition" name="View::Creature::View::Update" sourceId="_rI_3gE7rEeycO-gUAWxcVg"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_NdxA0IpLEey5y6LC5xJDPg)/TransferObjectFormPageContainer" name="View::CreatureTemplate::Form" label="Create a Creature" dataElement="God/(esm/_NdO1UIpLEey5y6LC5xJDPg)/ClassType" onInit="God/(esm/_NdxA0IpLEey5y6LC5xJDPg)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_NdxA0IpLEey5y6LC5xJDPg)/TransferObjectFormVisualElement" name="Form" sourceId="_NdxA0IpLEey5y6LC5xJDPg" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -4923,7 +4923,7 @@
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_HfWk4I5tEey-Gcr6waPWDQ)/ActionButtonCancelActionDefinition" name="View::CreatureTemplate::Form::cancel::Back" sourceId="_HfWk4I5tEey-Gcr6waPWDQ"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_NdxA0IpLEey5y6LC5xJDPg)/TransferObjectFormButtonGroup" name="View::CreatureTemplate::Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_NdxA0IpLEey5y6LC5xJDPg)/TransferObjectFormButtonGroup" name="View::CreatureTemplate::Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_NdxA0IpLEey5y6LC5xJDPg)/TransferObjectFormBackButton" name="View::CreatureTemplate::Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_NdxA0IpLEey5y6LC5xJDPg)/TransferObjectFormBackButtonIcon" name="Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_NdxA0IpLEey5y6LC5xJDPg)/TransferObjectFormBackActionDefinition" name="View::CreatureTemplate::Form::Back" sourceId="_NdxA0IpLEey5y6LC5xJDPg"/>
@@ -4936,14 +4936,14 @@
         <icon xmi:id="God/(esm/_Tr7a8T0wEe-oxNmZsPxMmA)/OperationFormCallButtonIcon" name="createCreature::Icon" iconName="chevron_right"/>
         <actionDefinition xsi:type="ui:InputFormCallOperationActionDefinition" xmi:id="God/(esm/_Tr7a8T0wEe-oxNmZsPxMmA)/OperationFormCallActionDefinition/(discriminator/God/(esm/_NdxA0IpLEey5y6LC5xJDPg)/TransferObjectForm)" name="View::Planet::View::group_2::Right::creatures::createCreature::FormCall" operation="God/(esm/_VK7BME7sEeycO-gUAWxcVg)/OperationType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_NdxA0IpLEey5y6LC5xJDPg)/TransferObjectFormGetTemplateActionDefinition" name="View::CreatureTemplate::Form::GetTemplate" sourceId="_NdxA0IpLEey5y6LC5xJDPg" targetType="God/(esm/_NdO1UIpLEey5y6LC5xJDPg)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_Nd3HcIpLEey5y6LC5xJDPg)/TransferObjectTablePageContainer" name="View::CreatureTemplate::Table" label="Creatures" dataElement="God/(esm/_NdO1UIpLEey5y6LC5xJDPg)/ClassType">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_Nd3HcIpLEey5y6LC5xJDPg)/TransferObjectTableVisualElement" name="Table" col="12.0" direction="VERTICAL" mainAxisAlignment="START" crossAxisAlignment="STRETCH">
       <frame xmi:id="God/(esm/_Nd3HcIpLEey5y6LC5xJDPg)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_Nd3HcIpLEey5y6LC5xJDPg)/TransferObjectTableButtonGroup" name="View::CreatureTemplate::Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_Nd3HcIpLEey5y6LC5xJDPg)/TransferObjectTableButtonGroup" name="View::CreatureTemplate::Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_Nd3HcIpLEey5y6LC5xJDPg)/TransferObjectTableBackButton" name="View::CreatureTemplate::Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_Nd3HcIpLEey5y6LC5xJDPg)/TransferObjectTableBackButtonIcon" name="Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_Nd3HcIpLEey5y6LC5xJDPg)/TransferObjectTableBackActionDefinition" name="View::CreatureTemplate::Table::Back" sourceId="_Nd3HcIpLEey5y6LC5xJDPg"/>
@@ -4956,13 +4956,13 @@
         <icon xmi:id="God/(esm/_Nd3HcIpLEey5y6LC5xJDPg)/TransferObjectTableAddSelectorAddButtonIcon" name="Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_Nd3HcIpLEey5y6LC5xJDPg)/TransferObjectTableAddSelectorAddActionDefinition" name="View::CreatureTemplate::Table::Add" sourceId="_Nd3HcIpLEey5y6LC5xJDPg" targetType="God/(esm/_NdO1UIpLEey5y6LC5xJDPg)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_btJXxM_1Ee6fibzd7gNETg)/TransferObjectTablePageContainer" name="View::DivisionByZeroByThorHammer::Table" dataElement="God/(esm/_btJXwM_1Ee6fibzd7gNETg)/ClassType">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_btJXxM_1Ee6fibzd7gNETg)/TransferObjectTableVisualElement" name="Table" col="12.0" direction="VERTICAL" mainAxisAlignment="START" crossAxisAlignment="STRETCH">
       <frame xmi:id="God/(esm/_btJXxM_1Ee6fibzd7gNETg)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_btJXxM_1Ee6fibzd7gNETg)/TransferObjectTableButtonGroup" name="View::DivisionByZeroByThorHammer::Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_btJXxM_1Ee6fibzd7gNETg)/TransferObjectTableButtonGroup" name="View::DivisionByZeroByThorHammer::Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_btJXxM_1Ee6fibzd7gNETg)/TransferObjectTableBackButton" name="View::DivisionByZeroByThorHammer::Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_btJXxM_1Ee6fibzd7gNETg)/TransferObjectTableBackButtonIcon" name="Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_btJXxM_1Ee6fibzd7gNETg)/TransferObjectTableBackActionDefinition" name="View::DivisionByZeroByThorHammer::Table::Back" sourceId="_btJXxM_1Ee6fibzd7gNETg"/>
@@ -4975,7 +4975,7 @@
         <icon xmi:id="God/(esm/_btJXxM_1Ee6fibzd7gNETg)/TransferObjectTableAddSelectorAddButtonIcon" name="Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_btJXxM_1Ee6fibzd7gNETg)/TransferObjectTableAddSelectorAddActionDefinition" name="View::DivisionByZeroByThorHammer::Table::Add" sourceId="_btJXxM_1Ee6fibzd7gNETg" targetType="God/(esm/_btJXwM_1Ee6fibzd7gNETg)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_BU4OE8_2Ee6fibzd7gNETg)/TransferObjectFormPageContainer" name="View::Entropy::Form" dataElement="God/(esm/_BU4OEM_2Ee6fibzd7gNETg)/ClassType" onInit="God/(esm/_BU4OE8_2Ee6fibzd7gNETg)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_BU4OE8_2Ee6fibzd7gNETg)/TransferObjectFormVisualElement" name="Form" sourceId="_BU4OE8_2Ee6fibzd7gNETg" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -4983,7 +4983,7 @@
         <icon xmi:id="God/(esm/_HPj9INYzEe61sPEiAs6Ysw)/VisualElementIcon" name="Ohh::Icon" iconName="format-size"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_BU4OE8_2Ee6fibzd7gNETg)/TransferObjectFormButtonGroup" name="View::Entropy::Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_BU4OE8_2Ee6fibzd7gNETg)/TransferObjectFormButtonGroup" name="View::Entropy::Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_BU4OE8_2Ee6fibzd7gNETg)/TransferObjectFormBackButton" name="View::Entropy::Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_BU4OE8_2Ee6fibzd7gNETg)/TransferObjectFormBackButtonIcon" name="Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_BU4OE8_2Ee6fibzd7gNETg)/TransferObjectFormBackActionDefinition" name="View::Entropy::Form::Back" sourceId="_BU4OE8_2Ee6fibzd7gNETg"/>
@@ -4992,14 +4992,14 @@
         <icon xmi:id="God/(esm/_BU4OE8_2Ee6fibzd7gNETg)/TransferObjectFormCreateButtonIcon" name="Form::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:CreateActionDefinition" xmi:id="God/(esm/_BU4OE8_2Ee6fibzd7gNETg)/TransferObjectFormCreateActionDefinition" name="View::Entropy::Form::Create" sourceId="_BU4OE8_2Ee6fibzd7gNETg"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_BU4OE8_2Ee6fibzd7gNETg)/TransferObjectFormGetTemplateActionDefinition" name="View::Entropy::Form::GetTemplate" sourceId="_BU4OE8_2Ee6fibzd7gNETg" targetType="God/(esm/_BU4OEM_2Ee6fibzd7gNETg)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_BU4OFM_2Ee6fibzd7gNETg)/TransferObjectTablePageContainer" name="View::Entropy::Table" dataElement="God/(esm/_BU4OEM_2Ee6fibzd7gNETg)/ClassType">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_BU4OFM_2Ee6fibzd7gNETg)/TransferObjectTableVisualElement" name="Table" col="12.0" direction="VERTICAL" mainAxisAlignment="START" crossAxisAlignment="STRETCH">
       <frame xmi:id="God/(esm/_BU4OFM_2Ee6fibzd7gNETg)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_BU4OFM_2Ee6fibzd7gNETg)/TransferObjectTableButtonGroup" name="View::Entropy::Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_BU4OFM_2Ee6fibzd7gNETg)/TransferObjectTableButtonGroup" name="View::Entropy::Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_BU4OFM_2Ee6fibzd7gNETg)/TransferObjectTableBackButton" name="View::Entropy::Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_BU4OFM_2Ee6fibzd7gNETg)/TransferObjectTableBackButtonIcon" name="Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_BU4OFM_2Ee6fibzd7gNETg)/TransferObjectTableBackActionDefinition" name="View::Entropy::Table::Back" sourceId="_BU4OFM_2Ee6fibzd7gNETg"/>
@@ -5012,7 +5012,7 @@
         <icon xmi:id="God/(esm/_BU4OFM_2Ee6fibzd7gNETg)/TransferObjectTableAddSelectorAddButtonIcon" name="Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_BU4OFM_2Ee6fibzd7gNETg)/TransferObjectTableAddSelectorAddActionDefinition" name="View::Entropy::Table::Add" sourceId="_BU4OFM_2Ee6fibzd7gNETg" targetType="God/(esm/_BU4OEM_2Ee6fibzd7gNETg)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_BU4OFc_2Ee6fibzd7gNETg)/TransferObjectViewPageContainer" name="View::Entropy::View" dataElement="God/(esm/_BU4OEM_2Ee6fibzd7gNETg)/ClassType" onInit="God/(esm/_BU4OFc_2Ee6fibzd7gNETg)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_BU4OFc_2Ee6fibzd7gNETg)/TransferObjectViewVisualElement" name="View" sourceId="_BU4OFc_2Ee6fibzd7gNETg" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -5020,7 +5020,7 @@
         <icon xmi:id="God/(esm/_BU4OFs_2Ee6fibzd7gNETg)/VisualElementIcon" name="Ohh::Icon" iconName="format_size"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_BU4OFc_2Ee6fibzd7gNETg)/TransferObjectViewButtonGroup" name="View::Entropy::View::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_BU4OFc_2Ee6fibzd7gNETg)/TransferObjectViewButtonGroup" name="View::Entropy::View::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_BU4OFc_2Ee6fibzd7gNETg)/TransferObjectViewBackButton" name="View::Entropy::View::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_BU4OFc_2Ee6fibzd7gNETg)/TransferObjectViewBackButtonIcon" name="View::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_BU4OFc_2Ee6fibzd7gNETg)/TransferObjectViewBackActionDefinition" name="View::Entropy::View::Back" sourceId="_BU4OFc_2Ee6fibzd7gNETg"/>
@@ -5041,7 +5041,7 @@
         <icon xmi:id="God/(esm/_BU4OFc_2Ee6fibzd7gNETg)/TransferObjectViewUpdateButtonIcon" name="View::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/_BU4OFc_2Ee6fibzd7gNETg)/TransferObjectViewUpdateActionDefinition" name="View::Entropy::View::Update" sourceId="_BU4OFc_2Ee6fibzd7gNETg"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_YTwP0E7rEeycO-gUAWxcVg)/TransferObjectFormPageContainer" name="View::Galaxy::Form" label="Create a Galaxy" dataElement="God/(esm/_YTkpoE7rEeycO-gUAWxcVg)/ClassType" onInit="God/(esm/_YTwP0E7rEeycO-gUAWxcVg)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_YTwP0E7rEeycO-gUAWxcVg)/TransferObjectFormVisualElement" name="Form" sourceId="_YTwP0E7rEeycO-gUAWxcVg" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START" crossAxisAlignment="CENTER">
@@ -5096,7 +5096,7 @@
         <autocompleteSetActionDefinition xsi:type="ui:AutocompleteSetActionDefinition" xmi:id="God/(esm/_28BIQBn_Ee2lYv3NngvLeA)/TabularReferenceFieldLinkAutocompleteSetActionDefinition" name="View::Galaxy::Form::astronomer::AutocompleteSet" sourceId="_28BIQBn_Ee2lYv3NngvLeA" targetType="God/(esm/_3t5HIBMaEe2_DOUDKkB20Q)/ClassType" isContainedRelationAction="true"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_YTwP0E7rEeycO-gUAWxcVg)/TransferObjectFormButtonGroup" name="View::Galaxy::Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_YTwP0E7rEeycO-gUAWxcVg)/TransferObjectFormButtonGroup" name="View::Galaxy::Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_YTwP0E7rEeycO-gUAWxcVg)/TransferObjectFormBackButton" name="View::Galaxy::Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_YTwP0E7rEeycO-gUAWxcVg)/TransferObjectFormBackButtonIcon" name="Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_YTwP0E7rEeycO-gUAWxcVg)/TransferObjectFormBackActionDefinition" name="View::Galaxy::Form::Back" sourceId="_YTwP0E7rEeycO-gUAWxcVg"/>
@@ -5105,7 +5105,7 @@
         <icon xmi:id="God/(esm/_YTwP0E7rEeycO-gUAWxcVg)/TransferObjectFormCreateButtonIcon" name="Form::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:CreateActionDefinition" xmi:id="God/(esm/_YTwP0E7rEeycO-gUAWxcVg)/TransferObjectFormCreateActionDefinition" name="View::Galaxy::Form::Create" sourceId="_YTwP0E7rEeycO-gUAWxcVg"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_YTwP0E7rEeycO-gUAWxcVg)/TransferObjectFormGetTemplateActionDefinition" name="View::Galaxy::Form::GetTemplate" sourceId="_YTwP0E7rEeycO-gUAWxcVg" targetType="God/(esm/_YTkpoE7rEeycO-gUAWxcVg)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_YT0hQE7rEeycO-gUAWxcVg)/TransferObjectTablePageContainer" name="View::Galaxy::Table" label="Galaxies" dataElement="God/(esm/_YTkpoE7rEeycO-gUAWxcVg)/ClassType" onInit="God/(esm/_YT0hQE7rEeycO-gUAWxcVg)/TransferObjectTableTableRefreshActionDefinition">
@@ -5200,7 +5200,7 @@
       </children>
       <frame xmi:id="God/(esm/_YT0hQE7rEeycO-gUAWxcVg)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_YT0hQE7rEeycO-gUAWxcVg)/TransferObjectTableButtonGroup" name="View::Galaxy::Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_YT0hQE7rEeycO-gUAWxcVg)/TransferObjectTableButtonGroup" name="View::Galaxy::Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_YT0hQE7rEeycO-gUAWxcVg)/TransferObjectTableBackButton" name="View::Galaxy::Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_YT0hQE7rEeycO-gUAWxcVg)/TransferObjectTableBackButtonIcon" name="Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_YT0hQE7rEeycO-gUAWxcVg)/TransferObjectTableBackActionDefinition" name="View::Galaxy::Table::Back" sourceId="_YT0hQE7rEeycO-gUAWxcVg"/>
@@ -5213,7 +5213,7 @@
         <icon xmi:id="God/(esm/_YT0hQE7rEeycO-gUAWxcVg)/TransferObjectTableAddSelectorAddButtonIcon" name="Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_YT0hQE7rEeycO-gUAWxcVg)/TransferObjectTableAddSelectorAddActionDefinition" name="View::Galaxy::Table::Add" sourceId="_YT0hQE7rEeycO-gUAWxcVg" targetType="God/(esm/_YTkpoE7rEeycO-gUAWxcVg)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_YTr-YE7rEeycO-gUAWxcVg)/TransferObjectViewPageContainer" name="View::Galaxy::View" dataElement="God/(esm/_YTkpoE7rEeycO-gUAWxcVg)/ClassType" titleAttribute="God/(esm/_YT6n4E7rEeycO-gUAWxcVg)/AttributeType" titleFrom="ATTRIBUTE" onInit="God/(esm/_YTr-YE7rEeycO-gUAWxcVg)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_YTr-YE7rEeycO-gUAWxcVg)/TransferObjectViewVisualElement" name="View" sourceId="_YTr-YE7rEeycO-gUAWxcVg" col="12.0" stretch="BOTH" mainAxisAlignment="START">
@@ -5363,7 +5363,7 @@
         </children>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_YTr-YE7rEeycO-gUAWxcVg)/TransferObjectViewButtonGroup" name="View::Galaxy::View::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_YTr-YE7rEeycO-gUAWxcVg)/TransferObjectViewButtonGroup" name="View::Galaxy::View::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_YTr-YE7rEeycO-gUAWxcVg)/TransferObjectViewBackButton" name="View::Galaxy::View::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_YTr-YE7rEeycO-gUAWxcVg)/TransferObjectViewBackButtonIcon" name="View::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_YTr-YE7rEeycO-gUAWxcVg)/TransferObjectViewBackActionDefinition" name="View::Galaxy::View::Back" sourceId="_YTr-YE7rEeycO-gUAWxcVg"/>
@@ -5384,7 +5384,7 @@
         <icon xmi:id="God/(esm/_YTr-YE7rEeycO-gUAWxcVg)/TransferObjectViewUpdateButtonIcon" name="View::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/_YTr-YE7rEeycO-gUAWxcVg)/TransferObjectViewUpdateActionDefinition" name="View::Galaxy::View::Update" sourceId="_YTr-YE7rEeycO-gUAWxcVg"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_wj0rsM_1Ee6fibzd7gNETg)/TransferObjectFormPageContainer" name="View::MagicWand::MagicWand_Form" label="MagicWand Form" dataElement="God/(esm/_wjq6sM_1Ee6fibzd7gNETg)/ClassType" onInit="God/(esm/_wj0rsM_1Ee6fibzd7gNETg)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_wj0rsM_1Ee6fibzd7gNETg)/TransferObjectFormVisualElement" name="MagicWand_Form" sourceId="_wj0rsM_1Ee6fibzd7gNETg" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -5404,7 +5404,7 @@
         </children>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_wj0rsM_1Ee6fibzd7gNETg)/TransferObjectFormButtonGroup" name="View::MagicWand::MagicWand_Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_wj0rsM_1Ee6fibzd7gNETg)/TransferObjectFormButtonGroup" name="View::MagicWand::MagicWand_Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_wj0rsM_1Ee6fibzd7gNETg)/TransferObjectFormBackButton" name="View::MagicWand::MagicWand_Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_wj0rsM_1Ee6fibzd7gNETg)/TransferObjectFormBackButtonIcon" name="MagicWand_Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_wj0rsM_1Ee6fibzd7gNETg)/TransferObjectFormBackActionDefinition" name="View::MagicWand::MagicWand_Form::Back" sourceId="_wj0rsM_1Ee6fibzd7gNETg"/>
@@ -5421,14 +5421,14 @@
         <icon xmi:id="God/(esm/_j_0QYNAoEe65Ld16OAb1kw)/OperationFormCallButtonIcon" name="createStaticChaos::Icon" iconName="theme-light-dark"/>
         <actionDefinition xsi:type="ui:InputFormCallOperationActionDefinition" xmi:id="God/(esm/_j_0QYNAoEe65Ld16OAb1kw)/OperationFormCallActionDefinition/(discriminator/God/(esm/_wj0rsM_1Ee6fibzd7gNETg)/TransferObjectForm)" name="View::Planet::View::group::actionGroup::createStaticChaos::FormCall" operation="God/(esm/_n23QsM_3Ee6fibzd7gNETg)/OperationType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_wj0rsM_1Ee6fibzd7gNETg)/TransferObjectFormGetTemplateActionDefinition" name="View::MagicWand::MagicWand_Form::GetTemplate" sourceId="_wj0rsM_1Ee6fibzd7gNETg" targetType="God/(esm/_wjq6sM_1Ee6fibzd7gNETg)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_wj6yUM_1Ee6fibzd7gNETg)/TransferObjectTablePageContainer" name="View::MagicWand::MagicWand_Table" label="MagicWand Table" dataElement="God/(esm/_wjq6sM_1Ee6fibzd7gNETg)/ClassType">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_wj6yUM_1Ee6fibzd7gNETg)/TransferObjectTableVisualElement" name="MagicWand_Table" col="12.0" direction="VERTICAL" mainAxisAlignment="START" crossAxisAlignment="STRETCH">
       <frame xmi:id="God/(esm/_wj6yUM_1Ee6fibzd7gNETg)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_wj6yUM_1Ee6fibzd7gNETg)/TransferObjectTableButtonGroup" name="View::MagicWand::MagicWand_Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_wj6yUM_1Ee6fibzd7gNETg)/TransferObjectTableButtonGroup" name="View::MagicWand::MagicWand_Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_wj6yUM_1Ee6fibzd7gNETg)/TransferObjectTableBackButton" name="View::MagicWand::MagicWand_Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_wj6yUM_1Ee6fibzd7gNETg)/TransferObjectTableBackButtonIcon" name="MagicWand_Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_wj6yUM_1Ee6fibzd7gNETg)/TransferObjectTableBackActionDefinition" name="View::MagicWand::MagicWand_Table::Back" sourceId="_wj6yUM_1Ee6fibzd7gNETg"/>
@@ -5441,7 +5441,7 @@
         <icon xmi:id="God/(esm/_wj6yUM_1Ee6fibzd7gNETg)/TransferObjectTableAddSelectorAddButtonIcon" name="MagicWand_Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_wj6yUM_1Ee6fibzd7gNETg)/TransferObjectTableAddSelectorAddActionDefinition" name="View::MagicWand::MagicWand_Table::Add" sourceId="_wj6yUM_1Ee6fibzd7gNETg" targetType="God/(esm/_wjq6sM_1Ee6fibzd7gNETg)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_wjulEM_1Ee6fibzd7gNETg)/TransferObjectViewPageContainer" name="View::MagicWand::MagicWand_View_Edit" label="MagicWand View / Edit" dataElement="God/(esm/_wjq6sM_1Ee6fibzd7gNETg)/ClassType" onInit="God/(esm/_wjulEM_1Ee6fibzd7gNETg)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_wjulEM_1Ee6fibzd7gNETg)/TransferObjectViewVisualElement" name="MagicWand_View_Edit" sourceId="_wjulEM_1Ee6fibzd7gNETg" col="12.0" stretch="BOTH" mainAxisAlignment="START">
@@ -5451,7 +5451,7 @@
         <options xmi:id="God/(esm/_UMjUIs_1Ee6fibzd7gNETg)/EnumerationMemberOption/(discriminator/God/(esm/_pd_lwNAnEe65Ld16OAb1kw)/EnumerationTypeCombo)" name="DivisionByZeroByThorHammer" enumerationMember="God/(esm/_UMjUIs_1Ee6fibzd7gNETg)/EnumerationTypeMember"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_wjulEM_1Ee6fibzd7gNETg)/TransferObjectViewButtonGroup" name="View::MagicWand::MagicWand_View_Edit::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_wjulEM_1Ee6fibzd7gNETg)/TransferObjectViewButtonGroup" name="View::MagicWand::MagicWand_View_Edit::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_wjulEM_1Ee6fibzd7gNETg)/TransferObjectViewBackButton" name="View::MagicWand::MagicWand_View_Edit::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_wjulEM_1Ee6fibzd7gNETg)/TransferObjectViewBackButtonIcon" name="MagicWand_View_Edit::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_wjulEM_1Ee6fibzd7gNETg)/TransferObjectViewBackActionDefinition" name="View::MagicWand::MagicWand_View_Edit::Back" sourceId="_wjulEM_1Ee6fibzd7gNETg"/>
@@ -5472,7 +5472,7 @@
         <icon xmi:id="God/(esm/_wjulEM_1Ee6fibzd7gNETg)/TransferObjectViewUpdateButtonIcon" name="MagicWand_View_Edit::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/_wjulEM_1Ee6fibzd7gNETg)/TransferObjectViewUpdateActionDefinition" name="View::MagicWand::MagicWand_View_Edit::Update" sourceId="_wjulEM_1Ee6fibzd7gNETg"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_D0xk0Oq_EeuMzos2n42msw)/TransferObjectFormPageContainer" name="View::Matter::Form" label="Create Matter" dataElement="God/(esm/_D0eC0Oq_EeuMzos2n42msw)/ClassType" onInit="God/(esm/_D0xk0Oq_EeuMzos2n42msw)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_D0xk0Oq_EeuMzos2n42msw)/TransferObjectFormVisualElement" name="Form" sourceId="_D0xk0Oq_EeuMzos2n42msw" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -5489,7 +5489,7 @@
         <icon xmi:id="God/(esm/_uN0FQFENEeyWtMpj61RngA)/VisualElementIcon" name="shortNote::Icon" iconName="scatter-plot-outline"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_D0xk0Oq_EeuMzos2n42msw)/TransferObjectFormButtonGroup" name="View::Matter::Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_D0xk0Oq_EeuMzos2n42msw)/TransferObjectFormButtonGroup" name="View::Matter::Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_D0xk0Oq_EeuMzos2n42msw)/TransferObjectFormBackButton" name="View::Matter::Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_D0xk0Oq_EeuMzos2n42msw)/TransferObjectFormBackButtonIcon" name="Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_D0xk0Oq_EeuMzos2n42msw)/TransferObjectFormBackActionDefinition" name="View::Matter::Form::Back" sourceId="_D0xk0Oq_EeuMzos2n42msw"/>
@@ -5498,7 +5498,7 @@
         <icon xmi:id="God/(esm/_D0xk0Oq_EeuMzos2n42msw)/TransferObjectFormCreateButtonIcon" name="Form::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:CreateActionDefinition" xmi:id="God/(esm/_D0xk0Oq_EeuMzos2n42msw)/TransferObjectFormCreateActionDefinition" name="View::Matter::Form::Create" sourceId="_D0xk0Oq_EeuMzos2n42msw"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_D0xk0Oq_EeuMzos2n42msw)/TransferObjectFormGetTemplateActionDefinition" name="View::Matter::Form::GetTemplate" sourceId="_D0xk0Oq_EeuMzos2n42msw" targetType="God/(esm/_D0eC0Oq_EeuMzos2n42msw)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_D04SgOq_EeuMzos2n42msw)/TransferObjectTablePageContainer" name="View::Matter::Table" label="List of Matters" dataElement="God/(esm/_D0eC0Oq_EeuMzos2n42msw)/ClassType" onInit="God/(esm/_D04SgOq_EeuMzos2n42msw)/TransferObjectTableTableRefreshActionDefinition">
@@ -5567,7 +5567,7 @@
       </children>
       <frame xmi:id="God/(esm/_D04SgOq_EeuMzos2n42msw)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_D04SgOq_EeuMzos2n42msw)/TransferObjectTableButtonGroup" name="View::Matter::Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_D04SgOq_EeuMzos2n42msw)/TransferObjectTableButtonGroup" name="View::Matter::Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_D04SgOq_EeuMzos2n42msw)/TransferObjectTableBackButton" name="View::Matter::Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_D04SgOq_EeuMzos2n42msw)/TransferObjectTableBackButtonIcon" name="Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_D04SgOq_EeuMzos2n42msw)/TransferObjectTableBackActionDefinition" name="View::Matter::Table::Back" sourceId="_D04SgOq_EeuMzos2n42msw"/>
@@ -5580,7 +5580,7 @@
         <icon xmi:id="God/(esm/_D04SgOq_EeuMzos2n42msw)/TransferObjectTableAddSelectorAddButtonIcon" name="Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_D04SgOq_EeuMzos2n42msw)/TransferObjectTableAddSelectorAddActionDefinition" name="View::Matter::Table::Add" sourceId="_D04SgOq_EeuMzos2n42msw" targetType="God/(esm/_D0eC0Oq_EeuMzos2n42msw)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_D0qQEOq_EeuMzos2n42msw)/TransferObjectViewPageContainer" name="View::Matter::View" label="Matter" dataElement="God/(esm/_D0eC0Oq_EeuMzos2n42msw)/ClassType" onInit="God/(esm/_D0qQEOq_EeuMzos2n42msw)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_D0qQEOq_EeuMzos2n42msw)/TransferObjectViewVisualElement" name="View" sourceId="_D0qQEOq_EeuMzos2n42msw" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -5597,7 +5597,7 @@
         <icon xmi:id="God/(esm/_qTvcYFENEeyWtMpj61RngA)/VisualElementIcon" name="shortNote::Icon" iconName="scatter-plot-outline"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_D0qQEOq_EeuMzos2n42msw)/TransferObjectViewButtonGroup" name="View::Matter::View::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_D0qQEOq_EeuMzos2n42msw)/TransferObjectViewButtonGroup" name="View::Matter::View::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_D0qQEOq_EeuMzos2n42msw)/TransferObjectViewBackButton" name="View::Matter::View::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_D0qQEOq_EeuMzos2n42msw)/TransferObjectViewBackButtonIcon" name="View::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_D0qQEOq_EeuMzos2n42msw)/TransferObjectViewBackActionDefinition" name="View::Matter::View::Back" sourceId="_D0qQEOq_EeuMzos2n42msw"/>
@@ -5618,7 +5618,7 @@
         <icon xmi:id="God/(esm/_D0qQEOq_EeuMzos2n42msw)/TransferObjectViewUpdateButtonIcon" name="View::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/_D0qQEOq_EeuMzos2n42msw)/TransferObjectViewUpdateActionDefinition" name="View::Matter::View::Update" sourceId="_D0qQEOq_EeuMzos2n42msw"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_39OwMIpNEey5y6LC5xJDPg)/TransferObjectFormPageContainer" name="View::MatterCreator::Form" label="Create Matter" dataElement="God/(esm/_39Ci8IpNEey5y6LC5xJDPg)/ClassType" onInit="God/(esm/_39OwMIpNEey5y6LC5xJDPg)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_39OwMIpNEey5y6LC5xJDPg)/TransferObjectFormVisualElement" name="Form" sourceId="_39OwMIpNEey5y6LC5xJDPg" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -5635,7 +5635,7 @@
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_iD2OsI5WEey-Gcr6waPWDQ)/ActionButtonCancelActionDefinition" name="View::MatterCreator::Form::actionButton_2::Back" sourceId="_iD2OsI5WEey-Gcr6waPWDQ"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_39OwMIpNEey5y6LC5xJDPg)/TransferObjectFormButtonGroup" name="View::MatterCreator::Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_39OwMIpNEey5y6LC5xJDPg)/TransferObjectFormButtonGroup" name="View::MatterCreator::Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_39OwMIpNEey5y6LC5xJDPg)/TransferObjectFormBackButton" name="View::MatterCreator::Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_39OwMIpNEey5y6LC5xJDPg)/TransferObjectFormBackButtonIcon" name="Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_39OwMIpNEey5y6LC5xJDPg)/TransferObjectFormBackActionDefinition" name="View::MatterCreator::Form::Back" sourceId="_39OwMIpNEey5y6LC5xJDPg"/>
@@ -5668,7 +5668,7 @@
         <icon xmi:id="God/(esm/_9MKz4z0wEe-oxNmZsPxMmA)/OperationFormCallButtonIcon" name="createInterstellarMedium::Icon" iconName="chevron_right"/>
         <actionDefinition xsi:type="ui:InputFormCallOperationActionDefinition" xmi:id="God/(esm/_9MKz4z0wEe-oxNmZsPxMmA)/OperationFormCallActionDefinition/(discriminator/God/(esm/_39OwMIpNEey5y6LC5xJDPg)/TransferObjectForm)" name="View::Galaxy::Table::createInterstellarMedium::FormCall" operation="God/(esm/_PaLKkE7sEeycO-gUAWxcVg)/OperationType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_39OwMIpNEey5y6LC5xJDPg)/TransferObjectFormGetTemplateActionDefinition" name="View::MatterCreator::Form::GetTemplate" sourceId="_39OwMIpNEey5y6LC5xJDPg" targetType="God/(esm/_39Ci8IpNEey5y6LC5xJDPg)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_39UPwIpNEey5y6LC5xJDPg)/TransferObjectTablePageContainer" name="View::MatterCreator::Table" label="List of Matters" dataElement="God/(esm/_39Ci8IpNEey5y6LC5xJDPg)/ClassType" onInit="God/(esm/_39UPwIpNEey5y6LC5xJDPg)/TransferObjectTableTableRefreshActionDefinition">
@@ -5735,7 +5735,7 @@
       </children>
       <frame xmi:id="God/(esm/_39UPwIpNEey5y6LC5xJDPg)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_39UPwIpNEey5y6LC5xJDPg)/TransferObjectTableButtonGroup" name="View::MatterCreator::Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_39UPwIpNEey5y6LC5xJDPg)/TransferObjectTableButtonGroup" name="View::MatterCreator::Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_39UPwIpNEey5y6LC5xJDPg)/TransferObjectTableBackButton" name="View::MatterCreator::Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_39UPwIpNEey5y6LC5xJDPg)/TransferObjectTableBackButtonIcon" name="Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_39UPwIpNEey5y6LC5xJDPg)/TransferObjectTableBackActionDefinition" name="View::MatterCreator::Table::Back" sourceId="_39UPwIpNEey5y6LC5xJDPg"/>
@@ -5748,7 +5748,7 @@
         <icon xmi:id="God/(esm/_39UPwIpNEey5y6LC5xJDPg)/TransferObjectTableAddSelectorAddButtonIcon" name="Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_39UPwIpNEey5y6LC5xJDPg)/TransferObjectTableAddSelectorAddActionDefinition" name="View::MatterCreator::Table::Add" sourceId="_39UPwIpNEey5y6LC5xJDPg" targetType="God/(esm/_39Ci8IpNEey5y6LC5xJDPg)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_39IpkIpNEey5y6LC5xJDPg)/TransferObjectViewPageContainer" name="View::MatterCreator::View" label="Matter details" dataElement="God/(esm/_39Ci8IpNEey5y6LC5xJDPg)/ClassType" onInit="God/(esm/_39IpkIpNEey5y6LC5xJDPg)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_39IpkIpNEey5y6LC5xJDPg)/TransferObjectViewVisualElement" name="View" sourceId="_39IpkIpNEey5y6LC5xJDPg" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -5759,7 +5759,7 @@
         <icon xmi:id="God/(esm/_5cl2wI5WEey-Gcr6waPWDQ)/VisualElementIcon" name="shortNote::Icon" iconName="format_size"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_39IpkIpNEey5y6LC5xJDPg)/TransferObjectViewButtonGroup" name="View::MatterCreator::View::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_39IpkIpNEey5y6LC5xJDPg)/TransferObjectViewButtonGroup" name="View::MatterCreator::View::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_39IpkIpNEey5y6LC5xJDPg)/TransferObjectViewBackButton" name="View::MatterCreator::View::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_39IpkIpNEey5y6LC5xJDPg)/TransferObjectViewBackButtonIcon" name="View::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_39IpkIpNEey5y6LC5xJDPg)/TransferObjectViewBackActionDefinition" name="View::MatterCreator::View::Back" sourceId="_39IpkIpNEey5y6LC5xJDPg"/>
@@ -5780,7 +5780,7 @@
         <icon xmi:id="God/(esm/_39IpkIpNEey5y6LC5xJDPg)/TransferObjectViewUpdateButtonIcon" name="View::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/_39IpkIpNEey5y6LC5xJDPg)/TransferObjectViewUpdateActionDefinition" name="View::MatterCreator::View::Update" sourceId="_39IpkIpNEey5y6LC5xJDPg"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_WhnfwORvEeuSU8xLq1yYbw)/TransferObjectFormPageContainer" name="View::Message::Form" dataElement="God/(esm/_WhMpAORvEeuSU8xLq1yYbw)/ClassType" onInit="God/(esm/_WhnfwORvEeuSU8xLq1yYbw)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_WhnfwORvEeuSU8xLq1yYbw)/TransferObjectFormVisualElement" name="Form" sourceId="_WhnfwORvEeuSU8xLq1yYbw" col="12.0" stretch="BOTH" mainAxisAlignment="START">
@@ -5788,7 +5788,7 @@
         <icon xmi:id="God/(esm/_FzijcORwEeuSU8xLq1yYbw)/VisualElementIcon" name="message::Icon" iconName="format_size"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_WhnfwORvEeuSU8xLq1yYbw)/TransferObjectFormButtonGroup" name="View::Message::Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_WhnfwORvEeuSU8xLq1yYbw)/TransferObjectFormButtonGroup" name="View::Message::Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_WhnfwORvEeuSU8xLq1yYbw)/TransferObjectFormBackButton" name="View::Message::Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_WhnfwORvEeuSU8xLq1yYbw)/TransferObjectFormBackButtonIcon" name="Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_WhnfwORvEeuSU8xLq1yYbw)/TransferObjectFormBackActionDefinition" name="View::Message::Form::Back" sourceId="_WhnfwORvEeuSU8xLq1yYbw"/>
@@ -5797,7 +5797,7 @@
         <icon xmi:id="God/(esm/_WhnfwORvEeuSU8xLq1yYbw)/TransferObjectFormCreateButtonIcon" name="Form::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:CreateActionDefinition" xmi:id="God/(esm/_WhnfwORvEeuSU8xLq1yYbw)/TransferObjectFormCreateActionDefinition" name="View::Message::Form::Create" sourceId="_WhnfwORvEeuSU8xLq1yYbw"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_WhnfwORvEeuSU8xLq1yYbw)/TransferObjectFormGetTemplateActionDefinition" name="View::Message::Form::GetTemplate" sourceId="_WhnfwORvEeuSU8xLq1yYbw" targetType="God/(esm/_WhMpAORvEeuSU8xLq1yYbw)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_WhtmYORvEeuSU8xLq1yYbw)/TransferObjectTablePageContainer" name="View::Message::Table" dataElement="God/(esm/_WhMpAORvEeuSU8xLq1yYbw)/ClassType" onInit="God/(esm/_WhtmYORvEeuSU8xLq1yYbw)/TransferObjectTableTableRefreshActionDefinition">
@@ -5864,7 +5864,7 @@
       </children>
       <frame xmi:id="God/(esm/_WhtmYORvEeuSU8xLq1yYbw)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_WhtmYORvEeuSU8xLq1yYbw)/TransferObjectTableButtonGroup" name="View::Message::Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_WhtmYORvEeuSU8xLq1yYbw)/TransferObjectTableButtonGroup" name="View::Message::Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_WhtmYORvEeuSU8xLq1yYbw)/TransferObjectTableBackButton" name="View::Message::Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_WhtmYORvEeuSU8xLq1yYbw)/TransferObjectTableBackButtonIcon" name="Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_WhtmYORvEeuSU8xLq1yYbw)/TransferObjectTableBackActionDefinition" name="View::Message::Table::Back" sourceId="_WhtmYORvEeuSU8xLq1yYbw"/>
@@ -5889,7 +5889,7 @@
         <icon xmi:id="God/(esm/_Fj8jkT6kEe-LmcQ1duw0QA)/OperationFormMappedInputCallOperationSelectorCallOperationButtonIcon" name="talkToGod::Icon" iconName="rocket-launch"/>
         <actionDefinition xsi:type="ui:InputSelectorCallOperationActionDefinition" xmi:id="God/(esm/_Fj8jkT6kEe-LmcQ1duw0QA)/OperationFormMappedInputCallOperationSelectorCallOperationActionDefinition" name="View::Creature::Table::talkToGod::CallOperation" sourceId="_Fj8jkT6kEe-LmcQ1duw0QA" operation="God/(esm/_TcE5wk7sEeycO-gUAWxcVg)/OperationType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_Whe84ORvEeuSU8xLq1yYbw)/TransferObjectViewPageContainer" name="View::Message::View" dataElement="God/(esm/_WhMpAORvEeuSU8xLq1yYbw)/ClassType" onInit="God/(esm/_Whe84ORvEeuSU8xLq1yYbw)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_Whe84ORvEeuSU8xLq1yYbw)/TransferObjectViewVisualElement" name="View" sourceId="_Whe84ORvEeuSU8xLq1yYbw" col="12.0" stretch="BOTH" mainAxisAlignment="START" crossAxisAlignment="STRETCH">
@@ -5897,7 +5897,7 @@
         <icon xmi:id="God/(esm/_FzfgIORwEeuSU8xLq1yYbw)/VisualElementIcon" name="message::Icon" iconName="format_size"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_Whe84ORvEeuSU8xLq1yYbw)/TransferObjectViewButtonGroup" name="View::Message::View::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_Whe84ORvEeuSU8xLq1yYbw)/TransferObjectViewButtonGroup" name="View::Message::View::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_Whe84ORvEeuSU8xLq1yYbw)/TransferObjectViewBackButton" name="View::Message::View::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_Whe84ORvEeuSU8xLq1yYbw)/TransferObjectViewBackButtonIcon" name="View::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_Whe84ORvEeuSU8xLq1yYbw)/TransferObjectViewBackActionDefinition" name="View::Message::View::Back" sourceId="_Whe84ORvEeuSU8xLq1yYbw"/>
@@ -5918,7 +5918,7 @@
         <icon xmi:id="God/(esm/_Whe84ORvEeuSU8xLq1yYbw)/TransferObjectViewUpdateButtonIcon" name="View::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/_Whe84ORvEeuSU8xLq1yYbw)/TransferObjectViewUpdateActionDefinition" name="View::Message::View::Update" sourceId="_Whe84ORvEeuSU8xLq1yYbw"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_oUOCwE7rEeycO-gUAWxcVg)/TransferObjectFormPageContainer" name="View::Planet::Form" label="Create a Planet" dataElement="God/(esm/_oUAnYE7rEeycO-gUAWxcVg)/ClassType" onInit="God/(esm/_oUOCwE7rEeycO-gUAWxcVg)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_oUOCwE7rEeycO-gUAWxcVg)/TransferObjectFormVisualElement" name="Form" sourceId="_oUOCwE7rEeycO-gUAWxcVg" col="12.0" stretch="BOTH" mainAxisAlignment="START">
@@ -5926,7 +5926,7 @@
         <icon xmi:id="God/(esm/_QKK8wE7vEeycO-gUAWxcVg)/VisualElementIcon" name="name::Icon" iconName="format_size"/>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_oUOCwE7rEeycO-gUAWxcVg)/TransferObjectFormButtonGroup" name="View::Planet::Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_oUOCwE7rEeycO-gUAWxcVg)/TransferObjectFormButtonGroup" name="View::Planet::Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_oUOCwE7rEeycO-gUAWxcVg)/TransferObjectFormBackButton" name="View::Planet::Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_oUOCwE7rEeycO-gUAWxcVg)/TransferObjectFormBackButtonIcon" name="Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_oUOCwE7rEeycO-gUAWxcVg)/TransferObjectFormBackActionDefinition" name="View::Planet::Form::Back" sourceId="_oUOCwE7rEeycO-gUAWxcVg"/>
@@ -5935,7 +5935,7 @@
         <icon xmi:id="God/(esm/_oUOCwE7rEeycO-gUAWxcVg)/TransferObjectFormCreateButtonIcon" name="Form::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:CreateActionDefinition" xmi:id="God/(esm/_oUOCwE7rEeycO-gUAWxcVg)/TransferObjectFormCreateActionDefinition" name="View::Planet::Form::Create" sourceId="_oUOCwE7rEeycO-gUAWxcVg"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_oUOCwE7rEeycO-gUAWxcVg)/TransferObjectFormGetTemplateActionDefinition" name="View::Planet::Form::GetTemplate" sourceId="_oUOCwE7rEeycO-gUAWxcVg" targetType="God/(esm/_oUAnYE7rEeycO-gUAWxcVg)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_oUSUME7rEeycO-gUAWxcVg)/TransferObjectTablePageContainer" name="View::Planet::Table" label="Planets" dataElement="God/(esm/_oUAnYE7rEeycO-gUAWxcVg)/ClassType" onInit="God/(esm/_oUSUME7rEeycO-gUAWxcVg)/TransferObjectTableTableRefreshActionDefinition">
@@ -6028,7 +6028,7 @@
       </children>
       <frame xmi:id="God/(esm/_oUSUME7rEeycO-gUAWxcVg)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_oUSUME7rEeycO-gUAWxcVg)/TransferObjectTableButtonGroup" name="View::Planet::Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_oUSUME7rEeycO-gUAWxcVg)/TransferObjectTableButtonGroup" name="View::Planet::Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_oUSUME7rEeycO-gUAWxcVg)/TransferObjectTableBackButton" name="View::Planet::Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_oUSUME7rEeycO-gUAWxcVg)/TransferObjectTableBackButtonIcon" name="Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_oUSUME7rEeycO-gUAWxcVg)/TransferObjectTableBackActionDefinition" name="View::Planet::Table::Back" sourceId="_oUSUME7rEeycO-gUAWxcVg"/>
@@ -6041,7 +6041,7 @@
         <icon xmi:id="God/(esm/_oUSUME7rEeycO-gUAWxcVg)/TransferObjectTableAddSelectorAddButtonIcon" name="Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_oUSUME7rEeycO-gUAWxcVg)/TransferObjectTableAddSelectorAddActionDefinition" name="View::Planet::Table::Add" sourceId="_oUSUME7rEeycO-gUAWxcVg" targetType="God/(esm/_oUAnYE7rEeycO-gUAWxcVg)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_oUJKQE7rEeycO-gUAWxcVg)/TransferObjectViewPageContainer" name="View::Planet::View" dataElement="God/(esm/_oUAnYE7rEeycO-gUAWxcVg)/ClassType" titleAttribute="God/(esm/_oUXzwE7rEeycO-gUAWxcVg)/AttributeType" titleFrom="ATTRIBUTE" onInit="God/(esm/_oUJKQE7rEeycO-gUAWxcVg)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_oUJKQE7rEeycO-gUAWxcVg)/TransferObjectViewVisualElement" name="View" sourceId="_oUJKQE7rEeycO-gUAWxcVg" col="12.0" stretch="BOTH" mainAxisAlignment="START">
@@ -6169,7 +6169,7 @@
         </children>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_oUJKQE7rEeycO-gUAWxcVg)/TransferObjectViewButtonGroup" name="View::Planet::View::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_oUJKQE7rEeycO-gUAWxcVg)/TransferObjectViewButtonGroup" name="View::Planet::View::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_oUJKQE7rEeycO-gUAWxcVg)/TransferObjectViewBackButton" name="View::Planet::View::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_oUJKQE7rEeycO-gUAWxcVg)/TransferObjectViewBackButtonIcon" name="View::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_oUJKQE7rEeycO-gUAWxcVg)/TransferObjectViewBackActionDefinition" name="View::Planet::View::Back" sourceId="_oUJKQE7rEeycO-gUAWxcVg"/>
@@ -6199,7 +6199,7 @@
         <actionDefinition xsi:type="ui:ParameterlessCallOperationActionDefinition" xmi:id="God/(esm/_a1m3EVDkEeyjf_w6-3_EHA)/OperationFormTableNonBulkCallActionDefinition/(discriminator/God/(esm/_a1m3EVDkEeyjf_w6-3_EHA)/OperationForm)" name="View::Planet::View::group::destroyLife::TableOperation" targetType="God/(esm/_oUAnYE7rEeycO-gUAWxcVg)/ClassType" operation="God/(esm/_VKyeUE7sEeycO-gUAWxcVg)/OperationType"/>
         <confirmation xmi:id="God/(esm/_a1m3EVDkEeyjf_w6-3_EHA)/OperationFormConfirmation/(discriminator/God/(esm/_a1m3EVDkEeyjf_w6-3_EHA)/OperationFormVisualElement)" confirmationType="MANDATORY" confirmationMessage="Are you sure about that?"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_c0KjEIpLEey5y6LC5xJDPg)/TransferObjectFormPageContainer" name="View::Sign::Form" dataElement="God/(esm/_czqz0IpLEey5y6LC5xJDPg)/ClassType" onInit="God/(esm/_c0KjEIpLEey5y6LC5xJDPg)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_c0KjEIpLEey5y6LC5xJDPg)/TransferObjectFormVisualElement" name="Form" sourceId="_c0KjEIpLEey5y6LC5xJDPg" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -6251,7 +6251,7 @@
         </rowActionButtonGroup>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_c0KjEIpLEey5y6LC5xJDPg)/TransferObjectFormButtonGroup" name="View::Sign::Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_c0KjEIpLEey5y6LC5xJDPg)/TransferObjectFormButtonGroup" name="View::Sign::Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_c0KjEIpLEey5y6LC5xJDPg)/TransferObjectFormBackButton" name="View::Sign::Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_c0KjEIpLEey5y6LC5xJDPg)/TransferObjectFormBackButtonIcon" name="Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_c0KjEIpLEey5y6LC5xJDPg)/TransferObjectFormBackActionDefinition" name="View::Sign::Form::Back" sourceId="_c0KjEIpLEey5y6LC5xJDPg"/>
@@ -6260,7 +6260,7 @@
         <icon xmi:id="God/(esm/_c0KjEIpLEey5y6LC5xJDPg)/TransferObjectFormCreateButtonIcon" name="Form::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:CreateActionDefinition" xmi:id="God/(esm/_c0KjEIpLEey5y6LC5xJDPg)/TransferObjectFormCreateActionDefinition" name="View::Sign::Form::Create" sourceId="_c0KjEIpLEey5y6LC5xJDPg"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_c0KjEIpLEey5y6LC5xJDPg)/TransferObjectFormGetTemplateActionDefinition" name="View::Sign::Form::GetTemplate" sourceId="_c0KjEIpLEey5y6LC5xJDPg" targetType="God/(esm/_czqz0IpLEey5y6LC5xJDPg)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_c0R30IpLEey5y6LC5xJDPg)/TransferObjectTablePageContainer" name="View::Sign::Table" dataElement="God/(esm/_czqz0IpLEey5y6LC5xJDPg)/ClassType" onInit="God/(esm/_c0R30IpLEey5y6LC5xJDPg)/TransferObjectTableTableRefreshActionDefinition">
@@ -6329,7 +6329,7 @@
       </children>
       <frame xmi:id="God/(esm/_c0R30IpLEey5y6LC5xJDPg)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_c0R30IpLEey5y6LC5xJDPg)/TransferObjectTableButtonGroup" name="View::Sign::Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_c0R30IpLEey5y6LC5xJDPg)/TransferObjectTableButtonGroup" name="View::Sign::Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_c0R30IpLEey5y6LC5xJDPg)/TransferObjectTableBackButton" name="View::Sign::Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_c0R30IpLEey5y6LC5xJDPg)/TransferObjectTableBackButtonIcon" name="Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_c0R30IpLEey5y6LC5xJDPg)/TransferObjectTableBackActionDefinition" name="View::Sign::Table::Back" sourceId="_c0R30IpLEey5y6LC5xJDPg"/>
@@ -6346,7 +6346,7 @@
         <icon xmi:id="God/(esm/_a1osQVDkEeyjf_w6-3_EHA)/OperationFormMappedInputCallOperationSelectorCallOperationButtonIcon" name="sendASign::Icon" iconName="rocket-launch"/>
         <actionDefinition xsi:type="ui:InputSelectorCallOperationActionDefinition" xmi:id="God/(esm/_a1osQVDkEeyjf_w6-3_EHA)/OperationFormMappedInputCallOperationSelectorCallOperationActionDefinition" name="View::Planet::View::group::actionGroup::sendASign::CallOperation" sourceId="_a1osQVDkEeyjf_w6-3_EHA" operation="God/(esm/_mVVh8E7wEeycO-gUAWxcVg)/OperationType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_c0BZIIpLEey5y6LC5xJDPg)/TransferObjectViewPageContainer" name="View::Sign::View" dataElement="God/(esm/_czqz0IpLEey5y6LC5xJDPg)/ClassType" onInit="God/(esm/_c0BZIIpLEey5y6LC5xJDPg)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_c0BZIIpLEey5y6LC5xJDPg)/TransferObjectViewVisualElement" name="View" sourceId="_c0BZIIpLEey5y6LC5xJDPg" col="12.0" stretch="BOTH" direction="VERTICAL" mainAxisAlignment="START">
@@ -6398,7 +6398,7 @@
         </rowActionButtonGroup>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_c0BZIIpLEey5y6LC5xJDPg)/TransferObjectViewButtonGroup" name="View::Sign::View::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_c0BZIIpLEey5y6LC5xJDPg)/TransferObjectViewButtonGroup" name="View::Sign::View::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_c0BZIIpLEey5y6LC5xJDPg)/TransferObjectViewBackButton" name="View::Sign::View::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_c0BZIIpLEey5y6LC5xJDPg)/TransferObjectViewBackButtonIcon" name="View::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_c0BZIIpLEey5y6LC5xJDPg)/TransferObjectViewBackActionDefinition" name="View::Sign::View::Back" sourceId="_c0BZIIpLEey5y6LC5xJDPg"/>
@@ -6419,13 +6419,13 @@
         <icon xmi:id="God/(esm/_c0BZIIpLEey5y6LC5xJDPg)/TransferObjectViewUpdateButtonIcon" name="View::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/_c0BZIIpLEey5y6LC5xJDPg)/TransferObjectViewUpdateActionDefinition" name="View::Sign::View::Update" sourceId="_c0BZIIpLEey5y6LC5xJDPg"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_YsGoqM_1Ee6fibzd7gNETg)/TransferObjectTablePageContainer" name="View::StackOverflowInBigBang::Table" dataElement="God/(esm/_YsGooM_1Ee6fibzd7gNETg)/ClassType">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_YsGoqM_1Ee6fibzd7gNETg)/TransferObjectTableVisualElement" name="Table" col="12.0" direction="VERTICAL" mainAxisAlignment="START" crossAxisAlignment="STRETCH">
       <frame xmi:id="God/(esm/_YsGoqM_1Ee6fibzd7gNETg)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_YsGoqM_1Ee6fibzd7gNETg)/TransferObjectTableButtonGroup" name="View::StackOverflowInBigBang::Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_YsGoqM_1Ee6fibzd7gNETg)/TransferObjectTableButtonGroup" name="View::StackOverflowInBigBang::Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_YsGoqM_1Ee6fibzd7gNETg)/TransferObjectTableBackButton" name="View::StackOverflowInBigBang::Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_YsGoqM_1Ee6fibzd7gNETg)/TransferObjectTableBackButtonIcon" name="Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_YsGoqM_1Ee6fibzd7gNETg)/TransferObjectTableBackActionDefinition" name="View::StackOverflowInBigBang::Table::Back" sourceId="_YsGoqM_1Ee6fibzd7gNETg"/>
@@ -6438,7 +6438,7 @@
         <icon xmi:id="God/(esm/_YsGoqM_1Ee6fibzd7gNETg)/TransferObjectTableAddSelectorAddButtonIcon" name="Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_YsGoqM_1Ee6fibzd7gNETg)/TransferObjectTableAddSelectorAddActionDefinition" name="View::StackOverflowInBigBang::Table::Add" sourceId="_YsGoqM_1Ee6fibzd7gNETg" targetType="God/(esm/_YsGooM_1Ee6fibzd7gNETg)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_ePX5sE7rEeycO-gUAWxcVg)/TransferObjectFormPageContainer" name="View::Star::Form" label="Create a Star" dataElement="God/(esm/_ePJ3QE7rEeycO-gUAWxcVg)/ClassType" onInit="God/(esm/_ePX5sE7rEeycO-gUAWxcVg)/TransferObjectFormGetTemplateActionDefinition" type="FORM">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_ePX5sE7rEeycO-gUAWxcVg)/TransferObjectFormVisualElement" name="Form" sourceId="_ePX5sE7rEeycO-gUAWxcVg" col="12.0" stretch="BOTH" mainAxisAlignment="START">
@@ -6508,7 +6508,7 @@
         </children>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_ePX5sE7rEeycO-gUAWxcVg)/TransferObjectFormButtonGroup" name="View::Star::Form::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_ePX5sE7rEeycO-gUAWxcVg)/TransferObjectFormButtonGroup" name="View::Star::Form::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_ePX5sE7rEeycO-gUAWxcVg)/TransferObjectFormBackButton" name="View::Star::Form::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_ePX5sE7rEeycO-gUAWxcVg)/TransferObjectFormBackButtonIcon" name="Form::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_ePX5sE7rEeycO-gUAWxcVg)/TransferObjectFormBackActionDefinition" name="View::Star::Form::Back" sourceId="_ePX5sE7rEeycO-gUAWxcVg"/>
@@ -6517,7 +6517,7 @@
         <icon xmi:id="God/(esm/_ePX5sE7rEeycO-gUAWxcVg)/TransferObjectFormCreateButtonIcon" name="Form::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:CreateActionDefinition" xmi:id="God/(esm/_ePX5sE7rEeycO-gUAWxcVg)/TransferObjectFormCreateActionDefinition" name="View::Star::Form::Create" sourceId="_ePX5sE7rEeycO-gUAWxcVg"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
     <templateAction xsi:type="ui:GetTemplateActionDefinition" xmi:id="God/(esm/_ePX5sE7rEeycO-gUAWxcVg)/TransferObjectFormGetTemplateActionDefinition" name="View::Star::Form::GetTemplate" sourceId="_ePX5sE7rEeycO-gUAWxcVg" targetType="God/(esm/_ePJ3QE7rEeycO-gUAWxcVg)/ClassType"/>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_ePdZQE7rEeycO-gUAWxcVg)/TransferObjectTablePageContainer" name="View::Star::Table" label="Stars" dataElement="God/(esm/_ePJ3QE7rEeycO-gUAWxcVg)/ClassType" onInit="God/(esm/_ePdZQE7rEeycO-gUAWxcVg)/TransferObjectTableTableRefreshActionDefinition">
@@ -6584,7 +6584,7 @@
       </children>
       <frame xmi:id="God/(esm/_ePdZQE7rEeycO-gUAWxcVg)/TransferObjectTableFrame"/>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_ePdZQE7rEeycO-gUAWxcVg)/TransferObjectTableButtonGroup" name="View::Star::Table::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_ePdZQE7rEeycO-gUAWxcVg)/TransferObjectTableButtonGroup" name="View::Star::Table::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_ePdZQE7rEeycO-gUAWxcVg)/TransferObjectTableBackButton" name="View::Star::Table::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_ePdZQE7rEeycO-gUAWxcVg)/TransferObjectTableBackButtonIcon" name="Table::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_ePdZQE7rEeycO-gUAWxcVg)/TransferObjectTableBackActionDefinition" name="View::Star::Table::Back" sourceId="_ePdZQE7rEeycO-gUAWxcVg"/>
@@ -6597,7 +6597,7 @@
         <icon xmi:id="God/(esm/_ePdZQE7rEeycO-gUAWxcVg)/TransferObjectTableAddSelectorAddButtonIcon" name="Table::Icon" iconName="attachment-plus"/>
         <actionDefinition xsi:type="ui:AddActionDefinition" xmi:id="God/(esm/_ePdZQE7rEeycO-gUAWxcVg)/TransferObjectTableAddSelectorAddActionDefinition" name="View::Star::Table::Add" sourceId="_ePdZQE7rEeycO-gUAWxcVg" targetType="God/(esm/_ePJ3QE7rEeycO-gUAWxcVg)/ClassType"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <pageContainers xmi:id="God/(esm/_ePRzEE7rEeycO-gUAWxcVg)/TransferObjectViewPageContainer" name="View::Star::View" dataElement="God/(esm/_ePJ3QE7rEeycO-gUAWxcVg)/ClassType" titleAttribute="God/(esm/_ePkuAE7rEeycO-gUAWxcVg)/AttributeType" titleFrom="ATTRIBUTE" onInit="God/(esm/_ePRzEE7rEeycO-gUAWxcVg)/TransferObjectViewRefreshActionDefinition" type="VIEW">
     <children xsi:type="ui:Flex" xmi:id="God/(esm/_ePRzEE7rEeycO-gUAWxcVg)/TransferObjectViewVisualElement" name="View" sourceId="_ePRzEE7rEeycO-gUAWxcVg" col="12.0" stretch="BOTH" mainAxisAlignment="START">
@@ -6724,7 +6724,7 @@
         </rowActionButtonGroup>
       </children>
     </children>
-    <actionButtonGroup xmi:id="God/(esm/_ePRzEE7rEeycO-gUAWxcVg)/TransferObjectViewButtonGroup" name="View::Star::View::PageActions" label="Actions">
+    <actionButtonGroups xmi:id="God/(esm/_ePRzEE7rEeycO-gUAWxcVg)/TransferObjectViewButtonGroup" name="View::Star::View::PageActions" label="Actions">
       <buttons xmi:id="God/(esm/_ePRzEE7rEeycO-gUAWxcVg)/TransferObjectViewBackButton" name="View::Star::View::Back" label="Back" buttonStyle="text">
         <icon xmi:id="God/(esm/_ePRzEE7rEeycO-gUAWxcVg)/TransferObjectViewBackButtonIcon" name="View::Icon" iconName="arrow-left"/>
         <actionDefinition xsi:type="ui:BackActionDefinition" xmi:id="God/(esm/_ePRzEE7rEeycO-gUAWxcVg)/TransferObjectViewBackActionDefinition" name="View::Star::View::Back" sourceId="_ePRzEE7rEeycO-gUAWxcVg"/>
@@ -6745,7 +6745,7 @@
         <icon xmi:id="God/(esm/_ePRzEE7rEeycO-gUAWxcVg)/TransferObjectViewUpdateButtonIcon" name="View::Icon" iconName="content-save"/>
         <actionDefinition xsi:type="ui:UpdateActionDefinition" xmi:id="God/(esm/_ePRzEE7rEeycO-gUAWxcVg)/TransferObjectViewUpdateActionDefinition" name="View::Star::View::Update" sourceId="_ePRzEE7rEeycO-gUAWxcVg"/>
       </buttons>
-    </actionButtonGroup>
+    </actionButtonGroups>
   </pageContainers>
   <theme xmi:id="God/(esm/_l2GwYM8nEe6U3KSieLrWmg)/Theme" textPrimaryColor="#17191dff" textSecondaryColor="#434448ff" primaryColor="#3c4166ff" subtitleColor="#8c8c8cff" secondaryColor="#e7501dff" backgroundColor="#fafafaff" paperBackgroundColor="#ffffffff"/>
   <availableAnnotations xmi:id="God/(esm/_nhZ74uOjEeuTFeBuQgBSDg)/Annotation" name="dashboard"/>
