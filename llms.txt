@@ -30,6 +30,16 @@ Key facts:
 
 - [judo-ui-typescript-rest-itest/pom.xml](judo-ui-typescript-rest-itest/pom.xml): Integration tests — generates TypeScript from ActionGroupTest model and runs Vitest
 
+## Depends on
+
+- [judo-meta-ui](../../models/judo-meta-ui): models/judo-meta-ui
+- [judo-generator-commons](../../runtime/judo-generator-commons): runtime/judo-generator-commons
+
+## Used by
+
+- [judo-ui-e2e-template](../judo-ui-e2e-template): template/judo-ui-e2e-template
+- [judo-ui-react-template](../judo-ui-react-template): template/judo-ui-react-template
+
 ## Optional
 
 - [.github/workflows/build.yml](.github/workflows/build.yml): Main CI workflow (build, test, deploy, tagging)
