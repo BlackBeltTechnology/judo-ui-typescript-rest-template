@@ -32,13 +32,13 @@ Key facts:
 
 ## Depends on
 
-- [judo-meta-ui](../../models/judo-meta-ui): models/judo-meta-ui
-- [judo-generator-commons](../../runtime/judo-generator-commons): runtime/judo-generator-commons
+- [judo-meta-ui](../../models/judo-meta-ui): UI metamodel — pages, containers, tables, inputs, and data bindings
+- [judo-generator-commons](../../runtime/judo-generator-commons): Handlebars template-based code generation framework
 
 ## Used by
 
-- [judo-ui-e2e-template](../judo-ui-e2e-template): template/judo-ui-e2e-template
-- [judo-ui-react-template](../judo-ui-react-template): template/judo-ui-react-template
+- [judo-ui-e2e-template](../judo-ui-e2e-template): Generates Playwright E2E test projects from UI models
+- [judo-ui-react-template](../judo-ui-react-template): Generates React/TypeScript frontend applications from UI models
 
 ## Optional
 
