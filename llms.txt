@@ -1,0 +1,47 @@
+# JUDO UI TypeScript REST Generator
+
+> A code generator that produces TypeScript REST API client code from JUDO UI metamodels (EMF `.model` files), outputting three composable layers: data interfaces, service abstractions, and Axios HTTP implementations.
+
+Key facts:
+- Java 21, Maven 3.9.4 multi-module project (5 modules)
+- Handlebars templating with Spring SpEL expressions and Eclipse EMF metamodels
+- Part of the BlackBelt JUDO framework ecosystem (`hu.blackbelt.judo.generator` group)
+- Integration tested by generating TypeScript from an ActionGroupTest model and running Vitest
+- License: Eclipse Public License 2.0 (EPL-2.0)
+
+## Docs
+
+- [README.md](README.md): Project overview, usage examples, architecture diagrams, and build instructions
+- [AGENTS.md](AGENTS.md): Developer guide with directory structure, build commands, coding conventions, and helper class reference
+- [CONTRIBUTING.md](CONTRIBUTING.md): Development setup, issue reporting, and PR process
+- [.github/CIFLOW.md](.github/CIFLOW.md): CI/CD flow and GitFlow branching strategy with diagrams
+
+## Modules — Shared Utilities
+
+- [judo-ui-typescript-rest-commons/pom.xml](judo-ui-typescript-rest-commons/pom.xml): Shared Java helpers (naming conventions, string utils, EMF XMI ID access) used by all generation modules
+
+## Modules — Code Generation
+
+- [judo-ui-typescript-rest-api/pom.xml](judo-ui-typescript-rest-api/pom.xml): Generates `data-api/` — TypeScript interfaces, enums, serializers, query customizers, mask builders, filter types
+- [judo-ui-typescript-rest-service/pom.xml](judo-ui-typescript-rest-service/pom.xml): Generates `data-service/` — service interfaces for CRUD, relations, and access control
+- [judo-ui-typescript-rest-axios/pom.xml](judo-ui-typescript-rest-axios/pom.xml): Generates `data-axios/` — Axios HTTP client implementations of all service interfaces
+
+## Modules — Testing
+
+- [judo-ui-typescript-rest-itest/pom.xml](judo-ui-typescript-rest-itest/pom.xml): Integration tests — generates TypeScript from ActionGroupTest model and runs Vitest
+
+## Depends on
+
+- [judo-meta-ui](../../models/judo-meta-ui): UI metamodel — pages, containers, tables, inputs, and data bindings
+- [judo-generator-commons](../../runtime/judo-generator-commons): Handlebars template-based code generation framework
+
+## Used by
+
+- [judo-ui-e2e-template](../judo-ui-e2e-template): Generates Playwright E2E test projects from UI models
+- [judo-ui-react-template](../judo-ui-react-template): Generates React/TypeScript frontend applications from UI models
+
+## Optional
+
+- [.github/workflows/build.yml](.github/workflows/build.yml): Main CI workflow (build, test, deploy, tagging)
+- [.github/workflows/release.yml](.github/workflows/release.yml): Manual release trigger workflow
+- [pom.xml](pom.xml): Root POM with module aggregation, dependency management, and Maven profiles

@@ -6,3 +6,8 @@ target/
 transaction-logs/
 .flattened-pom.xml
 .nodejs
+.claude/commands/opsx
+.claude/skills/openspec-*.md
+.gemini
+.opencode
+.agent
