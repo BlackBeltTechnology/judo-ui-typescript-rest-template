@@ -1,270 +1,160 @@
-# AGENTS.md
+# JUDO UI TypeScript REST Generator - Project Documentation
 
-This file provides guidance to LLM model when working with code in this repository.
+## Project Overview
 
-## What This Project Does
 
-A code generator that produces a complete TypeScript REST client layer (models, services, Axios implementations) from a JUDO UI metamodel. Uses **Handlebars templates** (`.hbs`) + **Java helper classes** annotated with `@TemplateHelper`. The output is a typed data layer with models, query customizers, serializers, mask builders, service interfaces, and Axios-based HTTP implementations.
+**Repository:** BlackBeltTechnology/judo-ui-typescript-rest-template
+**License:** Eclipse Public License 2.0 (EPL-2.0)
+**Java Version:** 21
+**Build System:** Maven 3.9.4 with Handlebars templating, Spring SpEL, and Eclipse EMF
+
+1. Generates TypeScript REST API client code from JUDO UI metamodels (EMF `.model` files)
+2. Produces three layered outputs: data interfaces (`data-api/`), service abstractions (`data-service/`), and Axios HTTP implementations (`data-axios/`)
+3. Each module contributes Java helper classes (callable via SpEL) and Handlebars templates (`.hbs`) configured through `ui-typescript-rest.yaml`
+4. Integration tested by generating code from an `ActionGroupTest` model and running Vitest against the output
+5. Part of the BlackBelt JUDO framework ecosystem (`hu.blackbelt.judo.generator` group)
+
+## Code Instructions
+
+1. First think through the problem, read the codebase for relevant files.
+2. Before you make any major changes, check in with me and I will verify the plan.
+3. Please every step of the way just give me a high level explanation of what changes you made.
+4. Make every task and code change you do as simple as possible. We want to avoid making any massive or complex changes. Every change should impact as little code as possible. Everything is about simplicity.
+5. Maintain a documentation file that describes how the architecture of the app works inside and out.
+6. Never speculate about code you have not opened. If the user references a specific file, you MUST read the file before answering. Make sure to investigate and read relevant files BEFORE answering questions about the codebase. Never make any claims about code before investigating unless you are certain of the correct answer - give grounded and hallucination-free answers.
+7. For implementation use TDD (Test-Driven Development): write or update tests first to define the expected behaviour, verify they fail, then write the minimal implementation to make them pass.
+8. Use DRY (Don't Repeat Yourself): extract reusable logic into separate classes, utilities, or components. If the same pattern appears in multiple places, refactor it into a shared helper.
+
+## Directory Structure
+
+```
+judo-ui-typescript-rest-template/
+├── judo-ui-typescript-rest-commons/    # Shared Java helpers (naming, string utils, EMF access)
+├── judo-ui-typescript-rest-api/        # data-api/ generation (interfaces, serializers, masks)
+│   ├── src/main/java/.../             #   UiGeneralHelper, StoredVariableHelper
+│   └── src/main/resources/            #   .hbs templates + ui-typescript-rest.yaml
+├── judo-ui-typescript-rest-service/    # data-service/ generation (service interfaces)
+│   ├── src/main/java/.../             #   UiServiceHelper
+│   └── src/main/resources/            #   .hbs templates + ui-typescript-rest.yaml
+├── judo-ui-typescript-rest-axios/      # data-axios/ generation (Axios implementations)
+│   ├── src/main/java/.../             #   UiAxiosHelper
+│   └── src/main/resources/            #   .hbs templates + ui-typescript-rest.yaml
+├── judo-ui-typescript-rest-itest/      # Integration tests (ActionGroupTest model)
+│   └── ActionGroupTest/               #   Per-actor test projects
+├── .github/                            # CI/CD workflows (GitFlow-based)
+├── pom.xml                             # Root POM (module aggregation, dependency management)
+└── AGENTS.md                           # This file
+```
+
+## Core Modules
+
+### Generation Modules
+
+| Module | Type | Purpose |
+|--------|------|---------|
+| `judo-ui-typescript-rest-commons` | bundle | Shared utilities: naming conventions (`classDataName`, `serviceClassName`, `serviceRelationName`), EMF XMI ID access, string helpers |
+| `judo-ui-typescript-rest-api` | bundle | Generates `data-api/`: TypeScript interfaces, enums, serializers, query customizers, mask builders, filter types, security types |
+| `judo-ui-typescript-rest-service` | bundle | Generates `data-service/`: `AccessService`, per-class CRUD services, per-relation navigation services |
+| `judo-ui-typescript-rest-axios` | bundle | Generates `data-axios/`: Axios HTTP implementations of all service interfaces, provider configuration |
+
+### Test Module
+
+| Module | Type | Purpose |
+|--------|------|---------|
+| `judo-ui-typescript-rest-itest` | pom | Integration tests: generates TypeScript from `ActionGroupTest` model, runs Vitest |
+
+## Technology Stack
+
+### Core Technologies
+- **Eclipse EMF** (ecore-xmi 2.2.3) — metamodel framework for JUDO UI models
+- **Handlebars** (4.4.0) — template engine for TypeScript code generation
+- **Spring Expression Language** (5.0.0) — expression evaluation in template configurations
+- **judo-generator-commons** (1.0.0.20251205) — base generation framework (`StaticMethodValueResolver`, `@TemplateHelper`)
+- **judo-meta-ui-model** (1.1.0.20260202) — JUDO UI metamodel (ClassType, RelationType, OperationType, etc.)
+- **Lombok** (1.18.34) — boilerplate reduction in Java helpers
+
+### Build & Quality
+- **Maven 3.9.4** with Flatten plugin for CI-friendly `${revision}` versioning
+- **JaCoCo** (0.8.12) — code coverage
+- **SonarQube** (3.9.1) — static analysis
+- **Apache Felix Bundle Plugin** — OSGi bundle packaging
+- **Vitest** — TypeScript test runner (integration tests)
+- **frontend-maven-plugin** — auto-installs Node.js 18.14.2 + pnpm 7.27.1 for itest
 
 ## Build Commands
 
 ```bash
-# Full build (compile + test + install)
-./mvnw clean install
+# Full build (all modules)
+mvn clean install
 
-# Build without submodules (parent POM only)
-./mvnw clean install -DskipModules=true
+# Run tests only
+mvn clean test
 
-# Build with CI version
-./mvnw -B -Drevision=1.0.0.20260220_XXXXXX_hash_develop clean install
+# Build specific module
+mvn clean install -pl judo-ui-typescript-rest-api
+
+# Integration tests only (generates code + runs Vitest)
+mvn clean test -pl judo-ui-typescript-rest-itest
+
+# Skip module compilation (root only)
+mvn clean install -DskipModules=true
 ```
 
-### Integration Tests Only
+> **Note:** No `mvnw` wrapper is included. Use system Maven.
 
-The itest module generates TypeScript from a test model, then runs Node.js-based tests (Vitest) and a TypeScript compilation check:
+### Maven Profiles
 
-```bash
-# Run from the itest submodule
-cd judo-ui-typescript-rest-itest/ActionGroupTest/action_group_test__god
-../../mvnw clean verify
-```
+| Profile | Purpose |
+|---------|---------|
+| `modules` | Active by default — includes all child modules. Deactivate with `-DskipModules=true` |
+| `sign-artifacts` | GPG-sign artifacts for Maven Central publication |
+| `release-dummy` | Deploy to local `/tmp/` directory for testing |
+| `release-judong` | Deploy to JudoNG Nexus (`nexus.judo.technology`) |
+| `release-central` | Deploy to Maven Central via OSSRH with nexus-staging |
+| `generate-github-asciidoc-diagrams` | Generate PNG diagrams from AsciiDoc (PlantUML) |
+| `update-source-code-license` | Update EPL-2.0 license headers in source files |
 
-The itest flow: Maven generates TypeScript via `judo-ui-generator-maven-plugin` → installs Node 18.14.2 + pnpm 7.27.1 via `frontend-maven-plugin` → runs `pnpm install` → `pnpm run format` → `pnpm test` → `pnpm run build:ci`.
+## Key Configuration Files
 
-## Architecture
+| File | Purpose |
+|------|---------|
+| `pom.xml` | Root POM: module aggregation, shared dependencies, profiles |
+| `*/src/main/resources/ui-typescript-rest.yaml` | Template registry: maps `.hbs` templates to output paths and SpEL expressions |
+| `logback-test.xml` | Test logging configuration (shared across modules) |
+| `.github/workflows/build.yml` | Main CI: build, test, deploy to Nexus, create tags and releases |
+| `.github/workflows/release.yml` | Manual release trigger: creates PRs for master and develop |
 
-### Module Dependency Chain
+## Development Environment
 
-```
-commons  ←  api      (model types, enums, query customizers, serializers, masks)
-commons  ←  service  (service interfaces)
-             axios   (Axios implementations of service interfaces)
-```
+**Required:**
+- Java 21 JDK
+- Maven 3.9.4+
 
-All template modules are **OSGi bundles** (not plain JARs), loaded dynamically by the generator framework.
+**Optional (auto-installed by itest build):**
+- Node.js 18.14.2
+- pnpm 7.27.1
 
-### Code Generation Flow
+## Git Workflow
 
-1. `judo-ui-generator-maven-plugin` reads a `.model` file (EMF/Ecore UI metamodel)
-2. Loads template bundles via Maven URIs (`mvn:hu.blackbelt.judo.generator:judo-ui-typescript-rest-api:${revision}`)
-3. Scans each bundle for `ui-typescript-rest.yaml` descriptors in `src/main/resources/`
-4. For each template entry, evaluates `factoryExpression` (SpEL) to get iterable elements
-5. For each element, evaluates `pathExpression` to determine output file path
-6. Handlebars processes the `.hbs` template; Java `@TemplateHelper` static methods are available as helpers
-7. Output written to destination directory
+- **Main Branch:** `develop`
+- **Versioning:** `${revision}` in pom.xml, resolved by flatten-maven-plugin. Develop builds append `date_commitId_branchName`; releases use clean semver.
+- **Branch naming:** `feature/JNG-<number>_<summary>`, `bugfix/JNG-<number>_<summary>`, `hotfix/JNG-<number>_<summary>`
+- **Commit rule:** Every commit must include a JIRA ticket number (`JNG-xxx`)
+- **CI/CD:** GitFlow with automated build, deploy, merge, and release via GitHub Actions (see [CIFLOW.md](.github/CIFLOW.md))
 
-### Template Registration (YAML Descriptors)
+## Important Notes
 
-Each module has a `ui-typescript-rest.yaml` in `src/main/resources/` with entries like:
+1. **This is a code generator, not a runtime application.** Changes to Java helpers or `.hbs` templates affect the TypeScript output of downstream projects.
+2. **Helper methods must be `public static`** to be callable from Handlebars templates via the `StaticMethodValueResolver` base class.
+3. **Template output paths are SpEL expressions** — they use helper methods like `#classDataName(#self, "Serializer")` to compute file names dynamically.
+4. **`ui-typescript-rest.yaml` is the template registry** — each entry defines a template name, output path expression, optional factory expression (for per-element generation), and template context variables.
+5. **The `factoryExpression`** in yaml entries produces an iterable — the template is rendered once per element. Templates without `factoryExpression` are rendered once per application.
+6. **All modules produce OSGi bundles** — they are loaded by the `judo-ui-generator-maven-plugin` at generation time via Maven coordinates (`mvn:` URIs).
+7. **The `commons` module has no templates** — it only provides shared Java helper methods used by the other three modules.
 
-- **`templateName`** — path to `.hbs` file
-- **`factoryExpression`** — SpEL returning an iterable (e.g., `#getClassTypes(#application)` runs once per class type)
-- **`pathExpression`** — SpEL determining output path (e.g., `'model/' + #classDataName(#self, '') + '.ts'`)
-- **`applicationBased`** — if true, template receives the application context
-- **`templateContext`** — additional variables injected into template scope
+## Related Documentation
 
-The `type` field in the generator plugin config must be `ui-typescript-rest` — this matches the YAML file names.
-
-### Java Helpers (5 files total)
-
-All are annotated `@TemplateHelper` and extend `StaticMethodValueResolver`. Their static methods become Handlebars helpers:
-
-| Class | Module | Responsibility |
-|-------|--------|---------------|
-| `UiCommonsHelper` | commons | Core naming: `classDataName`, `serviceClassName`, `serviceRelationName`, `firstToUpper/Lower` |
-| `UiGeneralHelper` | api | Main workhorse: type mapping, import tokens, serialization logic, model traversal, mask builders |
-| `StoredVariableHelper` | api | ThreadLocal context accessor for template parameters (e.g., `debugPrint`) |
-| `UiAxiosHelper` | axios | REST URL path generation: `restPath`, `relationRestPath`, `operationRestPath` |
-| `UiServiceHelper` | service | Access vs non-access relations, service import tokens, operation capabilities |
-
-### Key Conventions
-
-- **TypeScript type mapping:** `NumericType`→`number`, `BooleanType`→`boolean`, `StringType`→`string`, `DateType/TimeType/TimestampType`→`Date`, `EnumerationType`→generated enum
-- **Naming:** `classDataName(classType, suffix)` strips `::` separators and appends suffix (e.g., `"Stored"`, `"QueryCustomizer"`)
-- **REST paths:** tilde-prefixed verbs (`~get`, `~list`, `~create`, `~update`, `~delete`, `~template`, `~range`, `~set`, `~unset`, `~add`, `~remove`, `~validate`)
-- **Draft identifiers:** client-generated IDs start with `draft:` prefix, stripped during serialization, auto-generated on deserialization with `draftIdentifierPrefix + uuid`
-- **Singleton serializers:** generated serializers use `_instance` + `getInstance()` to avoid circular reference issues
-- **`TRANSFER_SKIP_SEGMENT`** (`_default_transferobjecttypes`) is filtered out when constructing REST paths
-- **All templates** start with `{{> fragment.header.hbs }}` partial for generated-source header comments
-- **SpEL `#` prefix** references helper methods and context variables in YAML expressions
-
-### Generated Output Structure
-
-```
-src/services/
-  data-api/          ← from api module
-    common/          (JudoIdentifiable, JudoStored, QueryCustomizer, errors/, files/, operations/, security/)
-    model/           (one .ts per ClassType + EnumerationType)
-    rest/            (QueryCustomizer, Serializer, MaskBuilder, FilterBy per type + shared utils)
-  data-service/      ← from service module
-    AccessService.ts, <Class>Service.ts, <Owner>ServiceFor<Rel>.ts
-  data-axios/        ← from axios module
-    JudoAxiosProvider.ts, JudoAxiosService.ts, AccessServiceImpl.ts, <Class>ServiceImpl.ts, <Owner>ServiceFor<Rel>Impl.ts
-```
-
-## UI Metamodel (judo-meta-ui)
-
-The `.model` files consumed by this generator are instances of the JUDO UI metamodel (`hu.blackbelt.judo.meta.ui.model`). The metamodel is defined in Ecore and consists of three packages:
-
-### `ui` (Root Package)
-
-- **`Application`** — root element. Contains all data elements, actor types, pages, navigation, and theme. Key references:
-  - `dataElements: ClassType[*]` — all transfer object types
-  - `dataTypes: DataType[*]` — primitive types (String, Numeric, Boolean, Date, Time, Timestamp, Enumeration, Binary)
-  - `enumerationTypes: EnumerationType[*]` — all enums
-  - `classTypes: ClassType[*]` — derived from dataElements
-  - `relationTypes: RelationType[*]` — all relations across all classes
-  - `actorTypes: ActorType[*]` — actor/role types (used for per-actor generation)
-  - `pages: PageDefinition[*]`, `navigations: NavigationItem[*]`, `theme: Theme`
-
-### `ui.data` (Data Package) — the primary package for this template
-
-- **`ClassType`** — represents a transfer object (generates a TypeScript interface). Key properties:
-  - `attributes: AttributeType[*]` — typed fields (each has a `dataType` reference)
-  - `relations: RelationType[*]` — navigation to other ClassTypes
-  - `operations: OperationType[*]` — callable actions
-  - `isTemplateable`, `isMapped` — capability flags
-  - `fQName` (inherited from `NamedElement`) — fully-qualified `::` separated name
-
-- **`AttributeType`** — a field on a ClassType:
-  - `dataType: DataType` — the type reference
-  - `isFilterable`, `isSortable`, `isRequired`, `isMemberTypeMapped`, `isReadOnly`
-  - `memberType: AttributeType` — maps to the underlying PSM attribute
-
-- **`RelationType`** — a reference from one ClassType to another:
-  - `target: ClassType` — the target type
-  - `isAccess` — true if this is a top-level access relation (entry point)
-  - `isCollection`, `isRequired`, `isCreatable`, `isDeletable`, `isUpdatable`, `isRefreshable`
-  - `isSetable`, `isUnsetable`, `isAddable`, `isRemovable`, `isListable`
-  - `isMemberTypeMapped`, `isRangeable`, `isFilterable`, `isSortable`
-  - `operations: OperationType[*]` — actions on this relation
-  - `relations: RelationType[*]` — nested sub-relations
-
-- **`OperationType`** — a callable action:
-  - `input: ClassType`, `output: ClassType` — optional input/output types
-  - `faults: ClassType[*]` — fault/error types
-  - `isInputRangeable`, `isFilterable`, `isSortable`
-  - `isMapped` — whether it maps to a backend operation
-
-- **`DataType`** (abstract) — base for all primitive types. Concrete subtypes:
-  - `StringType` (→ `string`), `NumericType` (→ `number`), `BooleanType` (→ `boolean`)
-  - `DateType`, `TimeType`, `TimestampType` (→ `Date`)
-  - `EnumerationType` (→ generated enum), `BinaryType` (→ binary handling)
-
-- **`EnumerationType`** — has `members: EnumerationMember[*]`, each with `ordinal: int`
-
-- **`NamedElement`** — base type providing `name`, `fQName` (fully-qualified name with `::` separator)
-
-### `ui.data` — Visual/Layout Package (less relevant to this template)
-
-- **`VisualType`** — base for visual components, extends `NamedElement`
-- **`PageDefinition`** — UI page definitions with containers, links, actions
-- **`PageContainer`**, **`Link`**, **`Table`**, **`Button`**, etc.
-- **`ActionDefinition`** — UI action definitions (CRUD, custom operations)
-- **`NavigationItem`** — menu/navigation entries
-- **`Theme`** — color/styling definitions
-
-### Key Model Traversal Patterns Used in Helpers
-
-```java
-// Get all class types from application
-application.getClassTypes()  // or application.getDataElements() filtered
-
-// Get relations for a class
-classType.getRelations()
-
-// Check if relation is an entry point
-relationType.isIsAccess()
-
-// Get operation faults
-operationType.getFaults()
-
-// Get enum members
-enumerationType.getMembers()
-```
-
-## Generator Framework (judo-generator-commons)
-
-The `judo-generator-commons` library provides the code generation infrastructure. Understanding this is essential for writing templates and helpers.
-
-### Core Components
-
-**`ModelGenerator`** — central orchestrator. Static methods drive the pipeline:
-1. `createGeneratorContext()` — builds context from URIs, YAML descriptors, helpers
-2. `generateToDirectory()` — executes generation, writes files with checksum tracking
-
-**`ModelGeneratorContext`** — holds generation state:
-- `createHandlebars()` — configures Handlebars with: UTF-8, `HighConcurrencyTemplateCache`, `ConditionalHelpers` (eq/neq/gt/gte/lt/lte/and/or/not), `StringHelpers`, custom `times` helper, all `@TemplateHelper` classes, pretty print, infinite loops allowed, string params enabled
-- `createSpringEvaluationContext()` — registers all helper static methods as SpEL functions
-
-### Writing Template Helpers
-
-Helpers must follow these rules:
-- Annotate class with `@TemplateHelper`
-- Extend `StaticMethodValueResolver`
-- Methods must be `public static` with 0 or 1 parameters
-- Methods become available as both Handlebars helpers (`{{methodName arg}}`) and SpEL functions (`#methodName(arg)`)
-
-### `@ContextAccessor` Mechanism
-
-Exactly one class can be annotated with `@ContextAccessor` (enforced — throws if multiple found). It must implement `public static void bindContext(Map<String, ?> context)`. This bridges template parameters (like `debugPrint`) to static helper methods via `ThreadLocalContextHolder`:
-
-```java
-@TemplateHelper @ContextAccessor
-public class StoredVariableHelper extends StaticMethodValueResolver {
-    public static void bindContext(Map<String, ?> context) {
-        ThreadLocalContextHolder.bindContext(context);
-    }
-    public static synchronized Boolean isDebugPrint() {
-        return Boolean.parseBoolean((String) ThreadLocalContextHolder.getVariable("debugPrint"));
-    }
-}
-```
-
-### YAML Descriptor Full Schema
-
-```yaml
-templates:
-  - name: uniqueId              # Required for override matching
-    templateName: path/to.hbs   # Path to .hbs file (or use inline `template:`)
-    pathExpression: "'out.ts'"   # SpEL → String (output path)
-    factoryExpression: "#fn()"   # SpEL → Collection (iterate, each becomes #self)
-    conditionExpression: "expr"  # SpEL → Boolean (skip if false)
-    applicationBased: true       # Provides #application in context
-    actorTypeBased: true         # Default true, iterates over actor types
-    copy: false                  # Binary copy mode (no Handlebars processing)
-    exclude: false               # Used in overrides to remove a template
-    permission: rw-r--r--        # POSIX file permissions
-    templateContext:             # Extra named SpEL variables
-      - name: varName
-        expression: "#self"
-```
-
-### SpEL Context Variables
-
-Available in `factoryExpression`, `pathExpression`, `conditionExpression`, and `templateContext`:
-- `#self` — current factory element (or model if no factoryExpression)
-- `#model` — the root model object
-- `#application` — when `applicationBased: true`
-- `#actorType` — when `actorTypeBased: true`
-- All `@TemplateHelper` static methods via `#methodName(args)`
-
-### Template Override Mechanism
-
-The `ChainedURLTemplateLoader` checks for `template.override.hbs` before loading `template.hbs`. Downstream projects can override any template without modifying the original. YAML-level overrides match by `name` field; use `exclude: true` to remove a template.
-
-### Built-in Helpers from judo-generator-commons
-
-| Helper | Methods |
-|--------|---------|
-| `StringHelper` | `lowerCase`, `upperCase`, `camelCaseToSnakeCase`, `decorateWithAsterisks`, `notEmpty`, `empty`, `isTrue`, `cleanup`, `firstToUpperCase`, `firstToLowerCase` |
-| `ConditionalHelpers` | `eq`, `neq`, `gt`, `gte`, `lt`, `lte`, `and`, `or`, `not` (Handlebars block helpers) |
-| `StringHelpers` | `capitalize`, `abbreviate`, etc. (Handlebars built-in) |
-| `times` | Custom iteration helper for repeat loops |
-
-### File Protection
-
-- `.generator-ignore` — glob patterns for files that should never be overwritten
-- `.generator-checksum-ignore` — glob patterns for files where checksum mismatches are suppressed (always overwritten)
-- `.generated-files` — tracks checksums of generated files; stale files are deleted on regeneration
-- Content normalization (enabled by default) prevents false checksum mismatches from formatters
+- [README.md](README.md) — Usage examples, architecture overview with Mermaid diagrams
+- [CONTRIBUTING.md](CONTRIBUTING.md) — Development setup, issue reporting, PR process
+- [.github/CIFLOW.md](.github/CIFLOW.md) — Detailed CI/CD flow and branching strategy with diagrams
+- [judo-ui-generator-maven-plugin docs](https://github.com/BlackBeltTechnology/judo-meta-ui/tree/develop/generator-maven-plugin) — Plugin configuration reference
