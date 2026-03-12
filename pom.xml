@@ -52,8 +52,8 @@
 
         <surefire-version>3.5.1</surefire-version>
 
-        <judo-meta-ui-version>1.1.0.20260303_104354_d8775168_develop</judo-meta-ui-version>
-        <judo-generator-commons-version>1.0.0.20260219_192724_142f7c92_develop</judo-generator-commons-version>
+        <judo-meta-ui-version>1.1.0.20260312_045411_3ca8bcec_develop</judo-meta-ui-version>
+        <judo-generator-commons-version>1.0.0.20260311_095819_caeda009_develop</judo-generator-commons-version>
 
         <!-- Code Quality-->
         <sonar-maven-plugin-version>3.9.1.2184</sonar-maven-plugin-version>
