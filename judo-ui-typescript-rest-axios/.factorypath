@@ -1,5 +1,5 @@
 <factorypath>
-    <factorypathentry kind="VARJAR" id="M2_REPO/hu/blackbelt/judo/meta/hu.blackbelt.judo.meta.ui.model/1.1.0.20260220_043758_d4abbddd_develop/hu.blackbelt.judo.meta.ui.model-1.1.0.20260220_043758_d4abbddd_develop.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/hu/blackbelt/judo/meta/hu.blackbelt.judo.meta.ui.model/1.1.0.20260303_104354_d8775168_develop/hu.blackbelt.judo.meta.ui.model-1.1.0.20260303_104354_d8775168_develop.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/hu/blackbelt/judo/cli/judo-cli-api/1.0.0.20260202_084947_12a6b76e_develop/judo-cli-api-1.0.0.20260202_084947_12a6b76e_develop.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/eclipse/emf/org.eclipse.emf.ecore/2.38.0/org.eclipse.emf.ecore-2.38.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/eclipse/emf/org.eclipse.emf.common/2.41.0/org.eclipse.emf.common-2.41.0.jar" enabled="true" runInBatchMode="false"/>
